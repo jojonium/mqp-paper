@@ -50,7 +50,7 @@
 % http://www.michaelshell.org/tex/testflow/
 
 
-\documentclass[10pt,journal,compsoc]{IEEEtran}
+\documentclass[10pt,journal,compsoc,twoside]{IEEEtran}
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
@@ -346,7 +346,7 @@
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-%\usepackage{url}
+\usepackage{url}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
 % systems. The latest version and documentation can be obtained at:
@@ -376,7 +376,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Sample \LaTeX Template for Kyoto VR MQP}
+\title{Kyoto VR MQP Paper First Draft}
 %
 %
 % author names and IEEE memberships
@@ -424,7 +424,7 @@
 
 % The paper headers
 \markboth{Worcester Polytechnic Institute Major Qualifying Project}%
-{Sample \LaTeX Template for Kyoto VR MQP}
+{Kyoto VR MQP Paper First Draft}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
 % 
@@ -467,9 +467,10 @@ The abstract goes here.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
-\begin{IEEEkeywords}
-Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
-\end{IEEEkeywords}}
+%\begin{IEEEkeywords}
+%Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
+%\end{IEEEkeywords}
+}
 
 
 % make the title area
@@ -528,16 +529,11 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{his} demo file is intended to serve as a ``starter file''
-for IEEE Computer Society journal papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
+\IEEEPARstart{T}{his} is a sample paragraph that exists as a placeholder because
+we haven't written the introduction yet. When we do, this paragraph should be
+removed.
 
-\hfill mds
- 
-\hfill August 26, 2015
+\lipsum[1]
 
 \section{Background}
 \label{sec:background}
@@ -546,11 +542,56 @@ I wish you the best of success.
 new forms of human-computer interaction are becoming mainstream. Smartphones
 allow for an unprecedented degree of connectivity with the digital world, but
 can also serve as a tool for enhancing the physical world. In this section we
-explain the origins and uses of some of this technology \cite{carroll2007}.
+explain the origins and uses of some of this technology.
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\subsection{What is Augmented Reality?}
+\label{sec:whatIsAugmentedReality}
 
+Augmented Reality, or AR, is a type of human-computer interface where
+perceptions of the real world are enhanced by computer-generated information.
+This differs from Virtual Reality (VR), in that a VR experience consists
+exclusively of virtual information. In AR, virtual information is mixed with
+sensory input from the real world \cite{carmigniani2011}. This can enhance the
+user's perception of reality by providing information that would be difficult or
+impossible to display through traditional means.
+
+For example, AR can be used to display information about historical events,
+places, and objects overlaid onto images of the real world \cite{saenz2009}.
+This provides the user with useful information without needing to alter the real
+historic site.
+
+\subsubsection{Current Augmented Reality Technology}
+\label{sec:currentAugmentedRealityTechnology}
+
+While preparing for this project our team researched the current state of
+augmented reality technology. Smartphones are the most commonly used AR hardware
+by far. Typically smartphone AR applications make use of the phone's camera,
+accelerometer, gyroscope, and GPS sensors to reproduce a view of the real world
+with virtual information layered on top of it \cite{bonsor2018}.
+
+\subsubsection{Augmented Reality Use Cases}
+\label{sec:augmentedRealityUseCases}
+
+\lipsum[1]
+
+\subsection{Apps for Art and Culture}
+\label{sec:appsForArtAndCulture}
+
+\lipsum[2-3]
+
+\subsubsection{izi.TRAVEL}
+\label{sec:iziTravel}
+
+\lipsum[4-5]
+
+\section{Methodology}
+\label{sec:methodology}
+
+\IEEEPARstart{I}{n} this section we explain the methodology of our project,
+including our process for creating the app, its functionality, and features we
+could not include due to time constraints.
+
+\lipsum
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -652,8 +693,12 @@ Subsubsection text here.
 
 \section{Conclusion}
 \label{sec:conclusion}
-The conclusion goes here.
 
+\IEEEPARstart{C}{onclusions} are typically hard to write, so we'll save it for
+last. This is once again just a placeholder because we haven't written this
+section yet.
+
+\lipsum[1]
 
 
 
@@ -745,22 +790,22 @@ The authors would like to thank...
 %\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
 % or if you just want to reserve a space for a photo:
 
-\begin{IEEEbiography}{Michael Shell}
-Biography text here.
-\end{IEEEbiography}
+%\begin{IEEEbiography}{Michael Shell}
+%Biography text here.
+%\end{IEEEbiography}
 
 % if you will not have a photo at all:
-\begin{IEEEbiographynophoto}{John Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
 
 % insert where needed to balance the two columns on the last page with
 % biographies
 %\newpage
 
-\begin{IEEEbiographynophoto}{Jane Doe}
-Biography text here.
-\end{IEEEbiographynophoto}
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
 
 % You can push biographies down or up by placing
 % a \vfill before or after them. The appropriate
