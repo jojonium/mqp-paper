@@ -76,10 +76,10 @@ needing to alter the real historic site.
 
 While preparing for this project our team researched the current state of
 augmented reality technology. Smartphones are the most commonly used AR
-hardware by far. Typically smartphone AR applications make use of the phone's
-camera, accelerometer, gyroscope, and GPS sensors to reproduce a view of the
-real world with virtual information layered on top of it
-\autocite{bonsor2018}.
+hardware by far [citation needed]. Typically smartphone AR applications make
+use of the phone's camera, accelerometer, gyroscope, and GPS sensors to
+reproduce a view of the real world with virtual information layered on top of
+it \autocite{bonsor2018}.
 
 \subsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
@@ -116,15 +116,57 @@ real world with virtual information layered on top of it
 \subsubsection{Unity}
 \label{sec:unity}
 
-\subsubsection{ViroReact}
+\subsubsection{Viro AR}
 \label{sec:viroReact}
 
-ViroReact is an alternative to specialized game engines such as Unity. This
-was initially appealling to us because it would allow us to use Javascript, a
-language we are familiar with.
+Viro AR comes in two flavors: ViroReact and ViroCore. ViroCore allows
+developers to build an AR Application with Java. The disadvantage of this is
+that ViroCore only allows developers to target Android, which unfortunately
+made ViroCore not an option for our project. ViroReact is the cross-platform
+option for ViroAR. ViroReact leverages the cross-platform capabilities of
+React, which is Facebook's Javascript Library for developing user interfaces
+\autocite{facebook2019}.
 
-ViroReact leverages the Javascript library React, which is a very popular
-library developed and maintained by Facebook \autocite{facebook2019}.
+Since our project is not a game, we initially wanted to avoid using a
+fully-featured game engine. Therefore, we decided to take the time to explore
+this framework since it appeared to be more tailored to our specific use case.
+Viro Media also recognizes that all developers who wish to create an app with
+3D capabilities are not necessarily game developers. Viro Media pitches Viro
+AR as ``The perfect alternative to specialized game engines, ViroAR is a
+platform for rapidly building ARKit and ARCore apps. Our platform allows
+developers to focus on what they do best by leveraging familiar tools and
+frameworks used in mobile application development'' \autocite{viro2019}.
+While the majority of our team has decent experience with writing Javascript,
+we all either have very little or no experience writing React apps.
+
+In most development scenarios, every time you wish to test your app on actual
+hardware, you must first compile your app using either Xcode or Android Studio
+depending on your platform. Once you have built the app, your device needs to
+install the app. This process can be very time consuming, especially since
+frequent tests on real hardware is important for something as intensive as
+AR.
+
+An alternative to building your app is to run your app through an emulator on
+the computer you are using for development [citation needed on what an
+emulator is]. Since an emulator uses software to emulate hardware, this poses
+two technical issues that prevent emulators from being a proper replacement
+for testing on real hardware.  Emulation is often imperfect, so glitches often
+emerge in emulation that do not manifest on the actual hardware [citation
+about emulator inaccuracies]. Secondly, (and most importantly for AR,)
+it is common for emulation to be much slower compared to real hardware.
+
+ViroReact offers a convenient ``test bed'' for rapidly testing your ViroReact
+app on native hardware. In the root directory of your project, you can launch
+a Node server with the command \texttt{npm start}. From here, you can input
+the provided URL into the Viro Media app. This will quickly download the code,
+graphics and 3D object files from the server and launch a functional version
+of the app \autocite{viro-testbed2019}. This allowed us to get a real AR app
+up and running on our devices much more easily than any of the other
+frameworks/engines we explored. Unfortunately, the test bed app was somewhat
+unreliable based on our experience; the test bed would frequently crash,
+or would not be able to download the files from the Node server. The most
+reliable way to test our app was to compile a binary and manually install it
+onto our devices, which completely defeats the purpose of the test bed app.
 
 \subsubsection{motive.io}
 \label{sec:motive.io}
