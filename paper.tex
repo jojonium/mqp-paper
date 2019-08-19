@@ -2,10 +2,14 @@
 
 % useful packages
 \usepackage{lipsum}
-\usepackage{cite}
 \usepackage{url}
+% if we want to use a different style, here are some to look at
+% https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
+\usepackage[backend=biber,style=verbose-trad2]{biblatex}
 \usepackage[title]{appendix}
 \usepackage[margin=1in]{geometry} % set 1in margins
+
+\bibliography{references}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -20,17 +24,17 @@
 \maketitle
 
 \begin{abstract}
-Abstract goes here. Their early work was a little too new wave for my taste. But
-when \textit{Sports} came out in '83, I think they really came into their own,
-commercially and artistically. The whole album has a clear, crisp sound, and a
-new sheen of consummate professionalism that really gives the songs a big boost.
-He's been compared to Elvis Costello, but I think Huey has a far more bitter,
-cynical sense of humor. In '87, Huey released this; \textit{Fore!}, their most
-accomplished album. I think their undisputed masterpiece is ``Hip To Be
-Square.'' A song so catchy, most people probably don't listen to the lyrics. But
-they should, because it's not just about the pleasures of conformity and the
-importance of trends. It's also a personal statement about the band itself. Hey,
-Paul!
+Abstract goes here. Their early work was a little too new wave for my taste.
+But when \textit{Sports} came out in '83, I think they really came into their
+own, commercially and artistically. The whole album has a clear, crisp sound,
+and a new sheen of consummate professionalism that really gives the songs a
+big boost.  He's been compared to Elvis Costello, but I think Huey has a far
+more bitter, cynical sense of humor. In '87, Huey released this;
+\textit{Fore!}, their most accomplished album. I think their undisputed
+masterpiece is ``Hip To Be Square.'' A song so catchy, most people probably
+don't listen to the lyrics. But they should, because it's not just about the
+pleasures of conformity and the importance of trends. It's also a personal
+statement about the band itself. Hey, Paul!
 \end{abstract}
 
 \section{Introduction}
@@ -58,23 +62,24 @@ Augmented Reality, or AR, is a type of human-computer interface where
 perceptions of the real world are enhanced by computer-generated information.
 This differs from Virtual Reality (VR), in that a VR experience consists
 exclusively of virtual information. In AR, virtual information is mixed with
-sensory input from the real world \cite{carmigniani2011}. This can enhance the
-user's perception of reality by providing information that would be difficult or
-impossible to display through traditional means.
+sensory input from the real world \autocite{carmigniani2011}. This can enhance
+the user's perception of reality by providing information that would be
+difficult or impossible to display through traditional means.
 
 For example, AR can be used to display information about historical events,
-places, and objects overlaid onto images of the real world \cite{saenz2009}.
-This provides the user with useful information without needing to alter the real
-historic site.
+places, and objects overlaid onto images of the real world
+\autocite{saenz2009}.  This provides the user with useful information without
+needing to alter the real historic site.
 
 \subsubsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
 
 While preparing for this project our team researched the current state of
-augmented reality technology. Smartphones are the most commonly used AR hardware
-by far. Typically smartphone AR applications make use of the phone's camera,
-accelerometer, gyroscope, and GPS sensors to reproduce a view of the real world
-with virtual information layered on top of it \cite{bonsor2018}.
+augmented reality technology. Smartphones are the most commonly used AR
+hardware by far. Typically smartphone AR applications make use of the phone's
+camera, accelerometer, gyroscope, and GPS sensors to reproduce a view of the
+real world with virtual information layered on top of it
+\autocite{bonsor2018}.
 
 \subsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
@@ -114,6 +119,13 @@ with virtual information layered on top of it \cite{bonsor2018}.
 \subsubsection{ViroReact}
 \label{sec:viroReact}
 
+ViroReact is an alternative to specialized game engines such as Unity. This
+was initially appealling to us because it would allow us to use Javascript, a
+language we are familiar with.
+
+ViroReact leverages the Javascript library React, which is a very popular
+library developed and maintained by Facebook \autocite{facebook2019}.
+
 \subsubsection{motive.io}
 \label{sec:motive.io}
 
@@ -138,8 +150,7 @@ once again just a placeholder because we haven't written this section yet.
 
 \clearpage % references should be on their own page
 
-\bibliographystyle{IEEEtran}
-\bibliography{references}
+\printbibliography
 
 \appendices
 \section{Proof of the First Zonklar Equation}
@@ -147,7 +158,6 @@ Appendix one text goes here.
 
 \section{}
 Appendix two text goes here.
-
 
 \end{document}
 
