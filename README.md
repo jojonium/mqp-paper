@@ -4,7 +4,8 @@ LaTeX paper for our MQP
 
 ## How to Compile
 
-`latexmk -pdf -bibtex paper.tex`
+`latexmk -pdf --shell-escape -bibtex paper.tex`
+The flag `--shell-escape` is important for some packages.
 
 To clean the temporary files do:
 
