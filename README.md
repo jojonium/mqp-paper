@@ -4,6 +4,14 @@ LaTeX paper for our MQP
 
 ## How to Compile
 
+Option 1: use the makefile:
+
+'make' to compile
+
+`make clean` to clean temporary files
+
+Option 2: use `latexmk` manually:
+
 `latexmk -pdf --shell-escape -bibtex paper.tex`
 The flag `--shell-escape` is important for some packages.
 
