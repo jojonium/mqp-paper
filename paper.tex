@@ -1,35 +1,45 @@
-\documentclass[a4paper, 10pt, american]{article}
+\documentclass[a4paper, 10pt, american, titlepage]{article}
 
 % useful packages
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[american]{babel}
+\usepackage{csquotes}
 
+\usepackage{graphicx} % for images
 \usepackage{minted}
 
-\usepackage{lipsum}
-\usepackage{url}
+\usepackage{lipsum}   % lorem-ipsum placeholder text
+\usepackage{url}      % hyperlinks
+\usepackage{bookmark} % links to other parts of the PDF
 %\usepackage{minted}
 % if we want to use a different style, here are some to look at
 % https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
-\usepackage[backend=biber,style=verbose-trad2]{biblatex}
-\usepackage[title]{appendix}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\usepackage[page, titletoc, title]{appendix}
 \usepackage[margin=1in]{geometry} % set 1in margins
 
-\bibliography{references}
+% more breathing room
+\linespread{1.5}
+\setminted{fontsize=\small,baselinestretch=1}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
-% more breathing room
-\linespread{1.5}
+% stuff for LaTeX to know
+\bibliography{references}
+\graphicspath{ {./images/} } % put images in here
+\title{Kyoto VR MQP Paper First Draft}
+\author{William~Campbell, Cole~Granof, and Joseph~Petitti}
+\date{\today}
 
-\setminted{fontsize=\small,baselinestretch=1}
+% call it "Table of Contents" instead of just "Contents"
+\addto{\captionsamerican}{\renewcommand*{\contentsname}{Table of Contents}}
 
 \begin{document}
 
-\title{Kyoto VR MQP Paper First Draft}
+% set page numbers to Roman for the forematter (before the introduction)
+\pagenumbering{roman}
 
-\author{William~Campbell, Cole~Granof, and Joseph~Petitti}
 
 \maketitle
 
@@ -46,6 +56,45 @@ don't listen to the lyrics. But they should, because it's not just about the
 pleasures of conformity and the importance of trends. It's also a personal
 statement about the band itself. Hey, Paul!
 \end{abstract}
+
+\section*{Acknowledgments}
+\label{sec:acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgments}
+
+I'd like to thank myself. \lipsum[1]
+
+\clearpage
+
+\section*{Executive Summary}
+\label{sec:executiveSummary}
+\addcontentsline{toc}{section}{Executive Summary}
+
+\lipsum[1-2]
+
+\clearpage
+
+% now comes the table of contents, list of figures, and list of tables
+% these should be single spaced
+{
+\linespread{1}
+
+% add table of contents to itself
+\addcontentsline{toc}{section}{Table of Contents}
+\tableofcontents
+\newpage
+
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+\newpage
+
+% we don't have any tables yet, but uncomment this when we do
+%\addcontentsline{toc}{section}{List of Tables}
+%\listoftables
+%\newpage
+}
+
+% go back to 1.5 spacing and Arabic numbering for the rest of the paper
+\pagenumbering{arabic}
 
 \section{Introduction}
 \label{sec:introduction}
@@ -187,7 +236,7 @@ onto our devices, which completely defeats the purpose of the test bed app.
 One of the goals for our project is to create a working prototype that others
 can build off of in the future [citation needed for personal communication].
 
-Similar to the app izi.TRAVEL discussed in section \ref{sec:iziTravel}, we
+Similar to the app izi.TRAVEL discussed in section~\ref{sec:iziTravel}, we
 needed some way to easily define arbitrary polygons (which we call ``regions'')
 and associate media with each one, such as audio and image files.
 
@@ -258,8 +307,17 @@ not incorporate AR.
 \section{Implementation and Technology}
 \label{sec:implementationAndTechnology}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{turtle-burger.jpg}
+	\caption{A rare but delicious turtle burger in the wild}
+	\label{fig:turtleBurger}
+\end{figure}
+
 \section{Testing}
 \label{sec:testing}
+
+See Figure~\ref{fig:turtleBurger} for more details.
 
 \section{Conclusion}
 \label{sec:conclusion}
