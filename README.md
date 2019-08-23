@@ -22,9 +22,13 @@ To clean the temporary files do:
 
 ## References
 
-Put info in `references.bib` in BibTeX format, then use
-`\autocite{carroll2007}` in the LaTeX file to reference the key of a particular
-entry. LaTeX will do the rest for you (theoretically).
+Put info in `references.bib` in BibTeX format, then use something like this:
+
+`This is a sentence that needs to be cited~\autocite{carroll2007}.`
+
+And LaTeX will do the rest for you. Don't forget the non-breaking space (`~`),
+it's necessary so that LaTeX doesn't put a line break between the last word and
+the citation.
 
 ## Bibliography
 

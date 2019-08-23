@@ -2,14 +2,12 @@
 
 % useful packages
 \usepackage[utf8]{inputenc}
+\usepackage{minted}
 \usepackage[american]{babel}
 \usepackage{csquotes}
-
 \usepackage{graphicx} % for images
-\usepackage{minted}
 
 \usepackage{lipsum}   % lorem-ipsum placeholder text
-\usepackage{url}      % hyperlinks
 \usepackage{bookmark} % links to other parts of the PDF
 %\usepackage{minted}
 % if we want to use a different style, here are some to look at
@@ -17,6 +15,7 @@
 \usepackage[backend=biber,style=numeric]{biblatex}
 \usepackage[page, titletoc, title]{appendix}
 \usepackage[margin=1in]{geometry} % set 1in margins
+\usepackage{hyperref}      % hyperlinks
 
 % more breathing room
 \linespread{1.5}
@@ -119,14 +118,14 @@ Augmented Reality, or AR, is a type of human-computer interface where
 perceptions of the real world are enhanced by computer-generated information.
 This differs from Virtual Reality (VR), in that a VR experience consists
 exclusively of virtual information. In AR, virtual information is mixed with
-sensory input from the real world \autocite{carmigniani2011}. This can enhance
+sensory input from the real world~\autocite{carmigniani2011}. This can enhance
 the user's perception of reality by providing information that would be
 difficult or impossible to display through traditional means.
 
 For example, AR can be used to display information about historical events,
-places, and objects overlaid onto images of the real world
-\autocite{saenz2009}.  This provides the user with useful information without
-needing to alter the real historic site.
+places, and objects overlaid onto images of the real world~\autocite{saenz2009}.
+This provides the user with useful information without needing to alter the real
+historic site.
 
 \subsubsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
@@ -141,7 +140,11 @@ it \autocite{bonsor2018}.
 \subsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
 
-\lipsum[1]
+Even though it is still a developing technology, augmented reality has been used
+in many disparate disciplines, including data
+visualization~\autocite{resnick2017}, commerce~\autocite{matney2018},
+marketing~\autocite{sharma2015}, education~\autocite{stewart-smith2012}, visual
+art~\autocite{katz2018}, and even archaeology~\autocite{eve2012}.
 
 \subsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
@@ -345,6 +348,9 @@ once again just a placeholder because we haven't written this section yet.
 \clearpage % references should be on their own page
 
 \printbibliography
+\addcontentsline{toc}{section}{References}
+
+\newpage
 
 \appendices
 \section{Proof of the First Zonklar Equation}
