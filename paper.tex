@@ -336,15 +336,27 @@ names for all files.
 
 The server-side backend of the Editour application is written in JavaScript for
 Node.js. This backend both serves the static frontend content and runs
-server-side scripts that process incoming API requests. When a user submits a
-new tour from the web application, the files and metadata are sent to the server
-running the Node.js scripts, which zips up the files and saves them to the
-server's disk with a timestamp. Then any application can request a particular
-tour and the backend will serve the most recent version of it.
+server-side scripts that process incoming API requests.  We chose Node.js as the
+server-side framework because of our prior experience with JavaScript, its
+high-performing asynchronous architecture~\autocite{orsini2013}, and its ease of
+development.
 
-We chose Node.js as the server-side framework because of our prior experience
-with JavaScript, its high-performing asynchronous
-architecture~\autocite{orsini2013}, and its ease of development.
+When a user submits new tour from the web application, the files and metadata
+are sent to the server running the Node.js scripts, which zips up the files and
+saves them to the server's disk with a timestamp. Then any application can
+request a particular tour and the backend will serve the most recent version of
+it.
+
+Additionally, our web application allows users to edit existing tours. When the
+user requests to edit a tour on the frontend it sends a request to the backend
+server for that tour's metadata file. This file contains information about all
+regions and files in the tour. The user can then edit the regions, change names,
+upload new files, or delete existing ones without ever having to download the
+other tour files from the server, which could take a long time depending on
+their size. When the user is done editing they can upload the new metadata and
+any newly added files to the server, which intelligently collects new and old
+files required by the tour and zips them into a new tour file on the disk.
+
 
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
@@ -368,7 +380,8 @@ not incorporate AR.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{turtle-burger.jpg}
-	\caption{A rare but delicious turtle burger in the wild.}
+	\caption{A rare but delicious turtle burger in the
+		wild~\autocite{harvey2002}.}
 	\label{fig:turtleBurger}
 \end{figure}
 
