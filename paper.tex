@@ -43,24 +43,12 @@
 \maketitle
 
 \begin{abstract}
-Abstract goes here. Their early work was a little too new wave for my taste.
-But when \textit{Sports} came out in '83, I think they really came into their
-own, commercially and artistically. The whole album has a clear, crisp sound,
-and a new sheen of consummate professionalism that really gives the songs a
-big boost.  He's been compared to Elvis Costello, but I think Huey has a far
-more bitter, cynical sense of humor. In '87, Huey released this;
-\textit{Fore!}, their most accomplished album. I think their undisputed
-masterpiece is ``Hip To Be Square.'' A song so catchy, most people probably
-don't listen to the lyrics. But they should, because it's not just about the
-pleasures of conformity and the importance of trends. It's also a personal
-statement about the band itself. Hey, Paul!
 \end{abstract}
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgments}
 
-I'd like to thank myself. \lipsum[1]
 
 \clearpage
 
@@ -68,7 +56,6 @@ I'd like to thank myself. \lipsum[1]
 \label{sec:executiveSummary}
 \addcontentsline{toc}{section}{Executive Summary}
 
-\lipsum[1-2]
 
 \clearpage
 
@@ -97,10 +84,6 @@ I'd like to thank myself. \lipsum[1]
 
 \section{Introduction}
 \label{sec:introduction}
-
-This is a sample paragraph that exists as a placeholder because
-we haven't written the introduction yet. When we do, this paragraph should be
-removed.
 
 \section{Background}
 \label{sec:background}
@@ -135,7 +118,7 @@ augmented reality technology. Smartphones are the most commonly used AR
 hardware by far [citation needed]. Typically smartphone AR applications make
 use of the phone's camera, accelerometer, gyroscope, and GPS sensors to
 reproduce a view of the real world with virtual information layered on top of
-it \autocite{bonsor2018}.
+it~\autocite{bonsor2018}.
 
 \subsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
@@ -149,23 +132,39 @@ art~\autocite{katz2018}, and even archaeology~\autocite{eve2012}.
 \subsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
 
-\lipsum[1]
 
 \subsection{Apps for Art and Culture}
 \label{sec:appsForArtAndCulture}
 
-\lipsum[2-3]
 
 \subsubsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
-\lipsum[4-5]
 
 \subsection{Platforms}
 \label{sec:platforms}
 
 \subsubsection{ARCore and ARKit}
 \label{sec:ARCoreAndARKit}
+
+ARKit and ARCore are both AR frameworks that enable apps to take advantage of
+powerful AR related features. ARKit is developed by Apple and can only be used
+by iPhones. Google's ARCore framework can deploy to both Android and iPhone.
+Many cross platform solutions will leverage the full potential of their target
+platform by using either ARKit or ARCore "under the hood". Both ViroReact and
+Vuforia use ARKit or ARCore depending on the target platform
+\autocites{vuforiaFusion}{moon2018}.
+
+ARKit 3 aims to support a wide array of new features, and will be available in
+iOS 13. Notably, one of these features is "people occlusion," which will allow
+virtual objects to be realistically obscured when someone walks in front of the
+object~\autocite{apple2019}. This kind of technology could be useful for us
+since our app uses AR in crowded places.  As of August, 2019, this feature is
+not on the horizon for Google's Android AR framework, ARCore.
+
+Both ARKit and ARCore have well-supported APIs for Unity. ARKit 3 support is
+coming to Unity, along with all of the advanced features that it
+brings~\autocite{stinson2019}.
 
 \subsubsection{Wikitude}
 \label{sec:wikitude}
@@ -184,8 +183,8 @@ developers to build an AR Application with Java. The disadvantage of this is
 that ViroCore only allows developers to target Android, which unfortunately
 made ViroCore not an option for our project. ViroReact is the cross-platform
 option for ViroAR. ViroReact leverages the cross-platform capabilities of
-React, which is Facebook's Javascript Library for developing user interfaces
-\autocite{facebook2019}.
+React, which is Facebook's Javascript Library for developing user
+interfaces~\autocite{facebook2019}.
 
 Since our project is not a game, we initially wanted to avoid using a
 fully-featured game engine. Therefore, we decided to take the time to explore
@@ -195,7 +194,7 @@ Viro Media also recognizes that all developers who wish to create an app with
 AR as ``The perfect alternative to specialized game engines, ViroAR is a
 platform for rapidly building ARKit and ARCore apps. Our platform allows
 developers to focus on what they do best by leveraging familiar tools and
-frameworks used in mobile application development'' \autocite{viro2019}.
+frameworks used in mobile application development''~\autocite{viro2019}.
 While the majority of our team has decent experience with writing Javascript,
 we all either have very little or no experience writing React apps.
 
@@ -207,12 +206,12 @@ frequent tests on real hardware is important for something as intensive as
 AR.
 
 An alternative to building your app is to run your app through an emulator on
-the computer you are using for development [citation needed on what an
-emulator is]. Since an emulator uses software to emulate hardware, this poses
-two technical issues that prevent emulators from being a proper replacement
-for testing on real hardware.  Emulation is often imperfect, so glitches often
+the computer you are using for development [citation needed on what an emulator
+is]. Since an emulator uses software to emulate hardware, this poses two
+technical issues that prevent emulators from being a proper replacement for
+testing on real hardware.  Emulation is often imperfect, so glitches often
 emerge in emulation that do not manifest on the actual hardware [citation
-about emulator inaccuracies]. Secondly, (and most importantly for AR,)
+needed about emulator inaccuracies]. Secondly, (and most importantly for AR,)
 it is common for emulation to be much slower compared to real hardware.
 
 ViroReact offers a convenient ``test bed'' for rapidly testing your ViroReact
@@ -233,6 +232,18 @@ onto our devices, which completely defeats the purpose of the test bed app.
 
 \section{Editour: The Tour Editor}
 \label{sec:editour}
+
+The goal of Editour is to allow a non-technical user to design audio tours
+through a web-app. At its core, Editour is a tool to draw arbitarily-shaped
+geographic regions onto a map. An audio file and multiple image files can be
+uploaded for each region the user defines. After naming and uploading the tour
+with the "Upload" button, our backend builds a zip containing a folder that can
+be placed directly into the Unity project.
+
+Our backend allows users to save their tours to our server, and load those same
+tours back into the editor to resume work.  The geographic area of each region
+can be adjusted by clicking and dragging. Vertices can also be added and
+deleted if the needs of the tour change over time.
 
 \subsection{The Need for an Editor}
 
@@ -269,43 +280,40 @@ future, we needed to provide an easy way to ``design'' a tour.
 
 In order to create a fully-functional editor for designing and exporting
 ``tours,'' we had to consider how to fully define a tour purely in terms
-of text, and a directory of associated media.
+of text and a directory of associated media.
 
-Here is an early version of the JSON generated by Editour. (The current
-implementation might vary slightly. Whitespace was added for clarity.)
+Here is an example of the JSON metadata generated by Editour:
 
 \begin{minted}{json}
 {
-   "je0bxi":{
-      "name":"Bigger Region",
-      "points":[ [ 35.0402, 135.7318 ], /* assume more coordinates */ ],
-      "audio":[ "big-region-audio-tour.mp3" ],
-      "images":[ "big-tower.jpg", "giant-mountain.jpg"]
-   },
-   "5x0swf":{
-      "name":"Smaller Region",
-      "points":[ [ 35.0381, 135.7313 ], /* assume more coordinates */ ],
-      "audio":[ "small-region-audio-tour.mp3" ],
-      "images":[ "tiny-rock.png", "small-hill.jpeg" ]
-   }
+   "regions": [
+      {
+         "name": "Beautiful Place",
+         "points": [ {"lat": 23.4, "lng": 56.7}, /* list omitted for brevity */ ],
+         "audio": [ "beautiful-audio.mp3" ],
+         "images": [ "mountain.jpg", "stream.jpg" ]
+      },
+      {
+         "name": "Gorgeous Place",
+         "points": [ {"lat": 12.3, "lng": 45.6}, /* list omitted for brevity */ ],
+         "audio": [ "gorgeous-audio.mp3" ],
+         "images": [ "hill.jpg", "valley.jpg", "gorge.jpg" ]
+      }
+   ]
 }
 \end{minted}
 
-Each region is associated with a random hash. Within the region object, we can
-see that the region has four properties: a name, a list of coordinates, a list
-of audio files, and a list of multiple image files. (In the current design of
-the app, it only makes sense to associate one audio file per region, but the
-format makes it easy to accommodate for multiple audio files in the future.)
-One disadvantage is that all media files have to have unique names.  A number
-is simply appended to the filename by the frontend if there are files with
-identical names.
-
-The design of the editour is agnostic about how the media will be used.  For
-an app like izi.TRAVEL, the images are displayed when the associated audio
-tour is playing. For ARuku, images can be placed onto the ground plane by the
-user, which is unique compared to other audio tour guide apps. The tour files
-produced by Editour could theoretically be used by a tour guide app that does
-not incorporate AR.
+Within each object in the region list, we can see that the region has four
+properties: a name, a list of coordinates, a list of audio files, and a list of
+multiple image files. (In the current design of the app, it only makes sense to
+associate one audio file per region, but the format makes it easy to
+accommodate for multiple audio files in the future.) One disadvantage is that
+all media files have to have unique names. This is because the zip that is
+created by the editour backend contains all of the media files in a flat file
+structure. The above JSON is used to associate each media file with a region,
+meaning that the filename needs to act as a primary key. The backend will
+respond with a message if this is the case, prompting the user to have unique
+names for all files.
 
 \subsection{Editour Backend}
 \label{sec:editourBackend}
@@ -321,6 +329,22 @@ tour and the backend will serve the most recent version of it.
 We chose Node.js as the server-side framework because of our prior experience
 with JavaScript, its high-performing asynchronous architecture, and its ease of
 development.
+
+\subsubsection{Future of Editour}
+\label{sec:futureOfEditour}
+
+In the current implementation, the tour file generated by the Editour backend
+still has to be moved manually to the Unity project folder. In the future, we
+would like the app to be able to contact our Editour server and update the tour
+info by itself. This would allow Kyoto VR to update the tours without updating
+the entire app.
+
+The design of the Editour is agnostic about how the media will be used.  For
+an app like izi.TRAVEL, the images are displayed when the associated audio
+tour is playing. For ARuku, images can be placed onto the ground plane by the
+user, which is unique compared to other audio tour guide apps. The tour files
+produced by Editour could theoretically be used by a tour guide app that does
+not incorporate AR. 
 
 \section{Implementation and Technology}
 \label{sec:implementationAndTechnology}
@@ -339,11 +363,6 @@ See Figure~\ref{fig:turtleBurger} for more details.
 
 \section{Conclusion}
 \label{sec:conclusion}
-
-Conclusions are typically hard to write, so we'll save it for last. This is
-once again just a placeholder because we haven't written this section yet.
-
-\lipsum[1]
 
 \clearpage % references should be on their own page
 
