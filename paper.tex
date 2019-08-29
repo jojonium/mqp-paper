@@ -65,12 +65,12 @@
 \linespread{1}
 
 % add table of contents to itself
-\addcontentsline{toc}{section}{Table of Contents}
 \tableofcontents
+\addcontentsline{toc}{section}{Table of Contents}
 \newpage
 
-\addcontentsline{toc}{section}{List of Figures}
 \listoffigures
+\addcontentsline{toc}{section}{List of Figures}
 \newpage
 
 % we don't have any tables yet, but uncomment this when we do
@@ -110,7 +110,7 @@ places, and objects overlaid onto images of the real world~\autocite{saenz2009}.
 This provides the user with useful information without needing to alter the real
 historic site.
 
-\subsubsection{Current Augmented Reality Technology}
+\subsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
 
 While preparing for this project our team researched the current state of
@@ -128,6 +128,22 @@ in many disparate disciplines, including data
 visualization~\autocite{resnick2017}, commerce~\autocite{matney2018},
 marketing~\autocite{sharma2015}, education~\autocite{stewart-smith2012}, visual
 art~\autocite{katz2018}, and even archaeology~\autocite{eve2012}.
+
+The video game industry has readily embraced augmented reality, leading to the
+development of many AR games for smartphones and dedicated head-mounted
+displays. Perhaps the most popular AR game, \textit{Pokémon Go}, has been
+downloaded over a billion times~\autocite{webster2018}. This game makes use of
+GPS and camera data to overlay game objects (in this case fictional monsters) on
+top of images of the real world (see Figure
+\ref{fig:pokemonGo})~\autocite{concepcion2016}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.5\textwidth]{pokemon-go.jpg}
+	\caption{A screenshot from the AR game \textit{Pokémon
+			Go}~\autocite{vastateparks2016}.}
+	\label{fig:pokemonGo}
+\end{figure}
 
 \subsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
@@ -151,12 +167,12 @@ ARKit and ARCore are both AR frameworks that enable apps to take advantage of
 powerful AR related features. ARKit is developed by Apple and can only be used
 by iPhones. Google's ARCore framework can deploy to both Android and iPhone.
 Many cross platform solutions will leverage the full potential of their target
-platform by using either ARKit or ARCore "under the hood". Both ViroReact and
+platform by using either ARKit or ARCore ``under the hood''. Both ViroReact and
 Vuforia use ARKit or ARCore depending on the target platform
 \autocites{vuforiaFusion}{moon2018}.
 
 ARKit 3 aims to support a wide array of new features, and will be available in
-iOS 13. Notably, one of these features is "people occlusion," which will allow
+iOS 13. Notably, one of these features is ``people occlusion,'' which will allow
 virtual objects to be realistically obscured when someone walks in front of the
 object~\autocite{apple2019}. This kind of technology could be useful for us
 since our app uses AR in crowded places.  As of August, 2019, this feature is
@@ -237,7 +253,7 @@ The goal of Editour is to allow a non-technical user to design audio tours
 through a web-app. At its core, Editour is a tool to draw arbitarily-shaped
 geographic regions onto a map. An audio file and multiple image files can be
 uploaded for each region the user defines. After naming and uploading the tour
-with the "Upload" button, our backend builds a zip containing a folder that can
+with the ``Upload'' button, our backend builds a zip containing a folder that can
 be placed directly into the Unity project.
 
 Our backend allows users to save their tours to our server, and load those same
@@ -327,8 +343,8 @@ server's disk with a timestamp. Then any application can request a particular
 tour and the backend will serve the most recent version of it.
 
 We chose Node.js as the server-side framework because of our prior experience
-with JavaScript, its high-performing asynchronous architecture, and its ease of
-development.
+with JavaScript, its high-performing asynchronous
+architecture~\autocite{orsini2013}, and its ease of development.
 
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
