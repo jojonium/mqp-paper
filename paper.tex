@@ -43,6 +43,17 @@
 \maketitle
 
 \begin{abstract}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{abstract.jpg}
+	% Note: you don't actually need the part in square brackets for the caption,
+	% but if you omit it the regular caption text will be used for the List of
+	% Figures entry.
+	\caption[\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock]
+	{\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock, National
+		Gallery of Art, Washington, D.C.}
+	\label{fig:abstract}
+\end{figure}
 \end{abstract}
 
 \section*{Acknowledgments}
@@ -134,14 +145,14 @@ development of many AR games for smartphones and dedicated head-mounted
 displays. Perhaps the most popular AR game, \textit{Pokémon Go}, has been
 downloaded over a billion times~\autocite{webster2018}. This game makes use of
 GPS and camera data to overlay game objects (in this case fictional monsters) on
-top of images of the real world (see Figure
-\ref{fig:pokemonGo})~\autocite{concepcion2016}.
+top of images of the real world~\autocite{concepcion2016} (see Figure
+\ref{fig:pokemonGo}).
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.5\textwidth]{pokemon-go.jpg}
-	\caption{A screenshot from the AR game \textit{Pokémon
-			Go}~\autocite{vastateparks2016}.}
+	\caption[A screenshot from the AR game \textit{Pokémon Go}]{A screenshot
+		from the AR game \textit{Pokémon Go}~\autocite{vastateparks2016}.}
 	\label{fig:pokemonGo}
 \end{figure}
 
@@ -152,10 +163,42 @@ top of images of the real world (see Figure
 \subsection{Apps for Art and Culture}
 \label{sec:appsForArtAndCulture}
 
+To explore existing AR apps for art and culture our group researched and tested
+several games, experiences, and platforms related to our project.
 
 \subsubsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
+Before our project started, Kyoto VR was already using an app with a limited
+form of AR for tours. The app, called izi.TRAVEL, allows users to create audio
+tours with audio and image files tied to specific locations in the real
+world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
+aimed at museums and city tours~\autocite{izitravel}, but can be used for tours
+of historic sites too.  Kyoto VR used the platform to make an audio tour of
+Kinkaku-ji, one of the most popular tourist destinations in
+Japan~\autocite{bornoff2000} and an important historic heritage
+site~\autocite{unesco}.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.5\textwidth]{izi-travel.jpg}
+	\caption{A screenshot of the izi.TRAVEL app interface}
+	\label{fig:iziTravel}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kinkakuji.jpg}
+	\caption[The Golden Pavilion of Kinkaku-ji, Kyoto, Japan]{The Golden
+		Pavilion of Kinkaku-ji, Kyoto, Japan~\autocite{davidson2005}}
+	\label{fig:kinkakuji}
+\end{figure}
+
+By using GPS data from the user's phone to play audio and display images at
+specific places in the real world izi.TRAVEL uses a limited form of augmented
+reality. Our group aimed to implement and extend this functionality in our own
+app. See Section \ref{sec:aruku} for more details.
 
 \subsection{Platforms}
 \label{sec:platforms}
@@ -246,7 +289,10 @@ onto our devices, which completely defeats the purpose of the test bed app.
 \subsubsection{motive.io}
 \label{sec:motive.io}
 
-\section{Editour: The Tour Editor}
+\section{Implementation and Technology}
+\label{sec:implementationAndTechnology}
+
+\subsection{Editour: The Tour Editor}
 \label{sec:editour}
 
 The goal of Editour is to allow a non-technical user to design audio tours
@@ -261,7 +307,7 @@ tours back into the editor to resume work.  The geographic area of each region
 can be adjusted by clicking and dragging. Vertices can also be added and
 deleted if the needs of the tour change over time.
 
-\subsection{The Need for an Editor}
+\subsubsection{The Need for an Editor}
 
 One of the goals for our project is to create a working prototype that others
 can build off of in the future [citation needed for personal communication].
@@ -291,7 +337,7 @@ of Unity, he is not a software developer [citation needed for personal
 communication.] In order to make our app prototype at all useful for the
 future, we needed to provide an easy way to ``design'' a tour.
 
-\subsection{A Complete Tour Definition}
+\subsubsection{A Complete Tour Definition}
 \label{sec:tourDefinition}
 
 In order to create a fully-functional editor for designing and exporting
@@ -331,7 +377,14 @@ meaning that the filename needs to act as a primary key. The backend will
 respond with a message if this is the case, prompting the user to have unique
 names for all files.
 
-\subsection{Editour Backend}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{editour.jpg}
+	\caption{A screenshot of the Editour web app frontend}
+	\label{fig:editour}
+\end{figure}
+
+\subsubsection{Editour Backend}
 \label{sec:editourBackend}
 
 The server-side backend of the Editour application is written in JavaScript for
@@ -374,21 +427,21 @@ user, which is unique compared to other audio tour guide apps. The tour files
 produced by Editour could theoretically be used by a tour guide app that does
 not incorporate AR. 
 
-\section{Implementation and Technology}
-\label{sec:implementationAndTechnology}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{turtle-burger.jpg}
-	\caption{A rare but delicious turtle burger in the
-		wild~\autocite{harvey2002}.}
-	\label{fig:turtleBurger}
-\end{figure}
+\subsection{ARuku}
+\label{sec:aruku}
 
 \section{Testing}
 \label{sec:testing}
 
 See Figure~\ref{fig:turtleBurger} for more details.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{turtle-burger.jpg}
+	\caption[A rare but delicious turtle burger in the wild]{A rare but
+		delicious turtle burger in the wild~\autocite{harvey2002}.}
+	\label{fig:turtleBurger}
+\end{figure}
 
 \section{Conclusion}
 \label{sec:conclusion}

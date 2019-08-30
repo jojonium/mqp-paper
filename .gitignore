@@ -1,3 +1,12 @@
 paper.pdf
 /_minted-paper/*
 *.swp
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.toc
