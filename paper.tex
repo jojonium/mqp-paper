@@ -99,7 +99,7 @@
 \section{Background}
 \label{sec:background}
 
-As smartphones and mobile technology becomes more prevalent,
+As smartphones and mobile technology become more prevalent,
 new forms of human-computer interaction are becoming mainstream. Smartphones
 allow for an unprecedented degree of connectivity with the digital world, but
 can also serve as a tool for enhancing the physical world. In this section we
@@ -110,7 +110,7 @@ explain the origins and uses of some of this technology.
 
 Augmented Reality, or AR, is a type of human-computer interface where
 perceptions of the real world are enhanced by computer-generated information.
-This differs from Virtual Reality (VR), in that a VR experience consists
+This differs from Virtual Reality (VR) in that a VR experience consists
 exclusively of virtual information. In AR, virtual information is mixed with
 sensory input from the real world~\autocite{carmigniani2011}. This can enhance
 the user's perception of reality by providing information that would be
@@ -159,6 +159,53 @@ top of images of the real world~\autocite{concepcion2016} (see Figure
 \subsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
 
+As we have said, AR is a new and growing field full of opportunities. But of course,
+as with anything new, our understanding of AR and how to develop for it is limited.
+And with those limitations come challenges. All sorts of different challenges and
+limitations face the development and production of AR apps. Here are some that
+we considered when working on our app.
+
+Many of the applications and use cases that exist for AR right now are, simply put,
+not very good. This means a few different things. For starters, many AR apps and
+features available on smartphones offer very little in the way of functionality or
+practicality; quite simply, they are primarily used for minor spectacles and simple
+tricks~\autocite{theappsolutions2018}. For example, one of the most popular apps
+to use AR, Pokemon GO, primarily uses it's AR feature to place a Pokemon in the
+world aroudn you through your phone camera for you to capture. But when it is in
+the world, it does not interact with anything around it. It just floats a fixed distance
+away from you, simply placed on top of your camera's video feed. 
+
+Additionally, in many cases where AR is used, the task could be accomplished as well 
+or better without AR~\autocite{theappsolutions2018}. Returning to the Pokemon GO
+example, when the AR feature is left on while capturing a Pokemon, the extra power
+needed for this feature drains the device faster, makes it harder to hit the Pokemon
+with a Pokeball due to the model drifting in the environment, and can even slow app
+performance, all of which detract from the ability to play and enjoy the game. 
+
+One of the biggest problems facing AR development as a whole, and one that we
+ran into as well, is limited hardware. For starters, smartphone cameras present
+a major limitation. Many smartphone cameras only capture images in 2D, which can
+make generating AR content in a 3D world difficult without the use of QR or barcode
+markers~\autocite{geospatialworld2018}. Additionally, GPS sensors on smartphones
+can also be too imprecise for good AR tracking~\autocite{geospatialworld2018}.
+
+The biggest hardware limitation comes from which platform to use. AR apps are most
+commonly designed for smartphones due to their relatively low cost and how accessible
+they are. But, as we just discussed, smartphones come with a host of hardware
+limitations that make achieving satisfying AR capabilities difficult. Additionally, AR apps
+for smartphones tend not to be very user-friendly, and oftentimes even complicate
+the task or activity they were meant to enhance~\autocite{theappsolutions2018}.
+The alternative then is to turn to dedicated hardware, like Microsoft's HoloLens. 
+But dedicated hardware like the HoloLens is very inaccessible and expensive; 
+Microsoft only offers developer editions of the HoloLens, and for the incredibly steep 
+price of \$3,500~\autocite{microsoft2019}. 
+
+The challenges we faced during development mirrored these that plague the industry
+as a whole very accurately. We struggled with how exactly we would us AR for our app
+in a way that benefit the experience as a whole, but believe the way we've implemented
+it will enhance the user's experience. Hardware issues were definitely our biggest challenge.
+Only one of our phones is new enough to run AR technology at a decent level, making
+testing of our application difficult.  
 
 \subsection{Apps for Art and Culture}
 \label{sec:appsForArtAndCulture}
