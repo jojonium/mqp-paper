@@ -182,7 +182,7 @@ needed for this feature drains the device faster, makes it harder to hit the Pok
 with a Pokeball due to the model drifting in the environment, and can even slow app
 performance, all of which detract from the ability to play and enjoy the game. 
 
-One of the biggest problems facing AR development as a whole, and one that we
+One of the major problems facing AR development as a whole, and one that we
 ran into as well, is limited hardware. For starters, smartphone cameras present
 a major limitation. Many smartphone cameras only capture images in 2D, which can
 make generating AR content in a 3D world difficult without the use of QR or barcode
@@ -250,6 +250,14 @@ app. See Section \ref{sec:aruku} for more details.
 \subsection{Platforms}
 \label{sec:platforms}
 
+Before we could start working on creating our app, we first needed to decide which
+AR development platform to use. Our preliminary research had shown us that there
+are so many different platforms out there, all of which have been used to create
+great AR apps. There were a lot of things we needed to consider before finalizing
+on a platform, like what features it offered, which devices and operating systems the
+app could run on, and definitely the cost. Detailed below are some of the different
+platforms we considered.
+
 \subsubsection{ARCore and ARKit}
 \label{sec:ARCoreAndARKit}
 
@@ -275,11 +283,41 @@ brings~\autocite{stinson2019}.
 \subsubsection{Wikitude}
 \label{sec:wikitude}
 
+// TODO: Need a way to add Euro character to document; the way they are in now doesn't work
+
+Wikitude is another major AR development kit that is very prevalent in the world
+of AR development. It has over 130,000 registered AR developers, and is powering
+over 30,000 AR apps across smartphones, tablets, and smart glasses~\autocite{wikitude2018}.
+And it's easy to understand why Wikitude has so many registered developers
+when you see the list of features it offers. Some of the features that appealed
+most to us were their Instant Tracking, allowing for augmentation using flat surfaces;
+Image Tracking, allowing for augmentation using one or multiple 2D images; and
+Geo AR, allowing for creation of geo markers at specific locations to triggered AR
+content~\autocite{wikitude2018}. 
+
+Wikitude also supports all sorts of different platforms. It supports Android, Apple,
+and Windows phones and tablets, as well as smart glasses like the Epson Moverio,
+Microsoft Hololens, and Vuzix smart glasses~\autocite{wikitude2018}. Additionally,
+many different development frameworks are capable of running Wikitude's SDK.
+According to Wikitude's website, their SDK works with Windows, Android, and iOS
+development frameworks, as well as ARCore and ARKit, Flutter, Cordova, Xamarin,
+and even Unity~\autocite{wikitude2018}. 
+
+From all of this information, Wikitude certainly sounds like a fantastic AR development
+platform; it certainly did to us. But the issue we ran into was the cost. Wikitude is, in
+fact, free for eligible startups, but given the criteria they list on their site, we were not
+confident that we would qualify. Aside from this option, Wikitude offers a 30-day demo
+license for €499, which is a lot for use to pay for a license that wouldn't even last for
+our entire project. They also charge €1990 for their SDK Pro, and €2490 for their
+SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very limited budget
+of \$0, we knew that we would have to pass on Wikitude and choose a different AR
+development platform. 
+
 \subsubsection{KudanSlam}
 \label{sec:kudanSlam}
 
-\subsubsection{Unity}
-\label{sec:unity}
+\subsubsection{motive.io}
+\label{sec:motive.io}
 
 \subsubsection{Viro AR}
 \label{sec:viroAR}
@@ -333,8 +371,8 @@ or would not be able to download the files from the Node server. The most
 reliable way to test our app was to compile a binary and manually install it
 onto our devices, which completely defeats the purpose of the test bed app.
 
-\subsubsection{motive.io}
-\label{sec:motive.io}
+\subsubsection{Unity}
+\label{sec:unity}
 
 \section{Implementation and Technology}
 \label{sec:implementationAndTechnology}
