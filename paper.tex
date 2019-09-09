@@ -349,26 +349,50 @@ frequent tests on real hardware is important for something as intensive as
 AR.
 
 An alternative to building your app is to run your app through an emulator on
-the computer you are using for development [citation needed on what an emulator
-is]. Since an emulator uses software to emulate hardware, this poses two
-technical issues that prevent emulators from being a proper replacement for
-testing on real hardware.  Emulation is often imperfect, so glitches often
-emerge in emulation that do not manifest on the actual hardware [citation
-needed about emulator inaccuracies]. Secondly, (and most importantly for AR,)
-it is common for emulation to be much slower compared to real hardware.
+the computer you are using for development.
+
+According to Techopedia, ``Emulation is the process of imitating a
+hardware/software program/platform on another program or platform. This makes
+it possible to run programs on systems not designed for
+them''~\autocite{techopedia2019}. Emulators are often very useful for speeding
+up development. Loading programs onto the Android emulator usually much faster
+than installing the APK onto the actual device. Additionally, you can mock
+almost all of the important features of an actual Android device, including
+calls, text, GPS position, device rotation and more \autocite{androidemulator}.
+
+Since an emulator uses software to emulate hardware, this poses two technical
+issues that prevent emulators from being a proper replacement for testing on
+real hardware.  Emulation is often imperfect, so glitches sometimes emerge in
+emulation that do not manifest on the actual hardware [citation needed about
+emulator inaccuracies]. Secondly, and most importantly for AR, it is common for
+emulation to be much slower compared to real hardware. In a question submitted
+to \textit{Compute!} magazine asking whether it is possible for a Commodore 64
+to emulate MS-DOS, the editor responded ``Yes, it's possible for a 64 to emulate
+an IBM PC, in the same sense that it's possible to bail out Lake Michigan with
+a teaspoon.'' The editor goes on to explain ``Emulation is a complex business,
+but here's one rule of thumb: The only way to successfully emulate a machine is
+with a much more powerful machine''~\autocite{warick1988}. In our case,
+emulating Android on a desktop operating system is closer to emulating a C64 on
+an IBM PC running MS-DOS (rather than the other way around, thankfully.) The
+moral is that the speed problem facing emulators is just as real as it was in
+1988. Considering that AR already pushes modern phone harware to the limit,
+emulation is not something is not something we wanted to struggle with. On top
+of this, our testing required us to move the camera through the world at
+various speeds and angles, which is simply cumbersome with a webcam and laptop.
 
 ViroReact offers a convenient ``test bed'' for rapidly testing your ViroReact
-app on native hardware. In the root directory of your project, you can launch
-a Node server with the command \texttt{npm start}. From here, you can input
-the provided URL into the Viro Media app. This will quickly download the code,
-graphics and 3D object files from the server and launch a functional version
-of the app \autocite{viro-testbed2019}. This allowed us to get a real AR app
-up and running on our devices much more easily than any of the other
-frameworks/engines we explored. Unfortunately, the test bed app was somewhat
-unreliable based on our experience; the test bed would frequently crash,
-or would not be able to download the files from the Node server. The most
-reliable way to test our app was to compile a binary and manually install it
-onto our devices, which completely defeats the purpose of the test bed app.
+app on native hardware without the need for an emulator. In the root directory
+of your project, you can launch a Node server with the command \texttt{npm
+start}. From here, you can input the provided URL into the Viro Media app. This
+will quickly download the code, graphics and 3D object files from the server
+and launch a functional version of the app \autocite{viro-testbed2019}. This
+allowed us to get a real AR app up and running on our devices much more easily
+than any of the other frameworks/engines we explored. Unfortunately, the test
+bed app was somewhat unreliable based on our experience; the test bed would
+frequently crash, or would not be able to download the files from the Node
+server. The most reliable way to test our app was to compile a binary and
+manually install it onto our devices, which completely defeats the purpose of
+the test bed app.
 
 \subsubsection{Unity}
 \label{sec:unity}
