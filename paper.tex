@@ -308,8 +308,8 @@ fact, free for eligible startups, but given the criteria they list on their site
 confident that we would qualify. Aside from this option, Wikitude offers a 30-day demo
 license for \euro{499}, which is a lot for use to pay for a license that would not even last for
 our entire project. They also charge \euro{1990} for their SDK Pro, and \euro{2490} for their
-SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very limited budget
-of \$0, we knew that we would have to pass on Wikitude and choose a different AR
+SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very limited budget,
+we knew that we would have to pass on Wikitude and choose a different AR
 development platform. 
 
 \subsubsection{KudanSlam}
@@ -517,7 +517,79 @@ not incorporate AR.
 \section{Testing}
 \label{sec:testing}
 
-See Figure~\ref{fig:turtleBurger} for more details.
+Our first day of on-site testing with the app took place on September 6th.
+Using Editour, we rebuilt the izi.TRAVEL audio tour that Atticus already
+created. The first version of the rebuilt tour had regions that were relatively
+small; some regions were only a few meters across. This version of the tour can
+be seen in Figure~\ref{fig:kinkakujiTour}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kinkakuji-tour.png}
+	\caption[The original version of the Kinkakuji tour]{The original version of
+    the Kinkakuji tour with small regions}
+	\label{fig:kinkakujiTour}
+\end{figure}
+
+Due to concerns about GPS accuracy, we adapted the tour-file \texttt{kinkakuji} to
+create a second, ``chunkier'' tour.  In the tour-file \texttt{kinkakuji-chunkier},
+we expanded all of the regions to accomodate for potential GPS inaccuracies
+that could place the user outside the range of the audio-trigger region.
+Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour that we used for field
+testing at Kinkakuji.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kinkakuji-chunkier-tour.png}
+	\caption[The ``chunkier'' version of the Kinkakuji tour]{The ``chunkier'' version of
+    the Kinkakuji tour with larger regions}
+	\label{fig:kinkakujiChunkierTour}
+\end{figure}
+
+We tested using two phones at the same time: an iPhone 8 and a Samsung Galaxy
+S7. The iPhone 8 is newer, more powerful and therefore more suited for use with
+AR. We primarily used this phone to test the AR features of the app. Even
+though the Samsung Galaxy had difficulty with basic AR features such as
+ground-plane detection, it was still capable of triggering the audio track
+based on GPS position.
+
+Our previous testing involved creating a ``mock tour'' on the Ritsumeikan campus.
+While this let us know generally which features of the app were working, it was
+very difficult to know how ahead of time how well our app would work at Kinkakuji.
+
+We were surprised by how intuitively each region triggered on the first try.
+With a few exceptions, the audio started when the subject of the audio track
+was in view. During our first walkthrough of Kinkakuji, we triggered every
+region and audio track but one. The region that we missed on the first pass,
+``Final Viewpoint'', requires the user to take a right at a fork in the road
+instead of continuing along the main path. This is not necessarily a problem
+with the design of the regions; instruction provided by the audio tour could
+remedy this, directing the user toward the viewpoint that is off of the main
+path.
+
+Initially, we loaded the app onto the Samsung Galaxy S7 as a backup, since the
+app is not fully functional on a phone that old. At the same time, it was
+informative to take both phones through the tour. Initially, we made the design
+decision to update the GPS location every 60 frames. On a phone running the app
+at full speed, this should happen once every second. Because the Samsung Galaxy
+S7 was having trouble running the app at full speed, the GPS updated far less
+frequently. This was an oversight that would have been difficult to catch if we
+had not tested on hardware below the recommended specifications.
+
+Other bugs resulted from oversights that were difficult to catch with our
+on-campus testing.  For example, we noticed that we forgot to back-up the audio
+slider when entering a new region.  Because of this, when we entered a new
+region when the audio slider was past the endpoint of the new audio track, the
+audio would not play. For example, if the previous audio track were a minute
+long, and if the second track were only thirty seconds long, the app would try
+to play a thirty second audio track from the one minute mark. Since we were
+running the app on phones, we could not easily see when errors were thrown.
+Similarly, if the user were to enter a new region while thirty seconds into the
+previous audio track, the new audio track would start at the thirty second
+mark. During our on-campus testing, we were using songs rather than narration.
+Since the songs were relatively long and not always obvious when they started
+partway through, we did not catch this until we got out to Kinkakuji.  Luckily,
+this was trivial to fix.
 
 \begin{figure}[h]
 	\centering
