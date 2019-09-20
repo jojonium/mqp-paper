@@ -221,7 +221,7 @@ Before our project started, Kyoto VR was already using an app with a limited
 form of AR for tours. The app, called izi.TRAVEL, allows users to create audio
 tours with audio and image files tied to specific locations in the real
 world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
-aimed at museums and city tours~\autocite{izitravel}, but can be used for tours
+aimed at museums and city tours~\autocite{izitravel} but can be used for tours
 of historic sites too.  Kyoto VR used the platform to make an audio tour of
 Kinkaku-ji, one of the most popular tourist destinations in
 Japan~\autocite{bornoff2000} and an important historic heritage
@@ -270,11 +270,11 @@ platform by using either ARKit or ARCore ``under the hood''. Both ViroReact and
 Vuforia use ARKit or ARCore depending on the target platform
 \autocites{vuforiaFusion}{moon2018}.
 
-ARKit 3 aims to support a wide array of new features, and will be available in
+ARKit 3 aims to support a wide array of new features and will be available in
 iOS 13. Notably, one of these features is ``people occlusion,'' which will allow
 virtual objects to be realistically obscured when someone walks in front of the
 object~\autocite{apple2019}. This kind of technology could be useful for us
-since our app uses AR in crowded places.  As of August, 2019, this feature is
+since our app uses AR in crowded places.  As of August 2019, this feature is
 not on the horizon for Google's Android AR framework, ARCore.
 
 Both ARKit and ARCore have well-supported APIs for Unity. ARKit 3 support is
@@ -364,32 +364,35 @@ Since an emulator uses software to emulate hardware, this poses two technical
 issues that prevent emulators from being a proper replacement for testing on
 real hardware.  Emulation is often imperfect, so glitches sometimes emerge in
 emulation that do not manifest on the actual hardware [citation needed about
-emulator inaccuracies]. Secondly, and most importantly for AR, it is common for
-emulation to be much slower compared to real hardware. In a question submitted
-to \textit{Compute!} magazine asking whether it is possible for a Commodore 64
-to emulate MS-DOS, the editor responded ``Yes, it's possible for a 64 to emulate
-an IBM PC, in the same sense that it's possible to bail out Lake Michigan with
-a teaspoon.'' The editor goes on to explain ``Emulation is a complex business,
-but here's one rule of thumb: The only way to successfully emulate a machine is
-with a much more powerful machine''~\autocite{warick1988}. In our case,
-emulating Android on a desktop operating system is closer to emulating a C64 on
-an IBM PC running MS-DOS (rather than the other way around, thankfully.) The
-moral is that the speed problem facing emulators is just as real as it was in
-1988. Considering that AR already pushes modern phone harware to the limit,
-emulation is not something is not something we wanted to struggle with. On top
-of this, our testing required us to move the camera through the world at
-various speeds and angles, which is simply cumbersome with a webcam and laptop.
+emulator inaccuracies]. Conversely, errors that exist in the hardware version
+may not appear in the emulation. Secondly, and most importantly for AR, it is
+common for emulation to be much slower compared to real hardware.
+
+In a question submitted to \textit{Compute!} magazine asking whether it is
+possible for a Commodore 64 to emulate MS-DOS, the editor responded ``Yes, it's
+possible for a 64 to emulate an IBM PC, in the same sense that it's possible to
+bail out Lake Michigan with a teaspoon.'' The editor goes on to explain
+``Emulation is a complex business, but here's one rule of thumb: The only way to
+successfully emulate a machine is with a much more powerful
+machine''~\autocite{warick1988}. In our case, emulating Android on a desktop
+operating system is closer to emulating a C64 on an IBM PC running MS-DOS
+(rather than the other way around, thankfully). The moral is that the speed
+problem facing emulators is just as real as it was in 1988. Considering that AR
+already pushes modern phone harware to the limit, emulation is not something is
+not something we wanted to struggle with. On top of this, our testing required
+us to move the camera through the world at various speeds and angles, which is
+simply cumbersome with a webcam and laptop.
 
 ViroReact offers a convenient ``test bed'' for rapidly testing your ViroReact
 app on native hardware without the need for an emulator. In the root directory
 of your project, you can launch a Node server with the command \texttt{npm
 start}. From here, you can input the provided URL into the Viro Media app. This
-will quickly download the code, graphics and 3D object files from the server
+will quickly download the code, graphics, and 3D object files from the server
 and launch a functional version of the app \autocite{viro-testbed2019}. This
 allowed us to get a real AR app up and running on our devices much more easily
 than any of the other frameworks/engines we explored. Unfortunately, the test
 bed app was somewhat unreliable based on our experience; the test bed would
-frequently crash, or would not be able to download the files from the Node
+frequently crash or would not be able to download the files from the Node
 server. The most reliable way to test our app was to compile a binary and
 manually install it onto our devices, which completely defeats the purpose of
 the test bed app.
@@ -410,7 +413,7 @@ uploaded for each region the user defines. After naming and uploading the tour
 with the ``Upload'' button, our backend builds a zip containing a folder that can
 be placed directly into the Unity project.
 
-Our backend allows users to save their tours to our server, and load those same
+Our backend allows users to save their tours to our server and load those same
 tours back into the editor to resume work.  The geographic area of each region
 can be adjusted by clicking and dragging. Vertices can also be added and
 deleted if the needs of the tour change over time.
@@ -479,7 +482,7 @@ multiple image files. (In the current design of the app, it only makes sense to
 associate one audio file per region, but the format makes it easy to
 accommodate for multiple audio files in the future.) One disadvantage is that
 all media files have to have unique names. This is because the zip that is
-created by the editour backend contains all of the media files in a flat file
+created by the Editour backend contains all of the media files in a flat file
 structure. The above JSON is used to associate each media file with a region,
 meaning that the filename needs to act as a primary key. The backend will
 respond with a message if this is the case, prompting the user to have unique
