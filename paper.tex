@@ -639,7 +639,7 @@ was becoming onerous to maintain at this stage of the project.
 With the ground-plane detection features stripped away from the main app, the
 AR focus shifted to translating the maps and signs using the camera. The fourth
 screen on Figure~\ref{fig:adobeXdDesign} shows a mock-up of this feature.
-Atticus took photographs of various signs throughout Kinkakuji for us to use as
+Atticus took photographs of various signs throughout Kinkaku-ji for us to use as
 image targets. Hikaru Inoue helped us by translating all of the text in these
 photos from Japanese to English. In this design, the AR camera superimposes an
 ``info'' button on top of the sign. Tapping on this button brings up a separate
@@ -675,8 +675,27 @@ caveat ``Reviewer was gifted package by publisher'' which which we interpreted
 as a warning sign. Because of this, we decided to rebuild the UI largely from
 the ground up, using the Adobe XD file to guide us.
 
+\newpage
+
 \section{Testing}
 \label{sec:testing}
+
+Both pieces of our project---the Editour and ARuko---are designed to be used by
+people who aren't programmers. The Editour will be used by Atticus in the future
+to design more tours, and ARuko will be used by the general public. Because of
+this, we needed to do extensive testing to ensure not only that the products
+work as intended without bugs, but also that they would be pleasant and easy to
+use for their intended users.
+
+\subsection{Testing Editour}
+\label{sec:testingEditour}
+
+
+\subsection{Testing ARuko}
+\label{sec:aruko}
+
+\subsubsection{First Round of Field Testing}
+\label{sec:firstRoundOfFieldTesting}
 
 Our first day of on-site testing with the app took place on September 6th.
 Using Editour, we rebuilt the izi.TRAVEL audio tour that Atticus already
@@ -687,23 +706,23 @@ be seen in Figure~\ref{fig:kinkakujiTour}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kinkakuji-tour.png}
-	\caption[The original version of the Kinkakuji tour]{The original version of
-    the Kinkakuji tour with small regions}
+	\caption[The original version of the Kinkaku-ji tour]{The original version
+		of the Kinkaku-ji tour with small regions}
 	\label{fig:kinkakujiTour}
 \end{figure}
 
-Due to concerns about GPS accuracy, we adapted the tour-file \texttt{kinkakuji} to
-create a second, ``chunkier'' tour.  In the tour-file \texttt{kinkakuji-chunkier},
-we expanded all of the regions to accomodate for potential GPS inaccuracies
-that could place the user outside the range of the audio-trigger region.
-Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour that we used for field
-testing at Kinkakuji.
+Due to concerns about GPS accuracy, we adapted the tour-file \texttt{kinkakuji}
+to create a second, ``chunkier'' tour.  In the tour-file
+\texttt{kinkakuji-chunkier}, we expanded all of the regions to accomodate for
+potential GPS inaccuracies that could place the user outside the range of the
+audio-trigger region.  Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour
+that we used for field testing at Kinkaku-ji.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kinkakuji-chunkier-tour.png}
-	\caption[The ``chunkier'' version of the Kinkakuji tour]{The ``chunkier'' version of
-    the Kinkakuji tour with larger regions}
+	\caption[The ``chunkier'' version of the Kinkaku-ji tour]{The ``chunkier''
+		version of the Kinkaku-ji tour with larger regions}
 	\label{fig:kinkakujiChunkierTour}
 \end{figure}
 
@@ -714,13 +733,14 @@ though the Samsung Galaxy had difficulty with basic AR features such as
 ground-plane detection, it was still capable of triggering the audio track
 based on GPS position.
 
-Our previous testing involved creating a ``mock tour'' on the Ritsumeikan campus.
-While this let us know generally which features of the app were working, it was
-very difficult to know how ahead of time how well our app would work at Kinkakuji.
+Our previous testing involved creating a ``mock tour'' on the Ritsumeikan
+campus. While this let us know generally which features of the app were working,
+it was very difficult to know how ahead of time how well our app would work at
+Kinkaku-ji.
 
 We were surprised by how intuitively each region triggered on the first try.
 With a few exceptions, the audio started when the subject of the audio track
-was in view. During our first walkthrough of Kinkakuji, we triggered every
+was in view. During our first walkthrough of Kinkaku-ji, we triggered every
 region and audio track but one. The region that we missed on the first pass,
 ``Final Viewpoint'', requires the user to take a right at a fork in the road
 instead of continuing along the main path. This is not necessarily a problem
@@ -749,7 +769,7 @@ Similarly, if the user were to enter a new region while thirty seconds into the
 previous audio track, the new audio track would start at the thirty second
 mark. During our on-campus testing, we were using songs rather than narration.
 Since the songs were relatively long and not always obvious when they started
-partway through, we did not catch this until we got out to Kinkakuji. Luckily,
+partway through, we did not catch this until we got out to Kinkaku-ji. Luckily,
 this was trivial to fix.
 
 \begin{figure}[h]
