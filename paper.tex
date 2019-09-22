@@ -690,9 +690,39 @@ use for their intended users.
 \subsection{Testing Editour}
 \label{sec:testingEditour}
 
+Because the Editour is intended only to be a tool to aid Atticus in creating
+tours, not an application for the general public, our user testing of it was less
+rigid.
+
+\subsubsection{Unit Testing the Editour Backend}
+\label{sec:unitTestingTheEditourBackend}
+
+To test the API and backend of the Editour web app we used the Mocha testing
+framework. Mocha is the most depended-upon package in the Node Package
+Manager~\autocite{tidelift2019}, and is widely used by professional software
+development teams. It has a myriad of useful features that allow developers to
+quickly write unit tests for complex Node.js projects~\autocite{mochajs2019}.
+Most importantly for us, it has good support for testing asynchronous JavaScript
+functions, since most of the backend is written asynchronously. Along with Mocha
+we also used SuperTest, a library for writing high-level end-to-end HTTP
+tests~\autocite{supertest2019}.
+
+For each of the six API endpoints that the backend responds to we wrote an
+extensive series of end-to-end tests to ensure that each step along the pipeline
+from receiving a request to sending a response worked properly. We also wrote
+many fuzz tests, to make sure the backend would respond correctly to invalid
+requests, e.g. by responding with an HTTP 400 error message~\autocite{rfc7231}.
+
+These tests were very useful in tracking down bugs and unexpected behavior in
+the backend, and also allowed us to make sure no functionality changed when
+adding new features or making changes to underlying logic later on.
+
+\subsection{Frontend Web Application Testing}
+\label{sec:frontendWebApplicationTesting}
+
 
 \subsection{Testing ARuko}
-\label{sec:aruko}
+\label{sec:testingARuko}
 
 \subsubsection{First Round of Field Testing}
 \label{sec:firstRoundOfFieldTesting}
@@ -772,13 +802,13 @@ Since the songs were relatively long and not always obvious when they started
 partway through, we did not catch this until we got out to Kinkaku-ji. Luckily,
 this was trivial to fix.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{turtle-burger.jpg}
-	\caption[A rare but delicious turtle burger in the wild]{A rare but
-		delicious turtle burger in the wild~\autocite{harvey2002}.}
-	\label{fig:turtleBurger}
-\end{figure}
+% \begin{figure}[h]
+%	\centering
+%	\includegraphics[width=\textwidth]{turtle-burger.jpg}
+%	\caption[A rare but delicious turtle burger in the wild]{A rare but
+%		delicious turtle burger in the wild~\autocite{harvey2002}.}
+%	\label{fig:turtleBurger}
+%\end{figure}
 
 \section{Pivots}
 \label{sec:pivots}
