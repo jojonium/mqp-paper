@@ -647,8 +647,9 @@ UI element containing the translation, which can be seen in
 Figure~\ref{fig:signTranslation}.
 
 \begin{figure}[h] \centering
-\includegraphics[width=0.5\textwidth]{sign-translation.png} \caption{Translated
-sign using AR camera} \label{fig:signTranslation}
+    \includegraphics[width=0.5\textwidth]{sign-translation.png}
+    \caption{Translated sign using AR camera}
+    \label{fig:signTranslation}
 \end{figure}
 
 As previously mentioned, Atticus initially wanted us to explore the efficacy of
@@ -717,9 +718,54 @@ These tests were very useful in tracking down bugs and unexpected behavior in
 the backend, and also allowed us to make sure no functionality changed when
 adding new features or making changes to underlying logic later on.
 
+\subsubsection{Unit Testing ARuko}
+\label{sec:unitTestingARuko}
+
+The UI and AR features of the app are very important to the user experience. At
+the same time, ARuko is not as purely graphical as it may seem. There is a
+significant amount of ``business logic'' that interprets the tour from the
+Editour file. On top of this, the geometric checks to test whether the user is
+inside a particular arbitrarily-defined geographic region are very important to
+get right.  Using Unity's built-in NUnit unit-testing framework, we wrote tests
+to verify whether the tour data was being parsed correctly, and whether the tour
+would be run correctly.
+
+As a reminder, regions that trigger audio can be a set of three or more points
+that define a closed polygon. Using the user's GPS location, the app needs to
+periodically run a check to see if the user is located within one of those
+polygons, which can be either concave or convex.
+
+One decent algorithm for accomplishing this is by drawing a ray from a given
+point to infinity. Barring edge cases (which will be discussed shortly) the
+point is inside the polygon if the ray passes through an even number of line
+segments.  The point is outside of the polygon if the ray intersects an odd
+number of times. Figure~\ref{fig:intersectionsDiagram} should make it clear why
+this works. This algorithm runs in $O(n)$, where $n$ is the sum total of the
+number of vertices of all of the polygons being tested
+~\autocite{geeksforgeekspolygon}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{intersections-diagram.png}
+	\caption{A visualization of the algorithm}
+	\label{fig:intersectionsDiagram}
+\end{figure}
+
+For this, we implemented a few mathematical functions for individual parts of
+the algorithm, such as testing for intersection. We wrote unit-tests to test
+each part of the algorithm, so we could be confident that the GPS component of
+the app would correctly place users into the correct regions.
+
+There is one edge case where this algorithm has difficulties. If the ray that
+is drawn for testing intersections passes directly through a vertex, the
+algorithm will count two intersections instead of just one. Even though this is
+highly unlikely considering our use case, we decided that our algorithm should
+be robust enough to handle this on a matter of principle. Unit-testing helped us
+catch and deal with this edge case.
+
+
 \subsection{Frontend Web Application Testing}
 \label{sec:frontendWebApplicationTesting}
-
 
 \subsection{Testing ARuko}
 \label{sec:testingARuko}
