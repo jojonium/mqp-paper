@@ -127,11 +127,11 @@ technology~\autocite{saenz2009, katz2018}.
 \section{Background}
 \label{sec:background}
 
-As smartphones and mobile technology become more prevalent,
-new forms of human-computer interaction are becoming mainstream. Smartphones
-allow for an unprecedented degree of connectivity with the digital world, but
-can also serve as a tool for enhancing the physical world. In this section we
-explain the origins and uses of some of this technology.
+As smartphones and mobile technology become more prevalent, new forms of
+human-computer interaction are becoming mainstream. Smartphones allow for an
+unprecedented degree of connectivity with the digital world, but can also serve
+as a tool for enhancing the physical world. In this section we explain the
+origins and uses of some of this technology.
 
 \subsection{What is Augmented Reality?}
 \label{sec:whatIsAugmentedReality}
@@ -145,9 +145,9 @@ the user's perception of reality by providing information that would be
 difficult or impossible to display through traditional means.
 
 For example, AR can be used to display information about historical events,
-places, and objects overlaid onto images of the real world~\autocite{saenz2009}.
-This provides the user with useful information without needing to alter the real
-historic site.
+places, and objects overlaid onto images of the real
+world~\autocite{saenz2009}.  This provides the user with useful information
+without needing to alter the real historic site.
 
 \subsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
@@ -258,7 +258,6 @@ of historic sites too.  Kyoto VR used the platform to make an audio tour of
 Kinkaku-ji, one of the most popular tourist destinations in
 Japan~\autocite{bornoff2000} and an important historic heritage
 site~\autocite{unesco}.
-
 
 \begin{figure}[h]
 	\centering
@@ -427,21 +426,21 @@ problem facing emulators is just as real as it was in 1988. Considering that AR
 already pushes modern phone harware to the limit, emulation is not something is
 not something we wanted to struggle with. On top of this, our testing required
 us to move the camera through the world at various speeds and angles, which is
-simply cumbersome with a webcam and laptop.
+simply cumbersome with a laptop webcam.
 
-ViroReact offers a convenient ``test bed'' for rapidly testing your ViroReact
-app on native hardware without the need for an emulator. In the root directory
-of your project, you can launch a Node server with the command \texttt{npm
-start}. From here, you can input the provided URL into the Viro Media app. This
-will quickly download the code, graphics, and 3D object files from the server
-and launch a functional version of the app \autocite{viro-testbed2019}. This
-allowed us to get a real AR app up and running on our devices much more easily
-than any of the other frameworks/engines we explored. Unfortunately, the test
-bed app was somewhat unreliable based on our experience; the test bed would
-frequently crash or would not be able to download the files from the Node
-server. The most reliable way to test our app was to compile a binary and
-manually install it onto our devices, which completely defeats the purpose of
-the test bed app.
+As an alternative to emulation, ViroReact offers a convenient ``test bed'' for
+rapidly testing your ViroReact app on native hardware without the need for an
+emulator. In the root directory of your project, you can launch a Node server
+with the command \texttt{npm start}. From here, you can input the provided URL
+into the Viro Media app. This will quickly download the code, graphics, and 3D
+object files from the server and launch a functional version of the app
+\autocite{viro-testbed2019}. This allowed us to get a real AR app up and
+running on our devices much more easily than any of the other
+frameworks/engines we explored. Unfortunately, the test bed app was somewhat
+unreliable based on our experience; the test bed would frequently crash or
+would not be able to download the files from the Node server. The most reliable
+way to test our app was to compile a binary and manually install it onto our
+devices, which completely defeats the purpose of the test bed app.
 
 \subsubsection{Unity}
 \label{sec:unity}
@@ -450,9 +449,9 @@ the test bed app.
 \label{sec:kinkaku-ji}
 
 We were tasked with building an AR mobile app that enhances the experience of
-visiting Kinkaku-ji, or the Golden Pavilion. As of September 2019, Kinkaku-ji
-is the second-most visited site in Kyoto---second only to Kyoto Station
-\autocite{japanguide2019}.
+visiting Kinkaku-ji, also known as the Golden Pavilion. As of September 2019,
+Kinkaku-ji is the second-most visited site in Kyoto---second only to Kyoto
+Station \autocite{japanguide2019}.
 
 \newpage
 
@@ -548,6 +547,91 @@ the media files in a flat file structure. The above JSON is used to associate
 each media file with a region, meaning that the filename needs to act as a
 primary key. The backend will respond with a message if this is the case,
 prompting the user to have unique names for all files.
+
+\subsubsection{Editing a Tour}
+\label{sec:editingATour}
+
+The user can easily create a new region by shift-clicking, and then clicking
+points on the map. To terminate the polygon, the user must shift-click again.
+A user can only terminate the polygon after two points have been placed to
+prevent the user from drawing a region with an area of zero. Once a region is
+created, a region card appears in the side bar. From here, the user can edit
+anything about the region. From here, the user can edit anything about the
+region.
+
+The top of the region card displays the region name in bold text. By clicking
+on the region name, the map will pan and zoom to frame the region in the center
+of the screen. This is useful if there are many regions. To the right of the
+region name, there are two arrow buttons, one pointed up and another pointed
+down. This allows the user to reorder the regions in the column. This was one
+of the features that was added late into development in order to adapt to an
+important change in the tour app, ARuko. This is discussed in
+Section~\ref{sec:adobeXdDesign}.
+
+In the region card, there are four multicolored expandable ``subcards'' that
+allow the user to edit different information about each region. Since there can
+be many region cards in the column, it was important to be able to collapse
+each section. Collapsing the subcards gives the user enough room to see
+multiple region cards at a time.
+
+The first subcard is the ``Rename'' subcard, which is fairly self-explanatory.
+This section expands to reveal a textbox, allowing the user to rename the
+region after clicking ``Okay'' or hitting the enter key. (There are multiple
+places in the UI where a textbox is immediately adjacent to a ``Confirm''
+button.  We made sure all of these can be triggered by simply hitting enter,
+since this is common when filling out forms.)
+
+The second subcard is slightly involved. Expanding the ``Media'' subcard by
+clicking on the green bar will reveal a bevy of options for augmenting the
+audio, images and text to be associated with that region of the tour. From
+here, the user can upload an audio file and multiple image files from his or
+her hard drive with the two file-select fields. If the tour has been downloaded
+as a server, the names of the files already present on the server will appear
+as cards with `X' buttons. This allows the user to remove images or audio from
+that region even after the tour has been uploaded.
+
+The third subcard is the ``Edit'' subcard. This subcard can be revealed in one
+of two ways. The first way is by clicking on the yellow bar labeled ``Edit'',
+which is the same for all subcards. Alternatively, the user can also click
+directly on the region on the map. The region will flash yellow and be scrolled
+into view to let the user know which region was clicked on. Both of these
+methods will enable editing mode, whereby the user can directly manipulate the
+vertices that make up the region. Blue circles appear on top of each vertex,
+and red circles appear at the midpoint of each edge. Clicking on a red midpoint
+will add an additional vertex at that midpoint. Dragging one of the blue
+vertices will do as you might expect---move the vertex around. The latitude and
+longitude are updated in the ``Edit'' subcard as the user drags the vertex
+around. Clicking on the vertex directly will create a blue pin-shaped marker
+that the user can also drag around. Clicking on the coordinate box in the
+subcard will also create this blue pin-shaped marker; the map will also pan to
+this coordinate. The user can also delete vertices in the same way that files
+can be deleted from the ``Media'' subcard by clicking on the `X' button. If there
+are exactly three points in a region, the `X' buttons will be ``grayed-out'',
+preventing the user from deleting any more points (since a polygon must consist
+of at least three points.)
+
+The third subcard is the ``Delete'' subcard. When revelead, another button will
+appear labeled ``Really Delete''. The action can be canceled by collapsing the
+subcard by hitting the bar now labeled ``Don't Delete!''. This prevents the user
+from accidentally deleting a region he or she did not mean to.
+
+Above all of the region cards, there are various options for uploading,
+downloading, renaming and deleting tour files on the server. Within the upload,
+download and delete cards there are message boxes to indicate the status of
+that operation. When uploading and downloading, a percentage will be displayed
+indicating the upload/download process. If a 200 or 201 is returned from the
+server, a ``Success'' message will appear. If there was some problem, the error
+message returned by the server is displayed in this box instead. Since
+uploading, downloading and deleting are all network-related operations, it
+makes sense to include this message box for each card.
+
+When the page is loaded, the frontend will request the names of the files
+stored on the server from the backend. This data is used to create a box of
+buttons, which includes one button for each tour file on the server. Clicking on
+one of these blue buttons will fill the textbox in with the correct name. Before
+this feature was implemented, the user had to correctly type the name of the
+saved tour into the textbox in order to retrieve it. The user is still free to
+do this, but the buttons make this easier and less error-prone.
 
 \begin{figure}[h]
 	\centering
@@ -649,19 +733,21 @@ is also a text area to include a transcript of the uploaded audio file.
 	\label{fig:editourAdditions}
 \end{figure}
 
-In Editour, the frontend alone was already around three thousand lines of
-vanilla JavaScript. Type-checking provided by Visual Studio Code and JSDoc made
-the growing code complexity more manageable. Excluding Node.js modules, the only
-external library we used for Editour was Leaflet, an open-source JavaScript
-library for interactive maps \autocite{leafletjs}. We did not use any libraries
-for developing frontends like Facebook's React or Google's Angular. Instead,
-all of the complex UI interactions were handled by modifying the DOM directly
-with JavaScript's built-in functionality. Furthermore, we did not use any
-advanced frontend build tools such as Rollup, webpack or Parcel. This was
-likely an appropriate decision for a JavaScript project of this scope, but if
-we were to continue to develop Editour, UI libraries and frontend build tools
-would be something to consider. With these changing requirements, the Editour
-was becoming onerous to maintain at this stage of the project.
+At this point, the codebase for Editour was already around three thousand lines
+of vanilla Javascript. Type-checking provided by Visual Studio Code and JSDoc
+made the growing code complexity more manageable. Excluding Node.js modules,
+the only external library we used for Editour was Leaflet, an open-source
+JavaScript library for interactive maps \autocite{leafletjs}. We did not use
+any libraries for developing frontends like Facebook's React or Google's
+Angular. Instead, all of the complex UI interactions were handled by modifying
+the DOM directly with JavaScript's built-in functionality. Furthermore, we did
+not use any advanced frontend build tools such as Rollup, webpack or Parcel.
+This was likely an appropriate decision for a JavaScript project of this scope.
+Considering we had limited to no experience with React or Angular, it was also
+faster to develop the UI in the way we were used to from previous experience..
+But if we were to continue to develop Editour, UI libraries and frontend build
+tools would be something to consider. With these changing requirements, the
+Editour was becoming onerous to maintain at this stage of the project.
 
 With the ground-plane detection features stripped away from the main app, the
 AR focus shifted to translating the maps and signs using the camera. The fourth
@@ -837,20 +923,21 @@ tour around the Ritsumeikan Biwako-Kusatsu campus where we worked. This allowed
 us to catch various bugs before we created a finalized prototype for
 field-testing at Kinkaku-ji. The tour represented in \ref{fig:ritsuTour} is
 what we used for testing the app. The ``C-Shaped Region'' helped us test
-concave regions. This unique region also prompted us to think about what UI
-behavior made the most sense if a user were to walk into a region, walk out and
-then in again. We decided that it was awkward if the audio restarted upon
-re-entering a region, since the audio would still be playing once a user left
-the region. The region at the bottom surrounding our domitories was added for
-our convenience, allowing us to test the app while we were away from the lab.
-As we began to implement more complex UI that changed based on GPS position in
-various ways, directly taking the tour by walking around was an invaluable way
-to test. Section~\ref{sec:adobeXdDesign} details how the UI grew in complexity
-in the late stages of the project. Having a way to regularly run field tests
-was integral to polishing the app in time before we revisited Kinkaku-ji.
-Because the Editour was flexible enough to easily swap out media and add
-regions to the tour, the Editour proved itself to be as helpful for testing as
-it was for crafting the final tour that could be taken at Kinkaku-ji.
+concave regions. This uniquely shaped region also prompted us to think about
+what UI behavior made the most sense if a user were to walk into a region, walk
+out and then in again. We decided that it was awkward if the audio restarted
+upon re-entering a region, since the audio would still be playing once a user
+left the region. The region at the bottom surrounding our domitories was added
+for our convenience, allowing us to test the app while we were away from the
+lab.  As we began to implement more complex UI that changed based on GPS
+position in various ways, directly taking the tour by walking around was an
+invaluable way to test. Section~\ref{sec:adobeXdDesign} details how the UI grew
+in complexity in the late stages of the project. Having a way to regularly run
+field tests was integral to polishing the app in time before we revisited
+Kinkaku-ji.  Because the Editour was flexible enough to easily swap out media
+and add regions to the tour, the Editour proved itself to be as helpful for
+testing as it was for crafting the final tour that could be taken at
+Kinkaku-ji.
 
 \begin{figure}[h]
 	\centering
