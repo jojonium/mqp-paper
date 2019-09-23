@@ -763,9 +763,43 @@ highly unlikely considering our use case, we decided that our algorithm should
 be robust enough to handle this on a matter of principle. Unit-testing helped us
 catch and deal with this edge case.
 
+\subsection{Editour Frontend Testing}
+\label{sec:editourFrontendTesting}
 
-\subsection{Frontend Web Application Testing}
-\label{sec:frontendWebApplicationTesting}
+We suspect that Editour might have a life outside of this particular use case
+for designing tours, depending on how we choose to further develop this
+software. This is why Editour is perhaps more polished than your typical tool
+purely for internal use.
+
+For the duration of the project however, Editour only had to be used by us
+three and Atticus. Therefore, the testing for the frontend of Editour was less
+systematic than other parts of the software stack. This decision also helped us
+focus our efforts on testing the reliability and user experience of ARuko. That
+being said, we were able to add many feature and get the Editour experience to
+a polished state through our own testing, using GitHub's tools to keep us
+organized.
+
+In order to test for bugs, all three of us periodically interacted with
+successive builds of the frontend. When bugs were found, we would log these as
+``Issues'' on the GitHub repo. These issues would get resolved in successive
+pull requests.
+
+Since we had to use Editour frequently to create test tours for ARuko, we were
+able to identify features that would make our own work more efficient. This
+worked as a kind of informal user testing. We kept track of feature requests
+using the same system as bug reports.
+
+Issues and feature requests alike got resolved in future pull requests. We
+resolved over thirty issues and feature requests using this workflow. The
+GitHub issues tab (which can be see in Figure~\ref{fig:issuesPageExample}) was
+very useful for making sure we made use of our user testing and bug testing.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{issues-page-example.png}
+	\caption{The GitHub issues tab for Editour}
+	\label{fig:issuesPageExample}
+\end{figure}
 
 \subsection{Testing ARuko}
 \label{sec:testingARuko}
