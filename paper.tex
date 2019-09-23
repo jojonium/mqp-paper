@@ -801,8 +801,36 @@ very useful for making sure we made use of our user testing and bug testing.
 	\label{fig:issuesPageExample}
 \end{figure}
 
-\subsection{Testing ARuko}
+\subsection{Testing Taking a Tour with ARuko}
 \label{sec:testingARuko}
+
+Because it was not feasible to travel to Kinkaku-ji every time we needed to
+test the GPS functionality of the app, we used Editour to design an example
+tour around the Ritsumeikan Biwako-Kusatsu campus where we worked. This allowed
+us to catch various bugs before we created a finalized prototype for
+field-testing at Kinkaku-ji. The tour represented in \ref{fig:ritsuTour} is
+what we used for testing the app. The ``C-Shaped Region'' helped us test
+concave regions. This unique region also prompted us to think about what UI
+behavior made the most sense if a user were to walk into a region, walk out and
+then in again. We decided that it was awkward if the audio restarted upon
+re-entering a region, since the audio would still be playing once a user left
+the region. The region at the bottom surrounding our domitories was added for
+our convenience, allowing us to test the app while we were away from the lab.
+As we began to implement more complex UI that changed based on GPS position in
+various ways, directly taking the tour by walking around was an invaluable way
+to test. Section~\ref{sec:adobeXdDesign} details how the UI grew in complexity
+in the late stages of the project. Having a way to regularly run field tests
+was integral to polishing the app in time before we revisited Kinkaku-ji.
+Because the Editour was flexible enough to easily swap out media and add
+regions to the tour, the Editour proved itself to be as helpful for testing as
+it was for crafting the final tour that could be taken at Kinkaku-ji.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.5\textwidth]{ritsu-tour.png}
+	\caption{The Ritsumeikan example tour used for testing}
+	\label{fig:ritsuTour}
+\end{figure}
 
 \subsubsection{First Round of Field Testing}
 \label{sec:firstRoundOfFieldTesting}
