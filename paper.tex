@@ -552,12 +552,13 @@ prompting the user to have unique names for all files.
 \label{sec:editingATour}
 
 The user can easily create a new region by shift-clicking, and then clicking
-points on the map. To terminate the polygon, the user must shift-click again.
-A user can only terminate the polygon after two points have been placed to
-prevent the user from drawing a region with an area of zero. Once a region is
-created, a region card appears in the side bar. From here, the user can edit
-anything about the region. From here, the user can edit anything about the
-region.
+points on the map.  To terminate the polygon, the user must shift-click again.
+The ``Welcome to editour'' card provides these instructions, which should be
+enough to get started.  A user can only terminate the polygon after two points
+have been placed to prevent the user from drawing a region with an area of
+zero. Once a region is created, a region card appears in the side bar. From
+here, the user can edit anything about the region. From here, the user can edit
+anything about the region.
 
 The top of the region card displays the region name in bold text. By clicking
 on the region name, the map will pan and zoom to frame the region in the center
@@ -632,6 +633,22 @@ one of these blue buttons will fill the textbox in with the correct name. Before
 this feature was implemented, the user had to correctly type the name of the
 saved tour into the textbox in order to retrieve it. The user is still free to
 do this, but the buttons make this easier and less error-prone.
+
+We did not include a way to resolve addresses or place names, like the service
+provided by Google Maps. Instead of exploring plugins/libraries that might
+provide this functionality, we offered a simpler solution due to time
+constraints.  You can type in a latitude and longitude directly and hit the
+``Jump'' button. We also hard-coded some shortcuts for places that Atticus
+might want to design a tour for in the future, which can be accessed by
+clicking on the yellow buttons with place names.
+
+Once a tour is either uploaded or downloaded, a link to download the zip file
+will appear. The zip file contains all of the uploaded media, and a metadata
+file. The metadata is in the form of a JSON file; it contains all of the
+latitudes, longitudes, and enough information to associate all of the media
+with the correct regions. This is the file that we unzip and place into the
+Unity project before it is compiled. This also is useful if the user wants to
+check the audio and image files that were uploaded.
 
 \begin{figure}[h]
 	\centering
