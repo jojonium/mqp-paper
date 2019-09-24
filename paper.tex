@@ -10,7 +10,6 @@
 
 \usepackage{lipsum}   % lorem-ipsum placeholder text
 \usepackage{bookmark} % links to other parts of the PDF
-%\usepackage{minted}
 % if we want to use a different style, here are some to look at
 % https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
@@ -34,6 +33,16 @@
 
 % call it "Table of Contents" instead of just "Contents"
 \addto{\captionsamerican}{\renewcommand*{\contentsname}{Table of Contents}}
+
+% custom environment for indenting whole paragraphs
+\newenvironment{indented}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{#1}}%
+	\item[]%
+}
+{\end{list}}
+
+
 
 \begin{document}
 
@@ -1046,14 +1055,6 @@ Since the songs were relatively long and not always obvious when they started
 partway through, we did not catch this until we got out to Kinkaku-ji. Luckily,
 this was trivial to fix.
 
-% \begin{figure}[h]
-%	\centering
-%	\includegraphics[width=\textwidth]{turtle-burger.jpg}
-%	\caption[A rare but delicious turtle burger in the wild]{A rare but
-%		delicious turtle burger in the wild~\autocite{harvey2002}.}
-%	\label{fig:turtleBurger}
-%\end{figure}
-
 \newpage
 
 \section{Pivots}
@@ -1082,10 +1083,75 @@ This section details some of the initial plans that fell through.
 \newpage
 
 \appendices
-\section{Proof of the First Zonklar Equation}
-Appendix one text goes here.
+\section{Editour API Documentation}
+
+Here is a list of API functions the Editour backend handles. The response is
+usually a JSON like this with fields called \texttt{status} and \texttt{message}
+The status is an HTTP status code like 200 (OK) or 404 (Not Found), and the
+message is a string or stringified JSON that contains the data of the response.
+
+\noindent\textbf{GET \texttt{/edit/:name}}
+
+\begin{indented}{1cm}
+	Returns the metadata file of the most recent tour with the given name. If
+	successful, it returns a status of 200 and the stringified metadata as the
+	message. If no tour with the given name is found it returns 404, and if the
+	server encounters an internal error while processing the request it returns
+	500.
+\end{indented}
+
+\noindent\textbf{GET \texttt{/tour/:name}}
+
+\begin{indented}{1cm}
+	This is the only API endpoint for which the response is not a JSON. Instead,
+	the response is the zip file of the most recent version of the tour with the
+	given name. Returns 404 if a tour with the given name isn't found or a 500
+	if there is an internal server error while processing the request.
+\end{indented}
+
+\noindent\textbf{GET \texttt{/tours}}
+
+\begin{indented}{1cm}
+	Gets a list of unique tours on the server, returning a list of their names
+	as the message of its response. Returns 200 if successful or 500 if there is
+	an internal server error while processing the request.
+\end{indented}
+
+\noindent\textbf{POST \texttt{/edit}}
+
+\begin{indented}{1cm}
+	Used for editing an existing tour. This request should contain the fields
+	\texttt{tourName}, \texttt{oldName}, and \texttt{metadata}, along with any
+	number of files.  The server will use the new metadata as well as the old
+	and new files to create a new version of an existing tour. Returns 201 if
+	the tour was edited successfully, 400 if the request was invalid, 404 if the
+	requested tour couldn't be found, or 500 if a server error occurred while
+	processing the request.
+\end{indented}
+
+\noindent\textbf{POST \texttt{/upload}}
+
+\begin{indented}{1cm}
+	Used for uploading a new tour. This request should include a
+	\texttt{tourName} field and a \texttt{metadata} field, along with any number
+	of files. It verifies the uploaded tour and creates a zip for it on the
+	server. Sends a 201 if the tour was created successfully, a 400 if the
+	request is invalid, or a 500 if a server error is encountered.
+\end{indented}
+
+\noindent\textbf{DELETE \texttt{/tour/:name}}
+
+\begin{indented}{1cm}
+	Deletes all versions of the tour with the given name from the server.
+	Returns 200 if successful, along with a message saying how many versions
+	were deleted, 404 if no tour with that name could be found, or 500 if a
+	server error was encountered.
+\end{indented}
+
+\newpage
 
 \section{}
+
 Appendix two text goes here.
 
 \end{document}
