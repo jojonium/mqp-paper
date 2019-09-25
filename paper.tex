@@ -10,7 +10,6 @@
 
 \usepackage{lipsum}   % lorem-ipsum placeholder text
 \usepackage{bookmark} % links to other parts of the PDF
-%\usepackage{minted}
 % if we want to use a different style, here are some to look at
 % https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
@@ -34,6 +33,16 @@
 
 % call it "Table of Contents" instead of just "Contents"
 \addto{\captionsamerican}{\renewcommand*{\contentsname}{Table of Contents}}
+
+% custom environment for indenting whole paragraphs
+\newenvironment{indented}[1]%
+{\begin{list}{}%
+	{\setlength{\leftmargin}{#1}}%
+	\item[]%
+}
+{\end{list}}
+
+
 
 \begin{document}
 
@@ -287,13 +296,13 @@ app. See Section \ref{sec:aruko} for more details.
 \subsection{Platforms}
 \label{sec:platforms}
 
-Before we could start working on creating our app, we first needed to decide which
-AR development platform to use. Our preliminary research had shown us that there
-are so many different platforms out there, all of which have been used to create
-great AR apps. There were a lot of things we needed to consider before finalizing
-on a platform, like what features it offered, which devices and operating systems the
-app could run on, and definitely the cost. Detailed below are some of the different
-platforms we considered.
+Before we could start working on creating our app, we first needed to decide
+which AR development platform to use. Our preliminary research had shown us that
+there are so many different platforms out there, all of which have been used to
+create great AR apps. There were a lot of things we needed to consider before
+finalizing on a platform, like what features it offered, which devices and
+operating systems the app could run on, and definitely the cost. Detailed below
+are some of the different platforms we considered.
 
 \subsubsection{ARCore and ARKit}
 \label{sec:ARCoreAndARKit}
@@ -330,13 +339,13 @@ for augmentation using flat surfaces; Image Tracking, allowing for augmentation
 using one or multiple 2D images; and Geo AR, allowing for creation of geo
 markers at specific locations to triggered AR content~\autocite{wikitude2018}. 
 
-Wikitude also supports all sorts of different platforms. It supports Android, Apple,
-and Windows phones and tablets, as well as smart glasses like the Epson Moverio,
-Microsoft Hololens, and Vuzix smart glasses~\autocite{wikitude2018}. Additionally,
-many different development frameworks are capable of running Wikitude's SDK.
-According to Wikitude's website, their SDK works with Windows, Android, and iOS
-development frameworks, as well as ARCore and ARKit, Flutter, Cordova, Xamarin,
-and even Unity~\autocite{wikitude2018}. 
+Wikitude also supports all sorts of different platforms. It supports Android,
+Apple, and Windows phones and tablets, as well as smart glasses like the Epson
+Moverio, Microsoft Hololens, and Vuzix smart glasses~\autocite{wikitude2018}.
+Additionally, many different development frameworks are capable of running
+Wikitude's SDK.  According to Wikitude's website, their SDK works with Windows,
+Android, and iOS development frameworks, as well as ARCore and ARKit, Flutter,
+Cordova, Xamarin, and even Unity~\autocite{wikitude2018}. 
 
 From all of this information, Wikitude certainly sounds like a fantastic AR
 development platform; it certainly did to us. But the issue we ran into was the
@@ -385,7 +394,7 @@ AR as ``The perfect alternative to specialized game engines, ViroAR is a
 platform for rapidly building ARKit and ARCore apps. Our platform allows
 developers to focus on what they do best by leveraging familiar tools and
 frameworks used in mobile application development''~\autocite{viro2019}.
-While the majority of our team has decent experience with writing Javascript,
+While the majority of our team has decent experience with writing JavaScript,
 we all either have very little or no experience writing React apps.
 
 In most development scenarios, every time you wish to test your app on actual
@@ -578,7 +587,6 @@ region. From here, the user can edit anything about the region.
 	\label{fig:drawingRegion}
 \end{figure}
 
-
 The top of the region card displays the region name in bold text. By clicking
 on the region name, the map will pan and zoom to frame the region in the center
 of the screen. This is useful if there are many regions. To the right of the
@@ -758,6 +766,24 @@ done editing they can upload the new metadata and any newly added files to the
 server, which intelligently collects new and old files required by the tour and
 zips them into a new tour file on the disk.
 
+\subsubsection{Deploying the Editour Backend}
+\label{sec:deployingTheEditourBackend}
+
+For testing and development purposes the Editour backend was originally hosted
+on a personal server belonging to a member of our team. This was a CentOS
+virtual machine running on an old Dell rack server in Worcester, Massachusetts.
+We wrote a custom systemd service to run the Editour as a daemon and keep its
+log files organized. The Node.js backend was served by an Nginx reverse proxy
+running on the same virtual machine.
+
+While this worked well enough for testing, it was not a permanent solution. We
+asked Atticus to provide a more powerful---and geographically closer---hosting
+solution for running the Editour in the future. He obtained a domain name and
+shared hosting environment for us to use on September 23\textsuperscript{rd}.
+Unfortunately, this shared hosting environment was designed for running simple
+PHP applications like WordPress, so it took a bit of work to coerce it into
+running a Node.js application.
+
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
 
@@ -791,11 +817,13 @@ we eventually dropped support for regions triggered by distance.
 
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
-On September 10th, Atticus Sims presented us with a storyboard for the app
-experience. We would not be able to resume work until September 17th due to
-prior travel plans. Whether Atticus knew this or not, the design he put forth
-had ramifications that rippled throughout the entire software stack we had
-constructed up to this point. Figure~\ref{fig:adobeXdDesign} shows this design.
+
+On September 10\textsuperscript{th} Atticus Sims presented us with a storyboard
+for the app experience. We would not be able to resume work until September
+17\textsuperscript{th} due to prior travel plans. Whether Atticus knew this or
+not, the design he put forth had ramifications that rippled throughout the
+entire software stack we had constructed up to this point.
+Figure~\ref{fig:adobeXdDesign} shows this design.
 
 \begin{figure}[h]
 	\centering
@@ -823,7 +851,7 @@ usable and fun. Ideally, we wanted to explore ways to theme the 2D images in
 the 3D world, such as by framing the images in a traditional Japanese pagoda,
 which would fit in with the environment. On the same screen, there is a
 scrollable window of text for a transcript of the audio. Because of this, the
-Editour UI and tour metadata JSON file needed to be updated to accomodate a
+Editour UI and tour metadata JSON file needed to be updated to accommodate a
 transcript per region. On top of this, the C\# code that interprets the tour
 file needed to be updated to expect an audio transcript field.
 Figure~\ref{fig:editourAdditions} shows the UI elements that changed in order
@@ -834,13 +862,13 @@ is also a text area to include a transcript of the uploaded audio file.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{editour-additions.png}
-	\caption[Additions to the editour to accommodate the new design]
-    {Additions to the editour to accommodate the new design}
+	\caption[Additions to the Editour to accommodate the new design]
+    {Additions to the Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
 
 At this point, the codebase for Editour was already around three thousand lines
-of vanilla Javascript. Type-checking provided by Visual Studio Code and JSDoc
+of vanilla JavaScript. Type-checking provided by Visual Studio Code and JSDoc
 made the growing code complexity more manageable. Excluding Node.js modules,
 the only external library we used for Editour was Leaflet, an open-source
 JavaScript library for interactive maps \autocite{leafletjs}. We did not use
@@ -889,11 +917,11 @@ store, called ``Experience Importer - Adobe Xd files importer'', which claims
 ``Transfer AdobeXd project directly to Unity. Forget about hours of positioning
 objects. They're already there! Just drag .xd file to project and...
 voila!''~\autocite{glasseye2019}.  We suspect this sounds too good to be true
-because it is. As of September 20th, 2019, there are 6 user reviews. All of the
-five-star reviews were have the caveat ``Reviewer was gifted package by
-publisher'' which which we interpreted as a warning sign. Because of this, we
-decided to rebuild the UI largely from the ground up, using the Adobe XD file
-to guide us.
+because it is. As of September 20\textsuperscript{th}, 2019, there are 6 user
+reviews. All of the five-star reviews were have the caveat ``Reviewer was gifted
+package by publisher'' which which we interpreted as a warning sign. Because of
+this, we decided to rebuild the UI largely from the ground up, using the Adobe XD
+file to guide us.
 
 \newpage
 
@@ -1055,11 +1083,11 @@ Kinkaku-ji.
 \subsubsection{First Round of Field Testing}
 \label{sec:firstRoundOfFieldTesting}
 
-Our first day of on-site testing with the app took place on September 6th.
-Using Editour, we rebuilt the izi.TRAVEL audio tour that Atticus already
-created. The first version of the rebuilt tour had regions that were relatively
-small; some regions were only a few meters across. This version of the tour can
-be seen in Figure~\ref{fig:kinkakujiTour}.
+Our first day of on-site testing with the app took place on September
+6\textsuperscript{th}. Using Editour, we rebuilt the izi.TRAVEL audio tour that
+Atticus already created. The first version of the rebuilt tour had regions that
+were relatively small; some regions were only a few meters across. This version
+of the tour can be seen in Figure~\ref{fig:kinkakujiTour}.
 
 \begin{figure}[h]
 	\centering
@@ -1130,14 +1158,6 @@ Since the songs were relatively long and not always obvious when they started
 partway through, we did not catch this until we got out to Kinkaku-ji. Luckily,
 this was trivial to fix.
 
-% \begin{figure}[h]
-%	\centering
-%	\includegraphics[width=\textwidth]{turtle-burger.jpg}
-%	\caption[A rare but delicious turtle burger in the wild]{A rare but
-%		delicious turtle burger in the wild~\autocite{harvey2002}.}
-%	\label{fig:turtleBurger}
-%\end{figure}
-
 \newpage
 
 \section{Pivots}
@@ -1169,10 +1189,75 @@ spatialized audio.
 \newpage
 
 \appendices
-\section{Proof of the First Zonklar Equation}
-Appendix one text goes here.
+\section{Editour API Documentation}
+
+Here is a list of API functions the Editour backend handles. The response is
+usually a JSON like this with fields called \texttt{status} and \texttt{message}
+The status is an HTTP status code like 200 (OK) or 404 (Not Found), and the
+message is a string or stringified JSON that contains the data of the response.
+
+\noindent\textbf{GET \texttt{/edit/:name}}
+
+\begin{indented}{1cm}
+	Returns the metadata file of the most recent tour with the given name. If
+	successful, it returns a status of 200 and the stringified metadata as the
+	message. If no tour with the given name is found it returns 404, and if the
+	server encounters an internal error while processing the request it returns
+	500.
+\end{indented}
+
+\noindent\textbf{GET \texttt{/tour/:name}}
+
+\begin{indented}{1cm}
+	This is the only API endpoint for which the response is not a JSON. Instead,
+	the response is the zip file of the most recent version of the tour with the
+	given name. Returns 404 if a tour with the given name isn't found or a 500
+	if there is an internal server error while processing the request.
+\end{indented}
+
+\noindent\textbf{GET \texttt{/tours}}
+
+\begin{indented}{1cm}
+	Gets a list of unique tours on the server, returning a list of their names
+	as the message of its response. Returns 200 if successful or 500 if there is
+	an internal server error while processing the request.
+\end{indented}
+
+\noindent\textbf{POST \texttt{/edit}}
+
+\begin{indented}{1cm}
+	Used for editing an existing tour. This request should contain the fields
+	\texttt{tourName}, \texttt{oldName}, and \texttt{metadata}, along with any
+	number of files.  The server will use the new metadata as well as the old
+	and new files to create a new version of an existing tour. Returns 201 if
+	the tour was edited successfully, 400 if the request was invalid, 404 if the
+	requested tour couldn't be found, or 500 if a server error occurred while
+	processing the request.
+\end{indented}
+
+\noindent\textbf{POST \texttt{/upload}}
+
+\begin{indented}{1cm}
+	Used for uploading a new tour. This request should include a
+	\texttt{tourName} field and a \texttt{metadata} field, along with any number
+	of files. It verifies the uploaded tour and creates a zip for it on the
+	server. Sends a 201 if the tour was created successfully, a 400 if the
+	request is invalid, or a 500 if a server error is encountered.
+\end{indented}
+
+\noindent\textbf{DELETE \texttt{/tour/:name}}
+
+\begin{indented}{1cm}
+	Deletes all versions of the tour with the given name from the server.
+	Returns 200 if successful, along with a message saying how many versions
+	were deleted, 404 if no tour with that name could be found, or 500 if a
+	server error was encountered.
+\end{indented}
+
+\newpage
 
 \section{}
+
 Appendix two text goes here.
 
 \end{document}
