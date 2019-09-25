@@ -358,9 +358,6 @@ their SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very
 limited budget, we knew that we would have to pass on Wikitude and choose a
 different AR development platform. 
 
-\subsubsection{KudanSlam}
-\label{sec:kudanSlam}
-
 \subsubsection{motive.io}
 \label{sec:motive.io}
 
@@ -567,12 +564,28 @@ prompting the user to have unique names for all files.
 
 The user can easily create a new region by shift-clicking, and then clicking
 points on the map.  To terminate the polygon, the user must shift-click again.
-The ``Welcome to Editour'' card provides these instructions, which should be
-enough to get started.  A user can only terminate the polygon after two points
-have been placed to prevent the user from drawing a region with an area of
-zero. Once a region is created, a region card appears in the side bar. From
-here, the user can edit anything about the region. From here, the user can edit
-anything about the region.
+The ``Welcome to Editour'' card (seen in Figure~\ref{fig:welcomeCard}) provides
+these instructions, which should be enough to get started.  A user can only
+terminate the polygon after two points have been placed to prevent the user
+from drawing a region with an area of zero. Once a region is created, a region
+card appears in the side bar. From here, the user can edit anything about the
+region. From here, the user can edit anything about the region.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{welcome-card-editour.png}
+    \caption{The ``Welcome to Editour'' card providing basic instructions to
+    get started}
+	\label{fig:welcomeCard}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{drawing-region-editour.png}
+    \caption{How the Editour looks when a region is being drawn, including the
+    two dotted preview lines}
+	\label{fig:drawingRegion}
+\end{figure}
 
 The top of the region card displays the region name in bold text. By clicking
 on the region name, the map will pan and zoom to frame the region in the center
@@ -589,21 +602,36 @@ be many region cards in the column, it was important to be able to collapse
 each section. Collapsing the subcards gives the user enough room to see
 multiple region cards at a time.
 
-The first subcard is the ``Rename'' subcard, which is fairly self-explanatory.
-This section expands to reveal a textbox, allowing the user to rename the
-region after clicking ``Okay'' or hitting the enter key. (There are multiple
-places in the UI where a textbox is immediately adjacent to a ``Confirm''
-button.  We made sure all of these can be triggered by simply hitting enter,
-since this is common when filling out forms.)
+The first subcard seen in Figure~\ref{fig:renameSubcard} is the ``Rename''
+subcard, which is fairly self-explanatory.  This section expands to reveal a
+textbox, allowing the user to rename the region after clicking ``Okay'' or
+hitting the enter key. (There are multiple places in the UI where a textbox is
+immediately adjacent to a ``Confirm'' button.  We made sure all of these can be
+triggered by simply hitting enter, since this is common when filling out
+forms.)
 
-The second subcard is slightly involved. Expanding the ``Media'' subcard by
-clicking on the green bar will reveal a bevy of options for augmenting the
-audio, images and text to be associated with that region of the tour. From
-here, the user can upload an audio file and multiple image files from his or
-her hard drive with the two file-select fields. If the tour has been downloaded
-as a server, the names of the files already present on the server will appear
-as cards with `X' buttons. This allows the user to remove images or audio from
-that region even after the tour has been uploaded.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{rename-subcard-editour.png}
+	\caption{The ``Rename'' subcard}
+	\label{fig:renameSubcard}
+\end{figure}
+
+The second subcard seen in Figure~\ref{fig:mediaSubcard} is slightly involved.
+Expanding the ``Media'' subcard by clicking on the green bar will reveal a bevy
+of options for augmenting the audio, images and text to be associated with that
+region of the tour. From here, the user can upload an audio file and multiple
+image files from his or her hard drive with the two file-select fields. If the
+tour has been downloaded as a server, the names of the files already present on
+the server will appear as cards with `X' buttons. This allows the user to
+remove images or audio from that region even after the tour has been uploaded.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{media-subcard-editour.png}
+	\caption{The ``Media'' subcard}
+	\label{fig:mediaSubcard}
+\end{figure}
 
 The third subcard is the ``Edit'' subcard. This subcard can be revealed in one
 of two ways. The first way is by clicking on the yellow bar labeled ``Edit'',
@@ -625,36 +653,76 @@ are exactly three points in a region, the `X' buttons will be ``grayed-out'',
 preventing the user from deleting any more points (since a polygon must consist
 of at least three points.)
 
-The third subcard is the ``Delete'' subcard. When revelead, another button will
-appear labeled ``Really Delete''. The action can be canceled by collapsing the
-subcard by hitting the bar now labeled ``Don't Delete!''. This prevents the user
-from accidentally deleting a region he or she did not mean to.
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=\textwidth]{edit-subcard-with-map-editour.png}
+    \caption{The ``Edit'' subcard with the map showing vertices and edges that
+    can be edited}
+	\label{fig:editSubcardWithMap}
+\end{figure}
+
+The third subcard pictured in Figure~\ref{fig:deleteSubcard} is the ``Delete''
+subcard. When revealed, another button will appear labeled ``Really Delete''.
+The action can be canceled by collapsing the subcard by hitting the bar now
+labeled ``Don't Delete!''. This prevents the user from accidentally deleting a
+region he or she did not mean to.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=0.4\textwidth]{delete-subcard-editour.png}
+    \caption{The ``Delete'' subcard}
+	\label{fig:deleteSubcard}
+\end{figure}
 
 Above all of the region cards, there are various options for uploading,
 downloading, renaming and deleting tour files on the server. Within the upload,
 download and delete cards there are message boxes to indicate the status of
 that operation. When uploading and downloading, a percentage will be displayed
-indicating the upload/download process. If a 200 or 201 is returned from the
-server, a ``Success'' message will appear. If there was some problem, the error
-message returned by the server is displayed in this box instead. Since
-uploading, downloading and deleting are all network-related operations, it
-makes sense to include this message box for each card.
+indicating the upload/download process, which can be seen in
+Figure~\ref{fig:uploadingMessage}. If a 200 or 201 is returned from the server,
+a ``Success'' message will appear. If there was some problem, the error message
+returned by the server is displayed in this box instead. Since uploading,
+downloading and deleting are all network-related operations, it makes sense to
+include this message box for each card.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=0.4\textwidth]{uploading-message-editour.png}
+    \caption{The upload subcard with an upload status}
+	\label{fig:uploadingMessage}
+\end{figure}
 
 When the page is loaded, the frontend will request the names of the files
 stored on the server from the backend. This data is used to create a box of
-buttons, which includes one button for each tour file on the server. Clicking on
-one of these blue buttons will fill the textbox in with the correct name. Before
-this feature was implemented, the user had to correctly type the name of the
-saved tour into the textbox in order to retrieve it. The user is still free to
-do this, but the buttons make this easier and less error-prone.
+buttons, which includes one button for each tour file on the server. Clicking
+on one of these blue buttons will fill the textbox in with the correct name.
+Before this feature was implemented, the user had to correctly type the name of
+the saved tour into the textbox in order to retrieve it. The user is still free
+to do this, but the buttons make this easier and less error-prone. The download
+card containing a box filled with filenames on the server can be seen in
+Figure~\ref{fig:downloadCard}.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=0.4\textwidth]{download-card-editour.png}
+    \caption{The download card}
+	\label{fig:downloadCard}
+\end{figure}
 
 We did not include a way to resolve addresses or place names, like the service
 provided by Google Maps. Instead of exploring plugins/libraries that might
 provide this functionality, we offered a simpler solution due to time
 constraints.  You can type in a latitude and longitude directly and hit the
-``Jump'' button. We also hard-coded some shortcuts for places that Atticus
+``Jump'' button. We also hard-coded a few shortcuts for places that Atticus
 might want to design a tour for in the future, which can be accessed by
 clicking on the yellow buttons with place names.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=0.4\textwidth]{jump-card-editour.png}
+    \caption{The jump card}
+	\label{fig:jumpCard}
+\end{figure}
 
 Once a tour is either uploaded or downloaded, a link to download the zip file
 will appear. The zip file contains all of the uploaded media, and a metadata
@@ -687,15 +755,16 @@ saves them to the server's disk with a timestamp. Then any application can
 request a particular tour and the backend will serve the most recent version of
 it.
 
-Additionally, our web application allows users to edit existing tours. When the
-user requests to edit a tour on the frontend it sends a request to the backend
-server for that tour's metadata file. This file contains information about all
-regions and files in the tour. The user can then edit the regions, change names,
-upload new files, or delete existing ones without ever having to download the
-other tour files from the server, which could take a long time depending on
-their size. When the user is done editing they can upload the new metadata and
-any newly added files to the server, which intelligently collects new and old
-files required by the tour and zips them into a new tour file on the disk.
+As previously mentioned in \ref{sec:editingATour}, our web application allows
+users to edit existing tours. When the user requests to edit a tour on the
+frontend it sends a request to the backend server for that tour's metadata
+file. This file contains information about all regions and files in the tour.
+The user can then edit the regions, change names, upload new files, or delete
+existing ones without ever having to download the other tour files from the
+server, which could take a long time depending on their size. When the user is
+done editing they can upload the new metadata and any newly added files to the
+server, which intelligently collects new and old files required by the tour and
+zips them into a new tour file on the disk.
 
 \subsubsection{Deploying the Editour Backend}
 \label{sec:deployingTheEditourBackend}
@@ -720,9 +789,9 @@ running a Node.js application.
 
 In the current implementation, the tour file generated by the Editour backend
 still has to be moved manually to the Unity project folder. In the future, we
-would like the app to be able to contact our Editour server and update the tour
-info by itself. This would allow Kyoto VR to update the tours without updating
-the entire app.
+would like the app to be able to contact a server running a version of the
+Editour backend and update the tour info by itself. This would allow Kyoto VR
+to update the tours without updating the entire app.
 
 The design of the Editour is agnostic about how the media will be used. For an
 app like izi.TRAVEL, the images are displayed when the associated audio tour is
@@ -731,6 +800,20 @@ tour guide app that does not incorporate AR.
 
 \subsection{ARuko}
 \label{sec:aruko}
+
+\subsubsection{GPS Functionality}
+\label{sec:gpsFunctionality}
+The core user experience of ARuko is the walking tour. By walking the given
+route, the user enters and exits specific geographic regions that invoke
+changes in the app, such as playing audio and displaying different images.
+Originally, we planned to mark regions by singular points, and trigger that
+region if the user was within a certain radius of that point.
+Implementation-wise, this would have been much simpler, but obviously limits
+possible tour designs. Consequently, we decided at an early stage to
+accommodate regions with arbitrary shape and size.  In the implementation, we
+provided support for both ``GPS Bubbles'' and ``GPS Polygons.'' In the end
+however, Editour made it trivial to use the more versatile ``GPS Polygons,'' so
+we eventually dropped support for regions triggered by distance.
 
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
@@ -795,7 +878,7 @@ the DOM directly with JavaScript's built-in functionality. Furthermore, we did
 not use any advanced frontend build tools such as Rollup, webpack or Parcel.
 This was likely an appropriate decision for a JavaScript project of this scope.
 Considering we had limited to no experience with React or Angular, it was also
-faster to develop the UI in the way we were used to from previous experience..
+faster to develop the UI in the way we were used to from previous experience.
 But if we were to continue to develop Editour, UI libraries and frontend build
 tools would be something to consider. With these changing requirements, the
 Editour was becoming onerous to maintain at this stage of the project.
@@ -816,14 +899,13 @@ Figure~\ref{fig:signTranslation}.
     \label{fig:signTranslation}
 \end{figure}
 
-As previously mentioned, Atticus initially wanted us to explore the efficacy of
-using Vuforia's 2D image target capabilities for scanning objects outside of
-the expected use case, such as 3D landscapes or the side of a building. We had
-serious doubts about how well this would work, and our suspicions were
-confirmed after some field testing. This was the reasoning behind focusing on
-ground-plane detection instead of image targets; ground-plane detection can be
-used anywhere, and is much more reliable than treating 3D objects as 2D image
-targets.
+Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
+target capabilities for scanning objects outside of the expected use case, such
+as 3D landscapes or the side of a building. We had serious doubts about how
+well this would work, and our suspicions were confirmed after some field
+testing. This was the reasoning behind focusing on ground-plane detection
+instead of image targets; ground-plane detection can be used anywhere, and is
+much more reliable than treating 3D objects as 2D image targets.
 
 Since Adobe XD is largely a prototyping and design tool, a considerable amount
 of legwork would still need to be done to rebuild the proposed design using
@@ -833,12 +915,13 @@ briefly explored a few solutions to automating the task of getting the Adobe XD
 project into Unity. We found one payed extension (for \$18) on the Unity Asset
 store, called ``Experience Importer - Adobe Xd files importer'', which claims
 ``Transfer AdobeXd project directly to Unity. Forget about hours of positioning
-objects. They're already there! Just drag .xd file to project and... voila!''
-We suspect this sounds too good to be true because it is. As of September
-20\textsuperscript{th}, 2019, there are 6 user reviews. All of the five-star
-reviews were have the caveat ``Reviewer was gifted package by publisher'' which
-which we interpreted as a warning sign. Because of this, we decided to rebuild
-the UI largely from the ground up, using the Adobe XD file to guide us.
+objects. They're already there! Just drag .xd file to project and...
+voila!''~\autocite{glasseye2019}.  We suspect this sounds too good to be true
+because it is. As of September 20\textsuperscript{th}, 2019, there are 6 user
+reviews. All of the five-star reviews were have the caveat ``Reviewer was gifted
+package by publisher'' which which we interpreted as a warning sign. Because of
+this, we decided to rebuild the UI largely from the ground up, using the Adobe XD
+file to guide us.
 
 \newpage
 
@@ -910,7 +993,7 @@ number of vertices of all of the polygons being tested
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{intersections-diagram.png}
+	\includegraphics[width=0.7\textwidth]{intersections-diagram.png}
 	\caption{A visualization of the algorithm}
 	\label{fig:intersectionsDiagram}
 \end{figure}
@@ -1087,6 +1170,9 @@ This section details some of the initial plans that fell through.
 
 \section{3D Spatialized Audio Tour}
 \label{sec:3dSpatializedAudioTour}
+
+One idea that was proposed initially was an AR audio experience using 3D
+spatialized audio.
 
 \newpage
 
