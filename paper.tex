@@ -786,13 +786,13 @@ it took a bit of work to coerce it into running a Node.js application.
 
 We were able to get shell access to the shared hosting environment, but without
 superuser privileges. This meant we couldn't install packages, change system
-settings, or access systemctl. In order to install Node.js and npm in this
-environment we had to use Node Version Manager, a series of shell scripts that
-handles downloading and compiling various versions of Node~\autocite{nvmsh2019}.
-The only difficulty with this was finding a version of Node.js that could
-compile with the older version of GCC the RHEL server had. Fortunately the
-server already had git installed, so we were able to simply clone the backend
-from GitHub and run it with npm.
+settings, or access \texttt{systemctl}. In order to install Node.js and npm in
+this environment we had to use Node Version Manager, a series of shell scripts
+that handles downloading and compiling various versions of
+Node~\autocite{nvmsh2019}.  The only difficulty with this was finding a version
+of Node.js that could compile with the older version of GCC the RHEL server had.
+Fortunately the server already had git installed, so we were able to simply
+clone the backend from GitHub and run it with npm.
 
 However, the server already had Apache listening on port 80, and without
 superuser privileges we could not edit the Apache configuration files to change
@@ -800,8 +800,14 @@ this. Instead we decided to configure Apache as a reverse proxy, using only the
 rules that can be put in a \texttt{.htaccess} file, since this is the only
 configuration file we could access. Using Apache's \texttt{mod\_rewrite} module
 we were able to rewrite incoming requests on port 80 to instead go to
-\texttt{localhost:3000}, the port Node.js was listening
-on~\autocite{apache2019}.
+\texttt{localhost:3000}, the port where Node.js was
+listening~\autocite{apache2019}.
+
+With no access to \texttt{systemctl} we could not use the custom systemd service
+we wrote to manage the server daemon. Instead, we used a custom shell script and
+an npm package called ``forever'' to handle starting and stopping it. The
+forever package runs Node.js scripts continuously, automatically restarting them
+if they crash~\autocite{robbins2019}. 
 
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
