@@ -1,24 +1,24 @@
 \documentclass[a4paper, 10pt, american, titlepage]{article}
 
 % useful packages
-\usepackage[utf8]{inputenc}
-\usepackage{minted}
-\usepackage[american]{babel}
-\usepackage{csquotes}
+\usepackage[utf8]{inputenc} % UTF-8 support
+\usepackage{minted} % for code snippets
+\usepackage[american]{babel} % for changing particular titles
+\usepackage{csquotes} % recommended for biblatex
 \usepackage{graphicx} % for images
 \usepackage[gen]{eurosym} % for literally just the euro symbol
 
-\usepackage{lipsum}   % lorem-ipsum placeholder text
+\usepackage{lipsum} % lorem-ipsum placeholder text
 \usepackage{bookmark} % links to other parts of the PDF
 % if we want to use a different style, here are some to look at
 % https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
-\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
-\usepackage[page, titletoc, title]{appendix}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % citations
+\usepackage[page, titletoc, title]{appendix} % labeled appendices
 \usepackage[margin=1in]{geometry} % set 1in margins
-\usepackage{hyperref}      % hyperlinks
+\usepackage{hyperref} % hyperlinks
+\usepackage{setspace} % setting custom spacing
 
 % more breathing room
-\linespread{1.5}
 \setminted{fontsize=\small,baselinestretch=1}
 
 % correct bad hyphenation here
@@ -27,9 +27,11 @@
 % stuff for LaTeX to know
 \bibliography{references}
 \graphicspath{ {./images/} } % put images in here
-\title{Kyoto VR MQP Paper First Draft}
+\title{%
+	\huge ARuko and Editour: \\
+	\Large A Platform for Augmented Reality Tour Guide Apps}
 \author{William~Campbell, Cole~Granof, and Joseph~Petitti}
-\date{\today}
+\date{October 11, 2019}
 
 % call it "Table of Contents" instead of just "Contents"
 \addto{\captionsamerican}{\renewcommand*{\contentsname}{Table of Contents}}
@@ -42,28 +44,30 @@
 }
 {\end{list}}
 
-
-
 \begin{document}
 
 % set page numbers to Roman for the forematter (before the introduction)
 \pagenumbering{roman}
 
-
+% draw the title page
 \maketitle
 
+% more breathing room
+\setstretch{1.5}
+
 \begin{abstract}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{abstract.jpg}
-	% Note: you don't actually need the part in square brackets for the caption,
-	% but if you omit it the regular caption text will be used for the List of
-	% Figures entry.
-	\caption[\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock]
-	{\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock, National
-		Gallery of Art, Washington, D.C.}
-	\label{fig:abstract}
-\end{figure}
+	% abstract goes here
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{abstract.jpg}
+		% Note: you don't actually need the part in square brackets for the
+		% caption, but if you omit it the regular caption text will be used for
+		% the List of Figures entry.
+		\caption[\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock]
+		{\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock, National
+			Gallery of Art, Washington, D.C.}
+		\label{fig:abstract}
+	\end{figure}
 \end{abstract}
 
 \section*{Acknowledgments}
@@ -80,7 +84,7 @@ researching AR technology. A special thank you to the IQP team working with
 Kyoto VR, Lewis Cook, Nicole Escobar, Ahad Fareed, and Cameron Person, for
 filming and editing the app trailer.
 
-Finally, a thank you to our advisers: Professors Joshua Cuneo and Ralph Sutter.
+Finally, a thank you to our advisers, Professors Joshua Cuneo and Ralph Sutter.
 Without their expert advice and feedback this project probably could not have
 been completed.
 
@@ -90,28 +94,25 @@ been completed.
 \label{sec:executiveSummary}
 \addcontentsline{toc}{section}{Executive Summary}
 
-
-\clearpage
+\newpage
 
 % now comes the table of contents, list of figures, and list of tables
 % these should be single spaced
-{
-\linespread{1}
+\begin{singlespace}
+	\tableofcontents
+	% add table of contents to itself
+	\addcontentsline{toc}{section}{Table of Contents}
+	\newpage
 
-% add table of contents to itself
-\tableofcontents
-\addcontentsline{toc}{section}{Table of Contents}
-\newpage
-
-\listoffigures
-\addcontentsline{toc}{section}{List of Figures}
-\newpage
+	\listoffigures
+	\addcontentsline{toc}{section}{List of Figures}
+	\newpage
+\end{singlespace}
 
 % we don't have any tables yet, but uncomment this when we do
 %\addcontentsline{toc}{section}{List of Tables}
 %\listoftables
 %\newpage
-}
 
 % go back to 1.5 spacing and Arabic numbering for the rest of the paper
 \pagenumbering{arabic}
@@ -211,18 +212,18 @@ Many of the applications and use cases that exist for AR right now are, simply
 put, not very good. This means a few different things. For starters, many AR
 apps and features available on smartphones offer very little in the way of
 functionality or practicality; quite simply, they are primarily used for minor
-spectacles and simple tricks~\autocite{theappsolutions2018}. For example, one
-of the most popular apps to use AR, Pokémon GO, primarily uses it's AR feature
-to place a Pokémon in the world around you through your phone camera for you to
-capture. But when it is in the world, it does not interact with anything around
-it. It just floats a fixed distance away from you, simply placed on top of your
-camera's video feed. 
+spectacles and simple tricks~\autocite{theappsolutions2018}. For example, one of
+the most popular apps to use AR, \textit{Pokémon Go}, primarily uses it's AR
+feature to place a Pokémon in the world around you through your phone camera for
+you to capture. But when it is in the world, it does not interact with anything
+around it. It just floats a fixed distance away from you, simply placed on top
+of your camera's video feed.
 
 Additionally, in many cases where AR is used, the task could be accomplished as
 well or better without AR~\autocite{theappsolutions2018}. Returning to the
-Pokémon GO example, when the AR feature is left on while capturing a Pokémon,
-the extra power needed for this feature drains the device faster, makes it
-harder to hit the Pokémon with a Pokéball due to the model drifting in the
+\textit{Pokémon Go} example, when the AR feature is left on while capturing a
+Pokémon, the extra power needed for this feature drains the device faster, makes
+it harder to hit the Pokémon with a Pokéball due to the model drifting in the
 environment, and can even slow app performance, all of which detract from the
 ability to play and enjoy the game. 
 
@@ -362,12 +363,12 @@ different AR development platform.
 \subsubsection{motive.io}
 \label{sec:motive.io}
 
-The company motive.io used to work on a product that would allow users to
-create an engaging AR experience in the style of Pokémon Go. Their service
+The company motive.io used to work on a product that would allow users to create
+an engaging AR experience in the style of \textit{Pokémon Go}. Their service
 would have purportedly handled technical details such as hosting, storage, and
 user accounts. The promotional video shows the creation of a location-based AR
-game where the user pretends to hack into ATMs using the real-world locations
-of ATMs in a city\autocite{odom2017}.
+game where the user pretends to hack into ATMs using the real-world locations of
+ATMs in a city\autocite{odom2017}.
 
 Unfortunately, it appears that the company has completely pivoted off of this
 idea, and has since moved to AR training software\autocite{motiveio}.
@@ -968,6 +969,8 @@ this, we needed to do extensive testing to ensure not only that the products
 work as intended without bugs, but also that they would be pleasant and easy to
 use for their intended users.
 
+\nocite{harvey2002} % don't remove this
+
 \subsection{Testing Editour}
 \label{sec:testingEditour}
 
@@ -1113,8 +1116,8 @@ Kinkaku-ji.
 	\label{fig:ritsuTour}
 \end{figure}
 
-\subsubsection{First Round of Field Testing}
-\label{sec:firstRoundOfFieldTesting}
+\subsubsection{Initial Field Testing}
+\label{sec:initialFieldTesting}
 
 Our first day of on-site testing with the app took place on September
 6\textsuperscript{th}. Using Editour, we rebuilt the izi.TRAVEL audio tour that
@@ -1191,6 +1194,12 @@ Since the songs were relatively long and not always obvious when they started
 partway through, we did not catch this until we got out to Kinkaku-ji. Luckily,
 this was trivial to fix.
 
+\subsubsection{Final Field Testing}
+\label{sec:finalFieldTesting}
+
+On September 26\textsuperscript{th} we returned to Kinkaku-ji with a nearly
+complete version of the ARuko in order to conduct some final testing.
+
 \newpage
 
 \section{Pivots}
@@ -1212,12 +1221,13 @@ spatialized audio.
 \section{Conclusion}
 \label{sec:conclusion}
 
-\nocite{harvey2002} % don't remove this
-
 \newpage % references should be on their own page
 
-\printbibliography
-\addcontentsline{toc}{section}{References}
+% references should be single spaced
+\begin{singlespace}
+	\printbibliography
+	\addcontentsline{toc}{section}{References}
+\end{singlespace}
 
 \newpage
 
