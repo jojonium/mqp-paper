@@ -382,7 +382,7 @@ developers to build an AR Application with Java. The disadvantage of this is
 that ViroCore only allows developers to target Android, which unfortunately
 made ViroCore not an option for our project. ViroReact is the cross-platform
 option for ViroAR. ViroReact leverages the cross-platform capabilities of
-React, which is Facebook's Javascript Library for developing user
+React, which is Facebook's JavaScript Library for developing user
 interfaces~\autocite{facebook2019}.
 
 Since our project is not a game, we initially wanted to avoid using a
@@ -766,6 +766,10 @@ done editing they can upload the new metadata and any newly added files to the
 server, which intelligently collects new and old files required by the tour and
 zips them into a new tour file on the disk.
 
+The backend implements a representational state transfer (REST) API, utilizing
+HTTP methods to manipulate tour data on the server. For full documentation of
+the backend's API, see Appendix~\ref{sec:editourAPIDocumentation}.
+
 \subsubsection{Deploying the Editour Backend}
 \label{sec:deployingTheEditourBackend}
 
@@ -896,7 +900,7 @@ At this point, the codebase for Editour was already around three thousand lines
 of vanilla JavaScript. Type-checking provided by Visual Studio Code and JSDoc
 made the growing code complexity more manageable. Excluding Node.js modules,
 the only external library we used for Editour was Leaflet, an open-source
-JavaScript library for interactive maps \autocite{leafletjs}. We did not use
+JavaScript library for interactive maps~\autocite{leafletjs}. We did not use
 any libraries for developing frontends like Facebook's React or Google's
 Angular. Instead, all of the complex UI interactions were handled by modifying
 the DOM directly with JavaScript's built-in functionality. Furthermore, we did
@@ -1053,8 +1057,8 @@ organized.
 
 In order to test for bugs, all three of us periodically interacted with
 successive builds of the frontend. When bugs were found, we would log these as
-``Issues'' on the GitHub repo. These issues would get resolved in successive
-pull requests.
+``Issues'' on the GitHub repository. These issues would get resolved in
+successive pull requests.
 
 Since we had to use Editour frequently to create test tours for ARuko, we were
 able to identify features that would make our own work more efficient. This
@@ -1086,7 +1090,7 @@ concave regions. This uniquely shaped region also prompted us to think about
 what UI behavior made the most sense if a user were to walk into a region, walk
 out and then in again. We decided that it was awkward if the audio restarted
 upon re-entering a region, since the audio would still be playing once a user
-left the region. The region at the bottom surrounding our domitories was added
+left the region. The region at the bottom surrounding our dormitories was added
 for our convenience, allowing us to test the app while we were away from the
 lab.  As we began to implement more complex UI that changed based on GPS
 position in various ways, directly taking the tour by walking around was an
@@ -1124,7 +1128,7 @@ of the tour can be seen in Figure~\ref{fig:kinkakujiTour}.
 
 Due to concerns about GPS accuracy, we adapted the tour-file \texttt{kinkakuji}
 to create a second, ``chunkier'' tour.  In the tour-file
-\texttt{kinkakuji-chunkier}, we expanded all of the regions to accomodate for
+\texttt{kinkakuji-chunkier}, we expanded all of the regions to accommodate for
 potential GPS inaccuracies that could place the user outside the range of the
 audio-trigger region.  Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour
 that we used for field testing at Kinkaku-ji.
@@ -1215,6 +1219,7 @@ spatialized audio.
 
 \appendices
 \section{Editour API Documentation}
+\label{sec:editourAPIDocumentation}
 
 Here is a list of API functions the Editour backend handles. The response is
 usually a JSON like this with fields called \texttt{status} and \texttt{message}
