@@ -859,6 +859,62 @@ ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{goth}歩こ\end{CJK}''
 (\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
 through an AR-enhanced tour.
 
+\subsubsection{Translation Feature}
+\label{sec:translationFeature}
+
+Despite Kinkaku-ji being an incredibly popular tourist destination that draws
+crowds from all over the world, the majority of the signage is purely
+Japanese. While AR translation apps exist, the experience can be frustrating,
+and produce poor results. Google's text recognition and machine-learning
+powered translation technology is certainly impressive. At the same time, the
+translation service works better in ``scan'' mode instead of ``instant''
+mode. In ``instant'' mode, the app attempts to translate text as quickly as
+possible and superimpose the translated text onto the real world using the
+camera. In ``scan'' mode, the user takes a photo. Then, the user is prompted
+to highlight where text appears in the photo. After the translation is
+complete, the translated text appears in a separate UI element instead
+superimposed onto the photo. In most cases, it is more convenient and
+readable to have the translation appear in a separate scrollable textbox.
+This motivated the current design of the ``info buttons'' in ARuko. Instead
+of placing text directly onto signage, we place a blue button with an `i' in
+the center. By tapping on this button, a separate UI element will appear
+containing the translated text. Since this button is cast into the world
+using the AR camera, the button is intuitively placed directly onto the
+content in the real world.
+
+\subsubsection{Virtual Souvenir Feature}
+\label{sec:virtualSouveneir}
+
+When you buy a ticket to enter Kinkaku-ji, you receive a long sheet of
+printed paper with calligraphy. The tickets are large and visually appealing;
+they are souvenirs unto themselves that one might feel inclined to keep
+around. Over the course of our three month stay we visited Kinkaku-ji
+multiple times. For each visit, we received identical tickets. Seemingly, the
+design on the tickets do not change on a regular basis, if at all.
+
+Because the tickets are unlikely to change, this enables us to provide the
+user with a ``virtual souvenir'' using the AR camera. This is the only AR
+feature that is not tied directly to an image target that can only be
+accessed at Kinkaku-ji. While the image gallery and segments of the audio
+tour can be accessed at any time using the ``Chapter Select'' menu, most of 
+the AR features can only be experienced during the walking tour, pointing the 
+camera at objects physically located at the site. Augmenting the ticket
+with 3D content allows visitors to take something home, giving them a reason
+to launch the app later.
+
+We found a free untextured model of the Golden Pavilion to use for this
+feature. Using Unity's built-in capability to design materials, we created
+a shiny golden material and applied it to the model.
+
+Originally, the AR model of the Golden Pavilion was flush against the plane
+of the ticket, sitting on the paper as if it were ground. Atticus suggested
+that we re-orient the model such that the ticket served as a back plane. This
+would allow users to hold the ticket vertically, and view the Golden Pavilion
+floating in front of the ticket. This would allow users to place their hands
+under the base of the Golden Pavilion model as if they were holding it.
+Vuforia's image tracking is flexible enough such that the image target can be
+partially obscured.
+
 \subsubsection{GPS Functionality}
 \label{sec:gpsFunctionality}
 
@@ -994,6 +1050,7 @@ this, we needed to do extensive testing to ensure not only that the products
 work as intended without bugs, but also that they would be pleasant and easy to
 use for their intended users.
 
+% TODO remove this
 \nocite{harvey2002} % don't remove this
 
 \subsection{Testing Editour}
@@ -1223,28 +1280,42 @@ this was trivial to fix.
 \label{sec:finalFieldTesting}
 
 On September 26\textsuperscript{th} we returned to Kinkaku-ji with a nearly
-complete version of the ARuko in order to conduct some final testing. We met up
-with Atticus, the IQP group, and our intern Hikaru and installed the beta
-version of ARuko on each of their phones. With little instruction about how the
-app works we had each of them try going through Kinkaku-ji while listening to
-the tour and using the app's features. Each member of our team also installed
-the beta version so we could fuzz test it.
+complete version of the ARuko in order to conduct some final testing. We met
+up with Atticus, the IQP group, and our friend Hikaru and installed the beta
+version of ARuko on each of their phones. With little instruction about how
+the app works we had each of them try going through Kinkaku-ji while
+listening to the tour and using the app's features. Each member of our team
+also installed the beta version so we could fuzz test it.
 
-This was our first time trying the AR image recognition on the actual signs at
-Kinkaku-ji, rather than photographs of the signs, and it worked quite well.
-Vuforia was able to recognize all of the signs, even in different lighting than
-when the reference images were taken. For image targets that were small, far
-away, or obscured by shadows image recognition was slower, but Vuforia was
-always able to recognize them eventually. We discovered that the targets that
-worked best were large, had a lot of high-contrast text, and were uniformly lit.
+This was our first time trying the AR image recognition on the actual signs
+at Kinkaku-ji, rather than photographs of the signs, and it worked quite
+well. Vuforia was able to recognize almost all of the signs, even in
+different lighting than when the reference images were taken. For image
+targets that were small, far away, or obscured by shadows image recognition
+was slower, but Vuforia was always able to recognize them eventually. We
+discovered that the targets that worked best were large, had a lot of
+high-contrast text, and were uniformly lit.
 
-While testing we discovered some issues with the design of the tour. One region
-was completely misplaced, so the audio played at the wrong time while walking
-through the area. Several other regions were too big, so the audio started
-playing long before the user was actually near the feature it was discussing.
-Finally, one of the image targets had the wrong text in its information pop-up.
-These were all easy bugs to fix, but if we might not have noticed them if we
-had not tested the app on site.
+While testing we discovered some issues with the design of the tour. One
+region was completely misplaced, so the audio played at the wrong time while
+walking through the area. Several other regions were too big, so the audio
+started playing long before the user was actually near the feature it was
+discussing. Using the Editour web-app, we were able to correct quickly these
+issues with the tour design once we returned to Atticus' office.
+
+Additionally, one of the image targets had the wrong text in its information
+pop-up. These were all easy bugs to fix, but if we might not have noticed
+them if we had not tested the app on site.
+
+Similarly, we noticed that we were only able to augment a maximum of two
+image targets at a time. In almost all cases, only two translatable signs
+were in view at once. The only scenario in which there were more than two
+image targets in view at a given time was with the four framed photos of the
+interior, arranged in a two by two grid. When standing at a distance from the
+grid, only two images would be augmented with the blue information button. By
+default, Vuforia limits the amount of image targets that the engine should
+accept simultaneously. In the Vuforia engine settings, we changed this limit
+to accommodate for four simultaneous images
 
 Another major bug we discovered was that the GPS stopped updating when not on
 the main screen. This means that if you were in AR camera mode the app would not
