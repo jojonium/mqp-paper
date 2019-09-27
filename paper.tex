@@ -7,7 +7,6 @@
 \usepackage{csquotes} % recommended for biblatex
 \usepackage{graphicx} % for images
 \usepackage[gen]{eurosym} % for literally just the euro symbol
-
 \usepackage{lipsum} % lorem-ipsum placeholder text
 \usepackage{bookmark} % links to other parts of the PDF
 % if we want to use a different style, here are some to look at
@@ -245,7 +244,7 @@ well or better without AR~\autocite{theappsolutions2018}. Returning to the
 Pokémon, the extra power needed for this feature drains the device faster, makes
 it harder to hit the Pokémon with a Pokéball due to the model drifting in the
 environment, and can even slow app performance, all of which detract from the
-ability to play and enjoy the game. 
+ability to play and enjoy the game.
 
 One of the major problems facing AR development as a whole, and one that we ran
 into as well, is limited hardware. For starters, smartphone cameras present a
@@ -265,7 +264,7 @@ enhance~\autocite{theappsolutions2018}.  The alternative then is to turn to
 dedicated hardware, like Microsoft's HoloLens.  But dedicated hardware like the
 HoloLens is very inaccessible and expensive; Microsoft only offers developer
 editions of the HoloLens, and for the incredibly steep price of
-\$3,500~\autocite{microsoft2019}. 
+\$3,500~\autocite{microsoft2019}.
 
 The challenges we faced during development mirrored these that plague the
 industry as a whole very accurately. We struggled with how exactly we would us
@@ -273,15 +272,9 @@ AR for our app in a way that benefit the experience as a whole, but believe the
 way we've implemented it will enhance the user's experience. Hardware issues
 were definitely our biggest challenge.  Only one of our phones is new enough to
 run AR technology at a decent level, making testing of our application
-difficult.  
+difficult.
 
-\subsection{Apps for Art and Culture}
-\label{sec:appsForArtAndCulture}
-
-To explore existing AR apps for art and culture our group researched and tested
-several games, experiences, and platforms related to our project.
-
-\subsubsection{izi.TRAVEL}
+\subsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
 Before our project started, Kyoto VR was already using an app with a limited
@@ -314,7 +307,7 @@ specific places in the real world izi.TRAVEL uses a limited form of augmented
 reality. Our group aimed to implement and extend this functionality in our own
 app. See Section \ref{sec:aruko} for more details.
 
-\subsection{Platforms}
+\subsection{Augmented Reality Platforms}
 \label{sec:platforms}
 
 Before we could start working on creating our app, we first needed to decide
@@ -359,7 +352,7 @@ of the features that appealed most to us were their Instant Tracking, allowing
 for augmentation using flat surfaces; Image Tracking, allowing for augmentation
 using one or multiple 2D images; and Geo AR, allowing for creation of
 geo-markers at specific locations to triggered AR
-content~\autocite{wikitude2018}. 
+content~\autocite{wikitude2018}.
 
 Wikitude also supports all sorts of different platforms. It supports Android,
 Apple, and Windows phones and tablets, as well as smart glasses like the Epson
@@ -367,7 +360,7 @@ Moverio, Microsoft Hololens, and Vuzix smart glasses~\autocite{wikitude2018}.
 Additionally, many different development frameworks are capable of running
 Wikitude's SDK.  According to Wikitude's website, their SDK works with Windows,
 Android, and iOS development frameworks, as well as ARCore and ARKit, Flutter,
-Cordova, Xamarin, and even Unity~\autocite{wikitude2018}. 
+Cordova, Xamarin, and even Unity~\autocite{wikitude2018}.
 
 From all of this information, Wikitude certainly sounds like a fantastic AR
 development platform; it certainly did to us. But the issue we ran into was the
@@ -378,7 +371,7 @@ is a lot for use to pay for a license that would not even last for our entire
 project. They also charge \euro{1990} for their SDK Pro, and \euro{2490} for
 their SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very
 limited budget, we knew that we would have to pass on Wikitude and choose a
-different AR development platform. 
+different AR development platform.
 
 \subsubsection{motive.io}
 \label{sec:motive.io}
@@ -546,7 +539,7 @@ creating these applications.
 
 The goal of Editour is to allow a non-technical user to design audio tours
 through a web-app. At its core, Editour is a tool to draw arbitrarily-shaped
-geographic regions onto a map. 
+geographic regions onto a map.
 
 An audio file and multiple image files can be uploaded for each region the user
 defines. The user can also provide a text transcript of the audio file as well.
@@ -883,7 +876,7 @@ With no access to \texttt{systemctl} we could not use the custom systemd service
 we wrote to manage the server daemon. Instead, we used a custom shell script and
 an npm package called ``forever'' to handle starting and stopping it. The
 forever package runs Node.js scripts continuously, automatically restarting them
-if they crash~\autocite{robbins2019}. 
+if they crash~\autocite{robbins2019}.
 
 Tours are stored on the server as compressed \texttt{.zip} files, but when
 uploading or editing a tour these zips are decompressed to a temporary
@@ -905,7 +898,7 @@ to update the tours without updating the entire app.
 The design of the Editour is agnostic about how the media will be used. For an
 app like izi.TRAVEL, the images are displayed when the associated audio tour is
 playing. The tour files produced by Editour could theoretically be used by a
-tour guide app that does not incorporate AR. 
+tour guide app that does not incorporate AR.
 
 \subsection{ARuko}
 \label{sec:aruko}
@@ -971,7 +964,7 @@ file needed to be updated to expect an audio transcript field.
 Figure~\ref{fig:editourAdditions} shows the UI elements that changed in order
 to add these new features. The arrows next to the region name can be used to
 move the ``Region Card'' up and down in the side bar. In the ``Media'' tab, there
-is also a text area to include a transcript of the uploaded audio file. 
+is also a text area to include a transcript of the uploaded audio file.
 
 \begin{figure}[h]
 	\centering
