@@ -546,7 +546,8 @@ creating these applications.
 
 The goal of Editour is to allow a non-technical user to design audio tours
 through a web-app. At its core, Editour is a tool to draw arbitrarily-shaped
-geographic regions onto a map.
+geographic regions onto a map, edit those regions and assign media to each of
+the drawn regions.
 
 An audio file and multiple image files can be uploaded for each region the user
 defines. The user can also provide a text transcript of the audio file as well.
@@ -560,6 +561,7 @@ can be adjusted by clicking and dragging. Vertices can also be added and
 deleted if the needs of the tour change over time.
 
 \subsubsection{The Need for an Editor}
+\label{sec:theNeedForAnEditor}
 
 One of the goals for our project is to create a working prototype that others
 can build off of in the future.
@@ -933,24 +935,23 @@ we eventually dropped support for regions triggered by distance.
 \label{sec:translationFeature}
 
 Despite Kinkaku-ji being an incredibly popular tourist destination that draws
-crowds from all over the world, the majority of the signage is purely
-Japanese. While AR translation apps exist, the experience can be frustrating,
-and produce poor results. Google's text recognition and machine-learning
-powered translation technology is certainly impressive. At the same time, the
-translation service works better in ``scan'' mode instead of ``instant''
-mode. In ``instant'' mode, the app attempts to translate text as quickly as
-possible and superimpose the translated text onto the real world using the
-camera. In ``scan'' mode, the user takes a photo. Then, the user is prompted
-to highlight where text appears in the photo. After the translation is
-complete, the translated text appears in a separate UI element instead
-superimposed onto the photo. In most cases, it is more convenient and
-readable to have the translation appear in a separate scrollable textbox.
-This motivated the current design of the ``info buttons'' in ARuko. Instead
-of placing text directly onto signage, we place a blue button with an `i' in
-the center. By tapping on this button, a separate UI element will appear
-containing the translated text. Since this button is cast into the world
-using the AR camera, the button is intuitively placed directly onto the
-content in the real world.
+crowds from all over the world, the majority of the signage is purely Japanese.
+While AR translation apps exist, the experience can be frustrating, and produce
+poor results. Google's text recognition and machine-learning powered
+translation technology is certainly impressive. At the same time, the
+translation service works better in ``scan'' mode instead of ``instant'' mode.
+In ``instant'' mode, the app attempts to translate text as quickly as possible,
+superimposing the translated text onto the real world using the camera. In
+``scan'' mode, the user first takes a photo. Then, the user is prompted to
+highlight where text appears in the photo. After the translation is complete,
+the translated text appears in a separate UI element instead superimposed onto
+the photo. In most cases, it is more convenient and readable to have the
+translation appear in a separate scrollable textbox. This motivated the current
+design of the ``info buttons'' in ARuko. Instead of placing text directly onto
+signage, we place a blue button with an `i' in the center. By tapping on this
+button, a separate UI element will appear containing the translated text. Since
+this button is cast into the world using the AR camera, the button is
+intuitively placed directly onto the content in the real world.
 
 \subsubsection{Virtual Souvenir Feature}
 \label{sec:virtualSouveneir}
@@ -976,14 +977,14 @@ We found a free untextured model of the Golden Pavilion to use for this
 feature. Using Unity's built-in capability to design materials, we created
 a shiny golden material and applied it to the model.
 
-Originally, the AR model of the Golden Pavilion was flush against the plane
-of the ticket, sitting on the paper as if it were ground. Atticus suggested
-that we re-orient the model such that the ticket served as a back plane. This
-would allow users to hold the ticket vertically, and view the Golden Pavilion
-floating in front of the ticket. This would allow users to place their hands
-under the base of the Golden Pavilion model as if they were holding it.
-Vuforia's image tracking is flexible enough such that the image target can be
-partially obscured.
+Originally, the AR model of the Golden Pavilion was flush against the plane of
+the ticket, sitting on the paper as if it were ground. Atticus suggested that
+we re-orient the model such that the ticket served as a back plane. This would
+allow users to hold the ticket vertically, and view the Golden Pavilion
+floating in front of the ticket. This allows users to place their hands under
+the base of the Golden Pavilion model as if they were holding it. Vuforia's
+image tracking is flexible enough such that the image target can be partially
+obscured.
 
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
@@ -1017,7 +1018,7 @@ to reorder regions once they were placed. Because of this chapter selection
 screen, we needed some way to rearrange the order of regions within Editour.
 
 The inclusion of a ``chapter selection'' screen had other notable design
-implications as well. Initially different regions were triggered solely by your
+implications as well. Initially different regions were triggered solely by the
 GPS location. Walking into a region would prompt the available images to change
 on screen. Also, a new audio track would begin to play. This forced us to
 answer certain basic questions about the chapter select screen for ourselves.
@@ -1031,9 +1032,9 @@ image gallery than the audio? Then, the persistence of the image gallery is
 strangely tied to the duration of the audio track playing underneath. What if a
 user selects a chapter, and then physically enters that region moments later?
 Should the audio restart to indicate that the user has arrived at the location?
-Or, will this appear as though the audio track the user was already listening
-to skipped to the beginning again for no reason? As you can imagine, this
-seemingly minor inclusion created a significant amount of discussion.
+Or, will this appear as though the audio track skipped to the beginning again
+for no reason? As you can imagine, this seemingly minor inclusion created a
+significant amount of discussion.
 
 Other concerns about the chapter selection feature were technical. For a long
 time, we were working under the assumption that regions would only be triggered
@@ -1103,6 +1104,7 @@ more thoroughly in Section~\ref{sec:translationFeature}.
     \label{fig:signTranslation}
 \end{figure}
 
+%TODO should this paragraph move somewhere else?
 Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
 target capabilities for scanning objects outside of the expected use case, such
 as 3D landscapes or the side of a building. We had serious doubts about how
@@ -1148,9 +1150,8 @@ use for their intended users.
 
 Because the Editour is intended only to be a tool to aid Atticus in creating
 tours our user testing was less rigid. Even so, the frontend and backend we
-built for Editour ended up being largely reliable. The main source of
-reliability issues stemmed from the hosting provider, which was out of our
-control.
+built for Editour ended up being largely reliable. The reliability issues
+stemmed from the hosting provider, which was out of our control.
 
 \subsubsection{Unit Testing the Editour Backend}
 \label{sec:unitTestingTheEditourBackend}
@@ -1234,10 +1235,10 @@ One decent algorithm for accomplishing this is by drawing a ray from a given
 point to infinity. Barring edge cases (which will be discussed shortly) the
 point is inside the polygon if the ray passes through an even number of line
 segments.  The point is outside of the polygon if the ray intersects an odd
-number of times. Figure~\ref{fig:intersectionsDiagram} should make it clear why
-this works. This algorithm's time complexity is $O(n)$, where $n$ is the sum
-total of the number of vertices of all of the polygons being
-tested~\autocite{geeksforgeekspolygon}.
+number of times. Figure~\ref{fig:intersectionsDiagram} does not serve as a
+proof, but should at least make it clear why this works. This algorithm's time
+complexity is $O(n)$, where $n$ is the sum total of the number of vertices of
+all of the polygons being tested~\autocite{geeksforgeekspolygon}.
 
 \begin{figure}[h]
 	\centering
@@ -1271,9 +1272,9 @@ concave regions. This uniquely shaped region also prompted us to think about
 what UI behavior made the most sense if a user were to walk into a region, walk
 out and then in again. We decided that it was awkward if the audio restarted
 upon re-entering a region, since the audio would still be playing once a user
-left the region. The region at the bottom surrounding our dormitories was added
+left the region. (The region at the bottom surrounding our dormitories was added
 for our convenience, allowing us to test the app while we were away from the
-lab.  As we began to implement more complex UI that changed based on GPS
+lab.) As we began to implement more complex UI that changed based on GPS
 position in various ways, directly taking the tour by walking around was an
 invaluable way to test. Section~\ref{sec:adobeXdDesign} details how the UI grew
 in complexity in the late stages of the project. Having a way to regularly run
@@ -1282,6 +1283,10 @@ Kinkaku-ji.  Because the Editour was flexible enough to easily swap out media
 and add regions to the tour, the Editour proved itself to be as helpful for
 testing as it was for crafting the final tour that could be taken at
 Kinkaku-ji.
+
+If we were ever feeling too tired to test the app by walking around, we also
+mocked the GPS coordinates in software. This allowed us to simulate walking in
+a single direction without actually having to move or build to a mobile device.
 
 \begin{figure}[h]
 	\centering
@@ -1297,7 +1302,8 @@ Our first day of on-site testing with the app took place on September
 6\textsuperscript{th}. Using Editour, we rebuilt the izi.TRAVEL audio tour that
 Atticus already created. The first version of the rebuilt tour had regions that
 were relatively small; some regions were only a few meters across. This version
-of the tour can be seen in Figure~\ref{fig:kinkakujiTour}.
+of the tour can be seen in Figure~\ref{fig:kinkakujiTour}. This day of testing
+prior to the redesign discussed in Section~\ref{sec:adobeXdDesign}.
 
 \begin{figure}[h]
 	\centering
@@ -1329,10 +1335,10 @@ though the Samsung Galaxy had difficulty with basic AR features such as
 ground-plane detection, it was still capable of triggering the audio track
 based on GPS position.
 
-Our previous testing involved creating a ``mock tour'' on the Ritsumeikan
-campus. While this let us know generally which features of the app were working,
-it was very difficult to know how ahead of time how well our app would work at
-Kinkaku-ji.
+As discussed in Section~\ref{sec:testingARuko}, our previous testing involved
+creating a ``mock tour'' on the Ritsumeikan campus. While this let us know
+generally which features of the app were working, it was very difficult to know
+how ahead of time how well our app would work at Kinkaku-ji.
 
 We were surprised by how intuitively each region triggered on the first try.
 With a few exceptions, the audio started when the subject of the audio track
@@ -1345,13 +1351,14 @@ remedy this, directing the user toward the viewpoint that is off of the main
 path.
 
 Initially, we loaded the app onto the Samsung Galaxy S7 as a backup, since the
-app is not fully functional on a phone that old. At the same time, it was
-informative to take both phones through the tour. Initially, we made the design
-decision to update the GPS location every 60 frames. On a phone running the app
-at full speed, this should happen once every second. Because the Samsung Galaxy
-S7 was having trouble running the app at full speed, the GPS updated far less
-frequently. This was an oversight that would have been difficult to catch if we
-had not tested on hardware below the recommended specifications.
+AR features were not fully functional on a phone that old. At the same time, it
+was informative to take both phones through the tour. Initially, we made the
+design decision to update the GPS location every 60 frames. On a phone running
+the app at full speed, this should happen once every second. Because the
+Samsung Galaxy S7 was having trouble running the app at full speed, the GPS
+updated far less frequently. This was an oversight that would have been
+difficult to catch if we had not tested on hardware below the recommended
+specifications.
 
 Other bugs resulted from oversights that were difficult to catch with our
 on-campus testing.  For example, we noticed that we forgot to back-up the audio
@@ -1378,6 +1385,7 @@ version of ARuko on each of their phones. With little instruction about how
 the app works we had each of them try going through Kinkaku-ji while
 listening to the tour and using the app's features. Each member of our team
 also installed the beta version so we could fuzz test it.
+% TODO check if fuzz testing is really the right word here
 
 This was our first time trying the AR image recognition on the actual signs
 at Kinkaku-ji, rather than photographs of the signs, and it worked quite
@@ -1399,7 +1407,7 @@ Additionally, one of the image targets had the wrong text in its information
 pop-up. These were all easy bugs to fix, but if we might not have noticed
 them if we had not tested the app on site.
 
-Similarly, we noticed that we were only able to augment a maximum of two
+We also noticed that we were only able to augment a maximum of two
 image targets at a time. In almost all cases, only two translatable signs
 were in view at once. The only scenario in which there were more than two
 image targets in view at a given time was with the four framed photos of the
