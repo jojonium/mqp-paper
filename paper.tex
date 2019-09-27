@@ -34,8 +34,8 @@
 \author{William~Campbell, Cole~Granof, and Joseph~Petitti}
 \date{October 11, 2019}
 
-% call it "Table of Contents" instead of just "Contents"
-\addto{\captionsamerican}{\renewcommand*{\contentsname}{Table of Contents}}
+% uncomment this to call it "Table of Contents" instead of just "Contents"
+% \addto{\captionsamerican}{\renewcommand*{\contentsname}{Table of Contents}}
 
 % custom environment for indenting whole paragraphs
 \newenvironment{indented}[1]%
@@ -95,7 +95,7 @@ been completed.
 \label{sec:executiveSummary}
 \addcontentsline{toc}{section}{Executive Summary}
 
-\newpage
+\clearpage
 
 % now comes the table of contents, list of figures, and list of tables
 % these should be single spaced
@@ -104,15 +104,15 @@ been completed.
 	% uncomment this if you want the Table of Contents to have an entry in the
 	% table of contents
 	% \addcontentsline{toc}{section}{Table of Contents}
-	\newpage
+	\clearpage
 
 	\listoffigures
 	% \addcontentsline{toc}{section}{List of Figures}
-	\newpage
+	\clearpage
 
 	\listoftables
 	% \addcontentsline{toc}{section}{List of Tables}
-	\newpage
+	\clearpage
 \end{singlespace}
 
 % go back to 1.5 spacing and Arabic numbering for the rest of the paper
@@ -133,12 +133,18 @@ seems poised to be the next big digital interface.
 Tourism and art are among the fields that could gain the most from AR
 technology~\autocite{saenz2009, katz2018}. AR technology can provide accessible
 information to tourists and art viewers that they would not be able to get any
-other way.
+other way. Kinkaku-ji, the ``golden pavilion'' of Kyoto, is the perfect example
+of this~\autocite{bornoff2000}. Kinkaku-ji is a UNESCO World Heritage
+Site~\autocite{unesco} and one of the most popular tourist destinations in
+Japan~\autocite{japanguide2019}. However, much of the historic information at
+the site is lost on visitors because it is not readily available to non-Japanese
+speakers.
 
-Kinkaku-ji, the ``golden pavilion'' of Kyoto, is the perfect example of
-this~\autocite{bornoff2000}.
+To solve this problem and open up the peerless beauty of the Golden Pavilion to
+more people, our team created ARuko and Editour. These two tools comprise a
+complete platform for designing and experiencing AR-enhanced tours.
 
-\newpage
+\clearpage
 
 \section{Background}
 \label{sec:background}
@@ -214,7 +220,7 @@ put, not very good. This means a few different things. For starters, many AR
 apps and features available on smartphones offer very little in the way of
 functionality or practicality; quite simply, they are primarily used for minor
 spectacles and simple tricks~\autocite{theappsolutions2018}. For example, one of
-the most popular apps to use AR, \textit{Pokémon Go}, primarily uses it's AR
+the most popular apps to use AR, \textit{Pokémon Go}, primarily uses its AR
 feature to place a Pokémon in the world around you through your phone camera for
 you to capture. But when it is in the world, it does not interact with anything
 around it. It just floats a fixed distance away from you, simply placed on top
@@ -467,7 +473,7 @@ visiting Kinkaku-ji, also known as the Golden Pavilion. As of September 2019,
 Kinkaku-ji is the second-most visited site in Kyoto---second only to Kyoto
 Station \autocite{japanguide2019}.
 
-\newpage
+\clearpage
 
 \section{Implementation and Technology}
 \label{sec:implementationAndTechnology}
@@ -582,8 +588,8 @@ region. From here, the user can edit anything about the region.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{drawing-region-editour.png}
-    \caption{How the Editour looks when a region is being drawn, including the
-    two dotted preview lines}
+	\caption{Editour when a region is being drawn, including the two dotted
+		preview lines}
 	\label{fig:drawingRegion}
 \end{figure}
 
@@ -963,7 +969,7 @@ package by publisher'' which which we interpreted as a warning sign. Because of
 this, we decided to rebuild the UI largely from the ground up, using the Adobe XD
 file to guide us.
 
-\newpage
+\clearpage
 
 \section{Testing}
 \label{sec:testing}
@@ -1053,7 +1059,7 @@ the same time, ARuko is not as purely graphical as it may seem. There is a
 significant amount of ``business logic'' that interprets the tour from the
 Editour file. On top of this, the geometric checks to test whether the user is
 inside a particular arbitrarily-defined geographic region are very important to
-get right.  Using Unity's built-in NUnit unit-testing framework, we wrote tests
+get right.  Using Unity's built-in NUnit unit testing framework, we wrote tests
 to verify whether the tour data was being parsed correctly, and whether the tour
 would be run correctly.
 
@@ -1079,7 +1085,7 @@ tested~\autocite{geeksforgeekspolygon}.
 \end{figure}
 
 For this, we implemented a few mathematical functions for individual parts of
-the algorithm, such as testing for intersection. We wrote unit-tests to test
+the algorithm, such as testing for intersection. We wrote unit tests to test
 each part of the algorithm, so we could be confident that the GPS component of
 the app would correctly place users into the correct regions.
 
@@ -1284,12 +1290,12 @@ This section details some of the initial plans that fell through.
 One idea that was proposed initially was an AR audio experience using 3D
 spatialized audio.
 
-\newpage
+\clearpage
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-\newpage % references should be on their own page
+\clearpage % references should be on their own page
 
 % references should be single spaced
 \begin{singlespace}
@@ -1297,7 +1303,7 @@ spatialized audio.
 	\addcontentsline{toc}{section}{References}
 \end{singlespace}
 
-\newpage
+\clearpage
 
 \appendices
 \section{Editour API Documentation}
@@ -1367,7 +1373,7 @@ that contains the data of the response.
 	server error was encountered.
 \end{indented}
 
-\newpage
+\clearpage
 
 \section{Testing Survey Results}
 \label{sec:testingSurveyResults}
