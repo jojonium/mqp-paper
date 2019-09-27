@@ -18,6 +18,7 @@
 \usepackage{hyperref} % hyperlinks
 \usepackage{setspace} % setting custom spacing
 \usepackage{tabulary} % nicer tables
+\usepackage{CJKutf8} % for Japanese UTF-8 characters
 
 % more breathing room
 \setminted{fontsize=\small,baselinestretch=1}
@@ -136,9 +137,16 @@ information to tourists and art viewers that they would not be able to get any
 other way. Kinkaku-ji, the ``golden pavilion'' of Kyoto, is the perfect example
 of this~\autocite{bornoff2000}. Kinkaku-ji is a UNESCO World Heritage
 Site~\autocite{unesco} and one of the most popular tourist destinations in
-Japan~\autocite{japanguide2019}. However, much of the historic information at
-the site is lost on visitors because it is not readily available to non-Japanese
-speakers.
+Japan~\autocite{japanguide2019}. The Golden Pavilion is a magnificent sight to
+behold, but the gardens and grounds are the true beauty of Kinkaku-ji. It is a
+living masterpiece of Zen Buddhist landscape design, expanding on the natural
+beauty of Kyoto's forests and mountains through the practice of borrowed
+scenery~\autocite{kuitert2002}.
+
+However, much of the historic information at the site is lost on visitors
+because it is not readily available to non-Japanese speakers. What few signs and
+displays exist are presented only in Japanese, and do not provide most of the
+history and context necessary to fully understand Kinkaku-ji.
 
 To solve this problem and open up the peerless beauty of the Golden Pavilion to
 more people, our team created ARuko and Editour. These two tools comprise a
@@ -847,8 +855,13 @@ tour guide app that does not incorporate AR.
 \subsection{ARuko}
 \label{sec:aruko}
 
+ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{goth}歩こ\end{CJK}''
+(\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
+through an AR-enhanced tour.
+
 \subsubsection{GPS Functionality}
 \label{sec:gpsFunctionality}
+
 The core user experience of ARuko is the walking tour. By walking the given
 route, the user enters and exits specific geographic regions that invoke
 changes in the app, such as playing audio and displaying different images.
