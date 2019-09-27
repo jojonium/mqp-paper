@@ -17,6 +17,7 @@
 \usepackage[margin=1in]{geometry} % set 1in margins
 \usepackage{hyperref} % hyperlinks
 \usepackage{setspace} % setting custom spacing
+\usepackage{tabulary} % nicer tables
 
 % more breathing room
 \setminted{fontsize=\small,baselinestretch=1}
@@ -100,19 +101,19 @@ been completed.
 % these should be single spaced
 \begin{singlespace}
 	\tableofcontents
-	% add table of contents to itself
-	\addcontentsline{toc}{section}{Table of Contents}
+	% uncomment this if you want the Table of Contents to have an entry in the
+	% table of contents
+	% \addcontentsline{toc}{section}{Table of Contents}
 	\newpage
 
 	\listoffigures
-	\addcontentsline{toc}{section}{List of Figures}
+	% \addcontentsline{toc}{section}{List of Figures}
+	\newpage
+
+	\listoftables
+	% \addcontentsline{toc}{section}{List of Tables}
 	\newpage
 \end{singlespace}
-
-% we don't have any tables yet, but uncomment this when we do
-%\addcontentsline{toc}{section}{List of Tables}
-%\listoftables
-%\newpage
 
 % go back to 1.5 spacing and Arabic numbering for the rest of the paper
 \pagenumbering{arabic}
@@ -168,10 +169,10 @@ without needing to alter the real historic site.
 \label{sec:currentAugmentedRealityTechnology}
 
 While preparing for this project our team researched the current state of
-augmented reality technology. Smartphones are the most commonly used AR
-hardware by far [citation needed]. Typically smartphone AR applications make
-use of the phone's camera, accelerometer, gyroscope, and GPS sensors to
-reproduce a view of the real world with virtual information layered on top of
+augmented reality technology. Smartphones are the most commonly used AR hardware
+by far~\autocite{boland2018}. Typically smartphone AR applications make use of
+the phone's camera, accelerometer, gyroscope, and GPS sensors to reproduce a
+view of the real world with virtual information layered on top of
 it~\autocite{bonsor2018}.
 
 \subsection{Augmented Reality Use Cases}
@@ -416,15 +417,15 @@ them''~\autocite{techopedia2019}. Emulators are often very useful for speeding
 up development. Loading programs onto the Android emulator usually much faster
 than installing the APK onto the actual device. Additionally, you can mock
 almost all of the important features of an actual Android device, including
-calls, text, GPS position, device rotation and more \autocite{androidemulator}.
+calls, text, GPS position, device rotation and more~\autocite{androidemulator}.
 
 Since an emulator uses software to emulate hardware, this poses two technical
 issues that prevent emulators from being a proper replacement for testing on
-real hardware.  Emulation is often imperfect, so glitches sometimes emerge in
-emulation that do not manifest on the actual hardware [citation needed about
-emulator inaccuracies]. Conversely, errors that exist in the hardware version
-may not appear in the emulation. Secondly, and most importantly for AR, it is
-common for emulation to be much slower compared to real hardware.
+real hardware. Emulation is often imperfect, so glitches sometimes emerge in
+emulation that do not manifest on the actual hardware~\autocite{alzaylaee2017}.
+Conversely, errors that exist in the hardware version may not appear in the
+emulation. Secondly, and most importantly for AR, it is common for emulation to
+be much slower compared to real hardware.
 
 In a question submitted to \textit{Compute!} magazine asking whether it is
 possible for a Commodore 64 to emulate MS-DOS, the editor responded ``Yes, it's
@@ -492,17 +493,15 @@ deleted if the needs of the tour change over time.
 \subsubsection{The Need for an Editor}
 
 One of the goals for our project is to create a working prototype that others
-can build off of in the future [citation needed for personal communication].
+can build off of in the future.
 
-Similar to the app izi.TRAVEL discussed in section~\ref{sec:iziTravel}, we
+Similar to the app izi.TRAVEL discussed in Section~\ref{sec:iziTravel}, we
 needed some way to easily define arbitrary polygons (which we call ``regions'')
 and associate media with each one, such as audio and image files.
 
 For testing purposes, we initially defined these regions directly in the C\#
-Scripts, hard-coding the coordinates. [citation needed for source used to
-write polygon detection code] Below is an example of a quadrilateral
-surrounding the Creation Core building at the Ritsumeikan Biwako-Kusatsu
-campus.
+Scripts, hard-coding the coordinates. Below is an example of a quadrilateral
+surrounding the Creation Core building at the Ritsumeikan Biwako-Kusatsu campus.
 
 \begin{minted}{csharp}
 Regions.add(new GPSPolygon(new List<GPSPoint>{
@@ -514,10 +513,9 @@ Regions.add(new GPSPolygon(new List<GPSPoint>{
 \end{minted}
 
 Even with knowledge of C\# and Unity, inputting tour data this way is obviously
-not convenient. Atticus reminded us that, although he has a working knowledge
-of Unity, he is not a software developer [citation needed for personal
-communication.] In order to make our app prototype at all useful for the
-future, we needed to provide an easy way to ``design'' a tour.
+not convenient. Atticus reminded us that, although he has a working knowledge of
+Unity, he is not a software developer. In order to make our app prototype at all
+useful for the future, we needed to provide an easy way to ``design'' a tour.
 
 \subsubsection{A Complete Tour Definition}
 \label{sec:tourDefinition}
@@ -818,6 +816,14 @@ an npm package called ``forever'' to handle starting and stopping it. The
 forever package runs Node.js scripts continuously, automatically restarting them
 if they crash~\autocite{robbins2019}. 
 
+Tours are stored on the server as compressed \texttt{.zip} files, but when
+uploading or editing a tour these zips are decompressed to a temporary
+directory. To prevent the server's limited disk space from filling up with old
+temporary files we wrote a simple bash script that removes directories that
+haven't been modified in the past five days. We set up a \texttt{cron} job to
+run this script automatically once per day to clean out old temporary files that
+aren't being used any more.
+
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
 
@@ -928,7 +934,7 @@ UI element containing the translation, which can be seen in
 Figure~\ref{fig:signTranslation}.
 
 \begin{figure}[h] \centering
-    \includegraphics[width=0.5\textwidth]{sign-translation.png}
+    \includegraphics[width=0.3\textwidth]{sign-translation.png}
     \caption{Translated sign using AR camera}
     \label{fig:signTranslation}
 \end{figure}
@@ -1001,52 +1007,7 @@ These tests were very useful in tracking down bugs and unexpected behavior in
 the backend, and also allowed us to make sure no functionality changed when
 adding new features or making changes to underlying logic later on.
 
-\subsubsection{Unit Testing ARuko}
-\label{sec:unitTestingARuko}
-
-The UI and AR features of the app are very important to the user experience. At
-the same time, ARuko is not as purely graphical as it may seem. There is a
-significant amount of ``business logic'' that interprets the tour from the
-Editour file. On top of this, the geometric checks to test whether the user is
-inside a particular arbitrarily-defined geographic region are very important to
-get right.  Using Unity's built-in NUnit unit-testing framework, we wrote tests
-to verify whether the tour data was being parsed correctly, and whether the tour
-would be run correctly.
-
-As a reminder, regions that trigger audio can be a set of three or more points
-that define a closed polygon. Using the user's GPS location, the app needs to
-periodically run a check to see if the user is located within one of those
-polygons, which can be either concave or convex.
-
-One decent algorithm for accomplishing this is by drawing a ray from a given
-point to infinity. Barring edge cases (which will be discussed shortly) the
-point is inside the polygon if the ray passes through an even number of line
-segments.  The point is outside of the polygon if the ray intersects an odd
-number of times. Figure~\ref{fig:intersectionsDiagram} should make it clear why
-this works. This algorithm runs in $O(n)$, where $n$ is the sum total of the
-number of vertices of all of the polygons being tested
-~\autocite{geeksforgeekspolygon}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{intersections-diagram.png}
-	\caption{A visualization of the algorithm}
-	\label{fig:intersectionsDiagram}
-\end{figure}
-
-For this, we implemented a few mathematical functions for individual parts of
-the algorithm, such as testing for intersection. We wrote unit-tests to test
-each part of the algorithm, so we could be confident that the GPS component of
-the app would correctly place users into the correct regions.
-
-There is one edge case where this algorithm has difficulties. If the ray that
-is drawn for testing intersections passes directly through a vertex, the
-algorithm will count two intersections instead of just one. Even though this is
-highly unlikely considering our use case, we decided that our algorithm should
-be robust enough to handle this on a matter of principle. Unit-testing helped us
-catch and deal with this edge case.
-
-\subsection{Editour Frontend Testing}
+\subsubsection{Editour Frontend Testing}
 \label{sec:editourFrontendTesting}
 
 We suspect that Editour might have a life outside of this particular use case
@@ -1083,6 +1044,51 @@ very useful for making sure we made use of our user testing and bug testing.
 	\caption{The GitHub issues tab for Editour}
 	\label{fig:issuesPageExample}
 \end{figure}
+
+\subsection{Unit Testing ARuko}
+\label{sec:unitTestingARuko}
+
+The UI and AR features of the app are very important to the user experience. At
+the same time, ARuko is not as purely graphical as it may seem. There is a
+significant amount of ``business logic'' that interprets the tour from the
+Editour file. On top of this, the geometric checks to test whether the user is
+inside a particular arbitrarily-defined geographic region are very important to
+get right.  Using Unity's built-in NUnit unit-testing framework, we wrote tests
+to verify whether the tour data was being parsed correctly, and whether the tour
+would be run correctly.
+
+As a reminder, regions that trigger audio can be a set of three or more points
+that define a closed polygon. Using the user's GPS location, the app needs to
+periodically run a check to see if the user is located within one of those
+polygons, which can be either concave or convex.
+
+One decent algorithm for accomplishing this is by drawing a ray from a given
+point to infinity. Barring edge cases (which will be discussed shortly) the
+point is inside the polygon if the ray passes through an even number of line
+segments.  The point is outside of the polygon if the ray intersects an odd
+number of times. Figure~\ref{fig:intersectionsDiagram} should make it clear why
+this works. This algorithm's time complexity is $O(n)$, where $n$ is the sum
+total of the number of vertices of all of the polygons being
+tested~\autocite{geeksforgeekspolygon}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{intersections-diagram.png}
+	\caption{A visualization of the algorithm}
+	\label{fig:intersectionsDiagram}
+\end{figure}
+
+For this, we implemented a few mathematical functions for individual parts of
+the algorithm, such as testing for intersection. We wrote unit-tests to test
+each part of the algorithm, so we could be confident that the GPS component of
+the app would correctly place users into the correct regions.
+
+There is one edge case where this algorithm has difficulties. If the ray that
+is drawn for testing intersections passes directly through a vertex, the
+algorithm will count two intersections instead of just one. Even though this is
+highly unlikely considering our use case, we decided that our algorithm should
+be robust enough to handle this on a matter of principle. Unit-testing helped us
+catch and deal with this edge case.
 
 \subsection{Testing Taking a Tour with ARuko}
 \label{sec:testingARuko}
@@ -1198,9 +1204,73 @@ this was trivial to fix.
 \label{sec:finalFieldTesting}
 
 On September 26\textsuperscript{th} we returned to Kinkaku-ji with a nearly
-complete version of the ARuko in order to conduct some final testing.
+complete version of the ARuko in order to conduct some final testing. We met up
+with Atticus, the IQP group, and our intern Hikaru and installed the beta
+version of ARuko on each of their phones. With little instruction about how the
+app works we had each of them try going through Kinkaku-ji while listening to
+the tour and using the app's features. Each member of our team also installed
+the beta version so we could fuzz test it.
 
-\newpage
+This was our first time trying the AR image recognition on the actual signs at
+Kinkaku-ji, rather than photographs of the signs, and it worked quite well.
+Vuforia was able to recognize all of the signs, even in different lighting than
+when the reference images were taken. For image targets that were small, far
+away, or obscured by shadows image recognition was slower, but Vuforia was
+always able to recognize them eventually. We discovered that the targets that
+worked best were large, had a lot of high-contrast text, and were uniformly lit.
+
+While testing we discovered some issues with the design of the tour. One region
+was completely misplaced, so the audio played at the wrong time while walking
+through the area. Several other regions were too big, so the audio started
+playing long before the user was actually near the feature it was discussing.
+Finally, one of the image targets had the wrong text in its information pop-up.
+These were all easy bugs to fix, but if we might not have noticed them if we
+had not tested the app on site.
+
+Another major bug we discovered was that the GPS stopped updating when not on
+the main screen. This means that if you were in AR camera mode the app would not
+trigger new audio when you walked into a new region. This was caused by the GPS
+script being attached to a UI element on the main screen, so it was resolved
+simply by moving this script.
+
+After having Atticus go through the tour on his phone he also discovered several
+bugs and tweaks he wanted to make to the UI. The clickable information button on
+image targets was made larger so it is easier to see. The UI buttons in the
+bottom menu bar were also made larger and easier to press. The text ``Main'' was
+added under the central button that brings you to the screen with the images and
+transcript, so it was more clear what that button does. The header text at the
+top was too big, and sometimes overflowed onto other UI elements.
+
+Testing with Atticus revealed another user interface issue we had not
+considered.  Many modern smartphones, such as Atticus's Samsung Galaxy S10+,
+have holes or notches cut out of the screen for cameras, speakers, and other
+hardware (see Figures \ref{fig:galaxyS10Plus} and \ref{fig:iPhoneX}). We had
+been designing our UI for rectangular phone screens, so the Galaxy S10+'s ``hole
+punch'' covered some UI elements in the top right corner. To account for this
+issue we added more padding to the top of the UI.
+
+After going through Kinkaku-ji with the app twice we had each test participant
+fill out a simple survey giving their thoughts on the app. The full results of
+these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{galaxy-s10+.jpg}
+	\caption[A Samsung Galaxy S10+ phone with distinctive ``hole punch''
+	cameras]{A Samsung Galaxy S10+ phone with distinctive ``hole punch''
+		cameras~\autocite{yoo2019}}
+	\label{fig:galaxyS10Plus}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{iphone-x.jpg}
+	\caption[An iPhone X with a large notch]{An iPhone X with a large
+		notch~\autocite{yoo2017}}
+	\label{fig:iPhoneX}
+\end{figure}
+
+\clearpage
 
 \section{Pivots}
 \label{sec:pivots}
@@ -1208,9 +1278,7 @@ complete version of the ARuko in order to conduct some final testing.
 Throughout the duration of the project, the goalposts shifted multiple times.
 This section details some of the initial plans that fell through.
 
-\newpage
-
-\section{3D Spatialized Audio Tour}
+\subsection{3D Spatialized Audio Tour}
 \label{sec:3dSpatializedAudioTour}
 
 One idea that was proposed initially was an AR audio experience using 3D
@@ -1301,10 +1369,44 @@ that contains the data of the response.
 
 \newpage
 
-\section{}
+\section{Testing Survey Results}
+\label{sec:testingSurveyResults}
 
-Appendix two text goes here.
+After testing a near-complete prototype of ARuko at Kinkaku-ji on September
+26\textsuperscript{th}, we had each test subject fill out a simple survey with
+their thoughts on the app. The full results are listed below.
+
+% for tabularx
+% \newcolumntype{L}{>{\raggedright\arraybackslash\footnotesize}X}%
+
+\begin{table}[h]
+\begin{singlespace}
+\begin{tabulary}{\textwidth}{ L | L | L | L | L | L }
+	I enjoyed the audio tour & The image gallery added to the audio tour & I
+	found the AR translation feature helpful & I found the AR map overlay
+	helpful & The AR features were easy to use & Do you have any other thoughts
+	on how to improve the experience? \\
+	\hline
+
+	Strongly agree & Agree & Strongly agree & Strongly agree & Agree & I thought
+	the idea about a sound playing before the audio starts is a really good
+	idea! \\
+
+	Agree & Agree & Agree & Neutral & Neutral & Add a audio queue when a new
+	track starts. Make the AR buttons bigger/easier to click. \\
+
+	Agree & Agree & Strongly agree & Neutral & Agree & Increasing GPS accuracy
+	of course. Adding a tracking "you are here" marker to the route. \\
+
+	Strongly agree & Strongly agree & Strongly agree & Strongly agree & Strongly
+	agree & Typo in the text on 4/11 towards the end \\
+
+	Agree & Agree & Strongly agree & Disagree & Neutral & Zoom in ar mode \\
+\end{tabulary}
+\end{singlespace}
+\caption{Results of final field test survey}
+\label{tab:testingSurveyResults}
+\end{table}
 
 \end{document}
-
 
