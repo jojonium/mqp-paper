@@ -240,7 +240,7 @@ well or better without AR~\autocite{theappsolutions2018}. Returning to the
 Pokémon, the extra power needed for this feature drains the device faster, makes
 it harder to hit the Pokémon with a Pokéball due to the model drifting in the
 environment, and can even slow app performance, all of which detract from the
-ability to play and enjoy the game. 
+ability to play and enjoy the game.
 
 One of the major problems facing AR development as a whole, and one that we ran
 into as well, is limited hardware. For starters, smartphone cameras present a
@@ -260,7 +260,7 @@ enhance~\autocite{theappsolutions2018}.  The alternative then is to turn to
 dedicated hardware, like Microsoft's HoloLens.  But dedicated hardware like the
 HoloLens is very inaccessible and expensive; Microsoft only offers developer
 editions of the HoloLens, and for the incredibly steep price of
-\$3,500~\autocite{microsoft2019}. 
+\$3,500~\autocite{microsoft2019}.
 
 The challenges we faced during development mirrored these that plague the
 industry as a whole very accurately. We struggled with how exactly we would us
@@ -268,7 +268,7 @@ AR for our app in a way that benefit the experience as a whole, but believe the
 way we've implemented it will enhance the user's experience. Hardware issues
 were definitely our biggest challenge.  Only one of our phones is new enough to
 run AR technology at a decent level, making testing of our application
-difficult.  
+difficult.
 
 \subsection{Apps for Art and Culture}
 \label{sec:appsForArtAndCulture}
@@ -354,7 +354,7 @@ of the features that appealed most to us were their Instant Tracking, allowing
 for augmentation using flat surfaces; Image Tracking, allowing for augmentation
 using one or multiple 2D images; and Geo AR, allowing for creation of
 geo-markers at specific locations to triggered AR
-content~\autocite{wikitude2018}. 
+content~\autocite{wikitude2018}.
 
 Wikitude also supports all sorts of different platforms. It supports Android,
 Apple, and Windows phones and tablets, as well as smart glasses like the Epson
@@ -362,7 +362,7 @@ Moverio, Microsoft Hololens, and Vuzix smart glasses~\autocite{wikitude2018}.
 Additionally, many different development frameworks are capable of running
 Wikitude's SDK.  According to Wikitude's website, their SDK works with Windows,
 Android, and iOS development frameworks, as well as ARCore and ARKit, Flutter,
-Cordova, Xamarin, and even Unity~\autocite{wikitude2018}. 
+Cordova, Xamarin, and even Unity~\autocite{wikitude2018}.
 
 From all of this information, Wikitude certainly sounds like a fantastic AR
 development platform; it certainly did to us. But the issue we ran into was the
@@ -373,7 +373,7 @@ is a lot for use to pay for a license that would not even last for our entire
 project. They also charge \euro{1990} for their SDK Pro, and \euro{2490} for
 their SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very
 limited budget, we knew that we would have to pass on Wikitude and choose a
-different AR development platform. 
+different AR development platform.
 
 \subsubsection{motive.io}
 \label{sec:motive.io}
@@ -491,7 +491,7 @@ Station \autocite{japanguide2019}.
 
 The goal of Editour is to allow a non-technical user to design audio tours
 through a web-app. At its core, Editour is a tool to draw arbitrarily-shaped
-geographic regions onto a map. 
+geographic regions onto a map.
 
 An audio file and multiple image files can be uploaded for each region the user
 defines. The user can also provide a text transcript of the audio file as well.
@@ -828,7 +828,7 @@ With no access to \texttt{systemctl} we could not use the custom systemd service
 we wrote to manage the server daemon. Instead, we used a custom shell script and
 an npm package called ``forever'' to handle starting and stopping it. The
 forever package runs Node.js scripts continuously, automatically restarting them
-if they crash~\autocite{robbins2019}. 
+if they crash~\autocite{robbins2019}.
 
 Tours are stored on the server as compressed \texttt{.zip} files, but when
 uploading or editing a tour these zips are decompressed to a temporary
@@ -850,7 +850,7 @@ to update the tours without updating the entire app.
 The design of the Editour is agnostic about how the media will be used. For an
 app like izi.TRAVEL, the images are displayed when the associated audio tour is
 playing. The tour files produced by Editour could theoretically be used by a
-tour guide app that does not incorporate AR. 
+tour guide app that does not incorporate AR.
 
 \subsection{ARuko}
 \label{sec:aruko}
@@ -858,6 +858,21 @@ tour guide app that does not incorporate AR.
 ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{goth}歩こ\end{CJK}''
 (\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
 through an AR-enhanced tour.
+
+\subsubsection{GPS Functionality}
+\label{sec:gpsFunctionality}
+
+The core user experience of ARuko is the walking tour. By walking the given
+route, the user enters and exits specific geographic regions that invoke
+changes in the app, such as playing audio and displaying different images.
+Originally, we planned to mark regions by singular points, and trigger that
+region if the user was within a certain radius of that point.
+Implementation-wise, this would have been much simpler, but obviously limits
+possible tour designs. Consequently, we decided at an early stage to
+accommodate regions with arbitrary shape and size.  In the implementation, we
+provided support for both ``GPS Bubbles'' and ``GPS Polygons.'' In the end
+however, Editour made it trivial to use the more versatile ``GPS Polygons,'' so
+we eventually dropped support for regions triggered by distance.
 
 \subsubsection{Translation Feature}
 \label{sec:translationFeature}
@@ -896,8 +911,8 @@ Because the tickets are unlikely to change, this enables us to provide the
 user with a ``virtual souvenir'' using the AR camera. This is the only AR
 feature that is not tied directly to an image target that can only be
 accessed at Kinkaku-ji. While the image gallery and segments of the audio
-tour can be accessed at any time using the ``Chapter Select'' menu, most of 
-the AR features can only be experienced during the walking tour, pointing the 
+tour can be accessed at any time using the ``Chapter Select'' menu, most of
+the AR features can only be experienced during the walking tour, pointing the
 camera at objects physically located at the site. Augmenting the ticket
 with 3D content allows visitors to take something home, giving them a reason
 to launch the app later.
@@ -915,30 +930,21 @@ under the base of the Golden Pavilion model as if they were holding it.
 Vuforia's image tracking is flexible enough such that the image target can be
 partially obscured.
 
-\subsubsection{GPS Functionality}
-\label{sec:gpsFunctionality}
-
-The core user experience of ARuko is the walking tour. By walking the given
-route, the user enters and exits specific geographic regions that invoke
-changes in the app, such as playing audio and displaying different images.
-Originally, we planned to mark regions by singular points, and trigger that
-region if the user was within a certain radius of that point.
-Implementation-wise, this would have been much simpler, but obviously limits
-possible tour designs. Consequently, we decided at an early stage to
-accommodate regions with arbitrary shape and size.  In the implementation, we
-provided support for both ``GPS Bubbles'' and ``GPS Polygons.'' In the end
-however, Editour made it trivial to use the more versatile ``GPS Polygons,'' so
-we eventually dropped support for regions triggered by distance.
-
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
 
+By the end of the project, we were able to turn ARuko into an app rich with
+features and polish. However, many of these features were presented to us
+relatively late into the project. This section discusses some of our initial
+concerns when we were first given the task of bringing Atticus' experience
+design to life.
+
 On September 10\textsuperscript{th} Atticus Sims presented us with a storyboard
 for the app experience. We would not be able to resume work until September
-17\textsuperscript{th} due to prior travel plans. Whether Atticus knew this or
-not, the design he put forth had ramifications that rippled throughout the
-entire software stack we had constructed up to this point.
-Figure~\ref{fig:adobeXdDesign} shows this design.
+17\textsuperscript{th} due to prior travel plans. The design he put forth had
+ramifications that rippled throughout the entire software stack we had
+constructed up to this point.  Figure~\ref{fig:adobeXdDesign} shows the experience
+design document created in Adobe XD.
 
 \begin{figure}[h]
 	\centering
@@ -955,30 +961,56 @@ This assumption made its way into Editour, which did not currently have a way
 to reorder regions once they were placed. Because of this chapter selection
 screen, we needed some way to rearrange the order of regions within Editour.
 
+The inclusion of a ``chapter selection'' screen had other notable design
+implications as well. Initially different regions were triggered solely by your
+GPS location. Walking into a region would prompt the available images to change
+on screen. Also, a new audio track would begin to play. This forced us to
+answer certain basic questions about the chapter select screen for ourselves.
+For example, consider a user that steps into one region, triggering the audio
+and images. Then, that user selects a chapter from the chapter selection menu,
+overriding the ``true'' region the user is physically standing inside of. When
+does the GPS ``take over'' again? Should the region change back to the ``true''
+region once the audio of the selected region finishes? This might be intuitive
+and preferred for most users, but what if the user is more interested in the
+image gallery than the audio? Then, the persistence of the image gallery is
+strangely tied to the duration of the audio track playing underneath. What if a
+user selects a chapter, and then physically enters that region moments later?
+Should the audio restart to indicate that the user has arrived at the location?
+Or, will this appear as though the audio track the user was already listening
+to skipped to the beginning again for no reason? As you can imagine, this
+seemingly minor inclusion created a significant amount of discussion.
+
+Other concerns about the chapter selection feature were technical. For a long
+time, we were working under the assumption that regions would only be triggered
+by GPS location. Because of this long-standing assumption, we were uncertain
+about what bugs implementing a chapter selection feature would introduce.
+
 Another notable change can be seen in the first screen on
 Figure~\ref{fig:adobeXdDesign}. Atticus was not enthusiastic about being able
 to place images onto the ground-plane using the AR camera. Instead, he
 suggested that we have the images be viewable in a more traditional
-fashion---in 2D as part of the UI. This was disappointing to us, since we spent
-a great deal of effort projecting images into the 3D world using the AR camera;
-we felt like we figured out how to use this technology in a way that was both
-usable and fun. Ideally, we wanted to explore ways to theme the 2D images in
-the 3D world, such as by framing the images in a traditional Japanese pagoda,
-which would fit in with the environment. On the same screen, there is a
-scrollable window of text for a transcript of the audio. Because of this, the
-Editour UI and tour metadata JSON file needed to be updated to accommodate a
-transcript per region. On top of this, the C\# code that interprets the tour
-file needed to be updated to expect an audio transcript field.
-Figure~\ref{fig:editourAdditions} shows the UI elements that changed in order
-to add these new features. The arrows next to the region name can be used to
-move the ``Region Card'' up and down in the side bar. In the ``Media'' tab, there
-is also a text area to include a transcript of the uploaded audio file. 
+fashion---in 2D as part of the UI.
+
+With more time, we might have been able to get the ground-plane image placement
+feature to a state where Atticus might have liked it. We wanted to explore ways
+to theme the 2D images in the 3D world, such as by framing the images in a
+traditional Japanese pagoda. We had already spent two weeks on this feature, so
+dropping this feature was a setback we had to plan around.
+
+On the same screen, there is a scrollable window of text for a transcript of
+the audio. Because of this, the Editour UI and tour metadata JSON file needed
+to be updated to accommodate one transcript per region. On top of this, the C\#
+code that interprets the tour file needed to be updated to expect an audio
+transcript field.  Figure~\ref{fig:editourAdditions} shows the UI elements that
+changed in order to add these new features. The arrows next to the region name
+can be used to move the ``Region Card'' up and down in the side bar. In the
+``Media'' tab, there is also a text area to include a transcript of the
+uploaded audio file.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{editour-additions.png}
-	\caption[Additions to the Editour to accommodate the new design]
-    {Additions to the Editour to accommodate the new design}
+	\caption{Additions to the Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
 
@@ -996,17 +1028,19 @@ Considering we had limited to no experience with React or Angular, it was also
 faster to develop the UI in the way we were used to from previous experience.
 But if we were to continue to develop Editour, UI libraries and frontend build
 tools would be something to consider. With these changing requirements, the
-Editour was becoming onerous to maintain at this stage of the project.
+Editour was becoming onerous to maintain at this stage of the project. Luckily,
+these changes were still manageable to implement.
 
 With the ground-plane detection features stripped away from the main app, the
 AR focus shifted to translating the maps and signs using the camera. The fourth
 screen on Figure~\ref{fig:adobeXdDesign} shows a mock-up of this feature.
-Atticus took photographs of various signs throughout Kinkaku-ji for us to use as
-image targets. Hikaru Inoue helped us by translating all of the text in these
-photos from Japanese to English. In this design, the AR camera superimposes an
-``info'' button on top of the sign. Tapping on this button brings up a separate
-UI element containing the translation, which can be seen in
-Figure~\ref{fig:signTranslation}.
+Atticus took photographs of various signs throughout Kinkaku-ji for us to use
+as image targets. Hikaru Inoue helped us by translating all of the text in
+these photos from Japanese to English. In this design, the AR camera
+superimposes an ``info'' button on top of the sign. Tapping on this button
+brings up a separate UI element containing the translation, which can be seen
+in Figure~\ref{fig:signTranslation}. The details of this feature is discussed
+more thoroughly in Section~\ref{sec:translationFeature}.
 
 \begin{figure}[h] \centering
     \includegraphics[width=0.3\textwidth]{sign-translation.png}
@@ -1028,15 +1062,16 @@ Unity's UI components. Adobe XD allowed us to export a few important UI
 elements as PNGs, such as the buttons to enter AR mode and view the map. We
 briefly explored a few solutions to automating the task of getting the Adobe XD
 project into Unity. We found one payed extension (for \$18) on the Unity Asset
-store, called ``Experience Importer - Adobe Xd files importer'', which claims
-``Transfer AdobeXd project directly to Unity. Forget about hours of positioning
-objects. They're already there! Just drag .xd file to project and...
-voila!''~\autocite{glasseye2019}.  We suspect this sounds too good to be true
-because it is. As of September 20\textsuperscript{th}, 2019, there are 6 user
-reviews. All of the five-star reviews were have the caveat ``Reviewer was gifted
-package by publisher'' which which we interpreted as a warning sign. Because of
-this, we decided to rebuild the UI largely from the ground up, using the Adobe XD
-file to guide us.
+store called ``Experience Importer - Adobe Xd files importer.'' The download
+page for this extension claims ``Transfer AdobeXd project directly to Unity.
+Forget about hours of positioning objects. They're already there! Just drag .xd
+file to project and...  voila!''~\autocite{glasseye2019}.  We suspect this
+sounds too good to be true because it is. As of September
+20\textsuperscript{th}, 2019, there are 6 user reviews. All of the five-star
+reviews were have the caveat ``Reviewer was gifted package by publisher'' which
+which we interpreted as a warning sign. Because of this, we decided to rebuild
+the UI largely from the ground up, using the Adobe XD file to guide us.
+%TODO refer to the section that discusses building the ui
 
 \clearpage
 
@@ -1057,8 +1092,10 @@ use for their intended users.
 \label{sec:testingEditour}
 
 Because the Editour is intended only to be a tool to aid Atticus in creating
-tours, not an application for the general public, our user testing of it was less
-rigid.
+tours our user testing was less rigid. Even so, the frontend and backend we
+built for Editour ended up being largely reliable. The main source of
+reliability issues stemmed from the hosting provider, which was out of our
+control.
 
 \subsubsection{Unit Testing the Editour Backend}
 \label{sec:unitTestingTheEditourBackend}
