@@ -75,14 +75,14 @@
 \label{sec:acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgments}
 
-We would like to thank Atticus Sims, CEO and founder of Kyoto VR, for sponsoring
+We would like to thank Atticus Sims, CEO and founder of Kyoto~VR, for sponsoring
 this project and providing help and guidance throughout our time in Japan. His
 knowledge of the history of Kinkaku-ji and Kyoto in general has been invaluable
 to our experience.
 
 We would also like to thank Inoue Hikaru for his help with translations and
 researching AR technology. A special thank you to the IQP team working with
-Kyoto VR, Lewis Cook, Nicole Escobar, Ahad Fareed, and Cameron Person, for
+Kyoto~VR, Lewis Cook, Nicole Escobar, Ahad Fareed, and Cameron Person, for
 filming and editing the app trailer, as well as providing help with testing.
 
 Finally, a thank you to our advisers, Professors Joshua Cuneo and Ralph Sutter.
@@ -110,7 +110,7 @@ Kinkaku-ji. Sections \ref{sec:initialFieldTesting} and
 \ref{sec:finalFieldTesting} go into detail about our two days of field testing
 on-site. From these tests, we were able to refine the user experience, and
 identify important features to add to the app. Much of the app's functionality
-was dictated by Atticus Sims, C.E.O and founder of Kyoto VR, who plans to
+was dictated by Atticus Sims, C.E.O and founder of Kyoto~VR, who plans to
 monetize the app. We also worked with an IQP team, who had been tasked with
 exploring funding options and creating promotional content.
 
@@ -123,8 +123,8 @@ manage the tour files, allowing one of us (or our sponsor, Atticus Sims) to
 download a zip file containing all of the media and info to reconstruct the
 tour. This zip can be extracted into the source files for ARuko, which rebuilds
 the tour from the downloaded contents. We were able to host the backend on the
-server provided by Kyoto VR's hosting plan; we discuss the hurdles that we
-overcame to deploy the Editour backend with Kyoto VR's current setup in
+server provided by Kyoto~VR's hosting plan; we discuss the hurdles that we
+overcame to deploy the Editour backend with Kyoto~VR's current setup in
 Section~\ref{sec:deployingTheEditourBackend}.
 
 In Section~\ref{sec:alternativeArAppConcepts}, we also discuss the alternative
@@ -311,12 +311,12 @@ decent level, making testing of our application difficult.
 \subsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
-Before our project started, Kyoto VR was already using an app to deliver audio
+Before our project started, Kyoto~VR was already using an app to deliver audio
 tours. The app, called izi.TRAVEL, allows users to create audio tours with
 audio and image files tied to specific locations in the real
 world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
 aimed at museums and city tours~\autocite{izitravel} but can be used for tours
-of historic sites too.  Kyoto VR used the platform to make a simple audio tour
+of historic sites too.  Kyoto~VR used the platform to make a simple audio tour
 of Kinkaku-ji.
 
 \begin{figure}[h]
@@ -483,20 +483,19 @@ which is simply cumbersome with a laptop webcam.
 
 As an alternative to emulation, ViroReact offers a convenient ``test bed'' for
 rapidly testing your ViroReact app on native hardware without the need for an
-emulator. In the root directory of your project, you can launch a Node server
-with the command \texttt{npm start}. From here, you can input the provided URL
-into the Viro Media app. This will quickly download the code, graphics, and 3D
-object files from the server and launch a functional version of the app
-\autocite{viro-testbed2019}. This allowed us to get a real AR app up and
-running on our devices much more easily than any of the other
-frameworks/engines we explored. Unfortunately, the test bed app was somewhat
-unreliable based on our experience; the test bed would frequently crash or
-would not be able to download the files from the Node server. The most reliable
-way to test our app was to compile a binary and manually install it onto our
-devices, which completely defeats the purpose of the test bed app.
+emulator. This allowed us to get a real AR app up and running on our devices
+much more easily than any of the other frameworks/engines we explored.
+Unfortunately, the test bed app was somewhat unreliable based on our
+experience; the test bed would frequently crash or would not be able to
+download the files from the server. The most reliable way to test our app was
+to compile a binary and manually install it onto our devices, which completely
+defeated the purpose of the test bed app.
 
 \subsubsection{Unity}
 \label{sec:unity}
+
+%TODO write this section
+TODO: write this section
 
 \subsection{Kinkaku-ji}
 \label{sec:kinkaku-ji}
@@ -506,7 +505,7 @@ greatest attractions.  As of September 2019, it was the second-most visited site
 in Kyoto---second only to Kyoto Station \autocite{japanguide2019}. Kinkaku-ji's
 rich history and stunning beauty bring tourists from all over the world to see
 its shining gold walls and magnificent gardens. Our project intends to enhance
-user's enjoyment and understanding of Kinkaku-ji through informative interactive
+users' enjoyment and understanding of Kinkaku-ji through informative interactive
 media, teaching about the history and significance of the site.
 
 The site that is now Kinkaku-ji was originally a villa owned by poet and
@@ -543,7 +542,8 @@ year history.
 In 1950 the pavilion was burned down by a paranoid schizophrenic monk who had
 been living at the temple~\autocite{borowitz2005}. The structure was rebuilt in
 1955, close to the original design but with more extensive gold
-leaf~\autocite{bornoff2000}. The interior was also restored later.
+leaf~\autocite{bornoff2000}. The interior was also restored later to match the
+original.
 
 None of this history is readily apparent to a casual tourist at Kinkaku-ji.
 There are a few signs describing different areas, but they are only available in
@@ -565,33 +565,32 @@ creating these applications.
 \label{sec:editour}
 
 The goal of Editour is to allow a non-technical user to design audio tours
-through a web-app. At its core, Editour is a tool to draw arbitrarily-shaped
+through a web app. At its core, Editour is a tool to draw arbitrarily-shaped
 geographic regions onto a map, edit those regions and assign media to each of
 the drawn regions.
 
 An audio file and multiple image files can be uploaded for each region the user
 defines. The user can also provide a text transcript of the audio file as well.
 After naming and uploading the tour with the ``Upload'' button, our backend
-builds a zip containing a folder that can be placed directly into the Unity
+builds a zip containing files that can be placed directly into the Unity
 project.
 
-Our backend allows users to save their tours to our server and load those same
-tours back into the editor to resume work.  The geographic area of each region
+Our backend allows users to save their tours to a server and load those same
+tours back into the editor to resume work. The geographic area of each region
 can be adjusted by clicking and dragging. Vertices can also be added and
 deleted if the needs of the tour change over time.
 
-\subsubsection{The Need for an Editor}
-\label{sec:theNeedForAnEditor}
+\subsubsection{The Need for an Editour}
+\label{sec:theNeedForAnEditour}
 
 One of the goals for our project is to create a working prototype that others
-can build off of in the future.
-
-Similar to the app izi.TRAVEL discussed in Section~\ref{sec:iziTravel}, we
-needed some way to easily define arbitrary polygons (which we call ``regions'')
-and associate media with each one, such as audio and image files.
+can build off of in the future. Similar to the app izi.TRAVEL discussed in
+Section~\ref{sec:iziTravel}, we needed some way to easily define arbitrary
+polygons (which we call ``regions'') and associate media with each one, such as
+audio and image files.
 
 For testing purposes, we initially defined these regions directly in the C\#
-Scripts, hard-coding the coordinates. Below is an example of a quadrilateral
+scripts, hard-coding the coordinates. Below is an example of a quadrilateral
 surrounding the Creation Core building at the Ritsumeikan Biwako-Kusatsu campus.
 
 \begin{minted}{csharp}
@@ -604,9 +603,10 @@ Regions.add(new GPSPolygon(new List<GPSPoint>{
 \end{minted}
 
 Even with knowledge of C\# and Unity, inputting tour data this way is obviously
-not convenient. Atticus reminded us that, although he has a working knowledge of
-Unity, he is not a software developer. In order to make our app prototype at all
-useful for the future, we needed to provide an easy way to ``design'' a tour.
+cumbersome. Atticus is not a software developer, and does not want to work with
+C\# scripts. In order to make our app prototype at all useful for the future,
+we needed to provide an easy way to ``design'' a tour using a simple graphical
+interface.
 
 \subsubsection{A Complete Tour Definition}
 \label{sec:tourDefinition}
@@ -615,7 +615,8 @@ In order to create a fully-functional editor for designing and exporting
 ``tours,'' we had to consider how to fully define a tour purely in terms
 of text and a directory of associated media.
 
-Here is an example of the JSON metadata generated by Editour:
+Here is an example of a tour metadata file in JavaScript Object Notation (JSON)
+format:
 
 \begin{minted}{json}
 {
@@ -632,35 +633,36 @@ Here is an example of the JSON metadata generated by Editour:
          "points": [ {"lat": 34.979754, "lng": 135.964889}, ... ],
          "audio": [ "gorgeous-audio.mp3" ],
          "images": [ "hill.jpg", "valley.jpg", "gorge.jpg" ],
-         "transcript", "To your right, you can see a gorgeous place."
+         "transcript": "To your right, you can see a gorgeous place."
       }
    ]
 }
 \end{minted}
 
 Within each object in the region list, we can see that the region has five
-properties: a name, a list of coordinates, a list of audio files, a list of
-multiple image files, and a transcript of the audio file. (In the current
-design of the app, it only makes sense to associate one audio file per region,
-but the format makes it easy to accommodate for multiple audio files in the
-future.) One disadvantage is that all media files have to have unique names.
+properties: a name, a list of coordinates, a list of audio files,\footnote{In
+the current design of the app, it only makes sense to associate one audio file
+per region, but the format makes it easy to accommodate for multiple audio
+files in the future.} a list of multiple image files, and a transcript of the
+audio file. One disadvantage is that all media files have to have unique names.
 This is because the zip that is created by the Editour backend contains all of
 the media files in a flat file structure. The above JSON is used to associate
 each media file with a region, meaning that the filename needs to act as a
-primary key. The backend will respond with a message if this is the case,
-prompting the user to have unique names for all files.
+unique identifier. The backend will respond with a message if it finds
+duplicate filenames, prompting the user to use unique names for all files.
 
 \subsubsection{Editing a Tour}
 \label{sec:editingATour}
 
-The user can easily create a new region by shift-clicking, and then clicking
-points on the map.  To terminate the polygon, the user must shift-click again.
-The ``Welcome to Editour'' card (seen in Figure~\ref{fig:welcomeCard}) provides
-these instructions, which should be enough to get started.  A user can only
+The user can easily create a new region by shift-clicking the map, and then
+continuing to click to define more points. Figure~\ref{fig:drawingRegion} shows
+this in action. To terminate the polygon, the user must shift-click again. The
+``Welcome to Editour'' card (seen in Figure~\ref{fig:welcomeCard}) provides
+these instructions, which should be enough to get started. A user can only
 terminate the polygon after two points have been placed to prevent the user
 from drawing a region with an area of zero. Once a region is created, a region
 card appears in the side bar. From here, the user can edit anything about the
-region. From here, the user can edit anything about the region.
+region.
 
 \begin{figure}[h]
 	\centering
@@ -696,10 +698,10 @@ multiple region cards at a time.
 The first subcard seen in Figure~\ref{fig:renameSubcard} is the ``Rename''
 subcard, which is fairly self-explanatory.  This section expands to reveal a
 textbox, allowing the user to rename the region after clicking ``Okay'' or
-hitting the enter key. (There are multiple places in the UI where a textbox is
-immediately adjacent to a ``Confirm'' button.  We made sure all of these can be
-triggered by simply hitting enter, since this is common when filling out
-forms.)
+hitting the enter key.\footnote{There are multiple places in the UI where a
+textbox is immediately adjacent to a ``Confirm'' button.  We made sure all of
+these can be triggered by simply hitting enter, since this is common behavior
+when filling out forms on the web.}
 
 \begin{figure}[h]
 	\centering
@@ -708,14 +710,15 @@ forms.)
 	\label{fig:renameSubcard}
 \end{figure}
 
-The second subcard seen in Figure~\ref{fig:mediaSubcard} is slightly involved.
-Expanding the ``Media'' subcard by clicking on the green bar will reveal a bevy
-of options for augmenting the audio, images and text to be associated with that
-region of the tour. From here, the user can upload an audio file and multiple
-image files from his or her hard drive with the two file-select fields. If the
-tour has been downloaded as a server, the names of the files already present on
-the server will appear as cards with `X' buttons. This allows the user to
-remove images or audio from that region even after the tour has been uploaded.
+The second subcard seen in Figure~\ref{fig:mediaSubcard} is slightly more
+involved. Expanding the ``Media'' subcard by clicking on the green bar will
+reveal a bevy of options for augmenting the audio, images, and text to be
+associated with that region of the tour. From here, the user can upload an
+audio file and multiple image files from his or her hard drive with the two
+file-select fields. If the user is editing an existing tour that has already
+been uploaded, the names of the files already present on the server will appear
+as cards with `X' buttons. This allows the user to remove images or audio from
+that region even after the tour has been uploaded.
 
 \begin{figure}[h]
 	\centering
@@ -724,39 +727,39 @@ remove images or audio from that region even after the tour has been uploaded.
 	\label{fig:mediaSubcard}
 \end{figure}
 
-The third subcard is the ``Edit'' subcard. This subcard can be revealed in one
-of two ways. The first way is by clicking on the yellow bar labeled ``Edit'',
-which is the same for all subcards. Alternatively, the user can also click
-directly on the region on the map. The region will flash yellow and be scrolled
-into view to let the user know which region was clicked on. Both of these
-methods will enable editing mode, whereby the user can directly manipulate the
-vertices that make up the region. Blue circles appear on top of each vertex,
-and red circles appear at the midpoint of each edge. Clicking on a red midpoint
-will add an additional vertex at that midpoint. Dragging one of the blue
-vertices will do as you might expect---move the vertex around. The latitude and
-longitude are updated in the ``Edit'' subcard as the user drags the vertex
-around. Clicking on the vertex directly will create a blue pin-shaped marker
-that the user can also drag around. Clicking on the coordinate box in the
-subcard will also create this blue pin-shaped marker; the map will also pan to
-this coordinate. The user can also delete vertices in the same way that files
-can be deleted from the ``Media'' subcard by clicking on the `X' button. If there
-are exactly three points in a region, the `X' buttons will be ``grayed-out'',
-preventing the user from deleting any more points (since a polygon must consist
-of at least three points.)
+The third subcard is the ``Points'' subcard. This subcard can be revealed in
+one of two ways. The first way is by clicking on the yellow bar labeled
+``Points'', which is the same for all subcards. Alternatively, the user can
+click directly on the region on the map. The region will flash yellow and be
+scrolled into view to let the user know which region was clicked on. Both of
+these methods will enable editing mode, whereby the user can directly
+manipulate the vertices that make up the region. Blue circles appear on top of
+each vertex, and red circles appear at the midpoint of each edge. Clicking on a
+red midpoint will add an additional vertex at that midpoint. Dragging one of
+the blue vertices will move the vertex around. The latitude and longitude are
+updated in the ``Points'' subcard as the user drags the vertex around. Clicking
+on the vertex directly will create a blue pin-shaped marker that the user can
+also drag. Clicking on the coordinate box in the subcard will also create this
+blue pin-shaped marker; the map will also pan to this coordinate. The user can
+also delete vertices in the same way that files can be deleted from the
+``Media'' subcard by clicking on the `X' button on that vertex's coordinate
+card. If there are exactly three points in a region, the `X' buttons will be
+``grayed-out,'' preventing the user from deleting any more points, since a
+polygon must consist of at least three points.
 
 \begin{figure}[h]
 	\centering
     \includegraphics[width=\textwidth]{edit-subcard-with-map-editour.png}
-    \caption{The ``Edit'' subcard with the map showing vertices and edges that
+    \caption{The ``Points'' subcard with the map showing vertices and edges that
     can be edited}
 	\label{fig:editSubcardWithMap}
 \end{figure}
 
 The third subcard pictured in Figure~\ref{fig:deleteSubcard} is the ``Delete''
-subcard. When revealed, another button will appear labeled ``Really Delete''.
+subcard. When revealed, another button will appear labeled ``Really Delete.''
 The action can be canceled by collapsing the subcard by hitting the bar now
-labeled ``Don't Delete!''. This prevents the user from accidentally deleting a
-region he or she did not mean to.
+labeled ``Don't Delete!'' This prevents the user from accidentally deleting a
+region he or she did not mean to remove.
 
 \begin{figure}[h]
 	\centering
@@ -770,11 +773,12 @@ downloading, renaming and deleting tour files on the server. Within the upload,
 download and delete cards there are message boxes to indicate the status of
 that operation. When uploading and downloading, a percentage will be displayed
 indicating the upload/download process, which can be seen in
-Figure~\ref{fig:uploadingMessage}. If a 200 or 201 is returned from the server,
-a ``Success'' message will appear. If there was some problem, the error message
-returned by the server is displayed in this box instead. Since uploading,
-downloading and deleting are all network-related operations, it makes sense to
-include this message box for each card.
+Figure~\ref{fig:uploadingMessage}. If an HTTP 200 (OK) or 201 (Created)
+code~\autocite{rfc7231} is returned from the server, a ``Success'' message will
+appear. If there was some problem, the error message returned by the server is
+displayed in this box instead. Since uploading, downloading, and deleting are
+all network-related operations, it makes sense to include this message box for
+each card.
 
 \begin{figure}[h]
 	\centering
@@ -783,15 +787,17 @@ include this message box for each card.
 	\label{fig:uploadingMessage}
 \end{figure}
 
-When the page is loaded, the frontend will request the names of the files
+When the page is loaded, the frontend will request the names of the tour files
 stored on the server from the backend. This data is used to create a box of
 buttons, which includes one button for each tour file on the server. Clicking
 on one of these blue buttons will fill the textbox in with the correct name.
 Before this feature was implemented, the user had to correctly type the name of
 the saved tour into the textbox in order to retrieve it. The user is still free
-to do this, but the buttons make this easier and less error-prone. The download
-card containing a box filled with filenames on the server can be seen in
-Figure~\ref{fig:downloadCard}.
+to do this, but the buttons make this easier and less error-prone. This feature
+can be seen in figure Figure~\ref{fig:downloadCard}. Clicking ``Download'' does
+not download the tour to the user's computer. Instead, it requests only the
+tour metadata from the server so the tour's data can be displayed in the web
+app. The user can then edit the tour and upload a new version.
 
 \begin{figure}[h]
 	\centering
@@ -804,9 +810,9 @@ We did not include a way to resolve addresses or place names, like the service
 provided by Google Maps. Instead of exploring plugins/libraries that might
 provide this functionality, we offered a simpler solution due to time
 constraints.  You can type in a latitude and longitude directly and hit the
-``Jump'' button. We also hard-coded a few shortcuts for places that Atticus
-might want to design a tour for in the future, which can be accessed by
-clicking on the yellow buttons with place names.
+``Jump'' button to pan to the specified location. We also hard-coded a few
+shortcuts for places that Atticus might want to design a tour for in the future,
+which can be accessed by clicking on the yellow buttons with place names.
 
 \begin{figure}[h]
 	\centering
@@ -815,14 +821,15 @@ clicking on the yellow buttons with place names.
 	\label{fig:jumpCard}
 \end{figure}
 
-Once a tour is either uploaded or downloaded, a link to download the zip file
-will appear. The zip file contains all of the uploaded media, and a metadata
-file. The metadata is in the form of a JSON file; it contains all of the
-latitudes, longitudes, and enough information to associate all of the media
-with the correct regions. This is the file that we unzip and place into the
-Unity project before it is compiled. This also is useful if the user wants to
-check the audio and image files that were uploaded.
+Once a tour is either uploaded or downloaded, a link to download the zip file of
+that tour will appear. The zip file contains all of the uploaded media, and a
+metadata file. The metadata is in the form of a JSON file; it contains all of
+the latitudes, longitudes, and enough information to associate all of the media
+with the correct regions. The downloaded zip file is what we decompress and
+place into the Unity project before it is compiled. This feature is also useful
+if the user wants to check the audio and image files that were uploaded.
 
+%update this figure
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{editour.jpg}
@@ -835,20 +842,19 @@ check the audio and image files that were uploaded.
 
 The server-side backend of the Editour application is written in JavaScript for
 Node.js. This backend both serves the static frontend content and runs
-server-side scripts that process incoming API requests.  We chose Node.js as the
-server-side framework because of our prior experience with JavaScript, its
-high-performing asynchronous architecture~\autocite{orsini2013}, and its ease of
-development.
+server-side scripts that process incoming application programming interface
+(API) requests. We chose Node.js as the server-side framework because of our
+prior experience with JavaScript, its high-performing asynchronous
+architecture~\autocite{orsini2013}, and its ease of development.
 
 When a user submits new tour from the web application, the files and metadata
-are sent to the server running the Node.js scripts, which zips up the files and
-saves them to the server's disk with a timestamp. Then any application can
-request a particular tour and the backend will serve the most recent version of
-it.
+are sent to the server running the Node.js scripts. The server zips up the files
+and saves them to the disk with a timestamp. Then any application can request a
+particular tour and the backend will serve the most recent version.
 
-As previously mentioned in \ref{sec:editingATour}, our web application allows
-users to edit existing tours. When the user requests to edit a tour on the
-frontend it sends a request to the backend server for that tour's metadata
+As previously mentioned in Section~\ref{sec:editingATour}, our web application
+allows users to edit existing tours. When the user requests to edit a tour on
+the frontend it sends a request to the backend server for that tour's metadata
 file. This file contains information about all regions and files in the tour.
 The user can then edit the regions, change names, upload new files, or delete
 existing ones without ever having to download the other tour files from the
@@ -876,30 +882,31 @@ running on the same virtual machine.
 
 While this worked well enough for testing, it was not a permanent solution. We
 asked Atticus to provide a more powerful---and geographically closer---hosting
-solution for running the Editour in the future. He obtained a domain name and
+solution for running the Editour in the future. He obtained a domain name and a
 shared hosting environment on a Red Hat Enterprise Linux (RHEL) server for us to
 use on September 23\textsuperscript{rd}. Unfortunately, this shared hosting
 environment was designed for running simple PHP applications like WordPress, so
 it took a bit of work to coerce it into running a Node.js application.
 
 We were able to get shell access to the shared hosting environment, but without
-superuser privileges. This meant we couldn't install packages, change system
-settings, or access \texttt{systemctl}. In order to install Node.js and npm in
-this environment we had to use Node Version Manager, a series of shell scripts
-that handles downloading and compiling various versions of
-Node~\autocite{nvmsh2019}.  The only difficulty with this was finding a version
-of Node.js that could compile with the older version of GCC the RHEL server had.
-Fortunately the server already had git installed, so we were able to simply
-clone the backend from GitHub and run it with npm.
+superuser privileges. This meant we could not install packages, change system
+settings, or access \texttt{systemctl}, the command that manages systemd
+services. In order to install Node.js and npm in this environment we had to use
+Node Version Manager, a series of shell scripts that handles downloading and
+compiling various versions of Node~\autocite{nvmsh2019}.  The only difficulty
+with this was finding a version of Node.js that could compile with the older
+version of GCC that the RHEL server had. After resolving this challenge, we were
+able to simply clone the backend from GitHub and run it with npm.
 
 However, the server already had Apache listening on port 80, and without
 superuser privileges we could not edit the Apache configuration files to change
 this. Instead we decided to configure Apache as a reverse proxy, using only the
-rules that can be put in a \texttt{.htaccess} file, since this is the only
-configuration file we could access. Using Apache's \texttt{mod\_rewrite} module
-we were able to rewrite incoming requests on port 80 to instead go to
-\texttt{localhost:3000}, the port where Node.js was
-listening~\autocite{apache2019}.
+rules that can be put in a \texttt{.htaccess} file,\footnote{This is a
+directory-level configuration file with limited options compared to Apache's
+global configuration files.} since this is the only configuration file we could
+access. Using Apache's \texttt{mod\_rewrite} module we were able to rewrite
+incoming requests on port 80 to instead go to \texttt{localhost:3000}, the port
+where Node.js was listening~\autocite{apache2019}.
 
 With no access to \texttt{systemctl} we could not use the custom systemd service
 we wrote to manage the server daemon. Instead, we used a custom shell script and
@@ -907,15 +914,15 @@ an npm package called ``forever'' to handle starting and stopping it. The
 forever package runs Node.js scripts continuously, automatically restarting them
 if they crash~\autocite{robbins2019}.
 
-Tours are stored on the server as compressed \texttt{.zip} files, but when
-uploading or editing a tour these zips are decompressed to a temporary
-directory. To prevent the server's limited disk space from filling up with old
-temporary files we wrote a simple bash script that removes directories that
-haven't been modified in the past five days. We set up a \texttt{cron} job to
-run this script automatically once per day to clean out old temporary files that
-aren't being used any more.
+Tours are stored on the server as compressed zip files, but when uploading or
+editing a tour these zips are decompressed to a temporary directory. To prevent
+the server's limited disk space from filling up with old temporary files we
+wrote a simple bash script that removes directories that have not been modified
+in the past five days. We set up a cron job\footnote{The program cron allows for
+periodic scheduling of repeated commands} to run this script automatically once
+per day to clean out old temporary files that are not being used any more.
 
-Unfortunately, the hosting provider Kyoto VR provided us with severely throttles
+Unfortunately, the hosting solution Kyoto~VR provided us with severely throttles
 disk write speeds. Because the backend has to write potentially large amounts of
 data to the disk every time a tour is uploaded or edited this becomes a major
 bottleneck for the web app's performance. For large tours (bigger than 50 MiB)
@@ -923,7 +930,7 @@ this can cause an issue where the Node server takes so long to respond that
 Apache thinks it has timed out, and sends an erroneous 504 Gateway Timeout
 message~\autocite{rfc7231}. Without access to superuser permissions or a faster
 hosting provider there is nothing we can do about this bug. The Node server does
-eventually complete the request and respond correctly, so until Kyoto VR can get
+eventually complete the request and respond correctly, so until Kyoto~VR can get
 a better hosting provider we consider it a minor issue.
 
 \subsubsection{Future of Editour}
@@ -932,7 +939,7 @@ a better hosting provider we consider it a minor issue.
 In the current implementation, the tour file generated by the Editour backend
 still has to be moved manually to the Unity project folder. In the future, we
 would like the app to be able to contact a server running a version of the
-Editour backend and update the tour info by itself. This would allow Kyoto VR
+Editour backend and update the tour info by itself. This would allow Kyoto~VR
 to update the tours without updating the entire app.
 
 The design of the Editour is agnostic about how the media will be used. For an
@@ -968,21 +975,21 @@ we eventually dropped support for regions triggered by distance.
 Despite Kinkaku-ji being an incredibly popular tourist destination that draws
 crowds from all over the world, the majority of the signage is purely Japanese.
 While AR translation apps exist, the experience can be frustrating, and produce
-poor results. Google's text recognition and machine-learning powered
-translation technology is certainly impressive. At the same time, the
-translation service works better in ``scan'' mode instead of ``instant'' mode.
-In ``instant'' mode, the app attempts to translate text as quickly as possible,
-superimposing the translated text onto the real world using the camera. In
-``scan'' mode, the user first takes a photo. Then, the user is prompted to
-highlight where text appears in the photo. After the translation is complete,
-the translated text appears in a separate UI element instead superimposed onto
-the photo. In most cases, it is more convenient and readable to have the
-translation appear in a separate scrollable textbox. This motivated the current
-design of the ``info buttons'' in ARuko. Instead of placing text directly onto
-signage, we place a blue button with an `i' in the center. By tapping on this
-button, a separate UI element will appear containing the translated text. Since
-this button is cast into the world using the AR camera, the button is
-intuitively placed directly onto the content in the real world.
+poor results. Google's text recognition and machine-learning powered translation
+technology is certainly impressive. At the same time, the translation service
+works better in ``scan'' mode instead of ``instant'' mode. In ``instant'' mode,
+the app attempts to translate text as quickly as possible, superimposing the
+translated text onto the real world using the camera. In ``scan'' mode, the user
+first takes a photo. Then, the user is prompted to highlight where text appears
+in the photo. After the translation is complete, the translated text appears in
+a separate UI element instead superimposed onto the photo. In most cases, it is
+more convenient and readable to have the translation appear in a separate
+scrollable textbox. This motivated the current design of the ``info buttons'' in
+ARuko. Instead of placing text directly onto signage, we place a blue button
+with a stylized `i' in the center. By tapping on this button, a separate UI
+element will appear containing the translated text. Since this button is cast
+into the world using the AR camera, the button appears to be placed directly
+onto the content in the real world.
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -994,7 +1001,7 @@ onto the map. Figure~\ref{fig:arMapFeature} shows the blue highlighted path of
 the walking tour, including a few translated labels. 
 
 \begin{figure}[h] \centering
-    \includegraphics[width=0.3\textwidth]{ar-map-feature.png}
+    \includegraphics[width=0.4\textwidth]{ar-map-feature.png}
     \caption{Map overlay displaying the path and translated labels}
     \label{fig:arMapFeature}
 \end{figure}
@@ -1043,7 +1050,7 @@ to create the UI we settled on.
 
 The early UI was very much a product of ARuko's development; many of it's
 elements were created as new features were added. But as more features were
-added, it became clear that the UI couldn't consist simply of buttons and 
+added, it became clear that the UI could not consist simply of buttons and 
 other basic features provided by Unity. We would need to learn more about 
 how to create more interesting and useful UI elements to accomodate for 
 our new functionality. 
@@ -1593,7 +1600,7 @@ While testing we discovered some issues with the design of the tour. One
 region was completely misplaced, so the audio played at the wrong time while
 walking through the area. Several other regions were too big, so the audio
 started playing long before the user was actually near the feature it was
-discussing. Using the Editour web-app, we were able to correct quickly these
+discussing. Using the Editour web app, we were able to correct quickly these
 issues with the tour design once we returned to Atticus' office.
 
 Additionally, one of the image targets had the wrong text in its information
@@ -1714,7 +1721,7 @@ Atticus Sims proposed the idea of working with Michael Whittle. Michael Whittle
 received his PhD at the Kyoto City University of Arts in 2014. His art has
 appeared in dozens of solo exhibitions and group exhibitions across the world,
 including Kyoto, Beijing, London and New York~\autocite{michaelwhittle2019}.
-Kyoto VR has worked with Michael Whittle in the past to create a 3D scan of a
+Kyoto~VR has worked with Michael Whittle in the past to create a 3D scan of a
 solo exhibition, `Portraits of Thought'. This exhibition displayed diagrams
 inspired by real science and mathematics. Atticus provided us with some
 diagrams to test in the Vuforia developer portal, since Michael Whittle wanted
@@ -1758,21 +1765,21 @@ features from Ritsumeikan, but image recognition target existed only at
 Kinkaku-ji. More extensive user testing at the actual site could have helped us
 catch bugs earlier and lead to a more polished final product.
 
-Despite these issues our team is happy with the product we delivered to Kyoto
-VR. ARuko is not quite ready to be sold on app stores yet, but with a little
-more development time it could easily be made ready. The UI could use more
-testing with real users to make sure it is intuitive and easy to use. We also
-intended to add a feature where the app could automatically download tour files
-from the Editour server and import them without having to rebuild. We were not
-able to complete this feature due to time constraints, but it could easily be
-added because all of ARuko's business logic is abstracted and generalized to
+Despite these issues our team is happy with the product we delivered to
+Kyoto~VR. ARuko is not quite ready to be sold on app stores yet, but with a
+little more development time it could easily be made ready. The UI could use
+more testing with real users to make sure it is intuitive and easy to use. We
+also intended to add a feature where the app could automatically download tour
+files from the Editour server and import them without having to rebuild. We were
+not able to complete this feature due to time constraints, but it could easily
+be added because all of ARuko's business logic is abstracted and generalized to
 support multiple tours. Editour also already supports requesting and downloading
 the most recent versions of tours.
 
 Editour is essentially feature complete. The most recent version, v1.3.0, can be
 found in the GitHub repository
 (\url{https://github.com/bandaloo/editour/releases/tag/v1.3.0}), and it contains
-all the features necessary to create and edit tours. In the future Kyoto VR
+all the features necessary to create and edit tours. In the future Kyoto~VR
 should move it to a more powerful hosting provider (see
 Section~\ref{sec:deployingTheEditourBackend}), but the current solution works
 for now.
@@ -1780,7 +1787,7 @@ for now.
 Given more time and resources, the app should be augmented to include a tour
 browser that automatically downloads an unpacks tours from the Editour server.
 More historic locations around Kyoto and Japan in general should be considered
-for other tours. With the work our team has done Kyoto VR now has a complete
+for other tours. With the work our team has done Kyoto~VR now has a complete
 platform for creating and delivering unique tours, which can easily be expanded
 upon in the future.
 
@@ -1839,7 +1846,7 @@ that contains the data of the response.
 	number of files.  The server will use the new metadata as well as the old
 	and new files to create a new version of an existing tour. Returns 201 if
 	the tour was edited successfully, 400 if the request was invalid, 404 if the
-	requested tour couldn't be found, or 500 if a server error occurred while
+	requested tour could not be found, or 500 if a server error occurred while
 	processing the request.
 \end{indented}
 
