@@ -921,6 +921,17 @@ haven't been modified in the past five days. We set up a \texttt{cron} job to
 run this script automatically once per day to clean out old temporary files that
 aren't being used any more.
 
+Unfortunately, the hosting provider Kyoto VR provided us with severely throttles
+disk write speeds. Because the backend has to write potentially large amounts of
+data to the disk every time a tour is uploaded or edited this becomes a major
+bottleneck for the web app's performance. For large tours (bigger than 50 MiB)
+this can cause an issue where the Node server takes so long to respond that
+Apache thinks it has timed out, and sends an erroneous 504 Gateway Timeout
+message~\autocite{rfc7231}. Without access to superuser permissions or a faster
+hosting provider there is nothing we can do about this bug. The Node server does
+eventually complete the request and respond correctly, so until Kyoto VR can get
+a better hosting provider we consider it a minor issue.
+
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
 
@@ -1727,8 +1738,57 @@ indicating that those images would serve well as AR image targets.
 
 \clearpage
 
-\section{Conclusion}
-\label{sec:conclusion}
+\section{Conclusion and Future Work}
+\label{sec:conclusionAndFutureWork}
+
+Despite the numerous pivots this project went through, in the end we were able
+to create a useful working prototype. The Editour is fully featured with
+everything needed to build an audio tour anywhere in the world. ARuko allows
+users to experience useful AR-enhanced tours in a pleasant and intuitive way.
+Together they provide a complete platform for building augmented reality tour
+guide apps.
+
+Although the finished product works as intended, we encountered several issues
+along the way. The changing scope and goal of the project meant we spent several
+weeks researching and working on features that did not make it into the final
+product (see Section~\ref{sec:pivots}), such as displaying images in 3D AR space
+and playing spatialized audio. If we had focused only on the features that made
+it into the final app from the start we could have had more time to polish and
+refine those features.
+
+Another challenge we faced was the difficulty in actually testing the app. The
+Ritsumeikan University Biwako-Kusatsu campus we stayed at is about ninety
+minutes away from Kinkaku-ji by expensive public transport, which meant that we
+were only able to go to the site to test ARuko twice. We could test some basic
+features from Ritsumeikan, but image recognition target existed only at
+Kinkaku-ji. More extensive user testing at the actual site could have helped us
+catch bugs earlier and lead to a more polished final product.
+
+Despite these issues our team is happy with the product we delivered to Kyoto
+VR. ARuko is not quite ready to be sold on app stores yet, but with a little
+more development time it could easily be made ready. The UI could use more
+testing with real users to make sure it is intuitive and easy to use. We also
+intended to add a feature where the app could automatically download tour files
+from the Editour server and import them without having to rebuild. We were not
+able to complete this feature due to time constraints, but it could easily be
+added because all of ARuko's business logic is abstracted and generalized to
+support multiple tours. Editour also already supports requesting and downloading
+the most recent versions of tours.
+
+Editour is essentially feature complete. The most recent version, v1.3.0, can be
+found in the GitHub repository
+(\url{https://github.com/bandaloo/editour/releases/tag/v1.3.0}), and it contains
+all the features necessary to create and edit tours. In the future Kyoto VR
+should move it to a more powerful hosting provider (see
+Section~\ref{sec:deployingTheEditourBackend}), but the current solution works
+for now.
+
+Given more time and resources, the app should be augmented to include a tour
+browser that automatically downloads an unpacks tours from the Editour server.
+More historic locations around Kyoto and Japan in general should be considered
+for other tours. With the work our team has done Kyoto VR now has a complete
+platform for creating and delivering unique tours, which can easily be expanded
+upon in the future.
 
 \clearpage % references should be on their own page
 
