@@ -7,7 +7,6 @@
 \usepackage{csquotes} % recommended for biblatex
 \usepackage{graphicx} % for images
 \usepackage[gen]{eurosym} % for literally just the euro symbol
-
 \usepackage{lipsum} % lorem-ipsum placeholder text
 \usepackage{bookmark} % links to other parts of the PDF
 % if we want to use a different style, here are some to look at
@@ -217,7 +216,7 @@ places, and objects overlaid onto images of the real
 world~\autocite{saenz2009}.  This provides the user with useful information
 without needing to alter the real historic site.
 
-\subsection{Current Augmented Reality Technology}
+\subsubsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
 
 While preparing for this project our team researched the current state of
@@ -227,7 +226,7 @@ the phone's camera, accelerometer, gyroscope, and GPS sensors to reproduce a
 view of the real world with virtual information layered on top of
 it~\autocite{bonsor2018}.
 
-\subsection{Augmented Reality Use Cases}
+\subsubsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
 
 Even though it is still a developing technology, augmented reality has been used
@@ -252,7 +251,7 @@ top of images of the real world~\autocite{concepcion2016} (see Figure
 	\label{fig:pokemonGo}
 \end{figure}
 
-\subsection{Challenges of Augmented Reality}
+\subsubsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
 
 As previously discussed, AR is a new and growing field full of opportunities.
@@ -308,13 +307,7 @@ were definitely our biggest challenge.  Only one of our phones is new enough to
 run AR technology at a decent level, making testing of our application
 difficult.
 
-\subsection{Apps for Art and Culture}
-\label{sec:appsForArtAndCulture}
-
-To explore existing AR apps for art and culture our group researched and tested
-several games, experiences, and platforms related to our project.
-
-\subsubsection{izi.TRAVEL}
+\subsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
 Before our project started, Kyoto VR was already using an app with a limited
@@ -347,7 +340,7 @@ specific places in the real world izi.TRAVEL uses a limited form of augmented
 reality. Our group aimed to implement and extend this functionality in our own
 app. See Section \ref{sec:aruko} for more details.
 
-\subsection{Platforms}
+\subsection{Augmented Reality Platforms}
 \label{sec:platforms}
 
 Before we could start working on creating our app, we first needed to decide
@@ -1034,6 +1027,70 @@ the base of the Golden Pavilion model as if they were holding it. Vuforia's
 image tracking is flexible enough such that the image target can be partially
 obscured.
 
+\subsubsection{Early UI}
+\label{sec:earlyUI}
+
+As ideas changed and ARuko became what it is today, the UI also changed
+greatly from it's early conception to the final version we used. But
+that early UI would prove just as important as the final one, because
+it was also how we learned many of the practices and skills we needed in order
+to create the UI we settled on. 
+
+The early UI was very much a product of ARuko's development; many of it's
+elements were created as new features were added. But as more features were
+added, it became clear that the UI couldn't consist simply of buttons and 
+other basic features provided by Unity. We would need to learn more about 
+how to create more interesting and useful UI elements to accomodate for 
+our new functionality. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{old-ui.png}
+	\caption[A screenshot of our early UI]
+	{A screenshot of our early UI}
+	\label{fig:oldUI}
+\end{figure}
+
+Pictured in Figure~\ref{fig:oldUI} is our early UI. It was a very minimal UI,
+but still covered all of the uses for our app at the time. The top of the 
+screen had two dropdown menus. The one on the left, shown open, would
+show AR image targets in the area that users could look for and scan. The right
+dropdown would be dynamically populated in each region with buttons bearing  
+different images. These images were ones that Atticus wanted to be viewable in AR using ground plane
+detection. When tapped, each button would create a 3D Cube, with the given image
+on each face, and place it on the ground where the user was pointing. 
+
+Learning to create these dropdown menus proved to be a very important lesson
+later on, since we would put that exact knowledge to use multiple times in the
+final UI. We were able to create the dynamically populated dropdown menus by 
+creating an empty vertical layout group, and then using a script to create
+buttons for each image based on which region the user is in, and then assign
+them as children of the layout group. Then, to get the smooth open/close animation,
+we used a boolean to mark the menu as open or closed and had the menu lerp to the
+corresponding position each frame until it was fully open or closed.  
+
+In between these two dropdown menus is a panel that is shown empty, but in practice would
+display the name for the region the user is in at the time. The empty space
+in the middle of the screen is where the AR camera display would be shown. In this 
+implementation, the AR functionality was the focus of the app, so it made sense
+to display the AR camera feed at all times. Lastly, on the bottom is the audio slider for the audio file played in each region. 
+We learned a lot about how audio sliders work in Unity with this feature, and would
+expand a lot on that knowledge for the final version of the app in order to optimize
+the slider's functionality and usefulness.
+
+This early UI taught us a lot about how to make a UI in Unity. We learned a lot of 
+basic things, like how all of the UI elements go on the Canvas, which represents
+the phone screen, and that everything should be anchored to locations on the screen
+so that they stay in the right place despite changes in screen size. 
+We also learned more complicated skills that would help us a lot later. We learned
+how to use audio sliders, and the ins and outs of how they work. And we learned
+how to create dropdown menus that expand when opened and contract when closed, 
+creating a very smooth movement affect without needing to animate the component. 
+And we also learned how to create button functionality through script, allowing
+for UI elements that can changed between the different tours loaded into our app.
+And we would bring all of these important skills we learned into the creation
+of our final UI to help make it as useful and interesting as it is now.
+
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
 
@@ -1177,6 +1234,89 @@ reviews were have the caveat ``Reviewer was gifted package by publisher'' which
 which we interpreted as a warning sign. Because of this, we decided to rebuild
 the UI largely from the ground up, using the Adobe XD file to guide us.
 %TODO refer to the section that discusses building the ui
+
+\subsubsection{Final UI Implementation}
+\label{sec:finalUI}
+
+While the newly proposed UI by Atticus was certainly a huge step up from
+our previous one, the things we had learned the first time around helped
+a lot in overcoming this rather large request in the relatively short amount
+of time we had. We had to get much more creative with how we implemented the
+UI and how everything worked together, but in the end this allowed us to 
+create a rather impressive final UI for and app that we're proud of. 
+
+One of the first major challenges we had to tackle was the need to switch
+modes while keeping certain UI elements constant. So when a user goes from
+the home screen to the Route Map, or into AR Mode, we needed the mode buttons,
+audio components, and region info to remain. We went did this by splitting up
+screen space into panels, with one for the region info up top, one each for the
+mode buttons and audio components on the bottom, and one for the different 
+modes in the middle of the screen. Then, within the mode panel, each mode 
+screen would be assigned as children, and toggled active or inactive based on 
+which mode the user is in at the time. That way, on-screen content can change
+while important UI elements remain constant. 
+
+Now, within the mode problem itself, there were other important things to 
+consider. One such topic was how to handle AR Mode. Previously, we had just
+left the AR camera running at all times, since it was the primary feature of 
+the app. But now, the focus was much more on the images and audio transcription
+in each region. For this, we found that we were able to disable and re-enable
+the AR camera in script, so we could turn it off while other modes were the
+focus, and back on when needed. We also weren't sure at first what to do about
+the chapter select menu, as it was also content that would occupy the space of
+the mode panel on screen, but needed to be accessible anywhere via the top 
+panel. Using our experience creating dropdown menus in the early UI, we simply
+left the chapter select menu enabled at all times, and lerped it open or closed
+as needed. 
+
+Another group of challenges were created by the content of the main screen,
+which showed the images and audio transcript associated with each region. To 
+display the images, we wanted the user to be able to click through them like
+an image gallery, but weren't sure how to do so in a way that was smooth and
+looked nice. But once again, our experience with dropdown menus came in handy. 
+We created the gallery out of a horizontal layout group, populated it with 
+images dynamically in each region, and then had the buttons lerp the gallery
+to different positions in order to switch between each image in a smooth and 
+pleasing way. As for the audio transcript, we knew we needed a scrollable
+text field that could accomodate varying amounts of text, since the audio files
+varied so greatly in length. After doing some research, we found a way to use 
+a vertical layout group to create a text field that expanded vertically, within
+a predefined bounds, to fit any amount of text provided to it. 
+
+At first, our route map screen was rather simple. It was just a static image
+of the map, with the route drawn on it, that the user could scroll up and down,
+since the image was too tall for the screen. But because the map was so zoomed
+out, certain features and text on the map were hard to see. This could also 
+make it hard to tell where someone is on the route. So we needed a way to zoom
+in on the map and scroll around it, even though Unity doesn't provide this 
+relatively common functionality in a standard way. After doing some research, 
+were able to write a script that used some of Unity's Input library to get
+touch input and use it to zoom in and out on the map within a predefined 
+bounds. 
+
+The last major UI implementation obstacle we had to overcome was a way to keep
+audio playing with the phone in your pocket. Atticus insisted that this sort of
+feature was required so that users could listen to the audio tour without using
+any of the other functionality the app provides, like the image gallery in each
+region or the AR features. But despite how common it is for apps to play audio 
+in the background or while the phone is locked , Unity does not provide a way 
+to accomplish this either. The way we got around this was by figuring out a way
+to prevent UI elements from accidentally being triggered while the phone is 
+still unlocked and in the app in the user's pocket. We added a mode to the mode
+panel that consists of simply a high opacity black screen with a slider on it,
+and added a button to the chapter select dropdown in order to trigger this 
+mode. What this pocket mode does is that, because of where it is placed in the 
+Unity hierarchy, when it is enabled, it blocks input to all other active UI
+components. Then the slider works much like the slider on old Apple devices,
+where you slide it from one end to the other to "unlock" the app again, 
+re-enabling UI interaction. We figured that it would be rather difficult to 
+accidentally trigger the slider while the phone is in one's pocket, and even
+have the slider reset if it is only slided partially before letting go. 
+
+The rest of the final UI consisted primarily of standard UI features, like 
+different basic buttons and panels in different places throughout the app. 
+We were ultimately able to replicate Atticus's Adobe XD file almost 
+perfectly, allowing us to use a great UI for this app we've worked so hard on.
 
 \clearpage
 
