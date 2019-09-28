@@ -96,6 +96,39 @@ been completed.
 \label{sec:executiveSummary}
 \addcontentsline{toc}{section}{Executive Summary}
 
+We built, tested and polished a mobile app to deliver an audio tour,
+incorporating various AR features to enhance the experience. In this app, which
+we call ARuko, many of the AR features were aimed at improving accessibility.
+These features included translating signs and providing additional info on the
+physical map located at the site. Other features were purely for spectacle,
+such as the ability to take an AR `souvenir' home by pointing the camera at the
+ticket.
+
+ARuko went through multiple iterations of user testing and bug testing at the
+site of the audio tour, Kinkaku-ji. Sections \ref{sec:initialFieldTesting} and
+\ref{sec:finalFieldTesting} go into detail about our two days of field testing
+on-site. From these tests, we were able to refine the user experience, and
+identify important features to add to the app. Much of the app's and
+functionality was dictated by Atticus Sims of Kyoto VR, who plans to monetize
+the app. We also worked closely with the IQP team, who has been tasked with
+exploring funding options and creating promotional content.
+
+Since our app had to deliver an audio tour supplemented by images based on your
+GPS position, we developed an internal tool to design these regions. Editour
+provides a rich editing suite for designing tours with images and audio.
+Section~\ref{sec:editingATour} goes into detail about the features of this web
+app. We also wrote a backend to manage the tour files, allowing one of us (or
+our sponsor, Atticus Sims) to download a zip file containing all of the media
+and info to reconstruct the tour. This zip can be extracted into the Unity
+project, which reconstructs the tour from the downloaded contents. We were able
+to host the backend on the server provided by Kyoto VR's hosting plan; we
+discuss the hurdles that we overcame to deploy the Editour backend with Kyoto
+VR's current setup in Section~\ref{sec:deployingTheEditourBackend}.
+
+At the end of this paper, we also discuss the alternative AR app concepts that
+were explored before development became completely focused on the tour app
+ARuko.
+
 \clearpage
 
 % now comes the table of contents, list of figures, and list of tables
@@ -953,6 +986,21 @@ button, a separate UI element will appear containing the translated text. Since
 this button is cast into the world using the AR camera, the button is
 intuitively placed directly onto the content in the real world.
 
+\subsubsection{Map Overlay Feature}
+\label{sec:mapOverlayFeature}
+
+Near the entrance of Kinkaku-ji before the ticket gate, there is a large
+illustrated map. Much like the signage, there is no language on the map other
+than Japanese. Using the AR camera within the app, you can project information
+onto the map. Figure~\ref{fig:arMapFeature} shows the blue highlighted path of
+the walking tour, including a few translated labels. 
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.3\textwidth]{ar-map-feature.png}
+    \caption{Map overlay displaying the path and translated labels}
+    \label{fig:arMapFeature}
+\end{figure}
+
 \subsubsection{Virtual Souvenir Feature}
 \label{sec:virtualSouveneir}
 
@@ -1387,14 +1435,14 @@ listening to the tour and using the app's features. Each member of our team
 also installed the beta version so we could fuzz test it.
 % TODO check if fuzz testing is really the right word here
 
-This was our first time trying the AR image recognition on the actual signs
-at Kinkaku-ji, rather than photographs of the signs, and it worked quite
-well. Vuforia was able to recognize almost all of the signs, even in
-different lighting than when the reference images were taken. For image
-targets that were small, far away, or obscured by shadows image recognition
-was slower, but Vuforia was always able to recognize them eventually. We
-discovered that the targets that worked best were large, had a lot of
-high-contrast text, and were uniformly lit.
+This was our first time trying the AR image recognition on the actual signs at
+Kinkaku-ji, rather than photographs of the signs, and it worked surprisingly
+well. Vuforia was able to recognize almost all of the signs, even in different
+lighting than when the reference images were taken. For image targets that were
+small, far away, or obscured by shadows image recognition was slower, but
+Vuforia was always able to recognize them eventually. We discovered that the
+targets that worked best were large, had a lot of high-contrast text, and were
+uniformly lit.
 
 While testing we discovered some issues with the design of the tour. One
 region was completely misplaced, so the audio played at the wrong time while
@@ -1462,17 +1510,80 @@ these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 
 \clearpage
 
-\section{Pivots}
-\label{sec:pivots}
+\section{Alternative AR App Concepts}
+\label{sec:alternativeArAppConcepts}
 
 Throughout the duration of the project, the goalposts shifted multiple times.
-This section details some of the initial plans that fell through.
+This section details some of the initial plans that we explored before Atticus
+shifted our focus to a walking tour app with AR features.
 
 \subsection{3D Spatialized Audio Tour}
 \label{sec:3dSpatializedAudioTour}
 
 One idea that was proposed initially was an AR audio experience using 3D
-spatialized audio.
+spatialized audio. Instead of traditional AR where the user is constantly
+looking through the camera, this experience would allow users to keep their
+phones in their pockets while taking the tour. Sound sources would change in
+physically based ways using motion tracking.
+
+We spent the second and third week creating demos to explore the possibility of
+a 3D spatialized audio tour. We found that this would be very difficult to do
+without the use of the camera. All of the technology for mobile AR we explored
+in Section~\ref{sec:platforms} depended heavily on the camera. If we were to
+build a 3D spatialized audio tour that ran entirely without use of the camera,
+we would not be able to take advantage of any of the useful features of the AR
+libraries we explored. Furthermore, Unity would be relegated to the simple role
+of exporting our app to multiple devices; we would not have any need to take
+advantage of its 3D capabilities.
+
+Thusly, we decided to see what was possible using the camera instead. We were
+able to get sound sources to fade in and out based on the distance to an image
+target. Naturally, if the image target were to go out of view of the camera,
+Vuforia stopped trying to estimate the camera's distance to the last known
+location of the image target. In order to make this work in the way Atticus
+imagined, we would need a way to shift to our own method of estimating distance
+to the sound source once the image target had been lost. While this might have
+been possible, it was difficult to estimate the amount of effort this would
+take, since we would essentially be implementing a feature seemingly not
+supported by current AR libraries.
+
+We explained the technical hurdles of this concept to Atticus. Ultimately, our
+focus shifted away from this idea for other logistical reasons. Initially,
+Atticus introduced the possibility of working closely with Kishi Bashi or
+Yannick Paget to produce the soundscape for the 3D spatialized audio tour.
+Yannick Paget is a French musician that became established in Japan. He is both
+conductor and composer, originally trained as a professional pianist and
+percussionist. He has written music for theater, film and orchestras around the
+world. Many of his original compositions were inspired by his experience living
+in Japan, such as Tears of Sakura
+(\begin{CJK}{UTF8}{min}サクラの涙\end{CJK})~\autocite{yannickpaget2016}. Kishi
+Bashi was born in Seattle and grew up in Virginia. Kishi Bashi has appeared at
+many major music festivals, toured the US extensively, and has even released
+his own line of coffee! His latest album, Omoiyari, was released on May
+31\textsuperscript{st}, 2019~\autocite{kishibashi2019}.
+
+\subsection{AR Art Gallery}
+\label{sec:arArtGallery}
+
+Atticus Sims proposed the idea of working with Michael Whittle. Michael Whittle
+received his PhD at the Kyoto City University of Arts in 2014. His art has
+appeared in dozens of solo exhibitions and group exhibitions across the world,
+including Kyoto, Beijing, London and New York~\autocite{michaelwhittle2019}.
+Kyoto VR has worked with Michael Whittle in the past to create a 3D scan of a
+solo exhibition, `Portraits of Thought'. This exhibition displayed diagrams
+inspired by real science and mathematics. Atticus provided us with some
+diagrams to test in the Vuforia developer portal, since Michael Whittle wanted
+to know how well certain pieces of art would work as AR image targets. All of
+images that were provided to us were ranked as ``five stars'' by Vuforia,
+indicating that those images would serve well as AR image targets.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.7\textwidth]{exhibition-scan.png}
+    \caption{A screenshot of the 3D scan of `Portraits of Thought,' accessible
+    from the web}
+	\label{fig:exhibitionScan}
+\end{figure}
 
 \clearpage
 
