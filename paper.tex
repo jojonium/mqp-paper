@@ -888,6 +888,17 @@ haven't been modified in the past five days. We set up a \texttt{cron} job to
 run this script automatically once per day to clean out old temporary files that
 aren't being used any more.
 
+Unfortunately, the hosting provider Kyoto VR provided us with severely throttles
+disk write speeds. Because the backend has to write potentially large amounts of
+data to the disk every time a tour is uploaded or edited this becomes a major
+bottleneck for the web app's performance. For large tours (bigger than 50 MiB)
+this can cause an issue where the Node server takes so long to respond that
+Apache thinks it has timed out, and sends an erroneous 504 Gateway Timeout
+message~\autocite{rfc7231}. Without access to superuser permissions or a faster
+hosting provider there is nothing we can do about this bug. The Node server does
+eventually complete the request and respond correctly, so until Kyoto VR can get
+a better hosting provider we consider it a minor issue.
+
 \subsubsection{Future of Editour}
 \label{sec:futureOfEditour}
 
