@@ -996,7 +996,7 @@ onto the content in the real world.
 
 Near the entrance of Kinkaku-ji before the ticket gate, there is a large
 illustrated map. Much like the signage, there is no language on the map other
-than Japanese. Using the AR camera within the app, you can project information
+than Japanese. Using the AR camera within the app, information can be projected
 onto the map. Figure~\ref{fig:arMapFeature} shows the blue highlighted path of
 the walking tour, including a few translated labels. 
 
@@ -1009,115 +1009,114 @@ the walking tour, including a few translated labels.
 \subsubsection{Virtual Souvenir Feature}
 \label{sec:virtualSouveneir}
 
-When you buy a ticket to enter Kinkaku-ji, you receive a long sheet of
-printed paper with calligraphy. The tickets are large and visually appealing;
-they are souvenirs unto themselves that one might feel inclined to keep
-around. Over the course of our three month stay we visited Kinkaku-ji
-multiple times. For each visit, we received identical tickets. Seemingly, the
-design on the tickets do not change on a regular basis, if at all.
+Tickets to enter Kinkaku-ji are long sheets of printed paper with calligraphy.
+The tickets are large and visually appealing; they are souvenirs unto themselves
+that one might feel inclined to keep around. Over the course of our three month
+stay we visited Kinkaku-ji multiple times. For each visit, we received identical
+tickets. Seemingly, the design on the tickets do not change on a regular basis,
+if at all.
 
-Because the tickets are unlikely to change, this enables us to provide the
-user with a ``virtual souvenir'' using the AR camera. This is the only AR
-feature that is not tied directly to an image target that can only be
-accessed at Kinkaku-ji. While the image gallery and segments of the audio
-tour can be accessed at any time using the ``Chapter Select'' menu, most of
-the AR features can only be experienced during the walking tour, pointing the
-camera at objects physically located at the site. Augmenting the ticket
-with 3D content allows visitors to take something home, giving them a reason
-to launch the app later.
+Because the tickets are unlikely to change frequently, this enables us to
+provide the user with a ``virtual souvenir'' using the AR camera. This is the
+only AR feature that is not tied directly to an image target that can only be
+accessed at Kinkaku-ji. While the image gallery and segments of the audio tour
+can be accessed at any time using the ``Chapter Select'' menu, most of the AR
+features can only be experienced during the walking tour, pointing the camera at
+objects physically located at the site. Augmenting the ticket with 3D content
+allows visitors to take something home, giving them a reason to launch the app
+later.
 
 We found a free untextured model of the Golden Pavilion to use for this
 feature. Using Unity's built-in capability to design materials, we created
 a shiny golden material and applied it to the model.
 
 Originally, the AR model of the Golden Pavilion was flush against the plane of
-the ticket, sitting on the paper as if it were ground. Atticus suggested that
-we re-orient the model such that the ticket served as a back plane. This would
-allow users to hold the ticket vertically, and view the Golden Pavilion
-floating in front of the ticket. This allows users to place their hands under
-the base of the Golden Pavilion model as if they were holding it. Vuforia's
-image tracking is flexible enough such that the image target can be partially
-obscured.
+the ticket, sitting on the paper as if it were ground. Atticus suggested that we
+re-orient the model such that the ticket served as a back plane. This would
+allow users to hold the ticket vertically, and view the Golden Pavilion floating
+in front of the ticket. This allows users to place their hands under the base of
+the Golden Pavilion model as if they were holding it; Vuforia's image tracking
+is flexible enough such that the image target can be partially obscured by the
+hand.
 
-\subsubsection{Early UI}
-\label{sec:earlyUI}
+\subsubsection{Early User Interface}
+\label{sec:earlyUserInterface}
 
-As ideas changed and ARuko became what it is today, the UI also changed
-greatly from it's early conception to the final version we used. But
-that early UI would prove just as important as the final one, because
-it was also how we learned many of the practices and skills we needed in order
-to create the UI we settled on. 
+As ideas changed and ARuko became what it is today, the user interface (UI) also
+changed greatly from its early conception to the final version. Still, the early
+UI was a valuable learning experience, providing us with skills that were useful
+when building the final version.
 
-The early UI was very much a product of ARuko's development; many of it's
-elements were created as new features were added. But as more features were
-added, it became clear that the UI could not consist simply of buttons and 
-other basic features provided by Unity. We would need to learn more about 
-how to create more interesting and useful UI elements to accomodate for 
-our new functionality. 
+The early UI was very much a product of ARuko's development; many of its
+elements were created on the fly as new features were added. As more features
+were added, it became clear that the UI could not consist simply of buttons and
+other basic features provided by Unity. We would need to learn more about how to
+create more interesting and useful UI elements to accommodate for our new
+functionality. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{old-ui.png}
-	\caption[A screenshot of our early UI]
-	{A screenshot of our early UI}
+	\includegraphics[width=0.4\textwidth]{old-ui.png}
+	\caption{A screenshot of our early UI}
 	\label{fig:oldUI}
 \end{figure}
 
 Pictured in Figure~\ref{fig:oldUI} is our early UI. It was a very minimal UI,
-but still covered all of the uses for our app at the time. The top of the 
-screen had two dropdown menus. The one on the left, shown open, would
-show AR image targets in the area that users could look for and scan. The right
-dropdown would be dynamically populated in each region with buttons bearing  
-different images. These images were ones that Atticus wanted to be viewable in AR using ground plane
-detection. When tapped, each button would create a 3D Cube, with the given image
-on each face, and place it on the ground where the user was pointing. 
+but still covered all of the uses for our app at the time. The top of the screen
+had two dropdown menus. The one on the left (which is open shown open in
+Figure~\ref{fig:oldUI}) shows AR image targets in the area that users could
+look for and scan. The right dropdown would be dynamically populated in each
+region with buttons bearing different images. These images were ones that
+Atticus wanted to be viewable in AR using ground plane detection. When tapped,
+each button would create a 3D Cube, with the given image on each face, and place
+it on the ground where the user was pointing. 
+%TODO provide a figure of the AR cube
+
+Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
+target capabilities for scanning objects outside of the expected use case, such
+as 3D landscapes or the side of a building. We had serious doubts about how
+well this would work, and our suspicions were confirmed after some field
+testing. This was the reasoning behind focusing on ground-plane detection
+instead of image targets; ground-plane detection can be used anywhere, and is
+much more reliable than treating 3D objects as 2D image targets.
 
 Learning to create these dropdown menus proved to be a very important lesson
 later on, since we would put that exact knowledge to use multiple times in the
-final UI. We were able to create the dynamically populated dropdown menus by 
-creating an empty vertical layout group, and then using a script to create
-buttons for each image based on which region the user is in, and then assign
-them as children of the layout group. Then, to get the smooth open/close animation,
-we used a boolean to mark the menu as open or closed and had the menu lerp to the
-corresponding position each frame until it was fully open or closed.  
-
-In between these two dropdown menus is a panel that is shown empty, but in practice would
-display the name for the region the user is in at the time. The empty space
-in the middle of the screen is where the AR camera display would be shown. In this 
+final UI. We were able to create the dynamically populated dropdown menus by
+creating an empty vertical layout group. Then, a script would create buttons for
+each image to display, and assign those images as children of the layout group.
+Then, to get the smooth open/close animation, we ``lerp'' (linearly interpolate)
+the menu to the corresponding position each frame until it is fully open or
+closed. In between these two dropdown menus is a panel that would display the
+name for the region the user is in at the time. The empty space in the middle of
+the screen is where the AR camera display would be shown. In this
 implementation, the AR functionality was the focus of the app, so it made sense
-to display the AR camera feed at all times. Lastly, on the bottom is the audio slider for the audio file played in each region. 
-We learned a lot about how audio sliders work in Unity with this feature, and would
-expand a lot on that knowledge for the final version of the app in order to optimize
-the slider's functionality and usefulness.
+to display the AR camera feed at all times. Lastly, on the bottom is the audio
+slider for the audio file played in each region. We learned about how audio
+sliders work in Unity with this feature, and would expand on that knowledge for
+the final version of the app in order to optimize the slider's functionality.
 
-This early UI taught us a lot about how to make a UI in Unity. We learned a lot of 
-basic things, like how all of the UI elements go on the Canvas, which represents
-the phone screen, and that everything should be anchored to locations on the screen
-so that they stay in the right place despite changes in screen size. 
-We also learned more complicated skills that would help us a lot later. We learned
-how to use audio sliders, and the ins and outs of how they work. And we learned
-how to create dropdown menus that expand when opened and contract when closed, 
-creating a very smooth movement affect without needing to animate the component. 
-And we also learned how to create button functionality through script, allowing
-for UI elements that can changed between the different tours loaded into our app.
-And we would bring all of these important skills we learned into the creation
-of our final UI to help make it as useful and interesting as it is now.
+Although most elements of the initial UI did not survive into the final product,
+it was still quite valuable as a learning tool. While crafting this prototype we
+discovered many of the intricacies of UI design in Unity. For example, all UI
+elements must be attached to a Unity canvas element, which covers the entire
+phone screen. Elements should be anchored to edges or corners of this canvas so
+that they stay in a constant location on different-size screens.
 
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
 
 By the end of the project, we were able to turn ARuko into an app rich with
-features and polish. However, many of these features were presented to us
-relatively late into the project. This section discusses some of our initial
-concerns when we were first given the task of bringing Atticus' experience
-design to life.
+features and polish. However, many of these features were requested relatively
+late into the project. This section discusses some of our initial concerns when
+we were first given the task of bringing Atticus's ideas to life.
 
 On September 10\textsuperscript{th} Atticus Sims presented us with a storyboard
 for the app experience. We would not be able to resume work until September
 17\textsuperscript{th} due to prior travel plans. The design he put forth had
 ramifications that rippled throughout the entire software stack we had
-constructed up to this point.  Figure~\ref{fig:adobeXdDesign} shows the experience
-design document created in Adobe XD.
+constructed up to this point. Figure~\ref{fig:adobeXdDesign} shows the
+experience design document created in Adobe XD.
 
 \begin{figure}[h]
 	\centering
@@ -1130,17 +1129,18 @@ design document created in Adobe XD.
 One of the notable changes is the chapter select screen, which is the third
 screen in Figure~\ref{fig:adobeXdDesign}. Before, we worked under the assumption
 that each geolocation-triggered region would not have to be ordered in any way.
-This assumption made its way into Editour, which did not currently have a way
+This assumption made its way into Editour, which at the time did not have a way
 to reorder regions once they were placed. Because of this chapter selection
-screen, we needed some way to rearrange the order of regions within Editour.
+screen, we needed some way to specify and rearrange the order of regions within
+Editour.
 
 The inclusion of a ``chapter selection'' screen had other notable design
 implications as well. Initially different regions were triggered solely by the
-GPS location. Walking into a region would prompt the available images to change
-on screen. Also, a new audio track would begin to play. This forced us to
-answer certain basic questions about the chapter select screen for ourselves.
-For example, consider a user that steps into one region, triggering the audio
-and images. Then, that user selects a chapter from the chapter selection menu,
+GPS location. Walking into a region would cause the available images to change
+on screen. Also, a new audio track would begin to play. This forced us to answer
+certain basic questions about the chapter select screen for ourselves. For
+example, consider a user that steps into one region, triggering the audio and
+images. Then, that user selects a chapter from the chapter selection menu,
 overriding the ``true'' region the user is physically standing inside of. When
 does the GPS ``take over'' again? Should the region change back to the ``true''
 region once the audio of the selected region finishes? This might be intuitive
@@ -1148,10 +1148,10 @@ and preferred for most users, but what if the user is more interested in the
 image gallery than the audio? Then, the persistence of the image gallery is
 strangely tied to the duration of the audio track playing underneath. What if a
 user selects a chapter, and then physically enters that region moments later?
-Should the audio restart to indicate that the user has arrived at the location?
-Or, will this appear as though the audio track skipped to the beginning again
-for no reason? As you can imagine, this seemingly minor inclusion created a
-significant amount of discussion.
+Should the audio restart to indicate that the user has arrived at the location,
+or will this appear as though the audio track skipped to the beginning again for
+no reason? This seemingly minor inclusion created a significant amount of
+discussion.
 
 Other concerns about the chapter selection feature were technical. For a long
 time, we were working under the assumption that regions would only be triggered
@@ -1168,17 +1168,14 @@ With more time, we might have been able to get the ground-plane image placement
 feature to a state where Atticus might have liked it. We wanted to explore ways
 to theme the 2D images in the 3D world, such as by framing the images in a
 traditional Japanese pagoda. We had already spent two weeks on this feature, so
-dropping this feature was a setback we had to plan around.
+dropping it was a setback we had to plan around.
 
 On the same screen, there is a scrollable window of text for a transcript of
 the audio. Because of this, the Editour UI and tour metadata JSON file needed
 to be updated to accommodate one transcript per region. On top of this, the C\#
 code that interprets the tour file needed to be updated to expect an audio
 transcript field.  Figure~\ref{fig:editourAdditions} shows the UI elements that
-changed in order to add these new features. The arrows next to the region name
-can be used to move the ``Region Card'' up and down in the side bar. In the
-``Media'' tab, there is also a text area to include a transcript of the
-uploaded audio file.
+changed in order to add these new features.
 
 \begin{figure}[h]
 	\centering
@@ -1189,20 +1186,20 @@ uploaded audio file.
 
 At this point, the codebase for Editour was already around three thousand lines
 of vanilla JavaScript. Type-checking provided by Visual Studio Code and JSDoc
-made the growing code complexity more manageable. Excluding Node.js modules,
-the only external library we used for Editour was Leaflet, an open-source
-JavaScript library for interactive maps~\autocite{leafletjs}. We did not use
-any libraries for developing frontends like Facebook's React or Google's
-Angular. Instead, all of the complex UI interactions were handled by modifying
-the DOM directly with JavaScript's built-in functionality. Furthermore, we did
-not use any advanced frontend build tools such as Rollup, webpack or Parcel.
-This was likely an appropriate decision for a JavaScript project of this scope.
-Considering we had limited to no experience with React or Angular, it was also
-faster to develop the UI in the way we were used to from previous experience.
-But if we were to continue to develop Editour, UI libraries and frontend build
-tools would be something to consider. With these changing requirements, the
-Editour was becoming onerous to maintain at this stage of the project. Luckily,
-these changes were still manageable to implement.
+made the growing code complexity more manageable. Excluding Node.js modules, the
+only external library we used for Editour was Leaflet, an open-source JavaScript
+library for interactive maps~\autocite{leafletjs}. We did not use any framework
+for developing frontends like Facebook's React or Google's Angular. Instead, all
+of the complex UI interactions were handled by modifying the DOM directly with
+JavaScript's built-in functionality. Furthermore, we did not use any advanced
+frontend build tools such as Rollup, webpack or Parcel. For a JavaScript project
+of this scope, this was the correct decision. Considering we had limited
+knowledge of React or Angular, it was also faster to develop the UI in the
+way we were used to from previous experience. But if we were to continue to
+develop Editour, UI libraries and frontend build tools would be something to
+consider. With these changing requirements, the Editour was becoming onerous to
+maintain at this stage of the project. Luckily, these changes were still
+manageable to implement.
 
 With the ground-plane detection features stripped away from the main app, the
 AR focus shifted to translating the maps and signs using the camera. The fourth
@@ -1221,21 +1218,12 @@ more thoroughly in Section~\ref{sec:translationFeature}.
     \label{fig:signTranslation}
 \end{figure}
 
-%TODO should this paragraph move somewhere else?
-Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
-target capabilities for scanning objects outside of the expected use case, such
-as 3D landscapes or the side of a building. We had serious doubts about how
-well this would work, and our suspicions were confirmed after some field
-testing. This was the reasoning behind focusing on ground-plane detection
-instead of image targets; ground-plane detection can be used anywhere, and is
-much more reliable than treating 3D objects as 2D image targets.
-
 Since Adobe XD is largely a prototyping and design tool, a considerable amount
 of legwork would still need to be done to rebuild the proposed design using
 Unity's UI components. Adobe XD allowed us to export a few important UI
 elements as PNGs, such as the buttons to enter AR mode and view the map. We
 briefly explored a few solutions to automating the task of getting the Adobe XD
-project into Unity. We found one payed extension (for \$18) on the Unity Asset
+project into Unity. We found one paid extension (for \$18) on the Unity Asset
 store called ``Experience Importer - Adobe Xd files importer.'' The download
 page for this extension claims ``Transfer AdobeXd project directly to Unity.
 Forget about hours of positioning objects. They're already there! Just drag .xd
@@ -1250,94 +1238,56 @@ the UI largely from the ground up, using the Adobe XD file to guide us.
 \subsubsection{Final UI Implementation}
 \label{sec:finalUI}
 
-While the newly proposed UI by Atticus was certainly a huge step up from
-our previous one, the things we had learned the first time around helped
-a lot in overcoming this rather large request in the relatively short amount
-of time we had. We had to get much more creative with how we implemented the
-UI and how everything worked together, but in the end this allowed us to 
-create a rather impressive final UI for and app that we're proud of. 
+The lessons we learned from the initial UI design (see
+Section~\ref{sec:earlyUserInterface}) helped us create the final design in such
+a short period of time. Although the new UI is significantly more complicated
+than the original prototype, we were able to implement all of Atticus's desired
+features within the time limit.
 
-One of the first major challenges we had to tackle was the need to switch
-modes while keeping certain UI elements constant. So when a user goes from
-the home screen to the Route Map, or into AR Mode, we needed the mode buttons,
-audio components, and region info to remain. We went did this by splitting up
-screen space into panels, with one for the region info up top, one each for the
-mode buttons and audio components on the bottom, and one for the different 
-modes in the middle of the screen. Then, within the mode panel, each mode 
-screen would be assigned as children, and toggled active or inactive based on 
-which mode the user is in at the time. That way, on-screen content can change
-while important UI elements remain constant. 
-
-Now, within the mode problem itself, there were other important things to 
-consider. One such topic was how to handle AR Mode. Previously, we had just
-left the AR camera running at all times, since it was the primary feature of 
-the app. But now, the focus was much more on the images and audio transcription
-in each region. For this, we found that we were able to disable and re-enable
-the AR camera in script, so we could turn it off while other modes were the
-focus, and back on when needed. We also weren't sure at first what to do about
-the chapter select menu, as it was also content that would occupy the space of
-the mode panel on screen, but needed to be accessible anywhere via the top 
-panel. Using our experience creating dropdown menus in the early UI, we simply
-left the chapter select menu enabled at all times, and lerped it open or closed
-as needed. 
+One of the first hurdles we had to overcome was keeping certain UI elements
+constant while the user switches between the home screen, AR camera, and map
+view. The mode buttons, audio controls, and top bar need to remain on the screen
+at all times. To achieve this, we divided the screen into panels. Only one of
+the three main panels are set to ``active'' at a given time. Previously, the app
+left the AR camera running at all times, since there was only one main screen.
+In the new design, the AR camera is only set to ``active'' only when the AR
+panel is being shown. This prevents us from incurring unnecessary computational
+cost when the AR camera was not in use.
 
 Another group of challenges were created by the content of the main screen,
 which showed the images and audio transcript associated with each region. To 
 display the images, we wanted the user to be able to click through them like
-an image gallery, but weren't sure how to do so in a way that was smooth and
-looked nice. But once again, our experience with dropdown menus came in handy. 
-We created the gallery out of a horizontal layout group, populated it with 
-images dynamically in each region, and then had the buttons lerp the gallery
-to different positions in order to switch between each image in a smooth and 
-pleasing way. As for the audio transcript, we knew we needed a scrollable
-text field that could accomodate varying amounts of text, since the audio files
-varied so greatly in length. After doing some research, we found a way to use 
-a vertical layout group to create a text field that expanded vertically, within
-a predefined bounds, to fit any amount of text provided to it. 
+an image gallery.
 
-At first, our route map screen was rather simple. It was just a static image
-of the map, with the route drawn on it, that the user could scroll up and down,
-since the image was too tall for the screen. But because the map was so zoomed
-out, certain features and text on the map were hard to see. This could also 
-make it hard to tell where someone is on the route. So we needed a way to zoom
-in on the map and scroll around it, even though Unity doesn't provide this 
-relatively common functionality in a standard way. After doing some research, 
-were able to write a script that used some of Unity's Input library to get
-touch input and use it to zoom in and out on the map within a predefined 
-bounds. 
+We created the gallery out of a horizontal layout group, populated it with
+images dynamically in each region, and then had the buttons ``lerp'' the gallery
+to different positions in order to switch between each image in a smooth and
+pleasing way. As for the audio transcript, we knew we needed a scrollable text
+field that could accomodate varying amounts of text, since the audio files
+varied so greatly in length. We created a vertical layout group to create a text
+field that expanded vertically within predefined bounds to fit an arbitrary
+amount of text. 
 
 The last major UI implementation obstacle we had to overcome was a way to keep
 audio playing with the phone in your pocket. Atticus insisted that this sort of
 feature was required so that users could listen to the audio tour without using
 any of the other functionality the app provides, like the image gallery in each
-region or the AR features. But despite how common it is for apps to play audio 
-in the background or while the phone is locked , Unity does not provide a way 
-to accomplish this either. The way we got around this was by figuring out a way
-to prevent UI elements from accidentally being triggered while the phone is 
-still unlocked and in the app in the user's pocket. We added a mode to the mode
-panel that consists of simply a high opacity black screen with a slider on it,
-and added a button to the chapter select dropdown in order to trigger this 
-mode. What this pocket mode does is that, because of where it is placed in the 
-Unity hierarchy, when it is enabled, it blocks input to all other active UI
-components. Then the slider works much like the slider on old Apple devices,
-where you slide it from one end to the other to "unlock" the app again, 
-re-enabling UI interaction. We figured that it would be rather difficult to 
-accidentally trigger the slider while the phone is in one's pocket, and even
-have the slider reset if it is only slided partially before letting go. 
-
-The rest of the final UI consisted primarily of standard UI features, like 
-different basic buttons and panels in different places throughout the app. 
-We were ultimately able to replicate Atticus's Adobe XD file almost 
-perfectly, allowing us to use a great UI for this app we've worked so hard on.
+region or the AR features. Despite how common it is for apps to play audio in
+the background or while the phone is locked, Unity does not provide a way to
+accomplish this. Our workaround was to create a ``pocket mode'' that prevents UI
+elements from accidentally being triggered. The user exits pocket mode with a
+deliberate swipe to the right. If the slider is released partway through the
+action, the slider springs back to the beginning. We were ultimately able to
+replicate Atticus's Adobe XD file almost perfectly.
 
 \clearpage
 
 \section{Testing}
 \label{sec:testing}
 
-Both pieces of our project---the Editour and ARuko---are designed to be used by
-people who aren't programmers. The Editour will be used by Atticus in the future
-to design more tours, and ARuko will be used by the general public. Because of
+Both pieces of our project---Editour and ARuko---are designed to be used by
+people who are not programmers. Editour will be used by Atticus in the future to
+design more tours, and ARuko will be used by the general public. Because of
 this, we needed to do extensive testing to ensure not only that the products
 work as intended without bugs, but also that they would be pleasant and easy to
 use for their intended users.
@@ -1348,10 +1298,10 @@ use for their intended users.
 \subsection{Testing Editour}
 \label{sec:testingEditour}
 
-Because the Editour is intended only to be a tool to aid Atticus in creating
-tours our user testing was less rigid. Even so, the frontend and backend we
-built for Editour ended up being largely reliable. The reliability issues
-stemmed from the hosting provider, which was out of our control.
+Because Editour is simply an internal tool, our user testing was less rigid.
+Even so, the frontend and backend we built for Editour ended up being reliable.
+The few reliability issues stemmed from the hosting provider, which was out of
+our control.
 
 \subsubsection{Unit Testing the Editour Backend}
 \label{sec:unitTestingTheEditourBackend}
@@ -1366,11 +1316,12 @@ functions, since most of the backend is written asynchronously. Along with Mocha
 we also used SuperTest, a library for writing high-level end-to-end HTTP
 tests~\autocite{supertest2019}.
 
-For each of the six API endpoints that the backend responds to we wrote an
+For each of the six API endpoints that the backend responds to, we wrote an
 extensive series of end-to-end tests to ensure that each step along the pipeline
 from receiving a request to sending a response worked properly. We also wrote
-many fuzz tests, to make sure the backend would respond correctly to invalid
-requests, e.g. by responding with an HTTP 400 error message~\autocite{rfc7231}.
+many fuzz tests to make sure the backend would respond correctly to invalid
+requests, for example, by responding with an HTTP 400 error
+message~\autocite{rfc7231}.
 
 These tests were very useful in tracking down bugs and unexpected behavior in
 the backend, and also allowed us to make sure no functionality changed when
@@ -1380,22 +1331,20 @@ adding new features or making changes to underlying logic later on.
 \label{sec:editourFrontendTesting}
 
 We suspect that Editour might have a life outside of this particular use case
-for designing tours, depending on how we choose to further develop this
-software. This is why Editour is perhaps more polished than your typical tool
-purely for internal use.
+depending on how it is developed later on. This is why Editour is perhaps more
+polished than your typical tool purely for internal use.
 
-For the duration of the project however, Editour only had to be used by us
-three and Atticus. Therefore, the testing for the frontend of Editour was less
+For the duration of the project however, Editour only had to be used our team
+and Atticus. Therefore, the testing for the frontend of Editour was less
 systematic than other parts of the software stack. This decision also helped us
-focus our efforts on testing the reliability and user experience of ARuko. That
-being said, we were able to add many feature and get the Editour experience to
-a polished state through our own testing, using GitHub's tools to keep us
+focus our efforts on testing the reliability and user experience of ARuko.
+Still, we were able to add many features and get the Editour experience to a
+polished state through our own testing, using GitHub's tools to keep us
 organized.
 
 In order to test for bugs, all three of us periodically interacted with
 successive builds of the frontend. When bugs were found, we would log these as
-``Issues'' on the GitHub repository. These issues would get resolved in
-successive pull requests.
+``Issues'' on the GitHub repository.
 
 Since we had to use Editour frequently to create test tours for ARuko, we were
 able to identify features that would make our own work more efficient. This
@@ -1403,9 +1352,9 @@ worked as a kind of informal user testing. We kept track of feature requests
 using the same system as bug reports.
 
 Issues and feature requests alike got resolved in future pull requests. We
-resolved over thirty issues and feature requests using this workflow. The
-GitHub issues tab (which can be see in Figure~\ref{fig:issuesPageExample}) was
-very useful for making sure we made use of our user testing and bug testing.
+resolved over thirty issues and feature requests using this workflow. The GitHub
+issues tab (which can be see in Figure~\ref{fig:issuesPageExample}) was very
+useful for ensuring we made use of our user testing and bug testing.
 
 \begin{figure}[h]
 	\centering
@@ -1420,17 +1369,17 @@ very useful for making sure we made use of our user testing and bug testing.
 The UI and AR features of the app are very important to the user experience. At
 the same time, ARuko is not as purely graphical as it may seem. There is a
 significant amount of ``business logic'' that interprets the tour from the
-Editour file. On top of this, the geometric checks to test whether the user is
+Editour file. On top of this, the geometric tests to check whether the user is
 inside a particular arbitrarily-defined geographic region are very important to
 get right.  Using Unity's built-in NUnit unit testing framework, we wrote tests
 to verify whether the tour data was being parsed correctly, and whether the tour
 would be run correctly.
 
-As a reminder, regions that trigger audio can be a set of three or more points
-that define a closed polygon. Using the user's GPS location, the app needs to
-periodically run a check to see if the user is located within one of those
-polygons, which can be either concave or convex.
+Regions are a set of three or more points that define a closed polygon. Using
+the user's GPS location, the app needs to periodically run a check to see if the
+user is located within one of those polygons.
 
+% TODO move the stuff about the algorithm into the implementation section
 One decent algorithm for accomplishing this is by drawing a ray from a given
 point to infinity. Barring edge cases (which will be discussed shortly) the
 point is inside the polygon if the ray passes through an even number of line
@@ -1448,45 +1397,44 @@ all of the polygons being tested~\autocite{geeksforgeekspolygon}.
 \end{figure}
 
 For this, we implemented a few mathematical functions for individual parts of
-the algorithm, such as testing for intersection. We wrote unit tests to test
-each part of the algorithm, so we could be confident that the GPS component of
-the app would correctly place users into the correct regions.
+the algorithm, such as one that tests to see if two lines intersect. We wrote
+unit tests to verify each part of the algorithm. This gave us confidence that
+the GPS component of the app would place users into the correct regions.
 
-There is one edge case where this algorithm has difficulties. If the ray that
-is drawn for testing intersections passes directly through a vertex, the
-algorithm will count two intersections instead of just one. Even though this is
-highly unlikely considering our use case, we decided that our algorithm should
-be robust enough to handle this on a matter of principle. Unit-testing helped us
-catch and deal with this edge case.
+There is one edge case where this algorithm has difficulties. If the ray that is
+drawn for testing intersections passes directly through a vertex, the algorithm
+will count two intersections instead of just one. Even though this is highly
+unlikely considering our use case, we decided that our algorithm should be
+robust enough to handle this on a matter of principle. We solved this by running
+a check on all vertices in the polygon to see if any were exactly colinear with
+the ray. If this is the case, one intersection count is subtracted from the
+total. Unit testing helped us catch and deal with this edge case.
 
 \subsection{Testing Taking a Tour with ARuko}
 \label{sec:testingARuko}
 
-Because it was not feasible to travel to Kinkaku-ji every time we needed to
-test the GPS functionality of the app, we used Editour to design an example
-tour around the Ritsumeikan Biwako-Kusatsu campus where we worked. This allowed
-us to catch various bugs before we created a finalized prototype for
-field-testing at Kinkaku-ji. The tour represented in \ref{fig:ritsuTour} is
-what we used for testing the app. The ``C-Shaped Region'' helped us test
-concave regions. This uniquely shaped region also prompted us to think about
-what UI behavior made the most sense if a user were to walk into a region, walk
-out and then in again. We decided that it was awkward if the audio restarted
-upon re-entering a region, since the audio would still be playing once a user
-left the region. (The region at the bottom surrounding our dormitories was added
-for our convenience, allowing us to test the app while we were away from the
-lab.) As we began to implement more complex UI that changed based on GPS
-position in various ways, directly taking the tour by walking around was an
-invaluable way to test. Section~\ref{sec:adobeXdDesign} details how the UI grew
-in complexity in the late stages of the project. Having a way to regularly run
-field tests was integral to polishing the app in time before we revisited
-Kinkaku-ji.  Because the Editour was flexible enough to easily swap out media
-and add regions to the tour, the Editour proved itself to be as helpful for
-testing as it was for crafting the final tour that could be taken at
-Kinkaku-ji.
+Because it was not feasible to travel to Kinkaku-ji every time we needed to test
+the GPS functionality of the app, we used Editour to design an example tour
+around the Ritsumeikan Biwako-Kusatsu campus where we worked. This allowed us to
+catch various bugs before we created a finalized prototype for field-testing at
+Kinkaku-ji. The tour represented in Figure~\ref{fig:ritsuTour} is what we used
+for testing the app. The ``C-Shaped Region'' helped us test concave regions.
+This uniquely shaped region also prompted us to think about what UI behavior
+made the most sense if a user were to walk into a region, walk out and then in
+again. We decided that it was awkward if the audio restarted upon re-entering a
+region, since the audio would still be playing once a user left the region. As
+we began to implement more complex UI that changed based on GPS position in
+various ways, directly taking the tour by walking around was an invaluable way
+to test. Section~\ref{sec:adobeXdDesign} details how the UI grew in complexity
+in the late stages of the project. Having a way to regularly run field tests was
+integral to polishing the app in time before we revisited Kinkaku-ji.  Because
+the Editour was flexible enough to easily swap out media and add regions to the
+tour, the Editour proved itself to be as helpful for testing as it was for
+crafting the final tour that could be taken at Kinkaku-ji.
 
 If we were ever feeling too tired to test the app by walking around, we also
-mocked the GPS coordinates in software. This allowed us to simulate walking in
-a single direction without actually having to move or build to a mobile device.
+mocked the GPS coordinates in software. This allowed us to simulate walking in a
+single direction without actually having to build to a mobile device or move.
 
 \begin{figure}[h]
 	\centering
@@ -1500,10 +1448,11 @@ a single direction without actually having to move or build to a mobile device.
 
 Our first day of on-site testing with the app took place on September
 6\textsuperscript{th}. Using Editour, we rebuilt the izi.TRAVEL audio tour that
-Atticus already created. The first version of the rebuilt tour had regions that
-were relatively small; some regions were only a few meters across. This version
-of the tour can be seen in Figure~\ref{fig:kinkakujiTour}. This day of testing
-prior to the redesign discussed in Section~\ref{sec:adobeXdDesign}.
+Atticus had created previously. The first version of the reimplemented tour had
+regions that were relatively small; some regions were only a few meters across.
+This version of the tour can be seen in Figure~\ref{fig:kinkakujiTour}. On this
+day of testing, we still had the limited UI described in
+Section~\ref{sec:earlyUserInterface}.
 
 \begin{figure}[h]
 	\centering
@@ -1517,8 +1466,8 @@ Due to concerns about GPS accuracy, we adapted the tour-file \texttt{kinkakuji}
 to create a second, ``chunkier'' tour.  In the tour-file
 \texttt{kinkakuji-chunkier}, we expanded all of the regions to accommodate for
 potential GPS inaccuracies that could place the user outside the range of the
-audio-trigger region.  Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour
-that we used for field testing at Kinkaku-ji.
+region.  Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour that we used
+for field testing at Kinkaku-ji.
 
 \begin{figure}[h]
 	\centering
@@ -1531,37 +1480,36 @@ that we used for field testing at Kinkaku-ji.
 We tested using two phones at the same time: an iPhone 8 and a Samsung Galaxy
 S7. The iPhone 8 is newer, more powerful and therefore more suited for use with
 AR. We primarily used this phone to test the AR features of the app. Even
-though the Samsung Galaxy had difficulty with basic AR features such as
+though the Galaxy S7 had difficulty with basic AR features such as
 ground-plane detection, it was still capable of triggering the audio track
 based on GPS position.
 
 As discussed in Section~\ref{sec:testingARuko}, our previous testing involved
 creating a ``mock tour'' on the Ritsumeikan campus. While this let us know
 generally which features of the app were working, it was very difficult to know
-how ahead of time how well our app would work at Kinkaku-ji.
+how ahead of time how well our app would work on-site.
 
 We were surprised by how intuitively each region triggered on the first try.
 With a few exceptions, the audio started when the subject of the audio track
 was in view. During our first walkthrough of Kinkaku-ji, we triggered every
 region and audio track but one. The region that we missed on the first pass,
-``Final Viewpoint'', requires the user to take a right at a fork in the road
+``Final Viewpoint,'' requires the user to take a right at a fork in the road
 instead of continuing along the main path. This is not necessarily a problem
 with the design of the regions; instruction provided by the audio tour could
 remedy this, directing the user toward the viewpoint that is off of the main
 path.
 
-Initially, we loaded the app onto the Samsung Galaxy S7 as a backup, since the
-AR features were not fully functional on a phone that old. At the same time, it
-was informative to take both phones through the tour. Initially, we made the
-design decision to update the GPS location every 60 frames. On a phone running
-the app at full speed, this should happen once every second. Because the
-Samsung Galaxy S7 was having trouble running the app at full speed, the GPS
-updated far less frequently. This was an oversight that would have been
-difficult to catch if we had not tested on hardware below the recommended
-specifications.
+Initially, we loaded the app onto the Galaxy S7 as a backup, since the AR
+features were not fully functional on a phone that old. At the same time, it was
+informative to take both phones through the tour. Initially, we made the design
+decision to update the GPS location every 60 frames. On a phone running the app
+at full speed, this should happen once every second. Because the Galaxy S7 was
+having trouble running the app at full speed, the GPS updated far less
+frequently. This was an oversight that would have been difficult to catch if we
+had not tested on hardware below the recommended specifications.
 
 Other bugs resulted from oversights that were difficult to catch with our
-on-campus testing.  For example, we noticed that we forgot to back-up the audio
+on-campus testing. For example, we noticed that we forgot to reset the audio
 slider when entering a new region.  Because of this, when we entered a new
 region when the audio slider was past the endpoint of the new audio track, the
 audio would not play. For example, if the previous audio track were a minute
@@ -1584,52 +1532,52 @@ up with Atticus, the IQP group, and our friend Hikaru and installed the beta
 version of ARuko on each of their phones. With little instruction about how
 the app works we had each of them try going through Kinkaku-ji while
 listening to the tour and using the app's features. Each member of our team
-also installed the beta version so we could fuzz test it.
-% TODO check if fuzz testing is really the right word here
+also installed the beta version so we could test it.
 
 This was our first time trying the AR image recognition on the actual signs at
 Kinkaku-ji, rather than photographs of the signs, and it worked surprisingly
 well. Vuforia was able to recognize almost all of the signs, even in different
 lighting than when the reference images were taken. For image targets that were
-small, far away, or obscured by shadows image recognition was slower, but
-Vuforia was always able to recognize them eventually. We discovered that the
-targets that worked best were large, had a lot of high-contrast text, and were
-uniformly lit.
+small, far away, or obscured by shadows the image recognition was slower. We
+discovered that the targets that worked best were large, had a lot of
+high-contrast text, and were uniformly lit.
 
 While testing we discovered some issues with the design of the tour. One
 region was completely misplaced, so the audio played at the wrong time while
 walking through the area. Several other regions were too big, so the audio
 started playing long before the user was actually near the feature it was
-discussing. Using the Editour web app, we were able to correct quickly these
-issues with the tour design once we returned to Atticus' office.
+discussing. Using the Editour web app, we were able to quickly correct these
+issues with the tour design once we returned to Atticus's office.
 
 Additionally, one of the image targets had the wrong text in its information
 pop-up. These were all easy bugs to fix, but if we might not have noticed
-them if we had not tested the app on site.
+them if we had not tested the app on-site.
 
-We also noticed that we were only able to augment a maximum of two
-image targets at a time. In almost all cases, only two translatable signs
-were in view at once. The only scenario in which there were more than two
-image targets in view at a given time was with the four framed photos of the
-interior, arranged in a two by two grid. When standing at a distance from the
-grid, only two images would be augmented with the blue information button. By
-default, Vuforia limits the amount of image targets that the engine should
-accept simultaneously. In the Vuforia engine settings, we changed this limit
-to accommodate for four simultaneous images
+We also noticed that we were only able to augment a maximum of two image targets
+at a time. In almost all cases, only two translatable signs were in view at
+once. The only scenario in which there were more than two image targets in view
+at a given time was with the four framed photos of the interior, which were
+arranged in a two by two grid. When standing at a distance from the grid, only
+two images would be augmented with the blue information button. By default,
+Vuforia limits the amount of image targets that the engine should accept
+simultaneously. In the Vuforia engine settings, we changed this limit to
+accommodate for four simultaneous images
 
-Another major bug we discovered was that the GPS stopped updating when not on
-the main screen. This means that if you were in AR camera mode the app would not
-trigger new audio when you walked into a new region. This was caused by the GPS
-script being attached to a UI element on the main screen, so it was resolved
-simply by moving this script.
+Another major bug we discovered was that the GPS stopped updating when the main
+screen is not open. This means that in AR camera mode the app would not trigger
+new audio when you walked into a new region. This was caused by the GPS script
+being attached to a UI element on the main screen, which gets deactivated when
+switching to AR camera mode. This was easily resolved simply by moving this
+script.
 
 After having Atticus go through the tour on his phone he also discovered several
-bugs and tweaks he wanted to make to the UI. The clickable information button on
-image targets was made larger so it is easier to see. The UI buttons in the
-bottom menu bar were also made larger and easier to press. The text ``Main'' was
-added under the central button that brings you to the screen with the images and
-transcript, so it was more clear what that button does. The header text at the
-top was too big, and sometimes overflowed onto other UI elements.
+bugs and tweaks he wanted to make to the UI. The clickable information buttons
+on image targets were made larger so they are easier to see and tap. The UI
+buttons in the bottom menu bar were also made larger and easier to press. The
+text ``MAIN'' was added under the central button that opens the screen with the
+images and transcript, so it was more clear what that button does. The header
+text at the top was too big, and sometimes overflowed onto other UI elements, so
+its size was reduced and split into two lines when the text was too long.
 
 Testing with Atticus revealed another user interface issue we had not
 considered.  Many modern smartphones, such as Atticus's Samsung Galaxy S10+,
@@ -1637,7 +1585,8 @@ have holes or notches cut out of the screen for cameras, speakers, and other
 hardware (see Figures \ref{fig:galaxyS10Plus} and \ref{fig:iPhoneX}). We had
 been designing our UI for rectangular phone screens, so the Galaxy S10+'s ``hole
 punch'' covered some UI elements in the top right corner. To account for this
-issue we added more padding to the top of the UI.
+issue we used Unity's built-in function to return a safe screen space to render
+the rectangular canvas in.
 
 After going through Kinkaku-ji with the app twice we had each test participant
 fill out a simple survey giving their thoughts on the app. The full results of
@@ -1676,17 +1625,17 @@ One idea that was proposed initially was an AR audio experience using 3D
 spatialized audio. Instead of traditional AR where the user is constantly
 looking through the camera, this experience would allow users to keep their
 phones in their pockets while taking the tour. Sound sources would change in
-physically based ways using motion tracking.
+relation to the real world as the user moved around.
 
-We spent the second and third week creating demos to explore the possibility of
-a 3D spatialized audio tour. We found that this would be very difficult to do
-without the use of the camera. All of the technology for mobile AR we explored
-in Section~\ref{sec:platforms} depended heavily on the camera. If we were to
-build a 3D spatialized audio tour that ran entirely without use of the camera,
-we would not be able to take advantage of any of the useful features of the AR
-libraries we explored. Furthermore, Unity would be relegated to the simple role
-of exporting our app to multiple devices; we would not have any need to take
-advantage of its 3D capabilities.
+We spent the second and third week of the project creating demos to explore the
+possibility of a 3D spatialized audio tour. We found that this would be very
+difficult to do without the use of the camera. All of the technology for mobile
+AR we explored in Section~\ref{sec:platforms} depended heavily on the camera. If
+we were to build a 3D spatialized audio tour that ran entirely without use of
+the camera, we would not be able to take advantage of any of the useful features
+of the AR libraries we explored. Furthermore, Unity would be relegated to the
+simple role of exporting our app to multiple devices; we would not have any need
+to take advantage of its 3D capabilities.
 
 Thusly, we decided to see what was possible using the camera instead. We were
 able to get sound sources to fade in and out based on the distance to an image
@@ -1701,8 +1650,8 @@ supported by current AR libraries.
 
 We explained the technical hurdles of this concept to Atticus. Ultimately, our
 focus shifted away from this idea for other logistical reasons. Initially,
-Atticus introduced the possibility of working closely with Kishi Bashi or
-Yannick Paget to produce the soundscape for the 3D spatialized audio tour.
+Atticus introduced the possibility of working closely with artists Kishi Bashi
+or Yannick Paget to produce the soundscape for the 3D spatialized audio tour.
 Yannick Paget is a French musician that became established in Japan. He is both
 conductor and composer, originally trained as a professional pianist and
 percussionist. He has written music for theater, film and orchestras around the
@@ -1710,19 +1659,19 @@ world. Many of his original compositions were inspired by his experience living
 in Japan, such as Tears of Sakura
 (\begin{CJK}{UTF8}{min}サクラの涙\end{CJK})~\autocite{yannickpaget2016}. Kishi
 Bashi was born in Seattle and grew up in Virginia. Kishi Bashi has appeared at
-many major music festivals, toured the US extensively, and has even released
-his own line of coffee! His latest album, Omoiyari, was released on May
+many major music festivals, toured the US extensively, and has even released his
+own line of coffee. His latest album, Omoiyari, was released on May
 31\textsuperscript{st}, 2019~\autocite{kishibashi2019}.
 
 \subsection{AR Art Gallery}
 \label{sec:arArtGallery}
 
-Atticus Sims proposed the idea of working with Michael Whittle. Michael Whittle
+Atticus Sims proposed the idea of working with Michael Whittle, a British artist
 received his PhD at the Kyoto City University of Arts in 2014. His art has
-appeared in dozens of solo exhibitions and group exhibitions across the world,
+appeared in dozens of solo and group exhibitions across the world,
 including Kyoto, Beijing, London and New York~\autocite{michaelwhittle2019}.
 Kyoto~VR has worked with Michael Whittle in the past to create a 3D scan of a
-solo exhibition, `Portraits of Thought'. This exhibition displayed diagrams
+solo exhibition, ``Portraits of Thought.'' This exhibition displayed diagrams
 inspired by real science and mathematics. Atticus provided us with some
 diagrams to test in the Vuforia developer portal, since Michael Whittle wanted
 to know how well certain pieces of art would work as AR image targets. All of
@@ -1761,13 +1710,13 @@ Another challenge we faced was the difficulty in actually testing the app. The
 Ritsumeikan University Biwako-Kusatsu campus we stayed at is about ninety
 minutes away from Kinkaku-ji by expensive public transport, which meant that we
 were only able to go to the site to test ARuko twice. We could test some basic
-features from Ritsumeikan, but image recognition target existed only at
+features from Ritsumeikan, but the image recognition targets existed only at
 Kinkaku-ji. More extensive user testing at the actual site could have helped us
 catch bugs earlier and lead to a more polished final product.
 
 Despite these issues our team is happy with the product we delivered to
 Kyoto~VR. ARuko is not quite ready to be sold on app stores yet, but with a
-little more development time it could easily be made ready. The UI could use
+little more development time it could easily be completed. The UI could use
 more testing with real users to make sure it is intuitive and easy to use. We
 also intended to add a feature where the app could automatically download tour
 files from the Editour server and import them without having to rebuild. We were
@@ -1787,7 +1736,7 @@ for now.
 Given more time and resources, the app should be augmented to include a tour
 browser that automatically downloads an unpacks tours from the Editour server.
 More historic locations around Kyoto and Japan in general should be considered
-for other tours. With the work our team has done Kyoto~VR now has a complete
+for other tours. With the work our team has done, Kyoto~VR now has a complete
 platform for creating and delivering unique tours, which can easily be expanded
 upon in the future.
 
