@@ -83,7 +83,7 @@ to our experience.
 We would also like to thank Inoue Hikaru for his help with translations and
 researching AR technology. A special thank you to the IQP team working with
 Kyoto VR, Lewis Cook, Nicole Escobar, Ahad Fareed, and Cameron Person, for
-filming and editing the app trailer.
+filming and editing the app trailer, as well as providing help with testing.
 
 Finally, a thank you to our advisers, Professors Joshua Cuneo and Ralph Sutter.
 Without their expert advice and feedback this project probably could not have
@@ -95,38 +95,41 @@ been completed.
 \label{sec:executiveSummary}
 \addcontentsline{toc}{section}{Executive Summary}
 
-We built, tested and polished a mobile app to deliver an audio tour,
-incorporating various AR features to enhance the experience. In this app, which
-we call ARuko, many of the AR features were aimed at improving accessibility.
-These features included translating signs and providing additional info on the
+Our team built, tested and polished a mobile app to deliver an audio tour,
+incorporating various augmented reality (AR) features to enhance the
+experience. Our app delivers a tour of Kinkaku-ji, or The Temple of the Golden
+Pavilion, a popular tourist destination in Kyoto. In this app, which we call
+ARuko, many of the AR features were aimed at improving accessibility. These
+features include translating signs and providing additional info on the
 physical map located at the site. Other features were purely for spectacle,
-such as the ability to take an AR `souvenir' home by pointing the camera at the
-ticket.
+such as the ability to take an AR ``souvenir'' home by scanning the ticket
+to enter Kinkaku-ji.
 
-ARuko went through multiple iterations of user testing and bug testing at the
-site of the audio tour, Kinkaku-ji. Sections \ref{sec:initialFieldTesting} and
+ARuko went through multiple iterations of user testing and bug testing at
+Kinkaku-ji. Sections \ref{sec:initialFieldTesting} and
 \ref{sec:finalFieldTesting} go into detail about our two days of field testing
 on-site. From these tests, we were able to refine the user experience, and
-identify important features to add to the app. Much of the app's and
-functionality was dictated by Atticus Sims of Kyoto VR, who plans to monetize
-the app. We also worked closely with the IQP team, who has been tasked with
+identify important features to add to the app. Much of the app's functionality
+was dictated by Atticus Sims, C.E.O and founder of Kyoto VR, who plans to
+monetize the app. We also worked with an IQP team, who had been tasked with
 exploring funding options and creating promotional content.
 
 Since our app had to deliver an audio tour supplemented by images based on your
-GPS position, we developed an internal tool to design these regions. Editour
-provides a rich editing suite for designing tours with images and audio.
-Section~\ref{sec:editingATour} goes into detail about the features of this web
-app. We also wrote a backend to manage the tour files, allowing one of us (or
-our sponsor, Atticus Sims) to download a zip file containing all of the media
-and info to reconstruct the tour. This zip can be extracted into the Unity
-project, which reconstructs the tour from the downloaded contents. We were able
-to host the backend on the server provided by Kyoto VR's hosting plan; we
-discuss the hurdles that we overcame to deploy the Editour backend with Kyoto
-VR's current setup in Section~\ref{sec:deployingTheEditourBackend}.
+latitude and longitude, we developed an internal tool to design physical
+regions for each step of the tour. This tool, called Editour provides a rich
+editing suite through a simple web interface. Section~\ref{sec:editingATour}
+goes into detail about the features of this web app. We also wrote a backend to
+manage the tour files, allowing one of us (or our sponsor, Atticus Sims) to
+download a zip file containing all of the media and info to reconstruct the
+tour. This zip can be extracted into the source files for ARuko, which rebuilds
+the tour from the downloaded contents. We were able to host the backend on the
+server provided by Kyoto VR's hosting plan; we discuss the hurdles that we
+overcame to deploy the Editour backend with Kyoto VR's current setup in
+Section~\ref{sec:deployingTheEditourBackend}.
 
-At the end of this paper, we also discuss the alternative AR app concepts that
-were explored before development became completely focused on the tour app
-ARuko.
+In Section~\ref{sec:alternativeArAppConcepts}, we also discuss the alternative
+AR app concepts that were explored before development became completely focused
+on ARuko.
 
 \clearpage
 
@@ -154,26 +157,26 @@ ARuko.
 \section{Introduction}
 \label{sec:introduction}
 
-The field of consumer-oriented Augmented Reality (AR) technology is just coming
+The field of consumer-oriented augmented reality (AR) technology is just coming
 into full swing, and it presents many unique opportunities for a myriad of
 fields. This budding technological platform uses digital displays to augment
 real-world information with computer-generated data. As the technology
-progresses several disparate industries have found novel uses for it, some
+progresses, several disparate industries have found novel uses for it, some
 becoming extremely profitable~\autocite{webster2018}. With smartphone
 manufacturers investing billions into AR technology~\autocite{mason2016}, it
 seems poised to be the next big digital interface.
 
 Tourism and art are among the fields that could gain the most from AR
-technology~\autocite{saenz2009, katz2018}. AR technology can provide accessible
-information to tourists and art viewers that they would not be able to get any
-other way. Kinkaku-ji, the ``golden pavilion'' of Kyoto, is the perfect example
-of this~\autocite{bornoff2000}. Kinkaku-ji is a UNESCO World Heritage
-Site~\autocite{unesco} and one of the most popular tourist destinations in
-Japan~\autocite{japanguide2019}. The Golden Pavilion is a magnificent sight to
-behold, but the gardens and grounds are the true beauty of Kinkaku-ji. It is a
-living masterpiece of Zen Buddhist landscape design, expanding on the natural
-beauty of Kyoto's forests and mountains through the practice of borrowed
-scenery~\autocite{kuitert2002}.
+technology~\autocite{saenz2009, katz2018}. This technology can provide
+accessible information to tourists and art viewers that they would not be able
+to get any other way. Kinkaku-ji, the ``Golden Pavilion'' of Kyoto, is the
+perfect example of a site that would benefit from AR~\autocite{bornoff2000}.
+Kinkaku-ji is a UNESCO World Heritage Site~\autocite{unesco} and one of the
+most popular tourist destinations in Japan~\autocite{japanguide2019}. The
+Golden Pavilion is a magnificent sight to behold, but the gardens and grounds
+are the true beauty of Kinkaku-ji. It is a living masterpiece of Zen Buddhist
+landscape design, expanding on the natural beauty of Kyoto's forests and
+mountains through the practice of borrowed scenery~\autocite{kuitert2002}.
 
 However, much of the historic information at the site is lost on visitors
 because it is not readily available to non-Japanese speakers. What few signs and
@@ -184,7 +187,7 @@ To solve this problem and open up the peerless beauty of the Golden Pavilion to
 more people, our team created ARuko and Editour. These two tools comprise a
 complete platform for designing and experiencing AR-enhanced tours. Editour
 makes it easy to design custom audio tours including audio, text, and images,
-and ARuko allows users to seamlessly experience historic sites in an intuitive
+while ARuko allows users to seamlessly experience historic sites in an intuitive
 and novel way. The experience of walking through the site is enhanced by
 informative narration and AR pop-ups that do not alter the buildings or ground
 in real life.
@@ -203,9 +206,9 @@ origins and uses of some of this technology.
 \subsection{What is Augmented Reality?}
 \label{sec:whatIsAugmentedReality}
 
-Augmented Reality, or AR, is a type of human-computer interface where
+Augmented reality, or AR, is a type of human-computer interface where
 perceptions of the real world are enhanced by computer-generated information.
-This differs from Virtual Reality (VR) in that a VR experience consists
+This differs from virtual reality (VR) in that a VR experience consists
 exclusively of virtual information. In AR, virtual information is mixed with
 sensory input from the real world~\autocite{carmigniani2011}. This can enhance
 the user's perception of reality by providing information that would be
@@ -214,26 +217,26 @@ difficult or impossible to display through traditional means.
 For example, AR can be used to display information about historical events,
 places, and objects overlaid onto images of the real
 world~\autocite{saenz2009}.  This provides the user with useful information
-without needing to alter the real historic site.
+without needing to alter a real historic site.
 
 \subsubsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
 
-While preparing for this project our team researched the current state of
-augmented reality technology. Smartphones are the most commonly used AR hardware
-by far~\autocite{boland2018}. Typically smartphone AR applications make use of
-the phone's camera, accelerometer, gyroscope, and GPS sensors to reproduce a
-view of the real world with virtual information layered on top of
+While preparing for this project our team researched the current state of AR
+technology. Smartphones are the most commonly used AR hardware by
+far~\autocite{boland2018}. Typically smartphone AR applications make use of the
+phone's camera, accelerometer, gyroscope, and GPS sensors to reproduce a view
+of the real world with virtual information layered on top of
 it~\autocite{bonsor2018}.
 
 \subsubsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
 
-Even though it is still a developing technology, augmented reality has been used
-in many disparate disciplines, including data
-visualization~\autocite{resnick2017}, commerce~\autocite{matney2018},
-marketing~\autocite{sharma2015}, education~\autocite{stewart-smith2012}, visual
-art~\autocite{katz2018}, and even archaeology~\autocite{eve2012}.
+Even though it is still a developing technology, AR has been used in many
+disparate disciplines, including data visualization~\autocite{resnick2017},
+commerce~\autocite{matney2018}, marketing~\autocite{sharma2015},
+education~\autocite{stewart-smith2012}, visual art~\autocite{katz2018}, and
+even archaeology~\autocite{eve2012}.
 
 The video game industry has readily embraced augmented reality, leading to the
 development of many AR games for smartphones and dedicated head-mounted
@@ -254,71 +257,67 @@ top of images of the real world~\autocite{concepcion2016} (see Figure
 \subsubsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
 
-As previously discussed, AR is a new and growing field full of opportunities.
-But of course, as with anything new, our understanding of AR and how to develop
-for it is limited.  And with those limitations come challenges. All sorts of
+Many of the existing applications using AR, in our eyes, do not leverage the
+full potential of this emerging technology. As with any new field, our
+understanding of AR and how to develop for it is limited. All sorts of
 different challenges and limitations face the development and production of AR
 apps. Here are some that we considered when working on our app.
 
 Many of the applications and use cases that exist for AR right now are, simply
-put, not very good. This means a few different things. For starters, many AR
-apps and features available on smartphones offer very little in the way of
-functionality or practicality; quite simply, they are primarily used for minor
-spectacles and simple tricks~\autocite{theappsolutions2018}. For example, one of
-the most popular apps to use AR, \textit{Pokémon Go}, primarily uses its AR
-feature to place a Pokémon in the world around you through your phone camera for
-you to capture. But when it is in the world, it does not interact with anything
-around it. It just floats a fixed distance away from you, simply placed on top
-of your camera's video feed.
+put, not very good. Many AR apps and features available on smartphones offer
+very little in the way of functionality or practicality; quite simply, they are
+primarily used for minor spectacles and simple
+tricks~\autocite{theappsolutions2018}. For example, one of the most popular
+apps to use AR, \textit{Pokémon Go}, primarily uses its AR feature to place a
+Pokémon on top of a camera's video feed. Disappointingly, it does not interact
+with anything around it. It just floats a fixed distance away from the user.
 
 Additionally, in many cases where AR is used, the task could be accomplished as
 well or better without AR~\autocite{theappsolutions2018}. Returning to the
 \textit{Pokémon Go} example, when the AR feature is left on while capturing a
-Pokémon, the extra power needed for this feature drains the device faster, makes
-it harder to hit the Pokémon with a Pokéball due to the model drifting in the
-environment, and can even slow app performance, all of which detract from the
-ability to play and enjoy the game.
+Pokémon, the extra power needed for this feature drains the device's battery
+faster. Also, it makes it harder to hit the Pokémon with a Pokéball due to the
+model drifting in the environment. On top of all of this, the performance of
+the app suffers drastically, especially on older devices. All of these problems
+detract from the ability to play and enjoy the game.
 
-One of the major problems facing AR development as a whole, and one that we ran
-into as well, is limited hardware. For starters, smartphone cameras present a
+One of the major problems facing AR development as a whole---including our
+project---is limited hardware. For starters, smartphone cameras present a
 major limitation. Many smartphone cameras only capture images in 2D, which can
 make generating AR content in a 3D world difficult without the use of QR or
 barcode markers~\autocite{geospatialworld2018}. Additionally, GPS sensors on
 smartphones can also be too imprecise for good AR
 tracking~\autocite{geospatialworld2018}.
 
-The biggest hardware limitation comes from which platform to use. AR apps are
-most commonly designed for smartphones due to their relatively low cost and how
-accessible they are. But, as we just discussed, smartphones come with a host of
+AR apps are most commonly designed for smartphones due to their relatively low
+cost and how accessible they are. However, smartphones come with a host of
 hardware limitations that make achieving satisfying AR capabilities difficult.
 Additionally, AR apps for smartphones tend not to be very user-friendly, and
 oftentimes even complicate the task or activity they were meant to
 enhance~\autocite{theappsolutions2018}.  The alternative then is to turn to
-dedicated hardware, like Microsoft's HoloLens.  But dedicated hardware like the
-HoloLens is very inaccessible and expensive; Microsoft only offers developer
-editions of the HoloLens, and for the incredibly steep price of
-\$3,500~\autocite{microsoft2019}.
+dedicated hardware, like Microsoft's HoloLens. The issue is that dedicated
+hardware like the HoloLens is very inaccessible and expensive; Microsoft only
+offers developer editions of the HoloLens, and for the incredibly steep price
+of \$3,500~\autocite{microsoft2019}.
 
-The challenges we faced during development mirrored these that plague the
-industry as a whole very accurately. We struggled with how exactly we would us
-AR for our app in a way that benefit the experience as a whole, but believe the
-way we've implemented it will enhance the user's experience. Hardware issues
-were definitely our biggest challenge.  Only one of our phones is new enough to
-run AR technology at a decent level, making testing of our application
-difficult.
+The challenges we faced during development mirrored those that plague the
+industry as a whole very accurately. We struggled with how exactly we would use
+AR for our app in a way that benefited the experience as a whole. Despite our
+initial apprehension, we believe the way we have integrated AR into our app
+enhances the user experience. Hardware issues were definitely our biggest
+challenge. Only one member of our team had a phone new enough to run AR technology at a
+decent level, making testing of our application difficult.
 
 \subsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
-Before our project started, Kyoto VR was already using an app with a limited
-form of AR for tours. The app, called izi.TRAVEL, allows users to create audio
-tours with audio and image files tied to specific locations in the real
+Before our project started, Kyoto VR was already using an app to deliver audio
+tours. The app, called izi.TRAVEL, allows users to create audio tours with
+audio and image files tied to specific locations in the real
 world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
 aimed at museums and city tours~\autocite{izitravel} but can be used for tours
-of historic sites too.  Kyoto VR used the platform to make an audio tour of
-Kinkaku-ji, one of the most popular tourist destinations in
-Japan~\autocite{bornoff2000} and an important historic heritage
-site~\autocite{unesco}.
+of historic sites too.  Kyoto VR used the platform to make a simple audio tour
+of Kinkaku-ji.
 
 \begin{figure}[h]
 	\centering
@@ -335,42 +334,40 @@ site~\autocite{unesco}.
 	\label{fig:kinkakuji}
 \end{figure}
 
-By using GPS data from the user's phone to play audio and display images at
-specific places in the real world izi.TRAVEL uses a limited form of augmented
-reality. Our group aimed to implement and extend this functionality in our own
-app. See Section \ref{sec:aruko} for more details.
+Our group aimed to implement all the functionality of izi.TRAVEL and more in
+our own app. See Section \ref{sec:aruko} for more details.
 
 \subsection{Augmented Reality Platforms}
 \label{sec:platforms}
 
 Before we could start working on creating our app, we first needed to decide
-which AR development platform to use. Our preliminary research had shown us that
-there are so many different platforms out there, all of which have been used to
-create great AR apps. There were a lot of things we needed to consider before
-finalizing on a platform, like what features it offered, which devices and
-operating systems the app could run on, and definitely the cost. Detailed below
-are some of the different platforms we considered.
+which AR development platform to use. Based on our preliminary research, we
+learned there are many powerful platforms available. There were many things we
+needed to consider before deciding on a platform. These considerations included
+what features the platform offered, which devices and operating systems the app
+could run on, and the cost. Detailed below are some of the different platforms
+we considered.
 
 \subsubsection{ARCore and ARKit}
 \label{sec:ARCoreAndARKit}
 
-ARKit and ARCore are both AR frameworks that enable apps to take advantage of
+ARKit and ARCore are both frameworks that enable apps to take advantage of
 powerful AR related features. ARKit is developed by Apple and can only be used
-by iPhones. Google's ARCore framework can deploy to both Android and iPhone.
-Many cross platform solutions will leverage the full potential of their target
-platform by using either ARKit or ARCore ``under the hood''. Both ViroReact and
-Vuforia use ARKit or ARCore depending on the target platform
-\autocites{vuforiaFusion}{moon2018}.
+by iPhones~\autocite{summerson2018}. Google's ARCore framework can deploy to both
+Android and iPhone. Many cross platform solutions will leverage the full
+potential of their target platform by using either ARKit or ARCore ``under the
+hood.'' Both ViroReact and Vuforia use ARKit or ARCore depending on the target
+platform \autocites{vuforiaFusion}{moon2018}.
 
 ARKit 3 aims to support a wide array of new features and will be available in
-iOS 13. Notably, one of these features is ``people occlusion,'' which will allow
-virtual objects to be realistically obscured when someone walks in front of the
-object~\autocite{apple2019}. This kind of technology could be useful for us
-since our app uses AR in crowded places.  As of August 2019, this feature is
-not on the horizon for Google's Android AR framework, ARCore.
+iOS 13~\autocite{apple2019}. Notably, one of these features is ``people
+occlusion,'' which will allow virtual objects to be realistically obscured when
+someone walks in front of the object. This kind of technology could be useful
+for us since our app uses AR in crowded places.  As of August 2019, this
+feature is not on the horizon for ARCore.
 
 Both ARKit and ARCore have well-supported APIs for Unity. ARKit 3 support is
-coming to Unity, along with all of the advanced features that it
+coming soon to Unity, along with all of the advanced features that it
 brings~\autocite{stinson2019}.
 
 \subsubsection{Wikitude}
@@ -379,90 +376,87 @@ brings~\autocite{stinson2019}.
 Wikitude is another major AR development kit that is very prevalent in the
 world of AR development. It has over 130,000 registered AR developers, and is
 powering over 30,000 AR apps across smartphones, tablets, and smart
-glasses~\autocite{wikitude2018}.  And it's easy to understand why Wikitude has
-so many registered developers when you see the list of features it offers. Some
-of the features that appealed most to us were their Instant Tracking, allowing
-for augmentation using flat surfaces; Image Tracking, allowing for augmentation
-using one or multiple 2D images; and Geo AR, allowing for creation of
-geo-markers at specific locations to triggered AR
-content~\autocite{wikitude2018}.
+glasses~\autocite{wikitude2018}. It is easy to understand why Wikitude has so
+many registered developers considering the list of features the platform
+offers. Some of the features that appealed most to us were their ``Instant
+Tracking,'' allowing for augmentation using flat surfaces; ``Image Tracking,''
+allowing for augmentation using one or multiple 2D images; and ``Geo AR,''
+allowing for creation of geo-markers at specific locations to trigger AR
+content.
 
-Wikitude also supports all sorts of different platforms. It supports Android,
-Apple, and Windows phones and tablets, as well as smart glasses like the Epson
-Moverio, Microsoft Hololens, and Vuzix smart glasses~\autocite{wikitude2018}.
-Additionally, many different development frameworks are capable of running
-Wikitude's SDK.  According to Wikitude's website, their SDK works with Windows,
-Android, and iOS development frameworks, as well as ARCore and ARKit, Flutter,
-Cordova, Xamarin, and even Unity~\autocite{wikitude2018}.
+Wikitude supports Android, Apple, and Windows phones and tablets, as well as
+smart glasses like the Epson Moverio, Microsoft HoloLens, and Vuzix smart
+glasses. Additionally, many different development frameworks are capable of
+running Wikitude's software development kit (SDK). According to Wikitude's
+website, their SDK works with Windows, Android, and iOS development frameworks,
+as well as ARCore and ARKit, Flutter, Cordova, Xamarin, and even Unity.
 
-From all of this information, Wikitude certainly sounds like a fantastic AR
-development platform; it certainly did to us. But the issue we ran into was the
-cost. Wikitude is, in fact, free for eligible startups, but given the criteria
-they list on their site, we were not confident that we would qualify. Aside
-from this option, Wikitude offers a 30-day demo license for \euro{499}, which
-is a lot for use to pay for a license that would not even last for our entire
-project. They also charge \euro{1990} for their SDK Pro, and \euro{2490} for
-their SDK Pro 3D~\autocite{wikitude2018}. Given these prices, and our very
-limited budget, we knew that we would have to pass on Wikitude and choose a
-different AR development platform.
+Based on this information, Wikitude was initially appealing to us. However, the
+cost was a major issue. Wikitude is free for eligible startups, but given the
+criteria they list on their site, we were not confident that we would qualify.
+Aside from this option, Wikitude offers a 30-day demo license for \euro{499},
+which was far beyond the resources available to us. They also charge
+\euro{1990} for their SDK Pro, and \euro{2490} for their SDK Pro 3D. Given
+these prices, and our very limited budget, we decided to consider other
+options.
 
 \subsubsection{motive.io}
 \label{sec:motive.io}
 
-The company motive.io used to work on a product that would allow users to create
-an engaging AR experience in the style of \textit{Pokémon Go}. Their service
-would have purportedly handled technical details such as hosting, storage, and
-user accounts. The promotional video shows the creation of a location-based AR
-game where the user pretends to hack into ATMs using the real-world locations of
-ATMs in a city\autocite{odom2017}.
+The company motive.io previously was developing a product that would allow
+users to create an engaging AR experience in the style of
+\textit{Pokémon~Go}~\autocite{odom2017}. Their service would have purportedly
+handled technical details such as hosting, storage, and user accounts. The
+promotional video shows the creation of a location-based AR game where the user
+pretends to hack into ATMs using the real-world locations of ATMs in a city.
 
 Unfortunately, it appears that the company has completely pivoted off of this
-idea, and has since moved to AR training software\autocite{motiveio}.
+idea, and has since moved to developing AR training
+software~\autocite{motiveio}. We reached out to motive.io via email for any
+advice they might be willing to give us, but we received no response.
 
-We reached out to motive.io via email for any advice they might be willing to
-give us, but we received no response.
-
-\subsubsection{Viro AR}
+\subsubsection{ViroAR}
 \label{sec:viroAR}
 
-Viro AR comes in two flavors: ViroReact and ViroCore. ViroCore allows
-developers to build an AR Application with Java. The disadvantage of this is
-that ViroCore only allows developers to target Android, which unfortunately
-made ViroCore not an option for our project. ViroReact is the cross-platform
-option for ViroAR. ViroReact leverages the cross-platform capabilities of
-React, which is Facebook's JavaScript Library for developing user
-interfaces~\autocite{facebook2019}.
+Viro AR comes in two flavors: ViroReact and ViroCore\autocite{facebook2019}.
+ViroCore allows developers to build an AR Application with Java. The
+disadvantage of this is that ViroCore only allows developers to target Android,
+which unfortunately made ViroCore not an option for our project. ViroReact is
+the cross-platform option for ViroAR. ViroReact leverages the cross-platform
+capabilities of React, which is Facebook's JavaScript Library for developing
+user interfaces~\autocite{facebook2019}.
 
 Since our project is not a game, we initially wanted to avoid using a
-fully-featured game engine. Therefore, we decided to take the time to explore
-this framework since it appeared to be more tailored to our specific use case.
-Viro Media also recognizes that all developers who wish to create an app with
-3D capabilities are not necessarily game developers. Viro Media pitches Viro
-AR as ``The perfect alternative to specialized game engines, ViroAR is a
-platform for rapidly building ARKit and ARCore apps. Our platform allows
-developers to focus on what they do best by leveraging familiar tools and
-frameworks used in mobile application development''~\autocite{viro2019}.
-While the majority of our team has decent experience with writing JavaScript,
-we all either have very little or no experience writing React apps.
+fully-featured game engine such as Unity (see Section~\ref{sec:unity}.
+Therefore, we decided to take the time to explore this framework since it
+appeared to be more tailored to our specific use case. Viro Media also
+recognizes that all developers who wish to create an app with 3D capabilities
+are not necessarily game developers. Viro Media pitches ViroAR as ``The
+perfect alternative to specialized game engines, ViroAR is a platform for
+rapidly building ARKit and ARCore apps. Our platform allows developers to focus
+on what they do best by leveraging familiar tools and frameworks used in mobile
+application development''~\autocite{viro2019}. While the majority of our team
+has decent experience with writing JavaScript, we have have very little experience
+writing React apps.
 
-In most development scenarios, every time you wish to test your app on actual
-hardware, you must first compile your app using either Xcode or Android Studio
-depending on your platform. Once you have built the app, your device needs to
-install the app. This process can be very time consuming, especially since
-frequent tests on real hardware is important for something as intensive as
-AR.
+In most app development scenarios, to test the app on actual hardware, it must
+be compiled using either Xcode or Android Studio depending on your platform.
+Once you have built the app, your device needs to install the app. This process
+can be very time consuming, especially when needing to run frequent tests on
+the target platform.
 
-An alternative to building your app is to run your app through an emulator on
-the computer you are using for development.
+An alternative to building an app for a physical phone is to run it through an
+emulator on a computer.
 
 According to Techopedia, ``Emulation is the process of imitating a
 hardware/software program/platform on another program or platform. This makes
 it possible to run programs on systems not designed for
 them''~\autocite{techopedia2019}. Emulators are often very useful for speeding
-up development. Loading programs onto the Android emulator usually much faster
-than installing the APK onto the actual device. Additionally, you can mock
-almost all of the important features of an actual Android device, including
-calls, text, GPS position, device rotation and more~\autocite{androidemulator}.
+up development. Loading programs onto the Android emulator is usually much
+faster than installing an Android package file (APK) onto the actual device.
+Additionally, emulators can mock almost all of the important features of an
+actual Android device, including calls, text, GPS position, device rotation and
+more~\autocite{androidemulator}.
 
 Since an emulator uses software to emulate hardware, this poses two technical
 issues that prevent emulators from being a proper replacement for testing on
@@ -476,16 +470,16 @@ In a question submitted to \textit{Compute!} magazine asking whether it is
 possible for a Commodore 64 to emulate MS-DOS, the editor responded ``Yes, it's
 possible for a 64 to emulate an IBM PC, in the same sense that it's possible to
 bail out Lake Michigan with a teaspoon.'' The editor goes on to explain
-``Emulation is a complex business, but here's one rule of thumb: The only way to
-successfully emulate a machine is with a much more powerful
+``Emulation is a complex business, but here's one rule of thumb: The only way
+to successfully emulate a machine is with a much more powerful
 machine''~\autocite{warick1988}. In our case, emulating Android on a desktop
 operating system is closer to emulating a C64 on an IBM PC running MS-DOS
-(rather than the other way around, thankfully). The moral is that the speed
+(rather than the other way around, thankfully). The takeaway is that the speed
 problem facing emulators is just as real as it was in 1988. Considering that AR
-already pushes modern phone hardware to the limit, emulation is not something is
-not something we wanted to struggle with. On top of this, our testing required
-us to move the camera through the world at various speeds and angles, which is
-simply cumbersome with a laptop webcam.
+already pushes modern phone hardware to the limit, emulation is not something
+is not something we wanted to struggle with. On top of this, our testing
+required us to move the camera through the world at various speeds and angles,
+which is simply cumbersome with a laptop webcam.
 
 As an alternative to emulation, ViroReact offers a convenient ``test bed'' for
 rapidly testing your ViroReact app on native hardware without the need for an
