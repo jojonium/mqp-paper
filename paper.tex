@@ -1068,7 +1068,14 @@ The tickets are large and visually appealing; they are souvenirs unto themselves
 that one might feel inclined to keep around. Over the course of our three month
 stay we visited Kinkaku-ji multiple times. For each visit, we received identical
 tickets. Seemingly, the design on the tickets do not change on a regular basis,
-if at all.
+if at all. Figure~\ref{fig:kinkakujiTicket} shows a ticket we kept from one of
+our visits to Kinkaku-ji.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.4\textwidth]{kinkakuji-ticket.jpeg}
+    \caption{Map overlay displaying the path and translated labels}
+    \label{fig:kinkakujiTicket}
+\end{figure}
 
 Because the tickets are unlikely to change frequently, this enables us to
 provide the user with a ``virtual souvenir'' using the AR camera. This is the
@@ -1123,8 +1130,16 @@ look for and scan. The right dropdown would be dynamically populated in each
 region with buttons bearing different images. These images were ones that
 Atticus wanted to be viewable in AR using ground plane detection. When tapped,
 each button would create a 3D Cube, with the given image on each face, and place
-it on the ground where the user was pointing. 
-%TODO provide a figure of the AR cube
+it on the ground where the user was pointing. Figure~\ref{fig:floatingCube}
+shows this feature in action.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{floating-cube.png}
+	\caption{An ``art cube'' floating over the water containing a placeholder
+    programming meme}
+	\label{fig:floatingCube}
+\end{figure}
 
 Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
 target capabilities for scanning objects outside of the expected use case, such
@@ -1654,6 +1669,28 @@ After going through Kinkaku-ji with the app twice we had each test participant
 fill out a simple survey giving their thoughts on the app. The full results of
 these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 
+% TODO this whole section should probabyl be in the appendix
+\section{Version Control}
+\label{sec:versionControl}
+
+Over the course of the project, we had to develop multiple applications in
+different languages. In total, we opened five different repositories: the blog,
+the \LaTeX source code for our paper, the Arduino code for the heart project,
+and of course one for Editour and another for ARuko. These five repositories
+span across multiple different markup and programming languages, including C\#,
+C++, JavaScript, HTML, CSS (and the \LaTeX markup language used to typeset this
+paper.) This gave us a welcome amount of practice using git for version control,
+as well as GitHub's other features oriented around coordinating a team.
+
+All three members of the team were contributing code and updating assets such as
+graphics and sound. Code complexity grew quickly as more features were added
+across the entire software stack. Git and GitHub enabled us to view the history
+of the code and revert back to working versions when absolutely necessary. We
+researched the proper methodology of using version control in a small team,
+applying this methodology as best we could. This enabled us to work together
+efficiently, track down bugs, undo mistakes, and sometimes review each other's
+code for quality when time allowed.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{galaxy-s10+.jpg}
@@ -1669,6 +1706,55 @@ these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 	\caption[An iPhone X with a large notch]{An iPhone X with a large
 		notch~\autocite{yoo2017}}
 	\label{fig:iPhoneX}
+\end{figure}
+
+\subsection{GitHub Tools}
+\label{sec:gitHubTools}
+
+Some members of our team were very excited by the workflows GitHub's tools
+enabled.
+
+Initially, we experimented with using a four-column Kanban board to keep track
+of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
+GitHub.
+
+The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
+signal'' or ``card'' in Japanese, which describes the core component of the
+technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
+to notify other teams that parts needed for assembly work were in short supply.
+Now, Kanban boards are integral to Agile software development. Still, some teams
+use physical Kanban boards, often using sticky notes and whiteboards.
+
+The advantage of using a Kanban board is that each feature or bug that
+is being worked on can be assigned directly to a collaborator on the project. It
+is then that person's responsibility to work on those tasks and update the
+status of those tasks on the board. We abandoned this when moving onto the main
+project because we came to realize that this structure was not necessary---there
+were only three members on the team, and we were almost always in the same room
+when working on the project. For Editour, we tracked features and issues using
+the Issues page instead, which is discussed in
+Section~\ref{sec:editourFrontendTesting}.
+
+Creating ``pull requests'' through the GitHub web interface has a few advantages
+over directly merging code using git. Firstly, the pull request feature
+integrates with ``Issues'' page very well. By typing `resolves' along with the
+number associated with an issue into the description of a pull request, GitHub
+will automatically close the issue when the pull request is approved. This is
+not only remarkably convenient, but also self-documenting since the descriptions
+of pull requests would contain the issues they were resolving. Secondly,
+creating a pull request allows code to be reviewed by other members of the team
+very easily. Reviewers can view the entire diff and add comments line-by-line.
+Other collaborators can easily respond to those comments. Reviewers can also
+request certain features be changed before the branch is merged, which allowed
+us to enforce that issues with the code were actually addressed.
+% TODO explain what the heck a diff is
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kanban-board.png}
+	\caption{A screenshot of the Kanban board we used for developing our
+    biweekly blog}
+	\label{fig:kanbanBoard}
 \end{figure}
 
 \clearpage
