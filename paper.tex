@@ -1750,6 +1750,26 @@ request certain features be changed before the branch is merged, which allowed
 us to enforce that issues with the code were actually addressed.
 % TODO explain what the heck a diff is
 
+% TODO give this paragraph some more context so it doens't seem out of place
+The way we incorporated branches into our workflow helped us collaborate in a
+way that kept us organized. In general, if one of us was working on a specific
+feature, we would create a branch with a name descriptive of that feature. This
+methodology minimized difficult-to-resolve merge conflicts.
+% TODO explain merge conflicts and cite that Atlassian thing
+
+Once we deployed Editour to a server so that Atticus could begin to use it,
+we changed the version to v1.0.0 to indicate the first release version. At this
+point, it was important that the master branch remain as stable as possible.
+Because of this, we created a ``dev'' branch where we could test experimental
+features to improve the experience and functionality of Editour. Maintaining a
+stable and experimental branch reduced the risks involved with continuing to
+iterate on the software's features post-release.
+
+In a similar vein, with ARuko we used branches to ensure we had a stable working
+version. The night before field testing at Kinkaku-ji, we would cease work on
+the most recent branch, and build the app to our phones. This way, we would
+always have an exact snapshot of the code we used for that day of testing.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kanban-board.png}
@@ -1865,15 +1885,16 @@ Kinkaku-ji. More extensive user testing at the actual site could have helped us
 catch bugs earlier and lead to a more polished final product.
 
 Despite these issues our team is happy with the product we delivered to
-Kyoto~VR. ARuko is not quite ready to be sold on app stores yet, but with a
-little more development time it could easily be completed. The UI could use
-more testing with real users to make sure it is intuitive and easy to use. We
-also intended to add a feature where the app could automatically download tour
-files from the Editour server and import them without having to rebuild. We were
-not able to complete this feature due to time constraints, but it could easily
-be added because all of ARuko's business logic is abstracted and generalized to
-support multiple tours. Editour also already supports requesting and downloading
-the most recent versions of tours.
+Kyoto~VR. Selling ARuko on app stores was not within the scope of our academic
+project, but we were able polish the app enough such that it would be feasible
+for Atticus to eventually sell the app. The UI could use more testing with real
+users to make sure it is intuitive and easy to use. We also intended to add a
+feature where the app could automatically download tour files from the Editour
+server and import them without having to rebuild. We were not able to complete
+this feature due to time constraints, but it could easily be added because all
+of ARuko's business logic is abstracted and generalized to support multiple
+tours. Editour also already supports requesting and downloading the most recent
+versions of tours.
 
 Editour is essentially feature complete. The most recent version, v1.3.0, can be
 found in the GitHub repository
