@@ -50,8 +50,53 @@
 % set page numbers to Roman for the forematter (before the introduction)
 \pagenumbering{roman}
 
-% draw the title page
-\maketitle
+% title page
+\begin{center}
+	{\huge ARuko and Editour: \\
+		\Large A Platform for Augmented Reality Tour Guide Apps
+	}
+
+	\vfill
+
+	A Major Qualifying Project \\
+	Submitted to the faculty of \\
+	WORCESTER POLYTECHNIC INSTITUTE \\
+	In partial fulfillment of the requirements for the \\
+	Degree of Bachelor of Science \par
+
+	\vfill
+
+	By \\
+	William Campbell \\
+	Cole Granof \\
+	Joseph Petitti \par
+
+	\vfill
+
+	Date: \\
+	October 11, 2019 \par
+
+	\vfill
+
+	Report submitted to: \par
+
+	\vspace{\baselineskip}
+
+\end{center}
+\begin{flushright} % list your sponsors and advisers
+	Atticus Sims, Sponsor \\
+	Kyoto VR \par
+	\vspace{\baselineskip}
+	Professor Joshua Cuneo, Adviser \\
+	Worcester Polytechnic Institute \par
+	\vspace{\baselineskip}
+	Professor Ralph Sutter, Adviser \\
+	Worcester Polytechnic Institute \par
+\end{flushright}
+
+\vfill
+
+\clearpage
 
 % more breathing room
 \setstretch{1.5}
@@ -998,7 +1043,7 @@ Near the entrance of Kinkaku-ji before the ticket gate, there is a large
 illustrated map. Much like the signage, there is no language on the map other
 than Japanese. Using the AR camera within the app, information can be projected
 onto the map. Figure~\ref{fig:arMapFeature} shows the blue highlighted path of
-the walking tour, including a few translated labels. 
+the walking tour, including a few translated labels.
 
 \begin{figure}[h] \centering
     \includegraphics[width=0.4\textwidth]{ar-map-feature.png}
@@ -1052,7 +1097,7 @@ elements were created on the fly as new features were added. As more features
 were added, it became clear that the UI could not consist simply of buttons and
 other basic features provided by Unity. We would need to learn more about how to
 create more interesting and useful UI elements to accommodate for our new
-functionality. 
+functionality.
 
 \begin{figure}[h]
 	\centering
@@ -1069,7 +1114,7 @@ look for and scan. The right dropdown would be dynamically populated in each
 region with buttons bearing different images. These images were ones that
 Atticus wanted to be viewable in AR using ground plane detection. When tapped,
 each button would create a 3D Cube, with the given image on each face, and place
-it on the ground where the user was pointing. 
+it on the ground where the user was pointing.
 %TODO provide a figure of the AR cube
 
 Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
@@ -1255,7 +1300,7 @@ panel is being shown. This prevents us from incurring unnecessary computational
 cost when the AR camera was not in use.
 
 Another group of challenges were created by the content of the main screen,
-which showed the images and audio transcript associated with each region. To 
+which showed the images and audio transcript associated with each region. To
 display the images, we wanted the user to be able to click through them like
 an image gallery.
 
@@ -1266,7 +1311,7 @@ pleasing way. As for the audio transcript, we knew we needed a scrollable text
 field that could accomodate varying amounts of text, since the audio files
 varied so greatly in length. We created a vertical layout group to create a text
 field that expanded vertically within predefined bounds to fit an arbitrary
-amount of text. 
+amount of text.
 
 The last major UI implementation obstacle we had to overcome was a way to keep
 audio playing with the phone in your pocket. Atticus insisted that this sort of
