@@ -562,6 +562,19 @@ of software that both looked and felt like a familiar mobile app. Unity has very
 limited support for this compared to technologies that are specifically geared
 toward creating modern mobile user interfaces such as React.
 
+All of Unity's scripting is done with C\#, which is a general purpose,
+object-oriented language~\autocite{ecmainternational2017}. Even though none of
+us had extensive experience with C\# prior to this project, this was not a great
+concern since C\# is similar to other object-oriented languages such as Java and
+C++. The design goals of the language were also appealing to us; C\# includes
+features important for programmer productivity such as strong type checking
+(unlike JavaScript), detection of using uninitialized variables (also unlike
+JavaScript,) range checking for array bounds (unlike C) and garbage collection.
+At the same time, our lack of familiarity with the language and Unity as a whole
+is another reason we first looked into cross-platform AR solutions that did not
+use Unity.
+%TODO see if we need more sources for this
+
 At the same time, Unity has excellent support for augmented reality through
 various extensions. Because we initially understood AR to be the core of the app
 experience, we chose to use Unity with the Vuforia extension for all future
@@ -913,6 +926,35 @@ if the user wants to check the audio and image files that were uploaded.
 	\label{fig:editour}
 \end{figure}
 
+\subsubsection{Editour Frontend Implementation}
+\label{sec:editourFrontendImplementation}
+
+The frontend was implemented as a web app, using web technologies such as HTML,
+CSS and JavaScript, with JavaScript being the vast majority. ECMAScript is the
+standard that modern JavaScript follows.
+
+Type-checking provided by Visual Studio Code and JSDoc made the growing code
+complexity more manageable~\footnote{One helpful specification of the ECMAScript
+standard in the way of programmer sanity is ``strict mode.'' By placing the
+string \texttt{"use strict"} at the top of a JavaScript source file, errors will
+be thrown in many cases where ordinary JavaScript would not complain. The
+simplest example of this is the line \texttt{a = 1;} will not throw an error
+ordinarily. In strict mode, you must at first explicitly declare the variable
+with the \texttt{let}, \texttt{var} or \texttt{const} keyword before assigning
+it, similar to Java or C++. We included the string at the beginning of every
+source file except for class declarations, which are in strict mode by
+default~\autocite[386]{ecmainternational2019}.} . Excluding Node.js modules, the
+only external library we used for Editour was Leaflet, an open-source JavaScript
+library for interactive maps~\autocite{leafletjs}. We did not use any framework
+for developing frontends like Facebook's React or Google's Angular. Instead, all
+of the complex UI interactions were handled by modifying the DOM directly with
+JavaScript's built-in functionality. Furthermore, we did not use any advanced
+frontend build tools such as Rollup, webpack or Parcel. For a JavaScript project
+of this scope, this was the correct decision. Considering we had limited
+knowledge of React or Angular, it was also faster to develop the UI in the way
+we were used to from previous experience. But if we were to continue to develop
+Editour, UI libraries and frontend build tools would be something to consider.
+
 \subsubsection{Editour Backend}
 \label{sec:editourBackend}
 
@@ -1051,7 +1093,8 @@ to develop and launch this platform in the future.
 
 ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{min}歩こ\end{CJK}''
 (\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
-through an AR-enhanced tour.
+through an AR-enhanced tour. The app was built with Unity, which enabled to us
+to use a single codebase for the iOS and Android versions of the apps.
 
 \subsubsection{GPS Functionality}
 \label{sec:gpsFunctionality}
@@ -1278,6 +1321,11 @@ to place images onto the ground-plane using the AR camera. Instead, he
 suggested that we have the images be viewable in a more traditional
 fashion---in 2D as part of the UI.
 
+At this point in the project, the codebase for Editour was already around three
+thousand lines of vanilla JavaScript. With the changing requirements, Editour
+was becoming onerous to maintain at this stage of the project. Luckily, these
+changes were still manageable to implement.
+
 With more time, we might have been able to get the ground-plane image placement
 feature to a state where Atticus might have liked it. We wanted to explore ways
 to theme the 2D images in the 3D world, such as by framing the images in a
@@ -1297,23 +1345,6 @@ changed in order to add these new features.
 	\caption{Additions to the Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
-
-At this point, the codebase for Editour was already around three thousand lines
-of vanilla JavaScript. Type-checking provided by Visual Studio Code and JSDoc
-made the growing code complexity more manageable. Excluding Node.js modules, the
-only external library we used for Editour was Leaflet, an open-source JavaScript
-library for interactive maps~\autocite{leafletjs}. We did not use any framework
-for developing frontends like Facebook's React or Google's Angular. Instead, all
-of the complex UI interactions were handled by modifying the DOM directly with
-JavaScript's built-in functionality. Furthermore, we did not use any advanced
-frontend build tools such as Rollup, webpack or Parcel. For a JavaScript project
-of this scope, this was the correct decision. Considering we had limited
-knowledge of React or Angular, it was also faster to develop the UI in the
-way we were used to from previous experience. But if we were to continue to
-develop Editour, UI libraries and frontend build tools would be something to
-consider. With these changing requirements, the Editour was becoming onerous to
-maintain at this stage of the project. Luckily, these changes were still
-manageable to implement.
 
 With the ground-plane detection features stripped away from the main app, the
 AR focus shifted to translating the maps and signs using the camera. The fourth
@@ -1746,7 +1777,7 @@ as well as GitHub's other features oriented around coordinating a team.
 
 All three members of the team were contributing code and updating assets such as
 graphics and sound. Code complexity grew quickly as more features were added
-across the entire software stack. Git and GitHub enabled us to view the history
+across the entire software stack. GitHub and git enabled us to view the history
 of the code and revert back to working versions when absolutely necessary. We
 researched the proper methodology of using version control in a small team,
 applying this methodology as best we could. This enabled us to work together
@@ -1799,7 +1830,9 @@ us to enforce that issues with the code were actually addressed.
 The way we incorporated branches into our workflow helped us collaborate in a
 way that kept us organized. In general, if one of us was working on a specific
 feature, we would create a branch with a name descriptive of that feature. This
-methodology minimized difficult-to-resolve merge conflicts.
+methodology minimized difficult-to-resolve merge conflicts. We modeled this
+workflow off of the ``Git Feature Branch Workflow'' Atlassian
+tutorial~\autocite{atlassian}.
 % TODO explain merge conflicts and cite that Atlassian thing
 
 Once we deployed Editour to a server so that Atticus could begin to use it,
