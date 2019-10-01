@@ -103,36 +103,26 @@
 
 \begin{abstract}
 	% abstract goes here
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=\textwidth]{abstract.jpg}
-		% Note: you don't actually need the part in square brackets for the
-		% caption, but if you omit it the regular caption text will be used for
-		% the List of Figures entry.
-		\caption[\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock]
-		{\textit{Number 1, 1950 (Lavender Mist)}, Jackson Pollock, National
-			Gallery of Art, Washington, D.C.}
-		\label{fig:abstract}
-	\end{figure}
+	% TODO write abstract
 \end{abstract}
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgments}
 
-We would like to thank Atticus Sims, CEO and founder of Kyoto~VR, for sponsoring
-this project and providing help and guidance throughout our time in Japan. His
-knowledge of the history of Kinkaku-ji and Kyoto in general has been invaluable
-to our experience.
+Our team would like to thank Atticus Sims, CEO and founder of Kyoto~VR, for
+sponsoring this project and providing help and guidance throughout our time in
+Japan. His knowledge of the history of Kinkaku-ji and Kyoto in general has been
+invaluable to our experience.
 
 We would also like to thank Inoue Hikaru for his help with translations and
 researching AR technology. A special thank you to the IQP team working with
 Kyoto~VR, Lewis Cook, Nicole Escobar, Ahad Fareed, and Cameron Person, for
 filming and editing the app trailer, as well as providing help with testing.
-
-Finally, a thank you to our advisers, Professors Joshua Cuneo and Ralph Sutter.
-Without their expert advice and feedback this project probably could not have
-been completed.
+Further, we are grateful to the assistance and resources provided by Ritsumeikan
+University and Professor Noma Haruo. Finally, a thank you to our advisers,
+Professors Joshua Cuneo and Ralph Sutter. Without their expert advice and
+feedback this project probably could not have been completed.
 
 \clearpage
 
@@ -140,24 +130,35 @@ been completed.
 \label{sec:executiveSummary}
 \addcontentsline{toc}{section}{Executive Summary}
 
-Our team built, tested and polished a mobile app to deliver an audio tour,
-incorporating various augmented reality (AR) features to enhance the
-experience. Our app delivers a tour of Kinkaku-ji, or The Temple of the Golden
-Pavilion, a popular tourist destination in Kyoto. In this app, which we call
-ARuko, many of the AR features were aimed at improving accessibility. These
-features include translating signs and providing additional info on the
-physical map located at the site. Other features were purely for spectacle,
-such as the ability to take an AR ``souvenir'' home by scanning the ticket
-to enter Kinkaku-ji.
+Our team consists of three Senior Worcester Polytechnic Institute (WPI)
+students: William Campbell, computer science and interactive media and game
+development double major; Cole Granof, computer science major; and Joseph
+Petitti, computer science major. We spent twelve weeks in Shiga, Japan
+completing the requirements for our Major Qualifying Project, a WPI graduation
+requirement in which students solve a real-world problem through practical
+project-based work. Our project was sponsored by Kyoto~VR, a startup founded in
+2016 to ``document and preserve the culture and heritage of the city and
+communicate the richness of Japan’s Old Capital to the
+world''~\autocite{kyotovr2018}.
+
+Our team worked directly under Kyoto VR founder and CEO Atticus Sims to develop
+and tested a mobile app to deliver an audio tour, incorporating various
+augmented reality (AR) features to enhance the experience. Our app delivers a
+tour of Kinkaku-ji, or The Temple of the Golden Pavilion, a popular tourist
+destination in Kyoto. In this app, which we call ARuko, many of the AR features
+were aimed at improving accessibility. These features include translating signs
+and providing additional info on the physical map located at the site. Other
+features were purely for spectacle, such as the ability to take an AR
+``souvenir'' home by scanning the ticket to enter Kinkaku-ji.
 
 ARuko went through multiple iterations of user testing and bug testing at
-Kinkaku-ji. Sections \ref{sec:initialFieldTesting} and
+Kinkaku-ji. Sections~\ref{sec:initialFieldTesting} and
 \ref{sec:finalFieldTesting} go into detail about our two days of field testing
 on-site. From these tests, we were able to refine the user experience, and
 identify important features to add to the app. Much of the app's functionality
-was dictated by Atticus Sims, C.E.O and founder of Kyoto~VR, who plans to
-monetize the app. We also worked with an IQP team, who had been tasked with
-exploring funding options and creating promotional content.
+was decided by our project sponsor, who plans to monetize the app. We also
+worked with an IQP team, who had been tasked with exploring funding options and
+creating promotional content.
 
 Since our app had to deliver an audio tour supplemented by images based on your
 latitude and longitude, we developed an internal tool to design physical
@@ -205,17 +206,39 @@ on ARuko.
 The field of consumer-oriented augmented reality (AR) technology is just coming
 into full swing, and it presents many unique opportunities for a myriad of
 fields. This budding technological platform uses digital displays to augment
-real-world information with computer-generated data. As the technology
-progresses, several disparate industries have found novel uses for it, some
-becoming extremely profitable~\autocite{webster2018}. With smartphone
-manufacturers investing billions into AR technology~\autocite{mason2016}, it
-seems poised to be the next big digital interface.
+real-world information with computer-generated data (see
+Figure~\ref{fig:arExample}. As the technology progresses, several disparate
+industries have found novel uses for it, some becoming extremely
+profitable~\autocite{webster2018}. With smartphone manufacturers investing
+billions into AR technology~\autocite{mason2016}, it seems poised to be the next
+big digital interface.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{ar-example.jpg}
+	% Note: you don't actually need the part in square brackets for the
+	% caption, but if you omit it the regular caption text will be used for
+	% the List of Figures entry.
+	\caption[A virtual model of the solar system projected onto the real world
+	using AR]{A virtual model of the solar system projected onto the real world
+		using augmented reality~\autocite{tedx2016}}
+	\label{fig:arExample}
+\end{figure}
 
 Tourism and art are among the fields that could gain the most from AR
 technology~\autocite{saenz2009, katz2018}. This technology can provide
 accessible information to tourists and art viewers that they would not be able
-to get any other way. Kinkaku-ji, the ``Golden Pavilion'' of Kyoto, is the
-perfect example of a site that would benefit from AR~\autocite{bornoff2000}.
+to get any other way. Kinkaku-ji, the ``Golden Pavilion'' of Kyoto (see
+Figure~\ref{fig:kinkakuji1}, is the perfect example of a site that would benefit
+from AR~\autocite{bornoff2000}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kinkakuji-1.jpg}
+	\caption[The Golden Pavilion]{The Golden Pavilion~\autocite{fan2018}}
+	\label{fig:kinkakuji1}
+\end{figure}
+
 Kinkaku-ji is a UNESCO World Heritage Site~\autocite{unesco} and one of the
 most popular tourist destinations in Japan~\autocite{japanguide2019}. The
 Golden Pavilion is a magnificent sight to behold, but the gardens and grounds
@@ -223,9 +246,9 @@ are the true beauty of Kinkaku-ji. It is a living masterpiece of Zen Buddhist
 landscape design, expanding on the natural beauty of Kyoto's forests and
 mountains through the practice of borrowed scenery~\autocite{kuitert2002}.
 
-However, much of the historic information at the site is lost on visitors
-because it is not readily available to non-Japanese speakers. What few signs and
-displays exist are presented only in Japanese, and do not provide most of the
+However, much of the historic information at the site is lost on non-Japanese
+speaking visitors because it is often only available in Japanese. In addition to
+the language barrier, the information provided does not include most of the
 history and context necessary to fully understand Kinkaku-ji.
 
 To solve this problem and open up the peerless beauty of the Golden Pavilion to
@@ -233,9 +256,21 @@ more people, our team created ARuko and Editour. These two tools comprise a
 complete platform for designing and experiencing AR-enhanced tours. Editour
 makes it easy to design custom audio tours including audio, text, and images,
 while ARuko allows users to seamlessly experience historic sites in an intuitive
-and novel way. The experience of walking through the site is enhanced by
-informative narration and AR pop-ups that do not alter the buildings or ground
-in real life.
+and novel way. Many AR apps require specific markers, like the those shown in
+Figure~\ref{fig:arMarker}. Too avoid needing to place any physical object that
+would disturb the buildings or grounds of a historic site our app does not rely
+on these markers. Instead, our ARuko recognizes images of objects that are
+already at the site, and uses them to display informative AR pop-ups. See
+Sections~\ref{sec:translationFeature} and \ref{sec:mapOverlayFeature} for
+more details.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{ar-marker.jpg}
+	\caption[Augmented reality markers]{Augmented reality
+		markers~\autocite{jeriaska2010}}
+	\label{fig:arMarker}
+\end{figure}
 
 \clearpage
 
@@ -245,8 +280,8 @@ in real life.
 As smartphones and mobile technology become more prevalent, new forms of
 human-computer interaction are becoming mainstream. Smartphones allow for an
 unprecedented degree of connectivity with the digital world, but can also serve
-as a tool for enhancing the physical world. In this section we explain the
-origins and uses of some of this technology.
+as a tool for digitally enhancing the physical world. In this section we explain
+the origins and uses of some of this technology.
 
 \subsection{What is Augmented Reality?}
 \label{sec:whatIsAugmentedReality}
@@ -254,15 +289,17 @@ origins and uses of some of this technology.
 Augmented reality, or AR, is a type of human-computer interface where
 perceptions of the real world are enhanced by computer-generated information.
 This differs from virtual reality (VR) in that a VR experience consists
-exclusively of virtual information. In AR, virtual information is mixed with
-sensory input from the real world~\autocite{carmigniani2011}. This can enhance
-the user's perception of reality by providing information that would be
-difficult or impossible to display through traditional means.
+exclusively of virtual information in a virtual environment. In AR, virtual
+information is mixed with sensory input from the real
+world~\autocite{carmigniani2011}. This can enhance the user's perception of
+reality by providing information that would be difficult or impossible to
+display through traditional means.
 
 For example, AR can be used to display information about historical events,
 places, and objects overlaid onto images of the real
-world~\autocite{saenz2009}.  This provides the user with useful information
-without needing to alter a real historic site.
+world~\autocite{saenz2009}, in a way that is more intuitive or visually
+appealing than a purely virtual environment. This provides the user with useful
+information without needing to alter a real historic site.
 
 \subsubsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
@@ -302,17 +339,17 @@ Figure~\ref{fig:pokemonGo}).
 \subsubsection{Challenges of Augmented Reality}
 \label{sec:challengesOfAugmentedReality}
 
-Many of the existing applications using AR, in our eyes, do not leverage the
+Most existing applications using AR, in our team's opinions, do not leverage the
 full potential of this emerging technology. As with any new field, our
-understanding of AR and how to develop for it is limited. All sorts of
-different challenges and limitations face the development and production of AR
-apps. Here are some that we considered when working on our app.
+understanding of AR and how to develop for it is limited. All sorts of different
+challenges and limitations face the development and production of AR apps. Here
+are some that we considered when working on our app.
 
 Many of the applications and use cases that exist for AR right now are, simply
 put, not very good. Many AR apps and features available on smartphones offer
-very little in the way of functionality or practicality; quite simply, they are
-primarily used for minor spectacles and simple
-tricks~\autocite{theappsolutions2018}. For example, one of the most popular
+very little in the way of functionality or practicality; quite simply, they
+primarily primarily revolve around deploying
+gimmicks~\autocite{theappsolutions2018}. For example, one of the most popular
 apps to use AR, \textit{Pokémon Go}, primarily uses its AR feature to place a
 Pokémon on top of a camera's video feed. Disappointingly, it does not interact
 with anything around it. It just floats a fixed distance away from the user.
@@ -463,7 +500,7 @@ advice they might be willing to give us, but we received no response.
 \subsubsection{ViroAR}
 \label{sec:viroAR}
 
-Viro AR comes in two flavors: ViroReact and ViroCore\autocite{facebook2019}.
+Viro AR comes in two versions: ViroReact and ViroCore\autocite{facebook2019}.
 ViroCore allows developers to build an AR Application with Java. The
 disadvantage of this is that ViroCore only allows developers to target Android,
 which unfortunately made ViroCore not an option for our project. ViroReact is
@@ -521,10 +558,10 @@ machine''~\autocite{warick1988}. In our case, emulating Android on a desktop
 operating system is closer to emulating a C64 on an IBM PC running MS-DOS
 (rather than the other way around, thankfully). The takeaway is that the speed
 problem facing emulators is just as real as it was in 1988. Considering that AR
-already pushes modern phone hardware to the limit, emulation is not something
-is not something we wanted to struggle with. On top of this, our testing
-required us to move the camera through the world at various speeds and angles,
-which is simply cumbersome with a laptop webcam.
+already pushes modern phone hardware to the limit, emulation is not something we
+wanted to struggle with. On top of this, our testing required us to move the
+camera through the world at various speeds and angles, which is simply
+cumbersome with a laptop webcam.
 
 As an alternative to emulation, ViroReact offers a convenient ``test bed'' for
 rapidly testing your ViroReact app on native hardware without the need for an
@@ -546,13 +583,12 @@ because the engine is so accessible that, Unity has faced a degree of critism.
 Because Unity appeals to so many beginners, there are many unpolished games that
 bear the Unity logo. In response to this sentiment, Marcos Sanchez, head of
 global communications at Unity, "Democratizing development---in our minds, we
-don’t think is the wrong thing, we think it’s the right thing. You want more
-people understanding, and everyone’s gotta start somewhere." Unity CEO John
-Riccitiello made the claim at TechCrunch Disrupt San Francisco that half of all
-games are made with Unity \autocite{dillet2018}. We consider Unity's ubiquity to
-be an advantage; there is a glut of information about how to use augmented
-reality within Unity.
-%TODO citing a quotation from inside the first citation. Is this okay?
+don't think is the wrong thing, we think it's the right thing. You want more
+people understanding, and everyone’s gotta start somewhere"~\autocite{axon2016}.
+Unity CEO John Riccitiello made the claim at TechCrunch Disrupt San Francisco
+that half of all games are made with Unity \autocite{dillet2018}. We consider
+Unity's ubiquity to be an advantage; there is a glut of information about how to
+use augmented reality within Unity.
 
 Even though Unity is beginner-friendly for making games, the augmented reality
 app we planned to create was not a game. Therefore, we were somewhat concerned
@@ -621,11 +657,11 @@ been living at the temple~\autocite{borowitz2005}. The structure was rebuilt in
 leaf~\autocite{bornoff2000}. The interior was also restored later to match the
 original.
 
-None of this history is readily apparent to a casual tourist at Kinkaku-ji.
-There are a few signs describing different areas, but they are only available in
-Japanese and contain very little information about the history and design of the
-site. Because of this, an intuitive audio tour app with AR features would be
-very helpful to tourists at Kinkaku-ji.
+None of this history is readily apparent to a typical non-Japanese speaking
+tourist at Kinkaku-ji. There are a few signs describing different areas, but
+they are only available in Japanese and contain very little information about
+the history and design of the site. Because of this, an intuitive audio tour app
+with AR features would be very helpful to tourists at Kinkaku-ji.
 
 \clearpage
 
@@ -950,11 +986,11 @@ the backend's API, see Appendix~\ref{sec:editourAPIDocumentation}.
 \label{sec:deployingTheEditourBackend}
 
 For testing and development purposes the Editour backend was originally hosted
-on a personal server belonging to a member of our team. This was a CentOS
-virtual machine running on an old Dell rack server in Worcester, Massachusetts.
-We wrote a custom systemd service to run the Editour as a daemon and keep its
-log files organized. The Node.js backend was served by an Nginx reverse proxy
-running on the same virtual machine.
+on Joseph Petitti's personal server. This was a CentOS virtual machine running
+on an old Dell rack server in Worcester, Massachusetts. We wrote a custom
+systemd service to run the Editour as a daemon and keep its log files organized.
+The Node.js backend was served by an Nginx reverse proxy running on the same
+virtual machine.
 
 While this worked well enough for testing, it was not a permanent solution. We
 asked Atticus to provide a more powerful---and geographically closer---hosting
@@ -1071,10 +1107,9 @@ we eventually dropped support for regions triggered by distance.
 \subsubsection{Translation Feature}
 \label{sec:translationFeature}
 
-Despite Kinkaku-ji being an incredibly popular tourist destination that draws
-crowds from all over the world, the majority of the signage is purely Japanese.
-While AR translation apps exist, the experience can be frustrating, and produce
-poor results. Google's text recognition and machine-learning powered translation
+ARuko uses augmented reality to translate text at the site as well. While AR
+translation apps exist, the experience can be frustrating, and produce poor
+results. Google's text recognition and machine-learning powered translation
 technology is certainly impressive. At the same time, the translation service
 works better in ``scan'' mode instead of ``instant'' mode. In ``instant'' mode,
 the app attempts to translate text as quickly as possible, superimposing the
@@ -1083,8 +1118,8 @@ first takes a photo. Then, the user is prompted to highlight where text appears
 in the photo. After the translation is complete, the translated text appears in
 a separate UI element instead superimposed onto the photo. In most cases, it is
 more convenient and readable to have the translation appear in a separate
-scrollable textbox. This motivated the current design of the ``info buttons'' in
-ARuko. Instead of placing text directly onto signage, we place a blue button
+scrollable text box. This motivated the current design of the ``info buttons''
+in ARuko. Instead of placing text directly onto signage, we place a blue button
 with a stylized `i' in the center. By tapping on this button, a separate UI
 element will appear containing the translated text. Since this button is cast
 into the world using the AR camera, the button appears to be placed directly
@@ -1118,7 +1153,7 @@ our visits to Kinkaku-ji.
 
 \begin{figure}[h] \centering
     \includegraphics[width=0.4\textwidth]{kinkakuji-ticket.jpeg}
-    \caption{Map overlay displaying the path and translated labels}
+    \caption{Kinkaku-ji ticket}
     \label{fig:kinkakujiTicket}
 \end{figure}
 
@@ -1134,7 +1169,15 @@ later.
 
 We found a free untextured model of the Golden Pavilion to use for this
 feature. Using Unity's built-in capability to design materials, we created
-a shiny golden material and applied it to the model.
+a shiny golden material and applied it to the model (see
+Figure~\ref{fig:souvenir}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.5\textwidth]{souvenir.png}
+	\caption{ARuko's virtual souvenir feature}
+	\label{fig:souvenir}
+\end{figure}
 
 Originally, the AR model of the Golden Pavilion was flush against the plane of
 the ticket, sitting on the paper as if it were ground. Atticus suggested that we
