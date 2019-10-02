@@ -1762,92 +1762,6 @@ After going through Kinkaku-ji with the app twice we had each test participant
 fill out a simple survey giving their thoughts on the app. The full results of
 these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 
-% TODO this whole section should probably be in the appendix
-\section{Version Control}
-\label{sec:versionControl}
-
-Over the course of the project, we had to develop multiple applications in
-different languages. In total, we opened five different repositories: the blog,
-the \LaTeX source code for our paper, the Arduino code for the heart project,
-and of course one for Editour and another for ARuko. These five repositories
-span across multiple different markup and programming languages, including C\#,
-C++, JavaScript, HTML, CSS (and the \LaTeX markup language used to typeset this
-paper.) This gave us a welcome amount of practice using git for version control,
-as well as GitHub's other features oriented around coordinating a team.
-
-All three members of the team were contributing code and updating assets such as
-graphics and sound. Code complexity grew quickly as more features were added
-across the entire software stack. GitHub and git enabled us to view the history
-of the code and revert back to working versions when absolutely necessary. We
-researched the proper methodology of using version control in a small team,
-applying this methodology as best we could. This enabled us to work together
-efficiently, track down bugs, undo mistakes, and sometimes review each other's
-code for quality when time allowed.
-
-\subsection{GitHub Tools}
-\label{sec:gitHubTools}
-
-Some members of our team were very excited by the workflows GitHub's tools
-enabled. In this section, we will discuss some of the tools, some of which
-greatly aided in our organization and productivity.
-
-Initially, we experimented with using a four-column Kanban board to keep track
-of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
-GitHub.
-
-The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
-signal'' or ``card'' in Japanese, which describes the core component of the
-technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
-to notify other teams that parts needed for assembly work were in short supply.
-Now, Kanban boards are integral to Agile software development. Still, some teams
-use physical Kanban boards, often using sticky notes and whiteboards.
-
-The advantage of using a Kanban board is that each feature or bug that
-is being worked on can be assigned directly to a collaborator on the project. It
-is then that person's responsibility to work on those tasks and update the
-status of those tasks on the board. We abandoned this when moving onto the main
-project because we came to realize that this structure was not necessary---there
-were only three members on the team, and we were almost always in the same room
-when working on the project. For Editour, we tracked features and issues using
-the Issues page instead, which is discussed in
-Section~\ref{sec:editourFrontendTesting}.
-
-Creating ``pull requests'' through the GitHub web interface has a few advantages
-over directly merging code using git. Firstly, the pull request feature
-integrates with ``Issues'' page very well. By typing `resolves' along with the
-number associated with an issue into the description of a pull request, GitHub
-will automatically close the issue when the pull request is approved. This is
-not only remarkably convenient, but also self-documenting since the descriptions
-of pull requests would contain the issues they were resolving. Secondly,
-creating a pull request allows code to be reviewed by other members of the team
-very easily. Reviewers can view the entire diff and add comments line-by-line.
-Other collaborators can easily respond to those comments. Reviewers can also
-request certain features be changed before the branch is merged, which allowed
-us to enforce that issues with the code were actually addressed.
-% TODO explain what the heck a diff is
-
-% TODO give this paragraph some more context so it doens't seem out of place
-The way we incorporated branches into our workflow helped us collaborate in a
-way that kept us organized. In general, if one of us was working on a specific
-feature, we would create a branch with a name descriptive of that feature. This
-methodology minimized difficult-to-resolve merge conflicts. We modeled this
-workflow off of the ``Git Feature Branch Workflow'' Atlassian
-tutorial~\autocite{atlassian}.
-% TODO explain merge conflicts and cite that Atlassian thing
-
-Once we deployed Editour to a server so that Atticus could begin to use it,
-we changed the version to v1.0.0 to indicate the first release version. At this
-point, it was important that the master branch remain as stable as possible.
-Because of this, we created a ``dev'' branch where we could test experimental
-features to improve the experience and functionality of Editour. Maintaining a
-stable and experimental branch reduced the risks involved with continuing to
-iterate on the software's features post-release.
-
-In a similar vein, with ARuko we used branches to ensure we had a stable working
-version. The night before field testing at Kinkaku-ji, we would cease work on
-the most recent branch, and build the app to our phones. This way, we would
-always have an exact snapshot of the code we used for that day of testing.
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kanban-board.png}
@@ -2000,6 +1914,95 @@ upon in the future.
 \clearpage
 
 \appendices
+
+% TODO should this really go in the appendix?
+\section{Version Control}
+\label{sec:versionControl}
+
+Over the course of the project, we had to develop multiple applications in
+different languages. In total, we opened five different repositories: the blog,
+the \LaTeX source code for our paper, the Arduino code for the heart project,
+and of course one for Editour and another for ARuko. These five repositories
+span across multiple different markup and programming languages, including C\#,
+C++, JavaScript, HTML, CSS (and the \LaTeX markup language used to typeset this
+paper.) This gave us a welcome amount of practice using git for version control,
+as well as GitHub's other features oriented around coordinating a team.
+
+All three members of the team were contributing code and updating assets such as
+graphics and sound. Code complexity grew quickly as more features were added
+across the entire software stack. GitHub and git enabled us to view the history
+of the code and revert back to working versions when absolutely necessary. We
+researched the proper methodology of using version control in a small team,
+applying this methodology as best we could. This enabled us to work together
+efficiently, track down bugs, undo mistakes, and sometimes review each other's
+code for quality when time allowed.
+
+\subsection{GitHub Tools}
+\label{sec:gitHubTools}
+
+Some members of our team were very excited by the workflows GitHub's tools
+enabled. In this section, we will discuss some of the tools, some of which
+greatly aided in our organization and productivity.
+
+Initially, we experimented with using a four-column Kanban board to keep track
+of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
+GitHub.
+
+The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
+signal'' or ``card'' in Japanese, which describes the core component of the
+technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
+to notify other teams that parts needed for assembly work were in short supply.
+Now, Kanban boards are integral to Agile software development. Still, some teams
+use physical Kanban boards, often using sticky notes and whiteboards.
+
+The advantage of using a Kanban board is that each feature or bug that
+is being worked on can be assigned directly to a collaborator on the project. It
+is then that person's responsibility to work on those tasks and update the
+status of those tasks on the board. We abandoned this when moving onto the main
+project because we came to realize that this structure was not necessary---there
+were only three members on the team, and we were almost always in the same room
+when working on the project. For Editour, we tracked features and issues using
+the Issues page instead, which is discussed in
+Section~\ref{sec:editourFrontendTesting}.
+
+Creating ``pull requests'' through the GitHub web interface has a few advantages
+over directly merging code using git. Firstly, the pull request feature
+integrates with ``Issues'' page very well. By typing `resolves' along with the
+number associated with an issue into the description of a pull request, GitHub
+will automatically close the issue when the pull request is approved. This is
+not only remarkably convenient, but also self-documenting since the descriptions
+of pull requests would contain the issues they were resolving. Secondly,
+creating a pull request allows code to be reviewed by other members of the team
+very easily. Reviewers can view the entire diff and add comments line-by-line.
+Other collaborators can easily respond to those comments. Reviewers can also
+request certain features be changed before the branch is merged, which allowed
+us to enforce that issues with the code were actually addressed.
+% TODO explain what the heck a diff is
+
+% TODO give this paragraph some more context so it doens't seem out of place
+The way we incorporated branches into our workflow helped us collaborate in a
+way that kept us organized. In general, if one of us was working on a specific
+feature, we would create a branch with a name descriptive of that feature. This
+methodology minimized difficult-to-resolve merge conflicts. We modeled this
+workflow off of the ``Git Feature Branch Workflow'' Atlassian
+tutorial~\autocite{atlassian}.
+% TODO explain merge conflicts and cite that Atlassian thing
+
+Once we deployed Editour to a server so that Atticus could begin to use it,
+we changed the version to v1.0.0 to indicate the first release version. At this
+point, it was important that the master branch remain as stable as possible.
+Because of this, we created a ``dev'' branch where we could test experimental
+features to improve the experience and functionality of Editour. Maintaining a
+stable and experimental branch reduced the risks involved with continuing to
+iterate on the software's features post-release.
+
+In a similar vein, with ARuko we used branches to ensure we had a stable working
+version. The night before field testing at Kinkaku-ji, we would cease work on
+the most recent branch, and build the app to our phones. This way, we would
+always have an exact snapshot of the code we used for that day of testing.
+
+\clearpage
+
 \section{Editour API Documentation}
 \label{sec:editourAPIDocumentation}
 
@@ -2066,6 +2069,57 @@ that contains the data of the response.
 	were deleted, 404 if no tour with that name could be found, or 500 if a
 	server error was encountered.
 \end{indented}
+
+\clearpage
+
+\section{Ritsumeikan Heart Project}
+\label{sec:ritsumeikanHeartProject}
+
+\section{Supplies}
+\label{sec:supplies}
+
+\subsection{Project Goal}
+\label{sec:projectGoal}
+
+The goal of the project was to create an interactive model of a heart to teach
+heart function to non-specialists, such as students in middle school. This meant
+that the model had to be highly visual and simple to understand. Each visual
+component would have to be designed in an intuitive fashion so that students
+could begin interacting with the model without advanced knowledge of biology.
+
+\subsection{The Heart Simulation}
+\label{sec:theHeartSimulation}
+
+We were presented with a set of equations that defined the mathematical model of
+the heart we would be using to drive our physical model. Along with the
+differential equations, we were also given an analogous circuit model that could
+also be described by the same equations. The circuit and the equations can be
+seen in Figure~\ref{fig:referenceModel}. We were also provided with source code
+for an implementation of this model. We would still need to modify this code to
+calculate the output variables we would need to properly operate the physical
+model, and integrate the model into the main loop of the Arduino source code
+with the appropriate timing.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.4\textwidth]{reference-model.png}
+    \caption{The reference model we used to implement the simulation}
+    \label{fig:referenceModel}
+\end{figure}
+
+We visited ``Den Den Town'' in Osaka in order to gather supplies we would need
+in order to construct the heart. One of the most important purchases of this
+trip was a two-meter long strip of Adafruit NeoPixel light emitting diodes
+(LEDs). The design of this reel of LEDs enabled us to cut the strip at specific
+points to create shorter strips. Each LED on the strip individually adressable,
+allowing us to set the color of any LED along the strip. This perfectly suited
+our needs for representing blood flow.
+
+We were able to program custom animations by updating the color and intensity of
+the LEDs in a rapid fashion. We represented blood flow by changing the phase of
+a sinusoidal wave over time.\footnote{For clarity, we elongated the ``troughs''
+of the sine waves, so the pattern of intensity was not a true sine wave.} Our
+design included two strips of twenty LEDs. The rate of the animation on the
+first strip of LEDs represented blood flow out of the left ventricle.
 
 \clearpage
 
