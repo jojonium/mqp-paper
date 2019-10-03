@@ -102,8 +102,15 @@
 \setstretch{1.5}
 
 \begin{abstract}
-	% abstract goes here
-	% TODO write abstract
+Kinkaku-ji, the Temple of the Golden Pavilion, is one of Kyoto's most visited
+tourist attractions. Most people who visit the site do not have the opportunity
+to experience the rich art and culture that are part of its history. We worked
+with our sponsor, Kyoto VR, to create an app that would allow visitors of 
+Kinkaku-ji to better experience these aspects of the site. We used Unity to
+create an audio tour app that provides historical insight on the location, 
+displays galleries of art throughout the visit, and offers accessibility 
+features through AR. We hope our app will enhance the experience of visiting
+Kinkaku-ji.  
 \end{abstract}
 
 \section*{Acknowledgments}
@@ -133,7 +140,7 @@ feedback this project probably could not have been completed.
 Our team consists of three Senior Worcester Polytechnic Institute (WPI)
 students: William Campbell, computer science and interactive media and game
 development double major; Cole Granof, computer science major; and Joseph
-Petitti, computer science major. We spent twelve weeks in Shiga, Japan
+Petitti, computer science major. We spent twelve weeks in Shiga prefecture, Japan,
 completing the requirements for our Major Qualifying Project, a WPI graduation
 requirement in which students solve a real-world problem through practical
 project-based work. Our project was sponsored by Kyoto~VR, a startup founded in
@@ -142,7 +149,7 @@ communicate the richness of Japan’s Old Capital to the
 world''~\autocite{kyotovr2018}.
 
 Our team worked directly under Kyoto VR founder and CEO Atticus Sims to develop
-and tested a mobile app to deliver an audio tour, incorporating various
+and test a mobile app to deliver an audio tour, incorporating various
 augmented reality (AR) features to enhance the experience. Our app delivers a
 tour of Kinkaku-ji, or The Temple of the Golden Pavilion, a popular tourist
 destination in Kyoto. In this app, which we call ARuko, many of the AR features
@@ -162,7 +169,7 @@ creating promotional content.
 
 Since our app had to deliver an audio tour supplemented by images based on your
 latitude and longitude, we developed an internal tool to design physical
-regions for each step of the tour. This tool, called Editour provides a rich
+regions for each step of the tour. This tool, called Editour, provides a rich
 editing suite through a simple web interface. Section~\ref{sec:editingATour}
 goes into detail about the features of this web app. We also wrote a backend to
 manage the tour files, allowing one of us (or our sponsor, Atticus Sims) to
@@ -1157,17 +1164,18 @@ results. Google's text recognition and machine-learning powered translation
 technology is certainly impressive. At the same time, the translation service
 works better in ``scan'' mode instead of ``instant'' mode. In ``instant'' mode,
 the app attempts to translate text as quickly as possible, superimposing the
-translated text onto the real world using the camera. In ``scan'' mode, the user
-first takes a photo. Then, the user is prompted to highlight where text appears
-in the photo. After the translation is complete, the translated text appears in
-a separate UI element instead superimposed onto the photo. In most cases, it is
-more convenient and readable to have the translation appear in a separate
-scrollable text box. This motivated the current design of the ``info buttons''
-in ARuko. Instead of placing text directly onto signage, we place a blue button
-with a stylized `i' in the center. By tapping on this button, a separate UI
-element will appear containing the translated text. Since this button is cast
-into the world using the AR camera, the button appears to be placed directly
-onto the content in the real world.
+translated text onto the real world using the camera. %could put an image of instant mode here as an example
+In ``scan'' mode, the user first takes a photo. Then, the user is prompted to 
+highlight where text appears in the photo. %could put an example here as well
+After the translation is complete, the translated text appears in a separate UI %another example?
+element instead superimposed onto the photo. In most cases, it is more 
+convenient and readable to have the translation appear in a separate scrollable
+text box. This motivated the current design of the ``info buttons'' in ARuko. 
+Instead of placing text directly onto signage, we place a blue button with a 
+stylized `i' in the center. By tapping on this button, a separate UI element 
+will appear containing the translated text. Since this button is cast into the %example
+world using the AR camera, the button appears to be placed directly onto the 
+content in the real world.
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -1461,7 +1469,7 @@ amount of text.
 
 The last major UI implementation obstacle we had to overcome was a way to keep
 audio playing with the phone in your pocket. Atticus insisted that this sort of
-feature was required so that users could listen to the audio tour without using
+feature was required so that users could listen to the audio tour without using %maybe include an image of pocket mode here
 any of the other functionality the app provides, like the image gallery in each
 region or the AR features. Despite how common it is for apps to play audio in
 the background or while the phone is locked, Unity does not provide a way to
@@ -1894,6 +1902,60 @@ indicating that those images would serve well as AR image targets.
     from the web}
 	\label{fig:exhibitionScan}
 \end{figure}
+
+\subsection{Alterniative Uses for AR in ARuko}
+\label{sec:alternativeARukoAR}
+
+Even once the idea for ARuko was settled on audio tour functionality with 
+additional AR components, what exactly those AR components would do was still
+undecided until more details about the project crystallized. Atticus knew he 
+wanted to use AR on the tour, but was not sure what to do with it. At first, we
+made recommendations to him based on the capabilities of Vuforia that we found 
+in our research. We knew it was good at image recognition and ground plane 
+recognition, so we suggested that maybe displaying some sorts of 3D models in 
+certain locations using either of these features might be an interesting way to
+expand on the tour. With these recommendations in mind, Atticus expressed 
+interest in the capability of using building facades as image targets. The 
+intention then would be to tie content related to a specific location within 
+Kinkaku-ji to that physical location, and use images of the location as 
+targets. As previously explained, this ultimately did not work out due to the 
+limitations of image recognition with Vuforia. 
+
+After being initially deterred from image recognition, we thought that ground
+and mid-air plane recognition might the best way to implement AR in the app. 
+It did not have to rely on images that meet Vuforia's criteria, and since it 
+could be triggered anywhere, it seemed like a good fit for an app focusing on
+walking around a site. Atticus explained that he primarily wanted to use AR to
+display art related to the site. With this in mind, we focused our efforts with
+ground and mid-air plane AR on ways to display 2D images. What we ended up 
+creating first was a feature that allowed users to view certain images in AR, 
+using ground plane detection, based on what region you were in. When users 
+entered a region of the tour, the image menu would be dynamically populated 
+with buttons that, when tapped, would create a Plane primitive in Unity with 
+the given image displayed on it and place it on the ground plane. 
+
+We encountered a few notable problems with this though. One problem was that 
+the Plane we made was always the same size and dimensions, and would cause 
+images to stretch to fit the plane. Further testing to change the size of the
+plane with each picture proved difficult. Additionally, using a Plane primitive
+had problematic effects on the way the object was lit in the Unity scene, as 
+well as how it appeared when not viewed head-on. If viewed from an angle, the 
+picture could become very dark and difficult to see. If viewed from behind,
+back-face culling would take effect and the plane would become completely 
+invisible. Because of these issues, we decided to place the images on a 3D Cube
+primitive instead. But after showing this feature to Atticus during early 
+testing at Kinkaku-ji, he decided that he wanted to move away from displaying 
+images in AR. Looking back, the feature may have worked better with mid-air 
+plane recognition so that the user could place the image directly in front of 
+them. 
+
+In addition to the previously mentioned use cases for AR in ARuko, Atticus also
+expressed interest in using AR to trigger video content. He was particularly
+interested in 3D videos triggerable through AR. As the scope of the project 
+grew, and time ran short, the task of including 3D videos triggered by AR 
+seemed more and more complicated, causing that idea to be phased out of the
+final project. Additionally, we never received any assets from Atticus to use
+for this feature, thus preventing us from spending time developing it. 
 
 \subsection{Monetization for ARuko}
 \label{sec:monetizationForAruko}
@@ -2413,6 +2475,47 @@ their thoughts on the app. The full results are listed below.
 \caption{Results of final field test survey}
 \label{tab:testingSurveyResults}
 \end{table}
+
+\section{NOxAR Assignment}
+\label{sec:NOxAR}
+
+On Monday, September 9\textsuperscript{th}, Atticus approached us about an additional project he 
+wanted us to tackle. He wanted us to adapt Kyoto VR's NOxAR app to use ground
+plane detection. Currently, the NOxAR app is an AR app for Microsoft Hololens
+that uses image targets with Vuforia. When viewing the correct image target,
+the app projects a 3D model of a noh theater\footnote{A form of Japanese 
+theater originating in the 14th century structured around song and slow 
+dancing~\autocite{japanguide2018}.} performer dancing to background 
+music~\autocite{noxar2018}. What Atticus wanted was to have the app use 
+ground plane detection in order to display the noh performer so that it could 
+be displayed anywhere. Additionally, he wanted us to scale up the model so that
+when displayed in AR, the performer would appear life-sized. 
+
+For this project, Atticus sent us the original Unity project files for NOxAR.
+We then had to figure out how to turn the original project into a ground plane
+AR app. At first we tried importing the assets for the noh performer into a new
+Unity project. We did this for a couple reasons. The first reason was because
+we did not want all of the extra components of the original NOxAR project to
+get in the way of what we were trying to do. We also did this because the %could probably put an example pic here
+original project was made with a 2017 version of Unity, so we wanted to try to
+use our more recent version so we would not risk running into any depricated 
+features or functionalities. We did eventually get this method to work, but the
+model of the noh performer was lacking a lot of the details that the original 
+model had. This was attributed to poor importation of the original assets, so 
+we decided to try making changes to the original NOxAR project instead. 
+
+Per Atticus's advice, we deleted any and all unnecessary elements from the 
+scene before proceeding. We also updated the Unity version of the project to
+the 2019 version we were using, and updated the version of Vuforia to the most
+recent version, neither of which created any problems. The process of getting
+the model to appear on ground plane detection instead of image target 
+recognition was relatively simple. We simply moved the model from an image 
+target to a simulated ground plane, added a plane detector component to the
+scene, and made sure the Vuforia settings were in place for ground plane
+detection to work well. From there, we just had to test the app a few times so
+we could properly scale the model to life size. On Tuesday, September 17th, 
+we completed the NOxAR ground plane adaptation to Atticus's saisfaction and
+sent him the final APK file for the app. 
 
 \end{document}
 
