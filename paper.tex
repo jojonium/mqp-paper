@@ -2163,5 +2163,47 @@ their thoughts on the app. The full results are listed below.
 \label{tab:testingSurveyResults}
 \end{table}
 
+\section{NOxAR Assignment}
+\label{sec:NOxAR}
+
+On Monday, September 9th, Atticus approached us about an additional project he 
+wanted us to tackle. He wanted us to adapt Kyoto VR's NOxAR app to use ground
+plane detection. Currently, the NOxAR app is an AR app for Microsoft Hololens
+that uses image targets with Vuforia. When viewing the correct image target,
+the app projects a 3D model of a Noh Theater\footnote{A form of Japanese 
+theater originating in the 14th century structured around song and slow 
+dancing~\autocite{japanguide2018}.} performer dancing to background 
+music~\autocite{noxar2018}. What Atticus wanted us to do was have the app use 
+ground plane detection in order to display the Noh performer so that it could 
+be displayed anywhere. Additionally, he wanted us to scale up the model so that
+when displayed in AR, the performer would appear life-sized, as if she were 
+really there dancing in the real world. 
+
+For this project, Atticus sent us the original Unity project files for NOxAR.
+We then had to figure out how to turn the original project into a ground plane
+AR app. At first we tried importing the assets for the Noh performer into a new
+Unity project. We did this for a couple reasons. The first reason was because
+we didn't want all of the extra components of the original NOxAR project to
+get in the way of what we were trying to do. We also did this because the 
+original project was made with a 2017 version of Unity, so we wanted to try to
+use our more recent version so we wouldn't risk running into any depricated 
+features or functionalities. We did eventually get this method to work, but the
+model of the Noh performer was lacking a lot of the details that the original 
+model had. This was attributed to poor importation of the original assets, so 
+we decided to try making changes to the original NOxAR project instead. 
+
+Per Atticus's advice, we deleted any and all unnecessary elements from the 
+scene before proceeding. We also updated the Unity version of the project to
+the 2019 version we were using, and updated the version of Vuforia to the most
+recent version, neither of which created any problems. The process of getting
+the model to appear on ground plane detection instead of image target 
+recognition was relatively simple. We simply moved the model from an image 
+target to a simulated ground plane, added a plane detector component to the
+scene, and made sure the Vuforia settings were in place for ground plane
+detection to work well. From there, we just had to test the app a few times so
+we could properly scale the model to life size. So on Tuesday, September 17th, 
+we completed the NOxAR ground plane adaptation to Atticus's saisfaction and
+sent him the final APK file for the app. 
+
 \end{document}
 
