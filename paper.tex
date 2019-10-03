@@ -1960,30 +1960,31 @@ indicating that those images would serve well as AR image targets.
 
 Even once the idea for ARuko was settled on audio tour functionality with 
 additional AR components, what exactly those AR components would do was still
-undecided for a while. Atticus knew he wanted to use AR on the tour, but wasn't
-sure what to do with it. At first, we made recommendations to him based on the
-capabilities of Vuforia that we found in our research. We knew it was good at
-image recognition and ground plane recognition, so we suggested that maybe 
-displaying some sorts of 3D models in certain locations using either of these
-features might be an interesting way to expand on the tour. With these 
-recommendations in mind, Atticus expressed interest in the capability of using
-building facades as image targets. The intention then would be to tie content
-related to a specific location within Kinkaku-ji to that physical location, and
-use images of the location as targets. As previously explained, this ultimately
-did not work out due to the limitations of image recognition with Vuforia. 
+undecided until more details about the project crystallized. Atticus knew he 
+wanted to use AR on the tour, but was not sure what to do with it. At first, we
+made recommendations to him based on the capabilities of Vuforia that we found 
+in our research. We knew it was good at image recognition and ground plane 
+recognition, so we suggested that maybe displaying some sorts of 3D models in 
+certain locations using either of these features might be an interesting way to
+expand on the tour. With these recommendations in mind, Atticus expressed 
+interest in the capability of using building facades as image targets. The 
+intention then would be to tie content related to a specific location within 
+Kinkaku-ji to that physical location, and use images of the location as 
+targets. As previously explained, this ultimately did not work out due to the 
+limitations of image recognition with Vuforia. 
 
 After being initially deterred from image recognition, we thought that ground
 and mid-air plane recognition might the best way to implement AR in the app. 
-It didn't have to rely on images that meet Vuforia's criteria, and since it 
+It did not have to rely on images that meet Vuforia's criteria, and since it 
 could be triggered anywhere, it seemed like a good fit for an app focusing on
 walking around a site. Atticus explained that he primarily wanted to use AR to
-display art related to the site. So we focused our efforts with ground and 
-mid-air plane AR on ways to display 2D images. What we ended up creating first
-was a feature that allowed you to view certain images in AR, using ground plane
-detection, based on what region you were in. So when you entered a region of 
-the tour, the image menu would be dynamically populated with buttons that, when
-tapped, would create a Plane primitive in Unity with the given image displayed
-on it and place it on the ground plane. 
+display art related to the site. With this in mind, we focused our efforts with
+ground and mid-air plane AR on ways to display 2D images. What we ended up 
+creating first was a feature that allowed users to view certain images in AR, 
+using ground plane detection, based on what region you were in. When users 
+entered a region of the tour, the image menu would be dynamically populated 
+with buttons that, when tapped, would create a Plane primitive in Unity with 
+the given image displayed on it and place it on the ground plane. 
 
 We encountered a few notable problems with this though. One problem was that 
 the Plane we made was always the same size and dimensions, and would cause 
@@ -1991,13 +1992,14 @@ images to stretch to fit the plane. Further testing to change the size of the
 plane with each picture proved difficult. Additionally, using a Plane primitive
 had problematic effects on the way the object was lit in the Unity scene, as 
 well as how it appeared when not viewed head-on. If viewed from an angle, the 
-picture could become very dark and difficult to see. And if viewed from behind,
-it would actually be completely invisible. Because of these issues, we decided
-to place the images on a 3D Cube primitive instead. But after showing this
-feature to Atticus during early testing at Kinkaku-ji, he decided that he 
-wanted to move away from displaying images in AR. Looking back, the feature
-may have worked better with mid-air plane recognition so that the user could
-place the image directly in front of them. 
+picture could become very dark and difficult to see. If viewed from behind,
+back-face culling would take effect and the plane would become completely 
+invisible. Because of these issues, we decided to place the images on a 3D Cube
+primitive instead. But after showing this feature to Atticus during early 
+testing at Kinkaku-ji, he decided that he wanted to move away from displaying 
+images in AR. Looking back, the feature may have worked better with mid-air 
+plane recognition so that the user could place the image directly in front of 
+them. 
 
 In addition to the previously mentioned use cases for AR in ARuko, Atticus also
 expressed interest in using AR to trigger video content. He was particularly
@@ -2226,29 +2228,28 @@ their thoughts on the app. The full results are listed below.
 \section{NOxAR Assignment}
 \label{sec:NOxAR}
 
-On Monday, September 9th, Atticus approached us about an additional project he 
+On Monday, September 9\textsuperscript{th}, Atticus approached us about an additional project he 
 wanted us to tackle. He wanted us to adapt Kyoto VR's NOxAR app to use ground
 plane detection. Currently, the NOxAR app is an AR app for Microsoft Hololens
 that uses image targets with Vuforia. When viewing the correct image target,
-the app projects a 3D model of a Noh Theater\footnote{A form of Japanese 
+the app projects a 3D model of a noh theater\footnote{A form of Japanese 
 theater originating in the 14th century structured around song and slow 
 dancing~\autocite{japanguide2018}.} performer dancing to background 
-music~\autocite{noxar2018}. What Atticus wanted us to do was have the app use 
-ground plane detection in order to display the Noh performer so that it could 
+music~\autocite{noxar2018}. What Atticus wanted was to have the app use 
+ground plane detection in order to display the noh performer so that it could 
 be displayed anywhere. Additionally, he wanted us to scale up the model so that
-when displayed in AR, the performer would appear life-sized, as if she were 
-really there dancing in the real world. 
+when displayed in AR, the performer would appear life-sized. 
 
 For this project, Atticus sent us the original Unity project files for NOxAR.
 We then had to figure out how to turn the original project into a ground plane
-AR app. At first we tried importing the assets for the Noh performer into a new
+AR app. At first we tried importing the assets for the noh performer into a new
 Unity project. We did this for a couple reasons. The first reason was because
-we didn't want all of the extra components of the original NOxAR project to
+we did not want all of the extra components of the original NOxAR project to
 get in the way of what we were trying to do. We also did this because the %could probably put an example pic here
 original project was made with a 2017 version of Unity, so we wanted to try to
-use our more recent version so we wouldn't risk running into any depricated 
+use our more recent version so we would not risk running into any depricated 
 features or functionalities. We did eventually get this method to work, but the
-model of the Noh performer was lacking a lot of the details that the original 
+model of the noh performer was lacking a lot of the details that the original 
 model had. This was attributed to poor importation of the original assets, so 
 we decided to try making changes to the original NOxAR project instead. 
 
@@ -2261,7 +2262,7 @@ recognition was relatively simple. We simply moved the model from an image
 target to a simulated ground plane, added a plane detector component to the
 scene, and made sure the Vuforia settings were in place for ground plane
 detection to work well. From there, we just had to test the app a few times so
-we could properly scale the model to life size. So on Tuesday, September 17th, 
+we could properly scale the model to life size. On Tuesday, September 17th, 
 we completed the NOxAR ground plane adaptation to Atticus's saisfaction and
 sent him the final APK file for the app. 
 
