@@ -394,8 +394,8 @@ industry as a whole very accurately. We struggled with how exactly we would use
 AR for our app in a way that benefited the experience as a whole. Despite our
 initial apprehension, we believe the way we have integrated AR into our app
 enhances the user experience. Hardware issues were definitely our biggest
-challenge. Only one member of our team had a phone new enough to run AR technology at a
-decent level, making testing of our application difficult.
+challenge. Only one member of our team had a phone new enough to run AR
+technology at a decent level, making testing of our application difficult.
 
 \subsection{izi.TRAVEL}
 \label{sec:iziTravel}
@@ -405,7 +405,7 @@ tours. The app, called izi.TRAVEL, allows users to create audio tours with
 audio and image files tied to specific locations in the real
 world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
 aimed at museums and city tours~\autocite{izitravel} but can be used for tours
-of historic sites too.  Kyoto~VR used the platform to make a simple audio tour
+of historic sites too. Kyoto~VR used the platform to make a simple audio tour
 of Kinkaku-ji.
 
 \begin{figure}[h]
@@ -604,6 +604,19 @@ traditional game experience. Instead we would be using Unity to create a piece
 of software that both looked and felt like a familiar mobile app. Unity has very
 limited support for this compared to technologies that are specifically geared
 toward creating modern mobile user interfaces such as React.
+
+All of Unity's scripting is done with C\#, which is a general purpose,
+object-oriented language~\autocite{ecmainternational2017}. Even though none of
+us had extensive experience with C\# prior to this project, this was not a great
+concern since C\# is similar to other object-oriented languages such as Java and
+C++. The design goals of the language were also appealing to us; C\# includes
+features important for programmer productivity such as strong type checking
+(unlike JavaScript), detection of using uninitialized variables (also unlike
+JavaScript,) range checking for array bounds (unlike C) and garbage collection.
+At the same time, our lack of familiarity with the language and Unity as a whole
+is another reason we first looked into cross-platform AR solutions that did not
+use Unity.
+%TODO see if we need more sources for this
 
 At the same time, Unity has excellent support for augmented reality through
 various extensions. Because we initially understood AR to be the core of the app
@@ -956,6 +969,35 @@ if the user wants to check the audio and image files that were uploaded.
 	\label{fig:editour}
 \end{figure}
 
+\subsubsection{Editour Frontend Implementation}
+\label{sec:editourFrontendImplementation}
+
+The frontend was implemented as a web application, using web technologies such
+as HTML, CSS and JavaScript, with JavaScript being the vast majority of the
+code. Type-checking provided by Visual Studio Code and JSDoc made the growing
+code complexity more manageable.\footnote{One helpful specification of the
+ECMAScript standard in the way of programmer sanity is ``strict mode.'' By
+placing the string \texttt{"use strict"} at the top of a JavaScript source file,
+errors will be thrown in many cases where ordinary JavaScript would not
+complain. The simplest example of this is the line \texttt{a = 1;} will not
+throw an error ordinarily. In strict mode, you must at first explicitly declare
+the variable with the \texttt{let}, \texttt{var}, or \texttt{const} keyword
+before assigning it, similar to Java or C++. We included the string at the
+beginning of every source file except for class declarations, which are in
+strict mode by default~\autocite[386]{ecmainternational2019}.} Excluding Node.js
+modules, the only external library we used for Editour was Leaflet, which is
+``an open-source JavaScript library for mobile-friendly interactive maps''
+according to the official Leaflet website~\autocite{leafletjs}. We did not use
+any framework for developing frontends like Facebook's React or Google's
+Angular. Instead, all of the complex UI interactions were handled by modifying
+the DOM directly with JavaScript's built-in functionality. Furthermore, we did
+not use any advanced frontend build tools such as Rollup, webpack or Parcel. For
+a JavaScript project of this scope, this was the correct decision. Considering
+we had limited knowledge of React or Angular, it was also faster to develop the
+UI in the way we were used to from previous experience. But if we were to
+continue to develop Editour, UI libraries and frontend build tools would be
+something to consider.
+
 \subsubsection{Editour Backend}
 \label{sec:editourBackend}
 
@@ -1077,24 +1119,26 @@ colleges could distribute tour links via QR codes, which would instantly launch
 an interactive guided tour of the campus through the browser.
 
 Currently, anyone can clone the GitHub repository of Editour and deploy a
-working version on a personal server. The source code for Editour is under an
-open-source license. This allows anyone to expand the frontend and backend to
-suit their needs. With additional hardware and by extending the current
+working version on a personal server. The source code for Editour is under a
+free license. This allows anyone to expand the frontend and backend to suit
+their needs. With additional hardware and by extending the current
 implementation of both the frontend and backend, Editour could be used as the
 groundwork to create an entire crowd-sourced walking tour platform, allowing
 users to design tours for others to take.
 
 In summary, we want to explore the idea of creating a community-driven audio
 tour database that allows mobile users to take tours without the need to install
-an app. The open-source code we wrote for Editour empowers us (or anyone else)
+an app. The free code we wrote for Editour empowers us (or anyone else)
 to develop and launch this platform in the future.
 
 \subsection{ARuko}
 \label{sec:aruko}
 
+% TODO let's triple check the name in Japanese even makes sense
 ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{min}歩こ\end{CJK}''
 (\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
-through an AR-enhanced tour.
+through an AR-enhanced tour. The app was built with Unity, which enabled to us
+to use a single codebase for the iOS and Android versions of the apps.
 
 \subsubsection{GPS Functionality}
 \label{sec:gpsFunctionality}
@@ -1331,6 +1375,11 @@ to place images onto the ground-plane using the AR camera. Instead, he
 suggested that we have the images be viewable in a more traditional
 fashion---in 2D as part of the UI.
 
+At this point in the project, the codebase for Editour was already around three
+thousand lines of vanilla JavaScript. With the changing requirements, Editour
+was becoming onerous to maintain at this stage of the project. Luckily, these
+changes were still manageable to implement.
+
 With more time, we might have been able to get the ground-plane image placement
 feature to a state where Atticus might have liked it. We wanted to explore ways
 to theme the 2D images in the 3D world, such as by framing the images in a
@@ -1350,23 +1399,6 @@ changed in order to add these new features.
 	\caption{Additions to the Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
-
-At this point, the codebase for Editour was already around three thousand lines
-of vanilla JavaScript. Type-checking provided by Visual Studio Code and JSDoc
-made the growing code complexity more manageable. Excluding Node.js modules, the
-only external library we used for Editour was Leaflet, an open-source JavaScript
-library for interactive maps~\autocite{leafletjs}. We did not use any framework
-for developing frontends like Facebook's React or Google's Angular. Instead, all
-of the complex UI interactions were handled by modifying the DOM directly with
-JavaScript's built-in functionality. Furthermore, we did not use any advanced
-frontend build tools such as Rollup, webpack or Parcel. For a JavaScript project
-of this scope, this was the correct decision. Considering we had limited
-knowledge of React or Angular, it was also faster to develop the UI in the
-way we were used to from previous experience. But if we were to continue to
-develop Editour, UI libraries and frontend build tools would be something to
-consider. With these changing requirements, the Editour was becoming onerous to
-maintain at this stage of the project. Luckily, these changes were still
-manageable to implement.
 
 With the ground-plane detection features stripped away from the main app, the
 AR focus shifted to translating the maps and signs using the camera. The fourth
@@ -1785,90 +1817,6 @@ After going through Kinkaku-ji with the app twice we had each test participant
 fill out a simple survey giving their thoughts on the app. The full results of
 these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 
-% TODO this whole section should probably be in the appendix
-\section{Version Control}
-\label{sec:versionControl}
-
-Over the course of the project, we had to develop multiple applications in
-different languages. In total, we opened five different repositories: the blog,
-the \LaTeX source code for our paper, the Arduino code for the heart project,
-and of course one for Editour and another for ARuko. These five repositories
-span across multiple different markup and programming languages, including C\#,
-C++, JavaScript, HTML, CSS (and the \LaTeX markup language used to typeset this
-paper.) This gave us a welcome amount of practice using git for version control,
-as well as GitHub's other features oriented around coordinating a team.
-
-All three members of the team were contributing code and updating assets such as
-graphics and sound. Code complexity grew quickly as more features were added
-across the entire software stack. Git and GitHub enabled us to view the history
-of the code and revert back to working versions when absolutely necessary. We
-researched the proper methodology of using version control in a small team,
-applying this methodology as best we could. This enabled us to work together
-efficiently, track down bugs, undo mistakes, and sometimes review each other's
-code for quality when time allowed.
-
-\subsection{GitHub Tools}
-\label{sec:gitHubTools}
-
-Some members of our team were very excited by the workflows GitHub's tools
-enabled. In this section, we will discuss some of the tools, some of which
-greatly aided in our organization and productivity.
-
-Initially, we experimented with using a four-column Kanban board to keep track
-of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
-GitHub.
-
-The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
-signal'' or ``card'' in Japanese, which describes the core component of the
-technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
-to notify other teams that parts needed for assembly work were in short supply.
-Now, Kanban boards are integral to Agile software development. Still, some teams
-use physical Kanban boards, often using sticky notes and whiteboards.
-
-The advantage of using a Kanban board is that each feature or bug that
-is being worked on can be assigned directly to a collaborator on the project. It
-is then that person's responsibility to work on those tasks and update the
-status of those tasks on the board. We abandoned this when moving onto the main
-project because we came to realize that this structure was not necessary---there
-were only three members on the team, and we were almost always in the same room
-when working on the project. For Editour, we tracked features and issues using
-the Issues page instead, which is discussed in
-Section~\ref{sec:editourFrontendTesting}.
-
-Creating ``pull requests'' through the GitHub web interface has a few advantages
-over directly merging code using git. Firstly, the pull request feature
-integrates with ``Issues'' page very well. By typing `resolves' along with the
-number associated with an issue into the description of a pull request, GitHub
-will automatically close the issue when the pull request is approved. This is
-not only remarkably convenient, but also self-documenting since the descriptions
-of pull requests would contain the issues they were resolving. Secondly,
-creating a pull request allows code to be reviewed by other members of the team
-very easily. Reviewers can view the entire diff and add comments line-by-line.
-Other collaborators can easily respond to those comments. Reviewers can also
-request certain features be changed before the branch is merged, which allowed
-us to enforce that issues with the code were actually addressed.
-% TODO explain what the heck a diff is
-
-% TODO give this paragraph some more context so it doens't seem out of place
-The way we incorporated branches into our workflow helped us collaborate in a
-way that kept us organized. In general, if one of us was working on a specific
-feature, we would create a branch with a name descriptive of that feature. This
-methodology minimized difficult-to-resolve merge conflicts.
-% TODO explain merge conflicts and cite that Atlassian thing
-
-Once we deployed Editour to a server so that Atticus could begin to use it,
-we changed the version to v1.0.0 to indicate the first release version. At this
-point, it was important that the master branch remain as stable as possible.
-Because of this, we created a ``dev'' branch where we could test experimental
-features to improve the experience and functionality of Editour. Maintaining a
-stable and experimental branch reduced the risks involved with continuing to
-iterate on the software's features post-release.
-
-In a similar vein, with ARuko we used branches to ensure we had a stable working
-version. The night before field testing at Kinkaku-ji, we would cease work on
-the most recent branch, and build the app to our phones. This way, we would
-always have an exact snapshot of the code we used for that day of testing.
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kanban-board.png}
@@ -2007,6 +1955,43 @@ seemed more and more complicated, causing that idea to be phased out of the
 final project. Additionally, we never received any assets from Atticus to use
 for this feature, thus preventing us from spending time developing it. 
 
+\subsection{Monetization for ARuko}
+\label{sec:monetizationForAruko}
+
+Partway through our project, Atticus Sims let us know that he was looking to
+monetize the app we were developing for him. He also informed us that the IQP
+team would be looking for funding options in order to ``bootstrap'' the project.
+One monetization method he proposed was potentially marketing the app to hotels,
+allowing hotels to sell tours for download through in-app purchases.
+
+In order to get an app approved for the App Store or the Google Play store,
+there is sometimes a lengthy approval process. This might have been possible if
+our project had been more prescriptive from the start.
+
+We did perform some preliminary research about the monetization models Atticus
+proposed and brought forth some potential roadblocks regarding each one. We let
+Atticus know that we had logistical concerns about circumventing Apple's or
+Google's in-app purchases by locking content behind a different payment process.
+Additionally, we informed Atticus that he would have to purchase a commercial
+Vuforia license in order to deploy the app onto any
+storefront~\autocite{vuforialicense2018}, which Atticus was not willing to do at
+the time. The free version of Vuforia comes branded with a watermark in the
+bottom left corner.\footnote{The final design of our app incidentally covers up
+the watermark with our own UI elements. This does not change the fact that we
+would not be able to deploy the app without a proper commercial license for
+Vuforia.}
+
+Our concerns about focusing on monetization for Kyoto~VR were twofold. Firstly,
+we were worried that this kind of work strayed too far away from the academic
+intent of the project---the intent being to explore various ways in which AR and
+geolocation could be used in tandem to create an improved experience for
+tourists. For our purposes, the app was meant to demonstrate our discoveries in
+the form of a polished prototype. While we feel as though we achieved this goal,
+we made certain compromises in the way of experimentation in order to leave
+Kyoto~VR with a potentially marketable product. We made it clear to Atticus that
+deploying our app on the Google Play Store or App Store would not be within the
+scope of our academic project as per our advisers' advice.
+
 \clearpage
 
 \section{Conclusion and Future Work}
@@ -2116,6 +2101,119 @@ upon in the future.
 \clearpage
 
 \appendices
+
+% TODO should this really go in the appendix?
+\section{Version Control}
+\label{sec:versionControl}
+
+Over the course of the project, we had to develop multiple applications in
+different languages. In total, we created five different repositories: the blog,
+the \LaTeX~source code for our paper, the Arduino code for the heart project
+(see Appendix~\ref{sec:ritsumeikanHeartProject}) and of course one for Editour
+and another for ARuko. These five repositories span across multiple different
+markup and programming languages, including C\#, C++, JavaScript, HTML, CSS (and
+the \LaTeX~used to typeset this paper). This gave us a welcome amount of
+practice using Git for version control, as well as GitHub's other features
+oriented around coordinating a team.
+
+All three members of the team were contributing code and updating assets such as
+graphics and sound. Code complexity grew quickly as more features were added
+across the entire software stack. GitHub and Git enabled us to view the history
+of the code and revert back to working versions when absolutely necessary. We
+researched the proper methodology of using version control in a small team,
+applying this methodology as best we could. This enabled us to work together
+efficiently, track down bugs, undo mistakes, and review each other's code for
+quality when time allowed.
+
+\subsection{GitHub Tools}
+\label{sec:gitHubTools}
+
+Some members of our team were very excited by the workflows GitHub's tools
+enabled. In this section, we will discuss some of the tools, some of which
+greatly aided in our organization and productivity.
+
+Initially, we experimented with using a four-column Kanban board to keep track
+of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
+GitHub.
+
+The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
+signal'' or ``card'' in Japanese, which describes the core component of the
+technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
+to notify other teams that parts needed for assembly work were in short supply.
+Now, Kanban boards are integral to Agile software development. Some teams still
+use physical Kanban boards, often using sticky notes and whiteboards.
+
+The advantage of using a Kanban board is that each feature or bug that
+is being worked on can be assigned directly to a collaborator on the project. It
+is then that person's responsibility to work on those tasks and update the
+status of those tasks on the board. We abandoned this when moving onto the main
+project because we came to realize that this structure was not necessary---there
+were only three members on the team, and we were almost always in the same room
+when working on the project. For Editour, we tracked features and issues using
+the ``Issues'' page instead, which is discussed in
+Section~\ref{sec:editourFrontendTesting}.
+
+Creating ``pull requests'' through the GitHub web interface has a few advantages
+over directly merging code using Git. Firstly, the pull request feature
+integrates with ``Issues'' page very well. By typing `resolves' along with the
+number associated with an issue into the description of a pull request, GitHub
+will automatically close the issue when the pull request is approved. This is
+not only remarkably convenient, but also self-documenting since the descriptions
+of pull requests would contain the issues they were resolving. Secondly,
+creating a pull request allows code to be reviewed by other members of the team
+very easily. Reviewers can view the entire diff and add comments line-by-line.
+Other collaborators can easily respond to those comments. Reviewers can also
+request certain features be changed before the branch is merged, which allowed
+us to enforce that issues with the code were actually addressed.
+% TODO explain what the heck a diff is
+
+% TODO give this paragraph some more context so it doens't seem out of place
+The way we incorporated branches into our workflow helped us collaborate in a
+way that kept us organized. In general, if one of us was working on a specific
+feature, we would create a branch with a name descriptive of that feature. This
+methodology minimized difficult-to-resolve merge conflicts. We modeled this
+workflow off of the ``Git Feature Branch Workflow'' Atlassian
+tutorial~\autocite{atlassian}.
+% TODO explain merge conflicts
+
+In order to clearly indicate new versions of the software, we use ``Semantic
+Versioning'' which is a scheme for version numbers created by Tom
+Preston-Werner, cofounder of GitHub~\autocite{prestonwerner}. In this scheme,
+the full version number consists of three integers separated by periods---in
+other words, in the form \texttt{major.minor.patch}. The major version number is
+incremented when an incompatible change is made. In our case, an incompatible
+change for Editour would entail changing the format of the metadata file used to
+construct a tour such that the frontend could not interpret older tour files.
+The exception to this rule is major version 0, where the product is not
+considered stable and incompatible changes can be made at any time. When Editour
+was in this phase of development, we changed the format of the metadata; this
+would have broken previous versions but this was allowed. The minor version
+number is incremented when functionality is added but remains backwards
+compatible with previous versions. An example of this is the ``transcript''
+field we added to the metadata. The frontend was still able to load tours made
+before this additional information was added to the metadata JSON. We added many
+other features throughout the development process without breaking existing
+functionality. The patch version number is for simple bug-fixes that also do not
+break compatibility. This number gets incremented the most frequently in
+practice.
+
+Once we deployed Editour to a server so that Atticus could begin to use it, we
+changed the version to 1.0.0 to indicate the first release version. At this
+point, we were committed to not making any backwards-incompatible change. Since
+Atticus would be interacting with Editour after the release of 1.0.0, it was
+important that the master branch remain as stable as possible. Because of this,
+we created a ``dev'' branch where we could test experimental features to improve
+the experience and functionality of Editour. Maintaining a stable branch along
+with a separate experimental branch reduced the risks involved with continuing
+to iterate on the software's features post-release.
+
+In a similar vein, with ARuko we used branches to ensure we had a stable working
+version. The night before field testing at Kinkaku-ji, we would cease work on
+the most recent branch, and build the app to our phones. This way, we would
+always have an exact snapshot of the code we used for that day of testing.
+
+\clearpage
+
 \section{Editour API Documentation}
 \label{sec:editourAPIDocumentation}
 
@@ -2182,6 +2280,159 @@ that contains the data of the response.
 	were deleted, 404 if no tour with that name could be found, or 500 if a
 	server error was encountered.
 \end{indented}
+
+\clearpage
+
+\section{Ritsumeikan Heart Project}
+\label{sec:ritsumeikanHeartProject}
+
+Throughout our stay at Ritsumeikan, we also had the opportunity to work closely
+with other Ritsumeikan students to create build a project that involved the
+integration of hardware and software. With the help of students and professors
+alike, we were able to produce an educational physical model of a heart
+controlled by an Arduino microcomputer. Noma Sensei gave us tremendous
+assistance with hardware. He taught us how to properly use the tools around the
+lab, and purchased mechanical and electrical components we would need to
+complete our task. Amano Sensei was always available to answer questions related
+to biology, and helped us understand the mathematical model we would need to
+implement to drive the physical model with software. We worked on this project
+every Wednesday, completing the final model during the last week of our stay.
+% TODO get the full name of Amano Sensei
+
+\subsection{Project Goal}
+\label{sec:projectGoal}
+
+The goals and requirements of this project were set out by Haruo Noma, a
+professor at Ritsumeikan University. The goal of the project was to create an
+interactive model of a heart to teach heart function to non-specialists, such as
+students in middle school. This meant that the model had to be highly visual and
+simple to understand. Each visual component would have to be designed in an
+intuitive fashion so that students could begin interacting with the model
+without advanced knowledge of biology.
+
+\subsection{The Heart Simulation}
+\label{sec:theHeartSimulation}
+
+We were presented with a set of equations that defined the mathematical model of
+the heart we would be using to drive our physical model. Along with the
+differential equations, we were also given an analogous circuit model that could
+also be described by the same equations. The circuit and the equations can be
+seen in Figure~\ref{fig:referenceModel}. We were also provided with source code
+for an implementation of this model in C. We would still need to modify this
+code to calculate the output variables we would need to properly operate the
+physical model, and integrate the model into the main loop of the Arduino source
+code with the appropriate timing.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.4\textwidth]{reference-model.png}
+    \caption{The reference model we used to implement the simulation}
+    \label{fig:referenceModel}
+\end{figure}
+
+\subsection{Supplies}
+\label{sec:supplies}
+
+With Noma Sensei as our guide, we visited ``Den-Den Town'' or Nipponbashi in
+Osaka in order to gather supplies we would need in order to construct the heart.
+One of the most important purchases of this trip was a two-meter long strip of
+Adafruit NeoPixel light emitting diodes (LEDs). The design of this reel of LEDs
+enabled us to cut the strip at specific points to create shorter strips. Each
+LED on the strip individually addressable, allowing us to set the color of any
+LED along the strip. This perfectly suited our needs for representing blood
+flow.
+
+% TODO give a citation about what an Arduino is
+% TODO do we need citations about every microcomputer mentioned by name?
+Noma Sensei had various microcomputers for us to experiment with in his lab,
+including an obniz, an M5Stack, a Raspberry Pi and an Arduino. The Arduino was
+the only computer that had a ``motor shield'' component which we believed would
+be necessary for controlling the pumps.\footnote{In the end, we did not need
+this component, since we abandoned the idea of taking apart a pump to drive the
+DC motor directly.} Because of this, we chose the Arduino to be the core of the
+physical model. This microcomputer ran the simulation and output data to the
+various hardware components, such as the digital display, LED strips and switch
+to control the air valves.
+
+\subsection{Interactive Heart Model Design}
+\label{sec:interactiveModelDesign}
+
+The design for the interactive model is pictured in
+Figure~\ref{fig:interactiveModel}. The most prominent feature of the model is
+the plastic bottle containing the balloon. The volume of this balloon represents
+the volume of the left ventricle. Instead of inflating the balloon with the air
+compressor directly (pictured on the left of Figure~\ref{fig:interactiveModel}),
+we opted to pressurize a sealed two-liter soda bottle and suspend a balloon
+inside. By pumping more air into the bottle, we could reduce the volume of the
+balloon since the external pressure would be made greater than the internal
+pressure; the balloon would shrink as a result. To accomplish redirecting the
+flow of air, we designed a setup involving two valves.
+% TODO do we need to cite something to explain the super simple physics of this?
+
+\begin{figure}[h] \centering
+    \includegraphics[width=\textwidth]{interactive-model.png}
+    \caption{A diagram representing the physical model of the heart}
+    \label{fig:interactiveModel}
+\end{figure}
+
+Like the balloon which represents the volume of the left ventricle, the LED
+strips represent both pressure and blood flow in different parts of the body.
+Pressure is represented by color. The lower the pressure, the more blue the
+lights will appear. Red represents high pressure. The LEDs can display any color
+in between blue and red, so the light strips are often a pinkish hue.
+
+We were able to program custom animations by updating the color and intensity of
+the LEDs in a rapid fashion. We represented blood flow by changing the phase of
+a sinusoidal wave over time.\footnote{For clarity, we elongated the ``troughs''
+of the sine waves, so the pattern of intensity was not a true sine wave.} Our
+design included two strips of twenty LEDs. The LED strips are represented by the
+red arrows on Figure~\ref{fig:interactiveModel}. The rate of the animation on
+the right strip of LEDs represents blood flow out of the left ventricle (whose
+value is $f_{1}$ in the model). The color corresponds to $P_{a}$ in the model,
+which is the pressure in the aorta. The animation speed of the LED strip leading
+back into the heart is controlled by $f_{v}$, the flow back into the ventricles.
+The pressure corresponding to the color of this strip is $P_{v}$, or venous
+pressure. In our model, this value is not an output variable. Instead, $P_{v}$
+is held constant. Consequently, the color of this LED strip does not change over
+time.
+
+The physical model also contains a digital number display, which can be seen in
+the top right corner on Figure~\ref{fig:interactiveModel}. The display shows the
+number of the active scenario. Clicking on a scenario button in the GUI
+(discussed in Section~\ref{sec:userInterfaceForHeartModel}) will change the
+number being displayed.
+
+\subsection{User Interface for Heart Model}
+\label{sec:userInterfaceForHeartModel}
+
+Our initial plan for the user interface was to control input and output
+parameters with dials. The numerical values of the input parameters would have
+been displayed on an array of digital number displays. Due to time constraints,
+we opted to support five preprogrammed scenarios that could be toggled from a
+GUI. Figure~\ref{fig:heartGui} represents the final version of the GUI we use to
+interact with the physical model.
+
+The red buttons along the top of the screen allow the user to toggle between
+different scenarios. Each scenario also includes a helpful graphic below each
+button.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=\textwidth]{heart-gui.png}
+    \caption{The GUI to enable five preprogrammed scenarios}
+    \label{fig:heartGui}
+\end{figure}
+
+Not only can the GUI communicate with the Arduino; the Arduino can also relay
+information about the state of the model back to the GUI. The length of blue bar
+on the left of Figure~\ref{fig:heartGui} corresponds to $f_{v}$ in the model,
+while the blue bar on the right corresponds to $f_{1}$. On the physical model,
+these values correspond to the rate of animation of both LED strips. The size of
+the circle between the blue bars represents $V_{LV}$, the volume of the left
+ventricle. Due to limitations about the accuracy with which we could control the
+pump, the volume of the balloon does perfectly reflect the true value of
+$V_{LV}$ in the model. By contrast, the radius of the graphic on-screen can be
+set to be exactly proportional to the value of $V_{LV}$.
+
+% TODO write about the final result of the heart model and include pictures
 
 \clearpage
 
