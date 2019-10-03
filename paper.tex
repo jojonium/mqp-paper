@@ -1120,17 +1120,18 @@ results. Google's text recognition and machine-learning powered translation
 technology is certainly impressive. At the same time, the translation service
 works better in ``scan'' mode instead of ``instant'' mode. In ``instant'' mode,
 the app attempts to translate text as quickly as possible, superimposing the
-translated text onto the real world using the camera. In ``scan'' mode, the user
-first takes a photo. Then, the user is prompted to highlight where text appears
-in the photo. After the translation is complete, the translated text appears in
-a separate UI element instead superimposed onto the photo. In most cases, it is
-more convenient and readable to have the translation appear in a separate
-scrollable text box. This motivated the current design of the ``info buttons''
-in ARuko. Instead of placing text directly onto signage, we place a blue button
-with a stylized `i' in the center. By tapping on this button, a separate UI
-element will appear containing the translated text. Since this button is cast
-into the world using the AR camera, the button appears to be placed directly
-onto the content in the real world.
+translated text onto the real world using the camera. %could put an image of instant mode here as an example
+In ``scan'' mode, the user first takes a photo. Then, the user is prompted to 
+highlight where text appears in the photo. %could put an example here as well
+After the translation is complete, the translated text appears in a separate UI %another example?
+element instead superimposed onto the photo. In most cases, it is more 
+convenient and readable to have the translation appear in a separate scrollable
+text box. This motivated the current design of the ``info buttons'' in ARuko. 
+Instead of placing text directly onto signage, we place a blue button with a 
+stylized `i' in the center. By tapping on this button, a separate UI element 
+will appear containing the translated text. Since this button is cast into the %example
+world using the AR camera, the button appears to be placed directly onto the 
+content in the real world.
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -1436,7 +1437,7 @@ amount of text.
 
 The last major UI implementation obstacle we had to overcome was a way to keep
 audio playing with the phone in your pocket. Atticus insisted that this sort of
-feature was required so that users could listen to the audio tour without using
+feature was required so that users could listen to the audio tour without using %maybe include an image of pocket mode here
 any of the other functionality the app provides, like the image gallery in each
 region or the AR features. Despite how common it is for apps to play audio in
 the background or while the phone is locked, Unity does not provide a way to
@@ -2243,7 +2244,7 @@ We then had to figure out how to turn the original project into a ground plane
 AR app. At first we tried importing the assets for the Noh performer into a new
 Unity project. We did this for a couple reasons. The first reason was because
 we didn't want all of the extra components of the original NOxAR project to
-get in the way of what we were trying to do. We also did this because the 
+get in the way of what we were trying to do. We also did this because the %could probably put an example pic here
 original project was made with a 2017 version of Unity, so we wanted to try to
 use our more recent version so we wouldn't risk running into any depricated 
 features or functionalities. We did eventually get this method to work, but the
