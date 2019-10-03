@@ -37,3 +37,10 @@ little more modern and might save our butts in the future. The above make
 commands still work without a hitch. There is an extra file that does not get
 cleaned with clean command, but we should leave it there as it makes compiling
 the paper a little faster.
+
+## License
+
+This work is licensed under the Creative Commons Attribution 3.0 Unported
+License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
+Commons, PO Box 1866, Mountain View, CA 94042, USA.
