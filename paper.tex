@@ -105,11 +105,12 @@
 Kinkaku-ji, the Temple of the Golden Pavilion, is one of Kyoto's most visited
 tourist attractions. Most people who visit the site do not have the opportunity
 to experience the rich art and culture that are part of its history. We worked
-with our sponsor, Kyoto VR, to create an app that would allow visitors of 
+with our sponsor, Kyoto VR, to create an app that would allow visitors of
 Kinkaku-ji to better experience these aspects of the site. We used Unity to
-create an audio tour app that provides historical insight on the location, 
-displays galleries of art throughout the visit, and offers accessibility 
-features through AR. We hope our app will enhance the experience of visiting
+create an audio tour app that provides historical insight on the location,
+displays galleries of art throughout the visit, and offers accessibility
+features through AR. We also developed a tool to aid in the design and creation
+of audio tours. We hope our app will enhance the experience of visiting
 Kinkaku-ji.  
 \end{abstract}
 
@@ -122,6 +123,7 @@ sponsoring this project and providing help and guidance throughout our time in
 Japan. His knowledge of the history of Kinkaku-ji and Kyoto in general has been
 invaluable to our experience.
 
+% TODO is starting with "A special thank you" a complete clause?
 We would also like to thank Inoue Hikaru for his help with translations and
 researching AR technology. A special thank you to the IQP team working with
 Kyoto~VR, Lewis Cook, Nicole Escobar, Ahad Fareed, and Cameron Person, for
@@ -167,8 +169,8 @@ was decided by our project sponsor, who plans to monetize the app. We also
 worked with an IQP team, who had been tasked with exploring funding options and
 creating promotional content.
 
-Since our app had to deliver an audio tour supplemented by images based on your
-latitude and longitude, we developed an internal tool to design physical
+Since our app had to deliver an audio tour supplemented by images based on the
+user's latitude and longitude, we developed an internal tool to design physical
 regions for each step of the tour. This tool, called Editour, provides a rich
 editing suite through a simple web interface. Section~\ref{sec:editingATour}
 goes into detail about the features of this web app. We also wrote a backend to
@@ -264,8 +266,8 @@ complete platform for designing and experiencing AR-enhanced tours. Editour
 makes it easy to design custom audio tours including audio, text, and images,
 while ARuko allows users to seamlessly experience historic sites in an intuitive
 and novel way. Many AR apps require specific markers, like the those shown in
-Figure~\ref{fig:arMarker}. Too avoid needing to place any physical object that
-would disturb the buildings or grounds of a historic site our app does not rely
+Figure~\ref{fig:arMarker}. To avoid the need to place any physical object that
+would disturb the buildings or grounds of a historic site, our app does not rely
 on these markers. Instead, ARuko recognizes images of objects that are already
 at the site, and uses them to display informative AR pop-ups. See
 Sections~\ref{sec:translationFeature} and \ref{sec:mapOverlayFeature} for more
@@ -288,7 +290,7 @@ As smartphones and mobile technology become more prevalent, new forms of
 human-computer interaction are becoming mainstream. Smartphones allow for an
 unprecedented degree of connectivity with the digital world, but can also serve
 as a tool for digitally enhancing the physical world. In this section we explain
-the origins and uses of some of this technology.
+the origins and uses of this technology.
 
 \subsection{What is Augmented Reality?}
 \label{sec:whatIsAugmentedReality}
@@ -306,7 +308,7 @@ For example, AR can be used to display information about historical events,
 places, and objects overlaid onto images of the real
 world~\autocite{saenz2009}, in a way that is more intuitive or visually
 appealing than a purely virtual environment. This provides the user with useful
-information without needing to alter a real historic site.
+information without needing to alter the physical historic site.
 
 \subsubsection{Current Augmented Reality Technology}
 \label{sec:currentAugmentedRealityTechnology}
@@ -321,7 +323,7 @@ it~\autocite{bonsor2018}.
 \subsubsection{Augmented Reality Use Cases}
 \label{sec:augmentedRealityUseCases}
 
-Even though it is still a developing technology, AR has been used in many
+Even though AR is still a developing technology, it has been used in many
 disparate disciplines, including data visualization~\autocite{resnick2017},
 commerce~\autocite{matney2018}, marketing~\autocite{sharma2015},
 education~\autocite{stewart-smith2012}, visual art~\autocite{katz2018}, and
@@ -358,8 +360,8 @@ very little in the way of functionality or practicality; quite simply, they
 primarily revolve around deploying gimmicks~\autocite{theappsolutions2018}. For
 example, one of the most popular apps to use AR, \textit{Pokémon Go}, primarily
 uses its AR feature to place a Pokémon on top of a camera's video feed.
-Disappointingly, it does not interact with anything around it. It just floats a
-fixed distance away from the user.
+Disappointingly, the Pokémon does not interact with anything around it. It just
+floats a fixed distance away from the user.
 
 Additionally, in many cases where AR is used, the task could be accomplished as
 well or better without AR~\autocite{theappsolutions2018}. Returning to the
@@ -386,21 +388,22 @@ oftentimes even complicate the task or activity they were meant to
 enhance~\autocite{theappsolutions2018}.  The alternative then is to turn to
 dedicated hardware, like Microsoft's HoloLens. The issue is that dedicated
 hardware like the HoloLens is very inaccessible and expensive; Microsoft only
-offers developer editions of the HoloLens, and for the incredibly steep price
-of \$3,500~\autocite{microsoft2019}.
+offers developer editions of the HoloLens, and for the steep price of
+\$3,500~\autocite{microsoft2019}.
 
 The challenges we faced during development mirrored those that plague the
 industry as a whole very accurately. We struggled with how exactly we would use
 AR for our app in a way that benefited the experience as a whole. Despite our
 initial apprehension, we believe the way we have integrated AR into our app
-enhances the user experience. Hardware issues were definitely our biggest
-challenge. Only one member of our team had a phone new enough to run AR
-technology at a decent level, making testing of our application difficult.
+enhances the user experience. One of our largest challenges came from the lack
+of hardware on which to test. Only one member of our team had a phone new enough
+to run AR technology at a decent level, making testing of our application
+difficult.
 
 \subsection{izi.TRAVEL}
 \label{sec:iziTravel}
 
-Before our project started, Kyoto~VR was already using an app to deliver audio
+Before our project had begun, Kyoto~VR was already using an app to deliver audio
 tours. The app, called izi.TRAVEL, allows users to create audio tours with
 audio and image files tied to specific locations in the real
 world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
@@ -432,10 +435,10 @@ our own app. See Section \ref{sec:aruko} for more details.
 Before we could start working on creating our app, we first needed to decide
 which AR development platform to use. Based on our preliminary research, we
 learned there are many powerful platforms available. There were many things we
-needed to consider before deciding on a platform. These considerations included
-what features the platform offered, which devices and operating systems the app
-could run on, and the cost. Detailed below are some of the different platforms
-we considered.
+needed to consider before deciding on a platform---considerations such as what
+features the platform offered, which devices and operating systems the app could
+run on, and the cost. Detailed below are some of the different platforms and
+technologies we considered.
 
 \subsubsection{ARCore and ARKit}
 \label{sec:ARCoreAndARKit}
@@ -452,7 +455,7 @@ ARKit 3 aims to support a wide array of new features and will be available in
 iOS 13~\autocite{apple2019}. Notably, one of these features is ``people
 occlusion,'' which will allow virtual objects to be realistically obscured when
 someone walks in front of the object. This kind of technology could be useful
-for us since our app uses AR in crowded places.  As of August 2019, this
+for us since our app uses AR in crowded places. As of August 2019, this
 feature is not on the horizon for ARCore.
 
 Both ARKit and ARCore have well-supported APIs for Unity. ARKit 3 support is
@@ -467,7 +470,7 @@ world of AR development. It has over 130,000 registered AR developers, and is
 powering over 30,000 AR apps across smartphones, tablets, and smart
 glasses~\autocite{wikitude2018}. It is easy to understand why Wikitude has so
 many registered developers considering the list of features the platform
-offers. Some of the features that appealed most to us were their ``Instant
+offers. Some of the features that most appealing to us were their ``Instant
 Tracking,'' allowing for augmentation using flat surfaces; ``Image Tracking,''
 allowing for augmentation using one or multiple 2D images; and ``Geo AR,''
 allowing for creation of geo-markers at specific locations to trigger AR
@@ -478,7 +481,7 @@ smart glasses like the Epson Moverio, Microsoft HoloLens, and Vuzix smart
 glasses. Additionally, many different development frameworks are capable of
 running Wikitude's software development kit (SDK). According to Wikitude's
 website, their SDK works with Windows, Android, and iOS development frameworks,
-as well as ARCore and ARKit, Flutter, Cordova, Xamarin, and even Unity.
+as well as ARCore and ARKit, Flutter, Cordova, Xamarin, and Unity.
 
 Based on this information, Wikitude was initially appealing to us. However, the
 cost was a major issue. Wikitude is free for eligible startups, but given the
@@ -507,13 +510,14 @@ advice they might be willing to give us, but we received no response.
 \subsubsection{ViroAR}
 \label{sec:viroAR}
 
-Viro AR comes in two versions: ViroReact and ViroCore\autocite{facebook2019}.
+Viro AR comes in two versions: ViroReact and ViroCore~\autocite{viro2019}.
 ViroCore allows developers to build an AR Application with Java. The
 disadvantage of this is that ViroCore only allows developers to target Android,
-which unfortunately made ViroCore not an option for our project. ViroReact is
-the cross-platform option for ViroAR. ViroReact leverages the cross-platform
-capabilities of React, which is Facebook's JavaScript Library for developing
-user interfaces~\autocite{facebook2019}.
+which unfortunately made ViroCore not an option for our project; one of the
+requirements from our sponsor was that the app had to be cross-platform.
+ViroReact is the cross-platform option for ViroAR. ViroReact leverages the
+cross-platform capabilities of React, which is Facebook's JavaScript Library for
+developing user interfaces~\autocite{facebook2019}.
 
 Since our project is not a game, we initially wanted to avoid using a
 fully-featured game engine such as Unity (see Section~\ref{sec:unity}.
@@ -525,8 +529,8 @@ perfect alternative to specialized game engines, ViroAR is a platform for
 rapidly building ARKit and ARCore apps. Our platform allows developers to focus
 on what they do best by leveraging familiar tools and frameworks used in mobile
 application development''~\autocite{viro2019}. While the majority of our team
-has decent experience with writing JavaScript, we have have very little experience
-writing React apps.
+has decent experience with writing JavaScript, we have have very little
+experience writing React apps.
 
 In most app development scenarios, to test the app on actual hardware, it must
 be compiled using either Xcode or Android Studio depending on your platform.
@@ -535,11 +539,9 @@ can be very time consuming, especially when needing to run frequent tests on
 the target platform.
 
 An alternative to building an app for a physical phone is to run it through an
-emulator on a computer.
-
-According to Techopedia, ``Emulation is the process of imitating a
-hardware/software program/platform on another program or platform. This makes
-it possible to run programs on systems not designed for
+emulator on a computer. According to Techopedia, ``Emulation is the process of
+imitating a hardware/software program/platform on another program or platform.
+This makes it possible to run programs on systems not designed for
 them''~\autocite{techopedia2019}. Emulators are often very useful for speeding
 up development. Loading programs onto the Android emulator is usually much
 faster than installing an Android package file (APK) onto the actual device.
@@ -553,44 +555,42 @@ real hardware. Emulation is often imperfect, so glitches sometimes emerge in
 emulation that do not manifest on the actual hardware~\autocite{alzaylaee2017}.
 Conversely, errors that exist in the hardware version may not appear in the
 emulation. Secondly, and most importantly for AR, it is common for emulation to
-be much slower compared to real hardware.
+be much slower compared to real hardware.\footnote{In a question submitted to
+\textit{Compute!} magazine asking whether it is possible for a Commodore 64 to
+emulate MS-DOS, the editor responded ``Yes, it's possible for a 64 to emulate an
+IBM PC, in the same sense that it's possible to bail out Lake Michigan with a
+teaspoon.'' The editor goes on to explain ``Emulation is a complex business, but
+here's one rule of thumb: The only way to successfully emulate a machine is with
+a much more powerful machine''~\autocite{warick1988}. In our case, emulating
+Android on a desktop operating system is closer to emulating a C64 on an IBM PC
+running MS-DOS (rather than the other way around, thankfully). The takeaway is
+that the speed problem facing emulators is just as real as it was in 1988.}
+Considering that AR already pushes modern phone hardware to the limit, emulation
+is not something we wanted to struggle with. On top of this, our testing
+required us to move the camera through the world at various speeds and angles,
+which is simply cumbersome with a laptop webcam.
 
-In a question submitted to \textit{Compute!} magazine asking whether it is
-possible for a Commodore 64 to emulate MS-DOS, the editor responded ``Yes, it's
-possible for a 64 to emulate an IBM PC, in the same sense that it's possible to
-bail out Lake Michigan with a teaspoon.'' The editor goes on to explain
-``Emulation is a complex business, but here's one rule of thumb: The only way
-to successfully emulate a machine is with a much more powerful
-machine''~\autocite{warick1988}. In our case, emulating Android on a desktop
-operating system is closer to emulating a C64 on an IBM PC running MS-DOS
-(rather than the other way around, thankfully). The takeaway is that the speed
-problem facing emulators is just as real as it was in 1988. Considering that AR
-already pushes modern phone hardware to the limit, emulation is not something we
-wanted to struggle with. On top of this, our testing required us to move the
-camera through the world at various speeds and angles, which is simply
-cumbersome with a laptop webcam.
-
-As an alternative to emulation, ViroReact offers a convenient ``test bed'' for
-rapidly testing your ViroReact app on native hardware without the need for an
-emulator. This allowed us to get a real AR app up and running on our devices
-much more easily than any of the other frameworks/engines we explored.
-Unfortunately, the test bed app was somewhat unreliable based on our
-experience; the test bed would frequently crash or would not be able to
-download the files from the server. The most reliable way to test our app was
-to compile a binary and manually install it onto our devices, which completely
-defeated the purpose of the test bed app.
+As an alternative to emulation or compiling a native binary, ViroReact offers a
+convenient ``test bed'' for rapidly testing your ViroReact app on native
+hardware without the need for an emulator. This allowed us to launch a working
+AR app on our devices much more easily than any of the other frameworks or
+engines we explored. Unfortunately, the test bed app was somewhat unreliable
+based on our experience; the test bed would frequently crash or would not be
+able to download the files from the server. The most reliable way to test our
+app was to compile a binary and manually install it onto our devices, which
+completely defeated the purpose of the test bed app.
 
 \subsubsection{Unity}
 \label{sec:unity}
 
 Unity is a game engine that was originally introduced in
-2005~\autocite{axon2016}. Because of the low barrier to entry---knowledge-wise
+2005~\autocite{axon2016}. Because of the low barrier to entry---experience-wise
 and price-wise---the engine quickly became incredibly popular. Ironically,
-because the engine is so accessible that, Unity has faced a degree of critism.
+because the engine is so accessible, Unity has faced a degree of critism.
 Because Unity appeals to so many beginners, there are many unpolished games that
 bear the Unity logo. In response to this sentiment, Marcos Sanchez, head of
-global communications at Unity, "Democratizing development---in our minds, we
-don't think is the wrong thing, we think it's the right thing. You want more
+global communications at Unity, said "Democratizing development---in our minds,
+we don't think is the wrong thing, we think it's the right thing. You want more
 people understanding, and everyone’s gotta start somewhere"~\autocite{axon2016}.
 Unity CEO John Riccitiello made the claim at TechCrunch Disrupt San Francisco
 that half of all games are made with Unity \autocite{dillet2018}. We consider
@@ -607,15 +607,15 @@ toward creating modern mobile user interfaces such as React.
 
 All of Unity's scripting is done with C\#, which is a general purpose,
 object-oriented language~\autocite{ecmainternational2017}. Even though none of
-us had extensive experience with C\# prior to this project, this was not a great
-concern since C\# is similar to other object-oriented languages such as Java and
-C++. The design goals of the language were also appealing to us; C\# includes
-features important for programmer productivity such as strong type checking
-(unlike JavaScript), detection of using uninitialized variables (also unlike
-JavaScript,) range checking for array bounds (unlike C) and garbage collection.
-At the same time, our lack of familiarity with the language and Unity as a whole
-is another reason we first looked into cross-platform AR solutions that did not
-use Unity.
+us had extensive experience with C\# prior to this project, this was not of
+great concern since C\# is similar to other object-oriented languages such as
+Java and C++. The design goals of the language were also appealing to us; C\#
+includes features important for programmer productivity such as strong type
+checking (unlike JavaScript), detection of using uninitialized variables (also
+unlike normal JavaScript,) range checking for array bounds (unlike C) and
+garbage collection. At the same time, our lack of familiarity with the language
+and Unity as a whole is another reason we first looked into cross-platform AR
+solutions that did not use Unity.
 %TODO see if we need more sources for this
 
 At the same time, Unity has excellent support for augmented reality through
@@ -688,9 +688,10 @@ with AR features would be very helpful to tourists at Kinkaku-ji.
 \section{Implementation and Technology}
 \label{sec:implementationAndTechnology}
 
-In this section we discuss and implementation of ARuko and Editour, including
-the technologies and techniques involved in creating both of them. We also
-discuss the design decisions we made and some of the challenges we faced in
+In this section we discuss the implementation of ARuko and Editour, which are
+the names for the mobile AR mobile app and web-based tour editor respectively.
+We also discuss the technologies and techniques involved in creating both of
+them, along with the the design decisions we made and challenges we faced in
 creating these applications.
 
 \subsection{Editour: The Tour Editor}
@@ -828,12 +829,11 @@ each section. Collapsing the subcards gives the user enough room to see
 multiple region cards at a time.
 
 The first subcard seen in Figure~\ref{fig:renameSubcard} is the ``Rename''
-subcard, which is fairly self-explanatory.  This section expands to reveal a
-textbox, allowing the user to rename the region after clicking ``Okay'' or
-hitting the enter key.\footnote{There are multiple places in the UI where a
-textbox is immediately adjacent to a ``Confirm'' button.  We made sure all of
-these can be triggered by simply hitting enter, since this is common behavior
-when filling out forms on the web.}
+subcard. This section expands to reveal a textbox, allowing the user to rename
+the region after clicking ``Okay'' or hitting the enter key.\footnote{There are
+multiple places in the UI where a textbox is immediately adjacent to a
+``Confirm'' button.  We made sure all of these can be triggered by simply
+hitting enter, since this is common behavior when filling out forms on the web.}
 
 \begin{figure}[h]
 	\centering
@@ -842,15 +842,15 @@ when filling out forms on the web.}
 	\label{fig:renameSubcard}
 \end{figure}
 
-The second subcard seen in Figure~\ref{fig:mediaSubcard} is slightly more
-involved. Expanding the ``Media'' subcard by clicking on the green bar will
-reveal a bevy of options for augmenting the audio, images, and text to be
-associated with that region of the tour. From here, the user can upload an
-audio file and multiple image files from his or her hard drive with the two
-file-select fields. If the user is editing an existing tour that has already
-been uploaded, the names of the files already present on the server will appear
-as cards with `X' buttons. This allows the user to remove images or audio from
-that region even after the tour has been uploaded.
+The second subcard seen in Figure~\ref{fig:mediaSubcard} is more involved.
+Expanding the ``Media'' subcard by clicking on the green bar will reveal a bevy
+of options for augmenting the audio, images, and text to be associated with that
+region of the tour. From here, the user can upload an audio file and multiple
+image files from the user's hard drive with the two file-select fields. If the
+user is editing an existing tour that has already been uploaded, the names of
+the files already present on the server will appear as cards with `X' buttons.
+This allows the user to remove images or audio from that region even after the
+tour has been uploaded.
 
 \begin{figure}[h]
 	\centering
@@ -859,25 +859,24 @@ that region even after the tour has been uploaded.
 	\label{fig:mediaSubcard}
 \end{figure}
 
-The third subcard is the ``Points'' subcard. This subcard can be revealed in
-one of two ways. The first way is by clicking on the yellow bar labeled
-``Points'', which is the same for all subcards. Alternatively, the user can
-click directly on the region on the map. The region will flash yellow and be
-scrolled into view to let the user know which region was clicked on. Both of
-these methods will enable editing mode, whereby the user can directly
-manipulate the vertices that make up the region. Blue circles appear on top of
-each vertex, and red circles appear at the midpoint of each edge. Clicking on a
-red midpoint will add an additional vertex at that midpoint. Dragging one of
-the blue vertices will move the vertex around. The latitude and longitude are
-updated in the ``Points'' subcard as the user drags the vertex around. Clicking
-on the vertex directly will create a blue pin-shaped marker that the user can
-also drag. Clicking on the coordinate box in the subcard will also create this
-blue pin-shaped marker; the map will also pan to this coordinate. The user can
-also delete vertices in the same way that files can be deleted from the
-``Media'' subcard by clicking on the `X' button on that vertex's coordinate
-card. If there are exactly three points in a region, the `X' buttons will be
-``grayed-out,'' preventing the user from deleting any more points, since a
-polygon must consist of at least three points.
+The third subcard is the ``Points'' subcard. This subcard can be revealed in one
+of two ways. The first way is by clicking on the yellow bar labeled ``Points'',
+which is the same for all subcards. Alternatively, the user can click directly
+on the region on the map. The region will flash yellow and be scrolled into view
+to let the user know which region was clicked on. Both of these methods will
+enable editing mode, whereby the user can directly manipulate the vertices that
+make up the region. Blue circles appear on top of each vertex, and red circles
+appear at the midpoint of each edge. Clicking on a red midpoint will add an
+additional vertex at that midpoint. Dragging one of the blue vertices will move
+the vertex around. The latitude and longitude are updated in the ``Points''
+subcard as the user moves the vertex. Clicking on the vertex directly will
+create a blue pin-shaped marker that the user can also drag. Clicking on the
+coordinate box in the subcard will also create this blue pin-shaped marker; the
+map will also pan to this coordinate. The user can also delete vertices in the
+same way that files can be deleted from the ``Media'' subcard by clicking on the
+`X' button on that vertex's coordinate card. If there are exactly three points
+in a region, the `X' buttons will be ``grayed-out,'' preventing the user from
+deleting any more points, since a polygon must consist of at least three points.
 
 \begin{figure}[h]
 	\centering
@@ -891,7 +890,7 @@ The third subcard pictured in Figure~\ref{fig:deleteSubcard} is the ``Delete''
 subcard. When revealed, another button will appear labeled ``Really Delete.''
 The action can be canceled by collapsing the subcard by hitting the bar now
 labeled ``Don't Delete!'' This prevents the user from accidentally deleting a
-region he or she did not mean to remove.
+region unintentionally.
 
 \begin{figure}[h]
 	\centering
@@ -961,7 +960,7 @@ with the correct regions. The downloaded zip file is what we decompress and
 place into the Unity project before it is compiled. This feature is also useful
 if the user wants to check the audio and image files that were uploaded.
 
-%update this figure
+% TODO update this figure
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{editour.jpg}
@@ -994,7 +993,7 @@ the DOM directly with JavaScript's built-in functionality. Furthermore, we did
 not use any advanced frontend build tools such as Rollup, webpack or Parcel. For
 a JavaScript project of this scope, this was the correct decision. Considering
 we had limited knowledge of React or Angular, it was also faster to develop the
-UI in the way we were used to from previous experience. But if we were to
+UI in the way we were used to from previous experience, but if we were to
 continue to develop Editour, UI libraries and frontend build tools would be
 something to consider.
 
@@ -1024,6 +1023,7 @@ done editing they can upload the new metadata and any newly added files to the
 server, which intelligently collects new and old files required by the tour and
 zips them into a new tour file on the disk.
 
+% TODO explain what stateless operations are
 The backend implements a representational state transfer (REST) API.
 In a ``RESTful'' service, web resources are manipulated with a predefined set of
 stateless operations~\autocite{rfc7231}. Because the REST API is operated over
@@ -1111,7 +1111,7 @@ associated audio tour is playing.
 The files produced by Editour could be used to power an app that does not
 incorporate AR, such as an audio guide mobile web app that runs entirely in the
 browser, using the geolocation API to access the user's location (if the user
-grants permission.) This kind of infrastructure would allow users to access an
+grants permission). This kind of infrastructure would allow users to access an
 audio tour---supplemented by images and audio transcripts---without the need to
 download an app at all. By simply visiting a link, a user could experience a
 guided tour that changes as the user walks through the route. For example,
@@ -1120,11 +1120,11 @@ an interactive guided tour of the campus through the browser.
 
 Currently, anyone can clone the GitHub repository of Editour and deploy a
 working version on a personal server. The source code for Editour is under a
-free license. This allows anyone to expand the frontend and backend to suit
-their needs. With additional hardware and by extending the current
-implementation of both the frontend and backend, Editour could be used as the
-groundwork to create an entire crowd-sourced walking tour platform, allowing
-users to design tours for others to take.
+free license, namely the GNU General Public License. This allows anyone to
+expand the frontend and backend to suit their needs. With additional hardware
+and by extending the current implementation of both the frontend and backend,
+Editour could be used as the groundwork to create an entire crowd-sourced
+walking tour platform, allowing users to design tours for others to take.
 
 In summary, we want to explore the idea of creating a community-driven audio
 tour database that allows mobile users to take tours without the need to install
@@ -1158,24 +1158,24 @@ we eventually dropped support for regions triggered by distance.
 \subsubsection{Translation Feature}
 \label{sec:translationFeature}
 
+% TODO include photos of the google translation app including our own app
 ARuko uses augmented reality to translate text at the site as well. While AR
 translation apps exist, the experience can be frustrating, and produce poor
 results. Google's text recognition and machine-learning powered translation
 technology is certainly impressive. At the same time, the translation service
 works better in ``scan'' mode instead of ``instant'' mode. In ``instant'' mode,
 the app attempts to translate text as quickly as possible, superimposing the
-translated text onto the real world using the camera. %could put an image of instant mode here as an example
-In ``scan'' mode, the user first takes a photo. Then, the user is prompted to 
-highlight where text appears in the photo. %could put an example here as well
-After the translation is complete, the translated text appears in a separate UI %another example?
-element instead superimposed onto the photo. In most cases, it is more 
-convenient and readable to have the translation appear in a separate scrollable
-text box. This motivated the current design of the ``info buttons'' in ARuko. 
-Instead of placing text directly onto signage, we place a blue button with a 
-stylized `i' in the center. By tapping on this button, a separate UI element 
-will appear containing the translated text. Since this button is cast into the %example
-world using the AR camera, the button appears to be placed directly onto the 
-content in the real world.
+translated text onto the real world using the camera. In ``scan'' mode, the user
+first takes a photo. Then, the user is prompted to highlight where text appears
+in the photo. After the translation is complete, the translated text appears in
+a separate UI element instead superimposed onto the photo. In most cases, it is
+more convenient and readable to have the translation appear in a separate
+scrollable text box. This motivated the current design of the ``info buttons''
+in ARuko. Instead of placing text directly onto signage, we place a blue button
+with a stylized `i' in the center. By tapping on this button, a separate UI
+element will appear containing the translated text. Since this button is cast
+into the world using the AR camera, the button appears to be placed directly
+onto the content in the real world.
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -2476,19 +2476,21 @@ their thoughts on the app. The full results are listed below.
 \label{tab:testingSurveyResults}
 \end{table}
 
+\clearpage
+
 \section{NOxAR Assignment}
 \label{sec:NOxAR}
 
-On Monday, September 9\textsuperscript{th}, Atticus approached us about an additional project he 
-wanted us to tackle. He wanted us to adapt Kyoto VR's NOxAR app to use ground
-plane detection. Currently, the NOxAR app is an AR app for Microsoft Hololens
-that uses image targets with Vuforia. When viewing the correct image target,
-the app projects a 3D model of a noh theater\footnote{A form of Japanese 
-theater originating in the 14th century structured around song and slow 
-dancing~\autocite{japanguide2018}.} performer dancing to background 
-music~\autocite{noxar2018}. What Atticus wanted was to have the app use 
-ground plane detection in order to display the noh performer so that it could 
-be displayed anywhere. Additionally, he wanted us to scale up the model so that
+On Monday, September 9\textsuperscript{th}, Atticus approached us about an
+additional project he wanted us to tackle. He wanted us to adapt Kyoto VR's
+NOxAR app to use ground plane detection. Currently, the NOxAR app is an AR app
+for Microsoft Hololens that uses image targets with Vuforia. When viewing the
+correct image target, the app projects a 3D model of a noh theater\footnote{A
+form of Japanese theater originating in the 14th century structured around song
+and slow dancing~\autocite{japanguide2018}.} performer dancing to background
+music~\autocite{noxar2018}. What Atticus wanted was to have the app use ground
+plane detection in order to display the noh performer so that it could be
+displayed anywhere. Additionally, he wanted us to scale up the model so that
 when displayed in AR, the performer would appear life-sized. 
 
 For this project, Atticus sent us the original Unity project files for NOxAR.
