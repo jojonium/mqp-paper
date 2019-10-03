@@ -29,8 +29,8 @@
 \bibliography{references}
 \graphicspath{ {./images/} } % put images in here
 \title{%
-	\huge ARuko and Editour: \\
-	\Large A Platform for Augmented Reality Tour Guide Apps}
+	ARuko and Editour: \\
+	A Platform for Augmented Reality Tour Guide Apps}
 \author{William~Campbell, Cole~Granof, and Joseph~Petitti}
 \date{October 11, 2019}
 
@@ -53,6 +53,7 @@
 % title page
 \begin{center}
 	{\huge ARuko and Editour: \\
+		\vspace{.5\baselineskip}
 		\Large A Platform for Augmented Reality Tour Guide Apps
 	}
 
@@ -166,8 +167,8 @@ Kinkaku-ji. Sections~\ref{sec:initialFieldTesting} and
 on-site. From these tests, we were able to refine the user experience, and
 identify important features to add to the app. Much of the app's functionality
 was decided by our project sponsor, who plans to monetize the app. We also
-worked with an IQP team, who had been tasked with exploring funding options and
-creating promotional content.
+worked with an Interactive Qualifying Project (IQP) team, who had been tasked
+with exploring funding options and creating promotional content.
 
 Since our app had to deliver an audio tour supplemented by images based on the
 user's latitude and longitude, we developed an internal tool to design physical
@@ -533,10 +534,10 @@ has decent experience with writing JavaScript, we have have very little
 experience writing React apps.
 
 In most app development scenarios, to test the app on actual hardware, it must
-be compiled using either Xcode or Android Studio depending on your platform.
-Once you have built the app, your device needs to install the app. This process
-can be very time consuming, especially when needing to run frequent tests on
-the target platform.
+be compiled using either Xcode or Android Studio depending on the target
+platform. Once you have built the app, it must be installed on the device. This
+process can be very time consuming, especially when needing to run frequent
+tests on the target platform.
 
 An alternative to building an app for a physical phone is to run it through an
 emulator on a computer. According to Techopedia, ``Emulation is the process of
@@ -571,7 +572,7 @@ required us to move the camera through the world at various speeds and angles,
 which is simply cumbersome with a laptop webcam.
 
 As an alternative to emulation or compiling a native binary, ViroReact offers a
-convenient ``test bed'' for rapidly testing your ViroReact app on native
+convenient ``test bed'' for rapidly testing ViroReact apps on native
 hardware without the need for an emulator. This allowed us to launch a working
 AR app on our devices much more easily than any of the other frameworks or
 engines we explored. Unfortunately, the test bed app was somewhat unreliable
@@ -1037,13 +1038,13 @@ the backend's API, see Appendix~\ref{sec:editourAPIDocumentation}.
 For testing and development purposes the Editour backend was originally hosted
 on Joseph Petitti's personal server. This was a CentOS virtual machine running
 on an old Dell rack server in Worcester, Massachusetts. We wrote a custom
-systemd service to run the Editour as a daemon and keep its log files organized.
-The Node.js backend was served by an Nginx reverse proxy running on the same
-virtual machine.
+systemd service to run Editour as a daemon and keep its log files organized. The
+Node.js backend was served by an Nginx reverse proxy running on the same virtual
+machine.
 
 While this worked well enough for testing, it was not a permanent solution. We
 asked Atticus to provide a more powerful---and geographically closer---hosting
-solution for running the Editour in the future. He obtained a domain name and a
+solution for running Editour in the future. He obtained a domain name and a
 shared hosting environment on a Red Hat Enterprise Linux (RHEL) server for us to
 use on September 23\textsuperscript{rd}. Unfortunately, this shared hosting
 environment was designed for running simple PHP applications like WordPress, so
@@ -1104,7 +1105,7 @@ Editour backend and update the tour info by itself. This would allow Kyoto~VR to
 update the tours without updating the entire app.
 
 Furthermore, we foresee Editour being a useful tool outside of the app we
-designed for Kyoto~VR. The design of the Editour is agnostic about how the media
+designed for Kyoto~VR. The design of Editour is agnostic about how the media
 will be used. For an app like izi.TRAVEL, the images are displayed when the
 associated audio tour is playing.
 
@@ -1138,7 +1139,7 @@ to develop and launch this platform in the future.
 ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{min}歩こ\end{CJK}''
 (\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
 through an AR-enhanced tour. The app was built with Unity, which enabled to us
-to use a single codebase for the iOS and Android versions of the apps.
+to use a single codebase for the iOS and Android versions of the app.
 
 \subsubsection{GPS Functionality}
 \label{sec:gpsFunctionality}
@@ -1154,28 +1155,30 @@ accommodate regions with arbitrary shape and size.  In the implementation, we
 provided support for both ``GPS Bubbles'' and ``GPS Polygons.'' In the end
 however, Editour made it trivial to use the more versatile ``GPS Polygons,'' so
 we eventually dropped support for regions triggered by distance.
+% TODO add a picture that shows how having only circular regions limits possible
+% tour designs
 
 \subsubsection{Translation Feature}
 \label{sec:translationFeature}
 
-% TODO include photos of the google translation app including our own app
-ARuko uses augmented reality to translate text at the site as well. While AR
-translation apps exist, the experience can be frustrating, and produce poor
-results. Google's text recognition and machine-learning powered translation
-technology is certainly impressive. At the same time, the translation service
-works better in ``scan'' mode instead of ``instant'' mode. In ``instant'' mode,
-the app attempts to translate text as quickly as possible, superimposing the
-translated text onto the real world using the camera. In ``scan'' mode, the user
-first takes a photo. Then, the user is prompted to highlight where text appears
-in the photo. After the translation is complete, the translated text appears in
-a separate UI element instead superimposed onto the photo. In most cases, it is
-more convenient and readable to have the translation appear in a separate
-scrollable text box. This motivated the current design of the ``info buttons''
-in ARuko. Instead of placing text directly onto signage, we place a blue button
-with a stylized `i' in the center. By tapping on this button, a separate UI
+ARuko uses augmented reality to translate text at the site of the tour as well.
+While AR translation apps exist, the experience can be frustrating, and produce
+poor results. Google~Translate's text recognition and machine-learning powered
+translation technology is certainly impressive. At the same time, the
+translation service works better in ``scan'' mode instead of ``instant'' mode.
+In ``instant'' mode, the app attempts to translate text as quickly as possible,
+superimposing the translated text onto the real world using the camera. In
+``scan'' mode, the user first takes a photo. Then, the user is prompted to
+highlight where text appears in the photo. After the translation is complete,
+the translated text appears in a separate UI element. In most cases, it is more
+convenient and readable to have the translation appear in a separate scrollable
+text box. This motivated the current design of the ``info buttons'' in ARuko.
+Instead of placing text directly onto signage, we place a blue button with a
+stylized ``\textit{i}'' in the center. By tapping on this button, a separate UI
 element will appear containing the translated text. Since this button is cast
 into the world using the AR camera, the button appears to be placed directly
-onto the content in the real world.
+on top of the content.
+% TODO images for this section
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -1184,10 +1187,13 @@ Near the entrance of Kinkaku-ji before the ticket gate, there is a large
 illustrated map. Much like the signage, there is no language on the map other
 than Japanese. Using the AR camera within the app, information can be projected
 onto the map. Figure~\ref{fig:arMapFeature} shows the blue highlighted path of
-the walking tour, including a few translated labels.
+the walking tour, including a few translated labels. The blue path and English
+text are not part of the physical map. These are superimposed on the image by
+ARuko.
 
-\begin{figure}[h] \centering
-    \includegraphics[width=0.4\textwidth]{ar-map-feature.png}
+\begin{figure}[p]
+	\centering
+    \includegraphics[width=0.8\textwidth]{ar-map-feature.png}
     \caption{Map overlay displaying the path and translated labels}
     \label{fig:arMapFeature}
 \end{figure}
@@ -1195,10 +1201,10 @@ the walking tour, including a few translated labels.
 \subsubsection{Virtual Souvenir Feature}
 \label{sec:virtualSouveneir}
 
-Tickets to enter Kinkaku-ji are long sheets of printed paper with calligraphy.
+Tickets to enter Kinkaku-ji are long sheets of paper printed with calligraphy.
 The tickets are large and visually appealing; they are souvenirs unto themselves
 that one might feel inclined to keep around. Over the course of our three month
-stay we visited Kinkaku-ji multiple times. For each visit, we received identical
+stay we visited Kinkaku-ji thrice. For each visit, we received identical
 tickets. Seemingly, the design on the tickets do not change on a regular basis,
 if at all. Figure~\ref{fig:kinkakujiTicket} shows a ticket we kept from one of
 our visits to Kinkaku-ji.
@@ -1209,20 +1215,20 @@ our visits to Kinkaku-ji.
     \label{fig:kinkakujiTicket}
 \end{figure}
 
-Because the tickets are unlikely to change frequently, this enables us to
-provide the user with a ``virtual souvenir'' using the AR camera. This is the
-only AR feature that is not tied directly to an image target that can only be
-accessed at Kinkaku-ji. While the image gallery and segments of the audio tour
-can be accessed at any time using the ``Chapter Select'' menu, most of the AR
-features can only be experienced during the walking tour, pointing the camera at
-objects physically located at the site. Augmenting the ticket with 3D content
-allows visitors to take something home, giving them a reason to launch the app
-later.
+Because the tickets are unlikely to change frequently, we are able to provide
+the user with a ``virtual souvenir'' using the AR camera. This is the only AR
+feature that is not tied directly to an image target that can only be accessed
+at Kinkaku-ji. While the image gallery and segments of the audio tour can be
+accessed at any time using the ``Chapter Select'' menu, most of the AR features
+can only be experienced during the walking tour, pointing the camera at objects
+physically located at the site. Augmenting the ticket with 3D content allows
+visitors to take something home, giving them a reason to launch the app later.
 
-We found a free untextured model of the Golden Pavilion to use for this
-feature. Using Unity's built-in capability to design materials, we created
-a shiny golden material and applied it to the model (see
-Figure~\ref{fig:souvenir}.
+We found a free untextured model of the Golden Pavilion to use for this feature
+on Thingiverse, a site for sharing user-created 3D
+models~\autocite{baichtal2008}. Using Unity's built-in capability to design
+materials, we created a shiny golden material and applied it to the model (see
+Figure~\ref{fig:souvenir}).
 
 \begin{figure}[h]
 	\centering
@@ -1246,14 +1252,12 @@ hand.
 As ideas changed and ARuko became what it is today, the user interface (UI) also
 changed greatly from its early conception to the final version. Still, the early
 UI was a valuable learning experience, providing us with skills that were useful
-when building the final version.
+when building the finished product.
 
-The early UI was very much a product of ARuko's development; many of its
-elements were created on the fly as new features were added. As more features
-were added, it became clear that the UI could not consist simply of buttons and
-other basic features provided by Unity. We would need to learn more about how to
-create more interesting and useful UI elements to accommodate for our new
-functionality.
+The early UI was purely functional with no bells or whistles; many of its
+elements were created on the fly as new features were added. As the app grew,
+it became clear that the UI could not consist simply of buttons and other basic
+features provided by Unity.
 
 \begin{figure}[h]
 	\centering
@@ -1262,16 +1266,16 @@ functionality.
 	\label{fig:oldUI}
 \end{figure}
 
-Pictured in Figure~\ref{fig:oldUI} is our early UI. It was a very minimal UI,
-but still covered all of the uses for our app at the time. The top of the screen
-had two dropdown menus. The one on the left (which is open shown open in
-Figure~\ref{fig:oldUI}) shows AR image targets in the area that users could
-look for and scan. The right dropdown would be dynamically populated in each
-region with buttons bearing different images. These images were ones that
-Atticus wanted to be viewable in AR using ground plane detection. When tapped,
-each button would create a 3D Cube, with the given image on each face, and place
-it on the ground where the user was pointing. Figure~\ref{fig:floatingCube}
-shows this feature in action.
+Pictured in Figure~\ref{fig:oldUI} is our early UI. It was very minimal, but
+still covered all of the uses for our app at the time. The top of the screen had
+two drop-down menus. The one on the left (which is shown open in
+Figure~\ref{fig:oldUI}) shows AR image targets users could look for and scan.
+The right drop-down would be dynamically populated in each region with buttons
+bearing different images. These images were ones that Atticus wanted to be
+viewable in AR using ground plane detection. When tapped, each button would
+create a cube, with the given image on each face, and place it on the ground
+where the user was pointing. Figure~\ref{fig:floatingCube} shows this feature in
+action.
 
 \begin{figure}[h]
 	\centering
@@ -1282,35 +1286,37 @@ shows this feature in action.
 \end{figure}
 
 Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
-target capabilities for scanning objects outside of the expected use case, such
+target capabilities for scanning objects outside of the supported use case, such
 as 3D landscapes or the side of a building. We had serious doubts about how
 well this would work, and our suspicions were confirmed after some field
 testing. This was the reasoning behind focusing on ground-plane detection
 instead of image targets; ground-plane detection can be used anywhere, and is
 much more reliable than treating 3D objects as 2D image targets.
 
-Learning to create these dropdown menus proved to be a very important lesson
+Learning to create these drop-down menus proved to be a very important lesson
 later on, since we would put that exact knowledge to use multiple times in the
-final UI. We were able to create the dynamically populated dropdown menus by
+final UI. We were able to create the dynamically populated drop-down menus by
 creating an empty vertical layout group. Then, a script would create buttons for
 each image to display, and assign those images as children of the layout group.
-Then, to get the smooth open/close animation, we ``lerp'' (linearly interpolate)
-the menu to the corresponding position each frame until it is fully open or
-closed. In between these two dropdown menus is a panel that would display the
+To get the smooth open/close animation, we ``lerp'' (linearly interpolate)
+the menu to the corresponding position each frame until it is fully opened or
+closed. In between these two drop-down menus is a panel that would display the
 name for the region the user is in at the time. The empty space in the middle of
 the screen is where the AR camera display would be shown. In this
 implementation, the AR functionality was the focus of the app, so it made sense
-to display the AR camera feed at all times. Lastly, on the bottom is the audio
-slider for the audio file played in each region. We learned about how audio
-sliders work in Unity with this feature, and would expand on that knowledge for
-the final version of the app in order to optimize the slider's functionality.
+to display the AR camera feed at all times. Lastly, on the bottom is a slider
+that controls the playback position of the audio file played in each region. We
+learned about how audio sliders work in Unity with this feature, and would
+expand on that knowledge for the final version of the app in order to optimize
+the slider's functionality.
 
 Although most elements of the initial UI did not survive into the final product,
-it was still quite valuable as a learning tool. While crafting this prototype we
-discovered many of the intricacies of UI design in Unity. For example, all UI
-elements must be attached to a Unity canvas element, which covers the entire
-phone screen. Elements should be anchored to edges or corners of this canvas so
-that they stay in a constant location on different-size screens.
+this original phase was still quite valuable as a learning tool. While crafting
+this prototype we discovered many of the intricacies of UI design in Unity. For
+example, all UI elements must be attached to a Unity canvas element, which
+covers the entire phone screen. Elements should be anchored to edges or corners
+of this canvas so that they stay in a constant location on screens of different
+sizes.
 
 \subsubsection{Adobe XD Design}
 \label{sec:adobeXdDesign}
@@ -1396,7 +1402,7 @@ changed in order to add these new features.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{editour-additions.png}
-	\caption{Additions to the Editour to accommodate the new design}
+	\caption{Additions to Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
 
@@ -1468,16 +1474,16 @@ field that expanded vertically within predefined bounds to fit an arbitrary
 amount of text.
 
 The last major UI implementation obstacle we had to overcome was a way to keep
-audio playing with the phone in your pocket. Atticus insisted that this sort of
-feature was required so that users could listen to the audio tour without using %maybe include an image of pocket mode here
-any of the other functionality the app provides, like the image gallery in each
-region or the AR features. Despite how common it is for apps to play audio in
-the background or while the phone is locked, Unity does not provide a way to
-accomplish this. Our workaround was to create a ``pocket mode'' that prevents UI
-elements from accidentally being triggered. The user exits pocket mode with a
-deliberate swipe to the right. If the slider is released partway through the
-action, the slider springs back to the beginning. We were ultimately able to
-replicate Atticus's Adobe XD file almost perfectly.
+audio playing with the phone in a pocket. Atticus desired this sort of feature
+so that users could listen to the audio tour without using any of the other
+functionality the app provides, such as the image gallery or the AR
+features. Despite how common it is for apps to play audio in the background or
+while the phone is locked, Unity does not provide a way to accomplish this. Our
+workaround was to create a ``pocket mode'' that prevents UI elements from
+accidentally being triggered. The user exits pocket mode with a deliberate swipe
+to the right. If the slider is released partway through the action, the slider
+springs back to the its original position.
+% TODO maybe include an image of pocket mode here
 
 \clearpage
 
@@ -1488,10 +1494,9 @@ Both pieces of our project---Editour and ARuko---are designed to be used by
 people who are not programmers. Editour will be used by Atticus in the future to
 design more tours, and ARuko will be used by the general public. Because of
 this, we needed to do extensive testing to ensure not only that the products
-work as intended without bugs, but also that they would be pleasant and easy to
-use for their intended users.
+work as intended without bugs, but also that they are pleasant and easy to use
+for their intended users.
 
-% TODO remove this
 \nocite{harvey2002} % don't remove this
 
 \subsection{Testing Editour}
@@ -1531,7 +1536,7 @@ adding new features or making changes to underlying logic later on.
 
 We suspect that Editour might have a life outside of this particular use case
 depending on how it is developed later on. This is why Editour is perhaps more
-polished than your typical tool purely for internal use.
+polished than typical internal tools.
 
 For the duration of the project however, Editour only had to be used our team
 and Atticus. Therefore, the testing for the frontend of Editour was less
@@ -1626,9 +1631,9 @@ we began to implement more complex UI that changed based on GPS position in
 various ways, directly taking the tour by walking around was an invaluable way
 to test. Section~\ref{sec:adobeXdDesign} details how the UI grew in complexity
 in the late stages of the project. Having a way to regularly run field tests was
-integral to polishing the app in time before we revisited Kinkaku-ji.  Because
-the Editour was flexible enough to easily swap out media and add regions to the
-tour, the Editour proved itself to be as helpful for testing as it was for
+integral to polishing the app in time before we revisited Kinkaku-ji. Because
+Editour was flexible enough to easily swap out media and add regions to the
+tour, Editour proved itself to be as helpful for testing as it was for
 crafting the final tour that could be taken at Kinkaku-ji.
 
 To maximize testing efforts and negate having to physically walk around we also
@@ -1766,8 +1771,7 @@ accommodate for four simultaneous images.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.5\textwidth]{four-i-buttons.png}
-	\caption{The result of increasing the size of the info buttons and increasing
-    the maximum image target count to four}
+	\caption{Tracking four image targets at once with improved info buttons.}
 	\label{fig:fourIButtons}
 \end{figure}
 
@@ -1817,14 +1821,6 @@ After going through Kinkaku-ji with the app twice we had each test participant
 fill out a simple survey giving their thoughts on the app. The full results of
 these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kanban-board.png}
-	\caption{A screenshot of the Kanban board we used for developing our
-    biweekly blog}
-	\label{fig:kanbanBoard}
-\end{figure}
-
 \clearpage
 
 \section{Alternative AR App Concepts}
@@ -1844,25 +1840,25 @@ looking through the camera, this experience would allow users to keep their
 phones in their pockets while taking the tour. Sound sources would change in
 relation to the real world as the user moved around.
 
-We spent the second and third week of the project creating demos to explore the
-possibility of a 3D spatialized audio tour. We found that this would be very
-difficult to do without the use of the camera. All of the technology for mobile
-AR we explored in Section~\ref{sec:platforms} depended heavily on the camera. If
-we were to build a 3D spatialized audio tour that ran entirely without use of
-the camera, we would not be able to take advantage of any of the useful features
-of the AR libraries we explored. Furthermore, Unity would be relegated to the
-simple role of exporting our app to multiple devices; we would not have any need
-to take advantage of its 3D capabilities.
+We spent the second and third week of the project creating demonstrations to
+explore the possibility of a 3D spatialized audio tour. We found that this would
+be very difficult to do without the use of the camera. All of the technology for
+mobile AR we explored in Section~\ref{sec:platforms} depended heavily on the
+camera. If we were to build a 3D spatialized audio tour that ran entirely
+without use of the camera, we would not be able to take advantage of any of the
+useful features of the AR libraries we explored. Furthermore, Unity would be
+relegated to the simple role of exporting our app to multiple devices; we would
+not have any need to take advantage of its 3D capabilities.
 
-Thusly, we decided to see what was possible using the camera instead. We were
+Therefore, we decided to see what was possible using the camera instead. We were
 able to get sound sources to fade in and out based on the distance to an image
 target. Naturally, if the image target were to go out of view of the camera,
 Vuforia stopped trying to estimate the camera's distance to the last known
 location of the image target. In order to make this work in the way Atticus
 imagined, we would need a way to shift to our own method of estimating distance
-to the sound source once the image target had been lost. While this might have
-been possible, it was difficult to estimate the amount of effort this would
-take, since we would essentially be implementing a feature seemingly not
+to the sound source once the image target had been lost. It was difficult to
+estimate the amount of effort this would take (and whether it was even
+possible), since we would essentially be implementing a feature seemingly not
 supported by current AR libraries.
 
 We explained the technical hurdles of this concept to Atticus. Ultimately, our
@@ -1898,64 +1894,59 @@ indicating that those images would serve well as AR image targets.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.7\textwidth]{exhibition-scan.png}
-    \caption{A screenshot of the 3D scan of `Portraits of Thought,' accessible
+    \caption{A screenshot of the 3D scan of ``Portraits of Thought,'' accessible
     from the web}
 	\label{fig:exhibitionScan}
 \end{figure}
 
-\subsection{Alterniative Uses for AR in ARuko}
+\subsection{Alternative Uses for AR in ARuko}
 \label{sec:alternativeARukoAR}
 
-Even once the idea for ARuko was settled on audio tour functionality with 
-additional AR components, what exactly those AR components would do was still
-undecided until more details about the project crystallized. Atticus knew he 
+Even after the core functionality of ARuko was finalized as an audio tour with
+additional AR components, the exact nature of those AR components was still
+undecided until more details about the project crystallized. Atticus knew he
 wanted to use AR on the tour, but was not sure what to do with it. At first, we
-made recommendations to him based on the capabilities of Vuforia that we found 
-in our research. We knew it was good at image recognition and ground plane 
-recognition, so we suggested that maybe displaying some sorts of 3D models in 
-certain locations using either of these features might be an interesting way to
-expand on the tour. With these recommendations in mind, Atticus expressed 
-interest in the capability of using building facades as image targets. The 
-intention then would be to tie content related to a specific location within 
-Kinkaku-ji to that physical location, and use images of the location as 
-targets. As previously explained, this ultimately did not work out due to the 
-limitations of image recognition with Vuforia. 
+made recommendations to him based on the capabilities of Vuforia. We knew that
+image recognition and ground plane recognition were two of its strengths, so we
+suggested that displaying 3D models in certain locations using either of these
+features would be an interesting way to expand on the tour. With these
+recommendations in mind, Atticus expressed interest in using building facades as
+image targets. The intention then would be to tie content to a physical location
+in Kinkaku-ji, and use images of the location as targets. As explained in
+Section~\ref{sec:earlyUserInterface}, this ultimately did not work out due to
+the limitations of Vuforia's image recognition.
 
 After being initially deterred from image recognition, we thought that ground
-and mid-air plane recognition might the best way to implement AR in the app. 
-It did not have to rely on images that meet Vuforia's criteria, and since it 
-could be triggered anywhere, it seemed like a good fit for an app focusing on
+and mid-air plane recognition might the best way to implement AR in the app. It
+did not have to rely on images that meet Vuforia's criteria, and since it could
+be triggered anywhere, it appeared to be a good fit for an app focusing on
 walking around a site. Atticus explained that he primarily wanted to use AR to
 display art related to the site. With this in mind, we focused our efforts with
-ground and mid-air plane AR on ways to display 2D images. What we ended up 
-creating first was a feature that allowed users to view certain images in AR, 
-using ground plane detection, based on what region you were in. When users 
-entered a region of the tour, the image menu would be dynamically populated 
-with buttons that, when tapped, would create a Plane primitive in Unity with 
-the given image displayed on it and place it on the ground plane. 
+ground and mid-air plane AR on ways to display 2D images. What we ended up
+creating first was a feature that allowed users to view certain images in AR,
+using ground plane detection, based on what region you were in. When users
+entered a region of the tour, the image menu would be dynamically populated with
+buttons that, when tapped, would create a Plane primitive in Unity with the
+given image displayed on it and place it on the ground plane. 
 
-We encountered a few notable problems with this though. One problem was that 
-the Plane we made was always the same size and dimensions, and would cause 
-images to stretch to fit the plane. Further testing to change the size of the
-plane with each picture proved difficult. Additionally, using a Plane primitive
-had problematic effects on the way the object was lit in the Unity scene, as 
-well as how it appeared when not viewed head-on. If viewed from an angle, the 
-picture could become very dark and difficult to see. If viewed from behind,
-back-face culling would take effect and the plane would become completely 
-invisible. Because of these issues, we decided to place the images on a 3D Cube
-primitive instead. But after showing this feature to Atticus during early 
-testing at Kinkaku-ji, he decided that he wanted to move away from displaying 
-images in AR. Looking back, the feature may have worked better with mid-air 
-plane recognition so that the user could place the image directly in front of 
-them. 
+We encountered a few notable problems with this. Using a Plane primitive had
+deleterious effects on the way the object was lit in the Unity scene, as well as
+how it appeared when not viewed head-on. If viewed from an angle, the picture
+could become very dark and difficult to see. If viewed from behind, back-face
+culling would take effect and the plane would become completely invisible.
+Because of these issues, we decided to place the images on a Cube primitive
+instead. After showing this feature to Atticus during early testing at
+Kinkaku-ji, he decided that he wanted to move away from displaying images in AR.
+Looking back, the feature may have worked better with mid-air plane recognition
+so that the user could place the image directly in front of them. 
 
 In addition to the previously mentioned use cases for AR in ARuko, Atticus also
 expressed interest in using AR to trigger video content. He was particularly
-interested in 3D videos triggerable through AR. As the scope of the project 
+interested in triggering 3D videos through AR. As the scope of the project 
 grew, and time ran short, the task of including 3D videos triggered by AR 
 seemed more and more complicated, causing that idea to be phased out of the
 final project. Additionally, we never received any assets from Atticus to use
-for this feature, thus preventing us from spending time developing it. 
+for this feature, preventing us from spending time developing it. 
 
 \subsection{Monetization for ARuko}
 \label{sec:monetizationForAruko}
@@ -1963,36 +1954,37 @@ for this feature, thus preventing us from spending time developing it.
 Partway through our project, Atticus Sims let us know that he was looking to
 monetize the app we were developing for him. He also informed us that the IQP
 team would be looking for funding options in order to ``bootstrap'' the project.
-One monetization method he proposed was potentially marketing the app to hotels,
+One monetization method he proposed was marketing the app to hotels,
 allowing hotels to sell tours for download through in-app purchases.
 
-In order to get an app approved for the App Store or the Google Play store,
-there is sometimes a lengthy approval process. This might have been possible if
-our project had been more prescriptive from the start.
+Getting an app approved to launch on the App Store or Google Play has many
+specific requirements and can be a very lengthy process. This might have been
+possible if our project had been more prescriptive from the start and we had
+more time.
 
 We did perform some preliminary research about the monetization models Atticus
 proposed and brought forth some potential roadblocks regarding each one. We let
 Atticus know that we had logistical concerns about circumventing Apple's or
-Google's in-app purchases by locking content behind a different payment process.
-Additionally, we informed Atticus that he would have to purchase a commercial
-Vuforia license in order to deploy the app onto any
+Google's in-app purchases by locking content behind a different payment process
+as he suggested. Additionally, we informed Atticus that he would have to
+purchase a commercial Vuforia license in order to publish the app on any
 storefront~\autocite{vuforialicense2018}, which Atticus was not willing to do at
 the time. The free version of Vuforia comes branded with a watermark in the
 bottom left corner.\footnote{The final design of our app incidentally covers up
 the watermark with our own UI elements. This does not change the fact that we
-would not be able to deploy the app without a proper commercial license for
-Vuforia.}
+would not legally be able to deploy the app without a proper commercial license
+for Vuforia.}
 
 Our concerns about focusing on monetization for Kyoto~VR were twofold. Firstly,
 we were worried that this kind of work strayed too far away from the academic
-intent of the project---the intent being to explore various ways in which AR and
-geolocation could be used in tandem to create an improved experience for
-tourists. For our purposes, the app was meant to demonstrate our discoveries in
-the form of a polished prototype. While we feel as though we achieved this goal,
-we made certain compromises in the way of experimentation in order to leave
-Kyoto~VR with a potentially marketable product. We made it clear to Atticus that
-deploying our app on the Google Play Store or App Store would not be within the
-scope of our academic project as per our advisers' advice.
+intent of the project---to explore various ways in which AR and geolocation
+could be used in tandem to create an improved experience for tourists. For our
+purposes, the app was meant to demonstrate our discoveries in the form of a
+polished prototype. While we feel as though we achieved this goal, we restricted
+our experimentation in order to leave Kyoto~VR with a potentially marketable
+product. We made it clear to Atticus that deploying our app on Google Play
+or the App Store would not be within the scope of our academic project as per
+our advisers' guidance.
 
 \clearpage
 
@@ -2002,7 +1994,7 @@ scope of our academic project as per our advisers' advice.
 Our team is satisfied with the final result of this project, as we feel we have
 built a working platform that Kyoto~VR will easily be able to build off of in
 the future. This section contains our final thoughts on the project and future
-work that could be done on it.
+work that could be done.
 
 \subsection{What Went Wrong}
 \label{sec:whatWentWrong}
@@ -2019,8 +2011,8 @@ On a similar note, the requirements and scope of the project changed greatly
 from week to week, and sometimes even within one day. We spent a significant
 amount of time exploring concepts and features that were completely unrelated to
 the final product. We also did not receive official specifications, such as the
-design of the GUI Atticus wanted for the app, until very late in the development
-process.
+design of the graphical user interface (GUI) Atticus wanted for the app, until
+very late in the development process.
 
 Another challenge we faced was the difficulty in actually testing the app. The
 Ritsumeikan University Biwako-Kusatsu campus we stayed at is about ninety
@@ -2038,37 +2030,39 @@ so one of our team members had to install macOS in order to use it. We were able
 to resolve these issues in the first weeks of the project, but it consumed some
 of our valuable time in July.
 
-\subsubsection{What Went Well}
+\subsection{What Went Well}
 \label{sec:whatWentWell}
 
 Despite these issues, in the end we were able to create a useful working
-prototype. The Editour is fully featured with everything needed to build an
+prototype. Editour is fully featured with everything needed to build an
 audio tour anywhere in the world. ARuko allows users to experience useful
 AR-enhanced tours in a pleasant and intuitive way. Together they provide a
 complete platform for building augmented reality tour guide apps.
 
-Our team's broad range of skills made it so that each member had specific tasks
-that they were good at. This made the division of labor easier, and throughout
-the project we never had issues splitting up work.
+Our team had broad range of skills. This made the division of labor easier, and
+throughout the project we never had issues splitting up work. For example,
+William Campbell was the only Interactive Media and Game Design (IMGD) major on
+our team, so he was the most familiar with game engines including Unity. Because
+of this, he primarily worked on ARuko in Unity.
 
 Editour was not initially a requirement that Atticus had in mind, but it turned
-out to be a very useful tool in designing tours and allowing the app to be
+out to be a very useful tool for designing tours, allowing the app to be
 extensible. Two members of our team, Cole Granof and Joseph Petitti, had
-experience building web applications with HTML, CSS, and JavaScript, and the
-Editour allowed them to use these skills to help the project.
+experience building web applications with HTML, CSS, and JavaScript, and Editour
+allowed them to use these skills to help the project.
 
 The research time we put in at the beginning of the project also proved to be
-very useful. Our decision to use Unity Vuforia based on this research made
+very useful. Our decision to use Unity and Vuforia based on this research made
 implementing many of the complex AR features easier later on. If we had chosen a
 less-ideal platform, we might have had to switch to a different one after
 wasting time on that poor decision.
 
-\subsubsection{Future Work}
+\subsection{Future Work}
 \label{sec:futureWork}
 
 Although selling ARuko on app stores was not within the scope of our academic
-project, but we were able polish the app enough such that it would be feasible
-for Atticus to eventually sell the app. The UI could use more testing with real
+project, we were able polish the app enough that it would be feasible for
+Atticus to eventually sell it. The UI could use more testing with real
 users to make sure it is intuitive and easy to use. We also intended to add a
 feature where the app could automatically download tour files from the Editour
 server and import them without having to rebuild. We were not able to complete
@@ -2077,15 +2071,15 @@ of ARuko's business logic is abstracted and generalized to support multiple
 tours. Editour also already supports requesting and downloading the most recent
 versions of tours.
 
-Editour is essentially feature complete. The most recent version, v1.3.0, can be
+Editour is essentially feature complete. The most recent version, 1.3.0, can be
 found in the GitHub repository
 (\url{https://github.com/bandaloo/editour/releases/tag/v1.3.0}), and it contains
-all the features necessary to create and edit tours. In the future Kyoto~VR
+all the features necessary to create and edit tours. In the future, Kyoto~VR
 should move it to a more powerful hosting provider (see
 Section~\ref{sec:deployingTheEditourBackend}), but the current solution works
 for now.
 
-Given more time and resources, the app should be augmented to include a tour
+Given more time and resources, the app could be augmented to include a tour
 browser that automatically downloads an unpacks tours from the Editour server.
 More historic locations around Kyoto and Japan in general should be considered
 for other tours. With the work our team has done, Kyoto~VR now has a complete
@@ -2113,8 +2107,8 @@ different languages. In total, we created five different repositories: the blog,
 the \LaTeX~source code for our paper, the Arduino code for the heart project
 (see Appendix~\ref{sec:ritsumeikanHeartProject}) and of course one for Editour
 and another for ARuko. These five repositories span across multiple different
-markup and programming languages, including C\#, C++, JavaScript, HTML, CSS (and
-the \LaTeX~used to typeset this paper). This gave us a welcome amount of
+markup and programming languages, including C\#, C++, JavaScript, HTML, CSS, and
+the \LaTeX~used to typeset this paper. This gave us a welcome amount of
 practice using Git for version control, as well as GitHub's other features
 oriented around coordinating a team.
 
@@ -2138,8 +2132,17 @@ Initially, we experimented with using a four-column Kanban board to keep track
 of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
 GitHub.
 
-The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
-signal'' or ``card'' in Japanese, which describes the core component of the
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kanban-board.png}
+	\caption{A screenshot of the Kanban board we used for developing our
+    biweekly blog}
+	\label{fig:kanbanBoard}
+\end{figure}
+
+The Kanban technique originates from Toyota in the 1940s. Kanban
+(\begin{CJK}{UTF8}{min}看板\end{CJK}) means ``visual signal'' or ``card'' in
+Japanese, which describes the core component of the
 technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
 to notify other teams that parts needed for assembly work were in short supply.
 Now, Kanban boards are integral to Agile software development. Some teams still
@@ -2156,18 +2159,19 @@ the ``Issues'' page instead, which is discussed in
 Section~\ref{sec:editourFrontendTesting}.
 
 Creating ``pull requests'' through the GitHub web interface has a few advantages
-over directly merging code using Git. Firstly, the pull request feature
-integrates with ``Issues'' page very well. By typing `resolves' along with the
-number associated with an issue into the description of a pull request, GitHub
-will automatically close the issue when the pull request is approved. This is
-not only remarkably convenient, but also self-documenting since the descriptions
-of pull requests would contain the issues they were resolving. Secondly,
-creating a pull request allows code to be reviewed by other members of the team
-very easily. Reviewers can view the entire diff and add comments line-by-line.
-Other collaborators can easily respond to those comments. Reviewers can also
-request certain features be changed before the branch is merged, which allowed
-us to enforce that issues with the code were actually addressed.
-% TODO explain what the heck a diff is
+over directly merging code using Git. First, the pull request feature integrates
+with the ``Issues'' page very well. By typing ``resolves'' along with the number
+associated with an issue into the description of a pull request, GitHub will
+automatically close the issue when the pull request is approved. This is not
+only remarkably convenient, but also self-documenting since the descriptions of
+pull requests would contain the issues they were resolving. Secondly, creating a
+pull request allows code to be reviewed by other members of the team very
+easily. Reviewers can view the entire diff file\footnote{A ``diff'' is a file
+generated by Git that shows the differences between two files.} and add comments
+line-by-line. Other collaborators can easily respond to those comments.
+Reviewers can also request certain features be changed before the branch is
+merged, which allowed us to enforce that issues with the code were actually
+addressed.
 
 % TODO give this paragraph some more context so it doens't seem out of place
 The way we incorporated branches into our workflow helped us collaborate in a
@@ -2179,25 +2183,25 @@ tutorial~\autocite{atlassian}.
 % TODO explain merge conflicts
 
 In order to clearly indicate new versions of the software, we use ``Semantic
-Versioning'' which is a scheme for version numbers created by Tom
+Versioning,'' which is a scheme for version numbers created by Tom
 Preston-Werner, cofounder of GitHub~\autocite{prestonwerner}. In this scheme,
-the full version number consists of three integers separated by periods---in
-other words, in the form \texttt{major.minor.patch}. The major version number is
-incremented when an incompatible change is made. In our case, an incompatible
-change for Editour would entail changing the format of the metadata file used to
-construct a tour such that the frontend could not interpret older tour files.
-The exception to this rule is major version 0, where the product is not
-considered stable and incompatible changes can be made at any time. When Editour
-was in this phase of development, we changed the format of the metadata; this
-would have broken previous versions but this was allowed. The minor version
-number is incremented when functionality is added but remains backwards
-compatible with previous versions. An example of this is the ``transcript''
-field we added to the metadata. The frontend was still able to load tours made
-before this additional information was added to the metadata JSON. We added many
-other features throughout the development process without breaking existing
-functionality. The patch version number is for simple bug-fixes that also do not
-break compatibility. This number gets incremented the most frequently in
-practice.
+the full version number consists of three integers separated by periods in the
+form \texttt{major.minor.patch}. The major version number is incremented when an
+incompatible change is made. In our case, an incompatible change for Editour
+would entail changing the format of the metadata file used to construct a tour
+such that the frontend could not interpret older tour files. The exception to
+this rule is major version 0, where the product is not considered stable and
+incompatible changes can be made at any time. When Editour was in this phase of
+development, we changed the format of the metadata; this would have broken
+previous versions but this was allowed because it was still in an unstable beta
+version. The minor version number is incremented when functionality is added but
+remains backwards compatible with previous versions. An example of this is the
+``transcript'' field we added to the metadata. The frontend was still able to
+load tours made before this additional information was added to the metadata
+JSON. We added many other features throughout the development process without
+breaking existing functionality. The patch version number is for simple
+bug-fixes that also do not break compatibility. This number gets incremented the
+most frequently in practice.
 
 Once we deployed Editour to a server so that Atticus could begin to use it, we
 changed the version to 1.0.0 to indicate the first release version. At this
@@ -2288,27 +2292,28 @@ that contains the data of the response.
 \section{Ritsumeikan Heart Project}
 \label{sec:ritsumeikanHeartProject}
 
-Throughout our stay at Ritsumeikan, we also had the opportunity to work closely
-with other Ritsumeikan students to create build a project that involved the
+Throughout our stay at Ritsumeikan University, we had the opportunity to work
+closely with other students to build a project that involved the
 integration of hardware and software. With the help of students and professors
 alike, we were able to produce an educational physical model of a heart
-controlled by an Arduino microcomputer. Noma Sensei gave us tremendous
+controlled by an Arduino microcomputer. Professor Noma Haruo gave us tremendous
 assistance with hardware. He taught us how to properly use the tools around the
 lab, and purchased mechanical and electrical components we would need to
-complete our task. Amano Sensei was always available to answer questions related
-to biology, and helped us understand the mathematical model we would need to
-implement to drive the physical model with software. We worked on this project
-every Wednesday, completing the final model during the last week of our stay.
+complete our task. Professor Amano was always available to answer questions
+related to biology, and helped us understand the mathematical model we would
+need to implement to drive the physical model with software. We worked on this
+project every Wednesday, completing the final model during the last week of our
+stay.
 % TODO get the full name of Amano Sensei
 
 \subsection{Project Goal}
 \label{sec:projectGoal}
 
-The goals and requirements of this project were set out by Haruo Noma, a
+The goals and requirements of this project were set out by Professor Noma, a
 professor at Ritsumeikan University. The goal of the project was to create an
-interactive model of a heart to teach heart function to non-specialists, such as
-students in middle school. This meant that the model had to be highly visual and
-simple to understand. Each visual component would have to be designed in an
+interactive model of a heart to teach heart functions to non-specialists, such
+as students in middle school. This meant that the model had to be highly visual
+and simple to understand. Each visual component would have to be designed in an
 intuitive fashion so that students could begin interacting with the model
 without advanced knowledge of biology.
 
@@ -2326,7 +2331,7 @@ physical model, and integrate the model into the main loop of the Arduino source
 code with the appropriate timing.
 
 \begin{figure}[h] \centering
-    \includegraphics[width=0.4\textwidth]{reference-model.png}
+    \includegraphics[width=0.8\textwidth]{reference-model.png}
     \caption{The reference model we used to implement the simulation}
     \label{fig:referenceModel}
 \end{figure}
@@ -2334,19 +2339,18 @@ code with the appropriate timing.
 \subsection{Supplies}
 \label{sec:supplies}
 
-With Noma Sensei as our guide, we visited ``Den-Den Town'' or Nipponbashi in
-Osaka in order to gather supplies we would need in order to construct the heart.
-One of the most important purchases of this trip was a two-meter long strip of
-Adafruit NeoPixel light emitting diodes (LEDs). The design of this reel of LEDs
-enabled us to cut the strip at specific points to create shorter strips. Each
-LED on the strip individually addressable, allowing us to set the color of any
-LED along the strip. This perfectly suited our needs for representing blood
-flow.
+With Professor Noma as our guide, we visited ``Den-Den Town,'' or Nipponbashi,
+in Osaka in order to gather supplies we would need in order to construct the
+heart. One of the most important purchases of this trip was a two-meter long
+strip of Adafruit NeoPixel light emitting diodes (LEDs). The design of this reel
+of LEDs enabled us to cut the strip at specific points to create shorter strips.
+Each LED on the strip was individually addressable, allowing us to set the color
+of any LED along the strip. This perfectly suited our needs for representing
+blood flow.
 
 % TODO give a citation about what an Arduino is
-% TODO do we need citations about every microcomputer mentioned by name?
-Noma Sensei had various microcomputers for us to experiment with in his lab,
-including an obniz, an M5Stack, a Raspberry Pi and an Arduino. The Arduino was
+Professor Noma had various microcomputers for us to experiment with in his lab,
+including an obniz, an M5Stack, a Raspberry Pi, and an Arduino. The Arduino was
 the only computer that had a ``motor shield'' component which we believed would
 be necessary for controlling the pumps.\footnote{In the end, we did not need
 this component, since we abandoned the idea of taking apart a pump to drive the
@@ -2376,7 +2380,7 @@ flow of air, we designed a setup involving two valves.
     \label{fig:interactiveModel}
 \end{figure}
 
-Like the balloon which represents the volume of the left ventricle, the LED
+Like the balloon, which represents the volume of the left ventricle, the LED
 strips represent both pressure and blood flow in different parts of the body.
 Pressure is represented by color. The lower the pressure, the more blue the
 lights will appear. Red represents high pressure. The LEDs can display any color
@@ -2407,7 +2411,7 @@ number being displayed.
 \label{sec:userInterfaceForHeartModel}
 
 Our initial plan for the user interface was to control input and output
-parameters with dials. The numerical values of the input parameters would have
+parameters with dials. The numeric values of the input parameters would have
 been displayed on an array of digital number displays. Due to time constraints,
 we opted to support five preprogrammed scenarios that could be toggled from a
 GUI. Figure~\ref{fig:heartGui} represents the final version of the GUI we use to
@@ -2430,7 +2434,7 @@ while the blue bar on the right corresponds to $f_{1}$. On the physical model,
 these values correspond to the rate of animation of both LED strips. The size of
 the circle between the blue bars represents $V_{LV}$, the volume of the left
 ventricle. Due to limitations about the accuracy with which we could control the
-pump, the volume of the balloon does perfectly reflect the true value of
+pump, the volume of the balloon does not perfectly reflect the true value of
 $V_{LV}$ in the model. By contrast, the radius of the graphic on-screen can be
 set to be exactly proportional to the value of $V_{LV}$.
 
@@ -2483,41 +2487,43 @@ their thoughts on the app. The full results are listed below.
 
 On Monday, September 9\textsuperscript{th}, Atticus approached us about an
 additional project he wanted us to tackle. He wanted us to adapt Kyoto~VR's
-NOxAR app to use ground plane detection. Currently, the NOxAR app is an AR app
-for Microsoft HoloLens that uses image targets with Vuforia. When viewing the
+NOxAR app to use ground plane detection. Currently, NOxAR is an AR app for
+Microsoft HoloLens that uses image targets with Vuforia. When viewing the
 correct image target, the app projects a 3D model of a noh theater\footnote{A
 form of Japanese theater originating in the 14th century structured around song
 and slow dancing~\autocite{japanguide2018}.} performer dancing to background
-music~\autocite{noxar2018}. What Atticus wanted was to have the app use ground
-plane detection in order to display the noh performer so that it could be
-displayed anywhere. Additionally, he wanted us to scale up the model so that
-when displayed in AR, the performer would appear life-sized. 
+music~\autocite{noxar2018}. Atticus wanted to have the app use ground plane
+detection in order to display the noh performer so that it could be displayed
+anywhere. Additionally, he wanted us to scale up the model so that when
+displayed in AR, the performer would appear life-sized. 
 
 For this project, Atticus sent us the original Unity project files for NOxAR.
 We then had to figure out how to turn the original project into a ground plane
 AR app. At first we tried importing the assets for the noh performer into a new
-Unity project. We did this for a couple reasons. The first reason was because
+Unity project. We did this two reasons. First,
 we did not want all of the extra components of the original NOxAR project to
-get in the way of what we were trying to do. We also did this because the %could probably put an example pic here
+get in the way of what we were trying to do. We also did this because the
 original project was made with a 2017 version of Unity, so we wanted to try to
-use our more recent version so we would not risk running into any depricated 
-features or functionalities. We did eventually get this method to work, but the
-model of the noh performer was lacking a lot of the details that the original 
-model had. This was attributed to poor importation of the original assets, so 
-we decided to try making changes to the original NOxAR project instead. 
+import it into the most recent version so we would not risk running into any
+deprecated features or functionalities. We did eventually get this method to
+work, but the model of the noh performer was lacking a lot of the details that
+the original model had. This was attributed to errors while importing the
+original assets, so we decided to try making changes to the original NOxAR
+project instead. 
+% TODO could probably put an example pic here
 
-Per Atticus's advice, we deleted any and all unnecessary elements from the 
-scene before proceeding. We also updated the Unity version of the project to
-the 2019 version we were using, and updated the version of Vuforia to the most
-recent version, neither of which created any problems. The process of getting
-the model to appear on ground plane detection instead of image target 
-recognition was relatively simple. We simply moved the model from an image 
-target to a simulated ground plane, added a plane detector component to the
-scene, and made sure the Vuforia settings were in place for ground plane
-detection to work well. From there, we just had to test the app a few times so
-we could properly scale the model to life size. On Tuesday, September 17th, 
-we completed the NOxAR ground plane adaptation to Atticus's saisfaction and
-sent him the final APK file for the app. 
+Per Atticus's advice, we deleted any and all unnecessary elements from the scene
+before proceeding. We also updated the Unity version of the project to the 2019
+version we were using, and updated the version of Vuforia to the most recent
+version, neither of which created any problems. The process of getting the model
+to appear on ground plane detection instead of image target recognition was
+relatively easy. We simply moved the model from an image target to a simulated
+ground plane, added a plane detector component to the scene, and made sure the
+Vuforia settings were in place for ground plane detection to work well. From
+there, we just had to test the app a few times so we could properly scale the
+model to life size. On Tuesday, September 17\textsuperscript{th}, we completed
+the NOxAR ground plane adaptation to Atticus's satisfaction and sent him the
+final APK file for the app. 
 
 \end{document}
 
