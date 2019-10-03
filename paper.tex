@@ -2110,16 +2110,71 @@ We visited ``Den Den Town'' in Osaka in order to gather supplies we would need
 in order to construct the heart. One of the most important purchases of this
 trip was a two-meter long strip of Adafruit NeoPixel light emitting diodes
 (LEDs). The design of this reel of LEDs enabled us to cut the strip at specific
-points to create shorter strips. Each LED on the strip individually adressable,
+points to create shorter strips. Each LED on the strip individually addressable,
 allowing us to set the color of any LED along the strip. This perfectly suited
 our needs for representing blood flow.
+
+\subsection{Interactive Heart Model Design}
+\label{sec:interactiveModelDesign}
+
+The design for the interactive model is pictured in
+Figure~\ref{fig:interactiveModel}. The most prominent feature of the model is
+the plastic bottle containing the balloon. The volume of this balloon represents
+the volume of the left ventricle. Instead of inflating the balloon with the air
+compressor directly (pictured on the left of Figure~\ref{fig:interactiveModel},
+we opted to pressurize a sealed two-liter soda bottle and suspend a balloon
+inside. By pumping more air into the bottle, we could reduce the volume of the
+balloon since the external pressure would be made greater than the internal
+pressure; the balloon would shrink as a result. To accomplish switching the
+flow of air, we designed a setup involving two valves.
+% TODO do we need to cite something to explain the super simple physics of this?
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.7\textwidth]{interactive-model.png}
+    \caption{A diagram representing the physical model of the heart}
+    \label{fig:interactiveModel}
+\end{figure}
+
+Like the balloon which represents the volume of the left ventricle, the LED
+strips represent both pressure and blood flow in different parts of the body.
+Pressure is represented by color. The lower the pressure, the more blue the
+lights will appear. By the same token, red represents high pressure. The LEDs
+can display any color in between blue and red, so the light strips are often a
+pinkish hue.
 
 We were able to program custom animations by updating the color and intensity of
 the LEDs in a rapid fashion. We represented blood flow by changing the phase of
 a sinusoidal wave over time.\footnote{For clarity, we elongated the ``troughs''
 of the sine waves, so the pattern of intensity was not a true sine wave.} Our
-design included two strips of twenty LEDs. The rate of the animation on the
-first strip of LEDs represented blood flow out of the left ventricle.
+design included two strips of twenty LEDs. The LED strips are represented by the
+red arrows on Figure~\ref{fig:interactiveModel}. The rate of the animation on
+the right strip of LEDs represents blood flow out of the left ventricle (whose
+value is $f_{1}$ in the model). The color corresponds to $P_{a}$ in the model,
+which is the pressure in the aorta. The animation speed of the LED strip leading
+back into the heart is controlled by $f_{v}$, the flow back into the ventricles.
+The pressure corresponding to the color of this strip is $P_{v}$, or venous
+pressure. In our model, this value is not an output variable. Instead, $P_{v}$
+is held constant. Consequently, the color of this LED strip does not change over
+time.
+
+The physical model also contains a digital number display, which can be seen in
+the top right corner on Figure~\ref{fig:interactiveModel}.
+
+\subsection{User Interface for Heart Model}
+\label{sec:userInterfaceForHeartModel}
+
+Our initial plan for the user interface was to control input and output
+parameters with dials. The numerical values of the input parameters would have
+been displayed on an array of digital number displays. Due to time constraints,
+we opted to support five preprogrammed scenarios that could be toggled from a
+GUI. Figure~\ref{fig:heartGui} represents the final version of the GUI we use to
+interact with the physical model.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.7\textwidth]{heart-gui.png}
+    \caption{The GUI to enable five preprogrammed scenarios}
+    \label{fig:heartGui}
+\end{figure}
 
 \clearpage
 
