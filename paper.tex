@@ -387,8 +387,8 @@ industry as a whole very accurately. We struggled with how exactly we would use
 AR for our app in a way that benefited the experience as a whole. Despite our
 initial apprehension, we believe the way we have integrated AR into our app
 enhances the user experience. Hardware issues were definitely our biggest
-challenge. Only one member of our team had a phone new enough to run AR technology at a
-decent level, making testing of our application difficult.
+challenge. Only one member of our team had a phone new enough to run AR
+technology at a decent level, making testing of our application difficult.
 
 \subsection{izi.TRAVEL}
 \label{sec:iziTravel}
@@ -398,7 +398,7 @@ tours. The app, called izi.TRAVEL, allows users to create audio tours with
 audio and image files tied to specific locations in the real
 world~\autocite{izitravel2015} (see Figure \ref{fig:iziTravel}). The app is
 aimed at museums and city tours~\autocite{izitravel} but can be used for tours
-of historic sites too.  Kyoto~VR used the platform to make a simple audio tour
+of historic sites too. Kyoto~VR used the platform to make a simple audio tour
 of Kinkaku-ji.
 
 \begin{figure}[h]
@@ -1894,6 +1894,43 @@ indicating that those images would serve well as AR image targets.
 	\label{fig:exhibitionScan}
 \end{figure}
 
+\subsection{Monetization for ARuko}
+\label{sec:monetizationForAruko}
+
+Partway through our project, Atticus Sims let us know that he was looking to
+monetize the app we were developing for him. He also informed us that the IQP
+team would be looking for funding options in order to ``bootstrap'' the project.
+One monetization method he proposed was potentially marketing the app to hotels,
+allowing hotels to sell tours for download through in-app purchases.
+
+In order to get an app approved for the App Store or the Google Play store,
+there is sometimes a lengthy approval process. This might have been possible if
+our project had been more prescriptive from the start.
+
+We did perform some preliminary research about the monetization models Atticus
+proposed and brought forth some potential roadblocks regarding each one. We let
+Atticus know that we had logistical concerns about circumventing Apple's or
+Google's in-app purchases by locking content behind a different payment process.
+Additionally, we informed Atticus that he would have to purchase a commercial
+Vuforia license in order to deploy the app onto any
+storefront~\autocite{vuforialicense2018}, which Atticus was not willing to do at
+the time. The free version of Vuforia comes branded with a watermark in the
+bottom left corner.\footnote{The final design of our app incidentally covers up
+the watermark with our own UI elements. This does not change the fact that we
+would not be able to deploy the app without a proper commercial license for
+Vuforia.}
+
+Our concerns about focusing on monetization for Kyoto~VR were twofold. Firstly,
+we were worried that this kind of work strayed too far away from the academic
+intent of the project---the intent being to explore various ways in which AR and
+geolocation could be used in tandem to create an improved experience for
+tourists. For our purposes, the app was meant to demonstrate our discoveries in
+the form of a polished prototype. While we feel as though we achieved this goal,
+we made certain compromises in the way of experimentation in order to leave
+Kyoto~VR with a potentially marketable product. We made it clear to Atticus that
+deploying our app on the Google Play Store or App Store would not be within the
+scope of our academic project as per our advisers' advice.
+
 \clearpage
 
 \section{Conclusion and Future Work}
@@ -2010,16 +2047,16 @@ upon in the future.
 
 Over the course of the project, we had to develop multiple applications in
 different languages. In total, we opened five different repositories: the blog,
-the \LaTeX source code for our paper, the Arduino code for the heart project,
+the \LaTeX~source code for our paper, the Arduino code for the heart project,
 and of course one for Editour and another for ARuko. These five repositories
 span across multiple different markup and programming languages, including C\#,
-C++, JavaScript, HTML, CSS (and the \LaTeX markup language used to typeset this
-paper.) This gave us a welcome amount of practice using git for version control,
+C++, JavaScript, HTML, CSS (and the \LaTeX~markup language used to typeset this
+paper.) This gave us a welcome amount of practice using Git for version control,
 as well as GitHub's other features oriented around coordinating a team.
 
 All three members of the team were contributing code and updating assets such as
 graphics and sound. Code complexity grew quickly as more features were added
-across the entire software stack. GitHub and git enabled us to view the history
+across the entire software stack. GitHub and Git enabled us to view the history
 of the code and revert back to working versions when absolutely necessary. We
 researched the proper methodology of using version control in a small team,
 applying this methodology as best we could. This enabled us to work together
@@ -2055,7 +2092,7 @@ the Issues page instead, which is discussed in
 Section~\ref{sec:editourFrontendTesting}.
 
 Creating ``pull requests'' through the GitHub web interface has a few advantages
-over directly merging code using git. Firstly, the pull request feature
+over directly merging code using Git. Firstly, the pull request feature
 integrates with ``Issues'' page very well. By typing `resolves' along with the
 number associated with an issue into the description of a pull request, GitHub
 will automatically close the issue when the pull request is approved. This is
