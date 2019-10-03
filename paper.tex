@@ -965,31 +965,31 @@ if the user wants to check the audio and image files that were uploaded.
 \subsubsection{Editour Frontend Implementation}
 \label{sec:editourFrontendImplementation}
 
-The frontend was implemented as a web app, using web technologies such as HTML,
-CSS and JavaScript, with JavaScript being the vast majority. ECMAScript is the
-standard that modern JavaScript follows.
-
-Type-checking provided by Visual Studio Code and JSDoc made the growing code
-complexity more manageable~\footnote{One helpful specification of the ECMAScript
-standard in the way of programmer sanity is ``strict mode.'' By placing the
-string \texttt{"use strict"} at the top of a JavaScript source file, errors will
-be thrown in many cases where ordinary JavaScript would not complain. The
-simplest example of this is the line \texttt{a = 1;} will not throw an error
-ordinarily. In strict mode, you must at first explicitly declare the variable
-with the \texttt{let}, \texttt{var} or \texttt{const} keyword before assigning
-it, similar to Java or C++. We included the string at the beginning of every
-source file except for class declarations, which are in strict mode by
-default~\autocite[386]{ecmainternational2019}.} . Excluding Node.js modules, the
-only external library we used for Editour was Leaflet, an open-source JavaScript
-library for interactive maps~\autocite{leafletjs}. We did not use any framework
-for developing frontends like Facebook's React or Google's Angular. Instead, all
-of the complex UI interactions were handled by modifying the DOM directly with
-JavaScript's built-in functionality. Furthermore, we did not use any advanced
-frontend build tools such as Rollup, webpack or Parcel. For a JavaScript project
-of this scope, this was the correct decision. Considering we had limited
-knowledge of React or Angular, it was also faster to develop the UI in the way
-we were used to from previous experience. But if we were to continue to develop
-Editour, UI libraries and frontend build tools would be something to consider.
+The frontend was implemented as a web application, using web technologies such
+as HTML, CSS and JavaScript, with JavaScript being the vast majority of the
+code. Type-checking provided by Visual Studio Code and JSDoc made the growing
+code complexity more manageable.\footnote{One helpful specification of the
+ECMAScript standard in the way of programmer sanity is ``strict mode.'' By
+placing the string \texttt{"use strict"} at the top of a JavaScript source file,
+errors will be thrown in many cases where ordinary JavaScript would not
+complain. The simplest example of this is the line \texttt{a = 1;} will not
+throw an error ordinarily. In strict mode, you must at first explicitly declare
+the variable with the \texttt{let}, \texttt{var}, or \texttt{const} keyword
+before assigning it, similar to Java or C++. We included the string at the
+beginning of every source file except for class declarations, which are in
+strict mode by default~\autocite[386]{ecmainternational2019}.} Excluding Node.js
+modules, the only external library we used for Editour was Leaflet, which is
+``an open-source JavaScript library for mobile-friendly interactive maps''
+according to the official Leaflet website~\autocite{leafletjs}. We did not use
+any framework for developing frontends like Facebook's React or Google's
+Angular. Instead, all of the complex UI interactions were handled by modifying
+the DOM directly with JavaScript's built-in functionality. Furthermore, we did
+not use any advanced frontend build tools such as Rollup, webpack or Parcel. For
+a JavaScript project of this scope, this was the correct decision. Considering
+we had limited knowledge of React or Angular, it was also faster to develop the
+UI in the way we were used to from previous experience. But if we were to
+continue to develop Editour, UI libraries and frontend build tools would be
+something to consider.
 
 \subsubsection{Editour Backend}
 \label{sec:editourBackend}
@@ -1112,21 +1112,22 @@ colleges could distribute tour links via QR codes, which would instantly launch
 an interactive guided tour of the campus through the browser.
 
 Currently, anyone can clone the GitHub repository of Editour and deploy a
-working version on a personal server. The source code for Editour is under an
-open-source license. This allows anyone to expand the frontend and backend to
-suit their needs. With additional hardware and by extending the current
+working version on a personal server. The source code for Editour is under a
+free license. This allows anyone to expand the frontend and backend to suit
+their needs. With additional hardware and by extending the current
 implementation of both the frontend and backend, Editour could be used as the
 groundwork to create an entire crowd-sourced walking tour platform, allowing
 users to design tours for others to take.
 
 In summary, we want to explore the idea of creating a community-driven audio
 tour database that allows mobile users to take tours without the need to install
-an app. The open-source code we wrote for Editour empowers us (or anyone else)
+an app. The free code we wrote for Editour empowers us (or anyone else)
 to develop and launch this platform in the future.
 
 \subsection{ARuko}
 \label{sec:aruko}
 
+% TODO let's triple check the name in Japanese even makes sense
 ARuko, named after the Japanese word ``\begin{CJK}{UTF8}{min}歩こ\end{CJK}''
 (\textit{aruko}), meaning ``let's walk,'' is the app we created to guide users
 through an AR-enhanced tour. The app was built with Unity, which enabled to us
@@ -2046,13 +2047,14 @@ upon in the future.
 \label{sec:versionControl}
 
 Over the course of the project, we had to develop multiple applications in
-different languages. In total, we opened five different repositories: the blog,
-the \LaTeX~source code for our paper, the Arduino code for the heart project,
-and of course one for Editour and another for ARuko. These five repositories
-span across multiple different markup and programming languages, including C\#,
-C++, JavaScript, HTML, CSS (and the \LaTeX~markup language used to typeset this
-paper.) This gave us a welcome amount of practice using Git for version control,
-as well as GitHub's other features oriented around coordinating a team.
+different languages. In total, we created five different repositories: the blog,
+the \LaTeX~source code for our paper, the Arduino code for the heart project
+(see Appendix~\ref{sec:ritsumeikanHeartProject}) and of course one for Editour
+and another for ARuko. These five repositories span across multiple different
+markup and programming languages, including C\#, C++, JavaScript, HTML, CSS (and
+the \LaTeX~used to typeset this paper). This gave us a welcome amount of
+practice using Git for version control, as well as GitHub's other features
+oriented around coordinating a team.
 
 All three members of the team were contributing code and updating assets such as
 graphics and sound. Code complexity grew quickly as more features were added
@@ -2060,8 +2062,8 @@ across the entire software stack. GitHub and Git enabled us to view the history
 of the code and revert back to working versions when absolutely necessary. We
 researched the proper methodology of using version control in a small team,
 applying this methodology as best we could. This enabled us to work together
-efficiently, track down bugs, undo mistakes, and sometimes review each other's
-code for quality when time allowed.
+efficiently, track down bugs, undo mistakes, and review each other's code for
+quality when time allowed.
 
 \subsection{GitHub Tools}
 \label{sec:gitHubTools}
@@ -2078,7 +2080,7 @@ The Kanban technique stems from Toyota in the 1940s. Kanban means ``visual
 signal'' or ``card'' in Japanese, which describes the core component of the
 technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
 to notify other teams that parts needed for assembly work were in short supply.
-Now, Kanban boards are integral to Agile software development. Still, some teams
+Now, Kanban boards are integral to Agile software development. Some teams still
 use physical Kanban boards, often using sticky notes and whiteboards.
 
 The advantage of using a Kanban board is that each feature or bug that
@@ -2088,7 +2090,7 @@ status of those tasks on the board. We abandoned this when moving onto the main
 project because we came to realize that this structure was not necessary---there
 were only three members on the team, and we were almost always in the same room
 when working on the project. For Editour, we tracked features and issues using
-the Issues page instead, which is discussed in
+the ``Issues'' page instead, which is discussed in
 Section~\ref{sec:editourFrontendTesting}.
 
 Creating ``pull requests'' through the GitHub web interface has a few advantages
@@ -2114,13 +2116,36 @@ workflow off of the ``Git Feature Branch Workflow'' Atlassian
 tutorial~\autocite{atlassian}.
 % TODO explain merge conflicts
 
-Once we deployed Editour to a server so that Atticus could begin to use it,
-we changed the version to v1.0.0 to indicate the first release version. At this
-point, it was important that the master branch remain as stable as possible.
-Because of this, we created a ``dev'' branch where we could test experimental
-features to improve the experience and functionality of Editour. Maintaining a
-stable and experimental branch reduced the risks involved with continuing to
-iterate on the software's features post-release.
+In order to clearly indicate new versions of the software, we use ``Semantic
+Versioning'' which is a scheme for version numbers created by Tom
+Preston-Werner, cofounder of GitHub~\autocite{prestonwerner}. In this scheme,
+the full version number consists of three integers separated by periods---in
+other words, in the form \texttt{major.minor.patch}. The major version number is
+incremented when an incompatible change is made. In our case, an incompatible
+change for Editour would entail changing the format of the metadata file used to
+construct a tour such that the frontend could not interpret older tour files.
+The exception to this rule is major version 0, where the product is not
+considered stable and incompatible changes can be made at any time. When Editour
+was in this phase of development, we changed the format of the metadata; this
+would have broken previous versions but this was allowed. The minor version
+number is incremented when functionality is added but remains backwards
+compatible with previous versions. An example of this is the ``transcript''
+field we added to the metadata. The frontend was still able to load tours made
+before this additional information was added to the metadata JSON. We added many
+other features throughout the development process without breaking existing
+functionality. The patch version number is for simple bug-fixes that also do not
+break compatibility. This number gets incremented the most frequently in
+practice.
+
+Once we deployed Editour to a server so that Atticus could begin to use it, we
+changed the version to 1.0.0 to indicate the first release version. At this
+point, we were committed to not making any backwards-incompatible change. Since
+Atticus would be interacting with Editour after the release of 1.0.0, it was
+important that the master branch remain as stable as possible. Because of this,
+we created a ``dev'' branch where we could test experimental features to improve
+the experience and functionality of Editour. Maintaining a stable branch along
+with a separate experimental branch reduced the risks involved with continuing
+to iterate on the software's features post-release.
 
 In a similar vein, with ARuko we used branches to ensure we had a stable working
 version. The night before field testing at Kinkaku-ji, we would cease work on
@@ -2205,13 +2230,13 @@ Throughout our stay at Ritsumeikan, we also had the opportunity to work closely
 with other Ritsumeikan students to create build a project that involved the
 integration of hardware and software. With the help of students and professors
 alike, we were able to produce an educational physical model of a heart
-controlled by an Arduino microcomputer. Noma gave us tremendous assistance with
-hardware. He taught us how to properly use the tools around the lab, and
-purchased mechanical and electrical components we would need to complete our
-task. Amano Sensei was always available to answer questions related to biology,
-and helped us understand the mathematical model we would need to implement to
-drive the physical model with software. We worked on this project every
-Wednesday, completing the final model during the last week of our stay.
+controlled by an Arduino microcomputer. Noma Sensei gave us tremendous
+assistance with hardware. He taught us how to properly use the tools around the
+lab, and purchased mechanical and electrical components we would need to
+complete our task. Amano Sensei was always available to answer questions related
+to biology, and helped us understand the mathematical model we would need to
+implement to drive the physical model with software. We worked on this project
+every Wednesday, completing the final model during the last week of our stay.
 % TODO get the full name of Amano Sensei
 
 \subsection{Project Goal}
@@ -2233,10 +2258,10 @@ the heart we would be using to drive our physical model. Along with the
 differential equations, we were also given an analogous circuit model that could
 also be described by the same equations. The circuit and the equations can be
 seen in Figure~\ref{fig:referenceModel}. We were also provided with source code
-for an implementation of this model. We would still need to modify this code to
-calculate the output variables we would need to properly operate the physical
-model, and integrate the model into the main loop of the Arduino source code
-with the appropriate timing.
+for an implementation of this model in C. We would still need to modify this
+code to calculate the output variables we would need to properly operate the
+physical model, and integrate the model into the main loop of the Arduino source
+code with the appropriate timing.
 
 \begin{figure}[h] \centering
     \includegraphics[width=0.4\textwidth]{reference-model.png}
@@ -2247,13 +2272,14 @@ with the appropriate timing.
 \subsection{Supplies}
 \label{sec:supplies}
 
-With Noma Sensei as our guide, we visited ``Den Den Town'' in Osaka in order to
-gather supplies we would need in order to construct the heart. One of the most
-important purchases of this trip was a two-meter long strip of Adafruit NeoPixel
-light emitting diodes (LEDs). The design of this reel of LEDs enabled us to cut
-the strip at specific points to create shorter strips. Each LED on the strip
-individually addressable, allowing us to set the color of any LED along the
-strip. This perfectly suited our needs for representing blood flow.
+With Noma Sensei as our guide, we visited ``Den-Den Town'' or Nipponbashi in
+Osaka in order to gather supplies we would need in order to construct the heart.
+One of the most important purchases of this trip was a two-meter long strip of
+Adafruit NeoPixel light emitting diodes (LEDs). The design of this reel of LEDs
+enabled us to cut the strip at specific points to create shorter strips. Each
+LED on the strip individually addressable, allowing us to set the color of any
+LED along the strip. This perfectly suited our needs for representing blood
+flow.
 
 % TODO give a citation about what an Arduino is
 % TODO do we need citations about every microcomputer mentioned by name?
@@ -2335,7 +2361,7 @@ button.
     \label{fig:heartGui}
 \end{figure}
 
-Not only can the GUI communicate with the Arduino; the Arduino can relay
+Not only can the GUI communicate with the Arduino; the Arduino can also relay
 information about the state of the model back to the GUI. The length of blue bar
 on the left of Figure~\ref{fig:heartGui} corresponds to $f_{v}$ in the model,
 while the blue bar on the right corresponds to $f_{1}$. On the physical model,
