@@ -1986,7 +1986,7 @@ feature, we would create a branch with a name descriptive of that feature. This
 methodology minimized difficult-to-resolve merge conflicts. We modeled this
 workflow off of the ``Git Feature Branch Workflow'' Atlassian
 tutorial~\autocite{atlassian}.
-% TODO explain merge conflicts and cite that Atlassian thing
+% TODO explain merge conflicts
 
 Once we deployed Editour to a server so that Atticus could begin to use it,
 we changed the version to v1.0.0 to indicate the first release version. At this
@@ -2075,17 +2075,29 @@ that contains the data of the response.
 \section{Ritsumeikan Heart Project}
 \label{sec:ritsumeikanHeartProject}
 
-\section{Supplies}
-\label{sec:supplies}
+Throughout our stay at Ritsumeikan, we also had the opportunity to work closely
+with other Ritsumeikan students to create build a project that involved the
+integration of hardware and software. With the help of students and professors
+alike, we were able to produce an educational physical model of a heart
+controlled by an Arduino microcomputer. Noma gave us tremendous assistance with
+hardware. He taught us how to properly use the tools around the lab, and
+purchased mechanical and electrical components we would need to complete our
+task. Amano Sensei was always available to answer questions related to biology,
+and helped us understand the mathematical model we would need to implement to
+drive the physical model with software. We worked on this project every
+Wednesday, completing the final model during the last week of our stay.
+% TODO get the full name of Amano Sensei
 
 \subsection{Project Goal}
 \label{sec:projectGoal}
 
-The goal of the project was to create an interactive model of a heart to teach
-heart function to non-specialists, such as students in middle school. This meant
-that the model had to be highly visual and simple to understand. Each visual
-component would have to be designed in an intuitive fashion so that students
-could begin interacting with the model without advanced knowledge of biology.
+The goals and requirements of this project were set out by Haruo Noma, a
+professor at Ritsumeikan University. The goal of the project was to create an
+interactive model of a heart to teach heart function to non-specialists, such as
+students in middle school. This meant that the model had to be highly visual and
+simple to understand. Each visual component would have to be designed in an
+intuitive fashion so that students could begin interacting with the model
+without advanced knowledge of biology.
 
 \subsection{The Heart Simulation}
 \label{sec:theHeartSimulation}
@@ -2106,13 +2118,28 @@ with the appropriate timing.
     \label{fig:referenceModel}
 \end{figure}
 
-We visited ``Den Den Town'' in Osaka in order to gather supplies we would need
-in order to construct the heart. One of the most important purchases of this
-trip was a two-meter long strip of Adafruit NeoPixel light emitting diodes
-(LEDs). The design of this reel of LEDs enabled us to cut the strip at specific
-points to create shorter strips. Each LED on the strip individually addressable,
-allowing us to set the color of any LED along the strip. This perfectly suited
-our needs for representing blood flow.
+\subsection{Supplies}
+\label{sec:supplies}
+
+With Noma Sensei as our guide, we visited ``Den Den Town'' in Osaka in order to
+gather supplies we would need in order to construct the heart. One of the most
+important purchases of this trip was a two-meter long strip of Adafruit NeoPixel
+light emitting diodes (LEDs). The design of this reel of LEDs enabled us to cut
+the strip at specific points to create shorter strips. Each LED on the strip
+individually addressable, allowing us to set the color of any LED along the
+strip. This perfectly suited our needs for representing blood flow.
+
+% TODO give a citation about what an Arduino is
+% TODO do we need citations about every microcomputer mentioned by name?
+Noma Sensei had various microcomputers for us to experiment with in his lab,
+including an obniz, an M5Stack, a Raspberry Pi and an Arduino. The Arduino was
+the only computer that had a ``motor shield'' component which we believed would
+be necessary for controlling the pumps.\footnote{In the end, we did not need
+this component, since we abandoned the idea of taking apart a pump to drive the
+DC motor directly.} Because of this, we chose the Arduino to be the core of the
+physical model. This microcomputer ran the simulation and output data to the
+various hardware components, such as the digital display, LED strips and switch
+to control the air valves.
 
 \subsection{Interactive Heart Model Design}
 \label{sec:interactiveModelDesign}
@@ -2121,16 +2148,16 @@ The design for the interactive model is pictured in
 Figure~\ref{fig:interactiveModel}. The most prominent feature of the model is
 the plastic bottle containing the balloon. The volume of this balloon represents
 the volume of the left ventricle. Instead of inflating the balloon with the air
-compressor directly (pictured on the left of Figure~\ref{fig:interactiveModel},
+compressor directly (pictured on the left of Figure~\ref{fig:interactiveModel}),
 we opted to pressurize a sealed two-liter soda bottle and suspend a balloon
 inside. By pumping more air into the bottle, we could reduce the volume of the
 balloon since the external pressure would be made greater than the internal
-pressure; the balloon would shrink as a result. To accomplish switching the
+pressure; the balloon would shrink as a result. To accomplish redirecting the
 flow of air, we designed a setup involving two valves.
 % TODO do we need to cite something to explain the super simple physics of this?
 
 \begin{figure}[h] \centering
-    \includegraphics[width=0.7\textwidth]{interactive-model.png}
+    \includegraphics[width=\textwidth]{interactive-model.png}
     \caption{A diagram representing the physical model of the heart}
     \label{fig:interactiveModel}
 \end{figure}
@@ -2138,9 +2165,8 @@ flow of air, we designed a setup involving two valves.
 Like the balloon which represents the volume of the left ventricle, the LED
 strips represent both pressure and blood flow in different parts of the body.
 Pressure is represented by color. The lower the pressure, the more blue the
-lights will appear. By the same token, red represents high pressure. The LEDs
-can display any color in between blue and red, so the light strips are often a
-pinkish hue.
+lights will appear. Red represents high pressure. The LEDs can display any color
+in between blue and red, so the light strips are often a pinkish hue.
 
 We were able to program custom animations by updating the color and intensity of
 the LEDs in a rapid fashion. We represented blood flow by changing the phase of
@@ -2158,7 +2184,10 @@ is held constant. Consequently, the color of this LED strip does not change over
 time.
 
 The physical model also contains a digital number display, which can be seen in
-the top right corner on Figure~\ref{fig:interactiveModel}.
+the top right corner on Figure~\ref{fig:interactiveModel}. The display shows the
+number of the active scenario. Clicking on a scenario button in the GUI
+(discussed in Section~\ref{sec:userInterfaceForHeartModel}) will change the
+number being displayed.
 
 \subsection{User Interface for Heart Model}
 \label{sec:userInterfaceForHeartModel}
@@ -2170,11 +2199,28 @@ we opted to support five preprogrammed scenarios that could be toggled from a
 GUI. Figure~\ref{fig:heartGui} represents the final version of the GUI we use to
 interact with the physical model.
 
+The red buttons along the top of the screen allow the user to toggle between
+different scenarios. Each scenario also includes a helpful graphic below each
+button.
+
 \begin{figure}[h] \centering
-    \includegraphics[width=0.7\textwidth]{heart-gui.png}
+    \includegraphics[width=\textwidth]{heart-gui.png}
     \caption{The GUI to enable five preprogrammed scenarios}
     \label{fig:heartGui}
 \end{figure}
+
+Not only can the GUI communicate with the Arduino; the Arduino can relay
+information about the state of the model back to the GUI. The length of blue bar
+on the left of Figure~\ref{fig:heartGui} corresponds to $f_{v}$ in the model,
+while the blue bar on the right corresponds to $f_{1}$. On the physical model,
+these values correspond to the rate of animation of both LED strips. The size of
+the circle between the blue bars represents $V_{LV}$, the volume of the left
+ventricle. Due to limitations about the accuracy with which we could control the
+pump, the volume of the balloon does perfectly reflect the true value of
+$V_{LV}$ in the model. By contrast, the radius of the graphic on-screen can be
+set to be exactly proportional to the value of $V_{LV}$.
+
+% TODO write about the final result of the heart model and include pictures
 
 \clearpage
 
