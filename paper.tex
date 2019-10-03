@@ -1947,6 +1947,58 @@ indicating that those images would serve well as AR image targets.
 	\label{fig:exhibitionScan}
 \end{figure}
 
+\subsection{Alterniative Uses for AR in ARuko}
+\label{sec:alternativeARukoAR}
+
+Even once the idea for ARuko was settled on audio tour functionality with 
+additional AR components, what exactly those AR components would do was still
+undecided for a while. Atticus knew he wanted to use AR on the tour, but wasn't
+sure what to do with it. At first, we made recommendations to him based on the
+capabilities of Vuforia that we found in our research. We knew it was good at
+image recognition and ground plane recognition, so we suggested that maybe 
+displaying some sorts of 3D models in certain locations using either of these
+features might be an interesting way to expand on the tour. With these 
+recommendations in mind, Atticus expressed interest in the capability of using
+building facades as image targets. The intention then would be to tie content
+related to a specific location within Kinkaku-ji to that physical location, and
+use images of the location as targets. As previously explained, this ultimately
+did not work out due to the limitations of image recognition with Vuforia. 
+
+After being initially deterred from image recognition, we thought that ground
+and mid-air plane recognition might the best way to implement AR in the app. 
+It didn't have to rely on images that meet Vuforia's criteria, and since it 
+could be triggered anywhere, it seemed like a good fit for an app focusing on
+walking around a site. Atticus explained that he primarily wanted to use AR to
+display art related to the site. So we focused our efforts with ground and 
+mid-air plane AR on ways to display 2D images. What we ended up creating first
+was a feature that allowed you to view certain images in AR, using ground plane
+detection, based on what region you were in. So when you entered a region of 
+the tour, the image menu would be dynamically populated with buttons that, when
+tapped, would create a Plane primitive in Unity with the given image displayed
+on it and place it on the ground plane. 
+
+We encountered a few notable problems with this though. One problem was that 
+the Plane we made was always the same size and dimensions, and would cause 
+images to stretch to fit the plane. Further testing to change the size of the
+plane with each picture proved difficult. Additionally, using a Plane primitive
+had problematic effects on the way the object was lit in the Unity scene, as 
+well as how it appeared when not viewed head-on. If viewed from an angle, the 
+picture could become very dark and difficult to see. And if viewed from behind,
+it would actually be completely invisible. Because of these issues, we decided
+to place the images on a 3D Cube primitive instead. But after showing this
+feature to Atticus during early testing at Kinkaku-ji, he decided that he 
+wanted to move away from displaying images in AR. Looking back, the feature
+may have worked better with mid-air plane recognition so that the user could
+place the image directly in front of them. 
+
+In addition to the previously mentioned use cases for AR in ARuko, Atticus also
+expressed interest in using AR to trigger video content. He was particularly
+interested in 3D videos triggerable through AR. As the scope of the project 
+grew, and time ran short, the task of including 3D videos triggered by AR 
+seemed more and more complicated, causing that idea to be phased out of the
+final project. Additionally, we never received any assets from Atticus to use
+for this feature, thus preventing us from spending time developing it. 
+
 \clearpage
 
 \section{Conclusion and Future Work}
