@@ -701,7 +701,15 @@ creating these applications.
 The goal of Editour is to allow a non-technical user to design audio tours
 through a web app. At its core, Editour is a tool to draw arbitrarily-shaped
 geographic regions onto a map, edit those regions and assign media to each of
-the drawn regions.
+the drawn regions. Figure~\ref{fig:editour} shows a screenshot of the web
+interface used to design tours.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{updated-editour.png}
+	\caption{A screenshot of the Editour web app frontend}
+	\label{fig:editour}
+\end{figure}
 
 An audio file and multiple image files can be uploaded for each region the user
 defines. The user can also provide a text transcript of the audio file as well.
@@ -961,15 +969,7 @@ with the correct regions. The downloaded zip file is what we decompress and
 place into the Unity project before it is compiled. This feature is also useful
 if the user wants to check the audio and image files that were uploaded.
 
-% TODO update this figure
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{editour.jpg}
-	\caption{A screenshot of the Editour web app frontend}
-	\label{fig:editour}
-\end{figure}
-
-\subsubsection{Editour Frontend Implementation}
+\subsubsection{Editour Frontend Implementation and Design}
 \label{sec:editourFrontendImplementation}
 
 The frontend was implemented as a web application, using web technologies such
@@ -997,6 +997,54 @@ we had limited knowledge of React or Angular, it was also faster to develop the
 UI in the way we were used to from previous experience, but if we were to
 continue to develop Editour, UI libraries and frontend build tools would be
 something to consider.
+
+The look and feel of the Editour frontend was inspired from multiple sources.
+The color scheme of the UI was inspired by the Super Famicom controller, which
+can be seen in Figure~\ref{fig:superFamicomController}. The shape of the
+``cards'' within the sidebar were inspired by the GitHub Kanban board on the
+``Projects'' tab of a GitHub repo (which can be seen in
+Figure~\ref{fig:kanbanBoard} in the Appendix).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{super-famicom-controller.jpg}
+    \caption[A Japanese Super Famicom controller.]{The inspiration for the
+    colorscheme: a Japanese Super Famicom controller~\autocite{amos2017}.}
+    \label{fig:superFamicomController}
+\end{figure}
+
+Since the frontend of Editour was implemented using basic web technologies, we
+had access to the full power of CSS to style each element of the GUI. The
+classes within CSS were designed so they could be reused easily and composed
+with one another. If, for example, we needed to change the font of every element
+that was styled like a button, we could do so by simply changing the
+\texttt{font-family} attribute in a single CSS class. Consider the green bar
+pictured in Figure~\ref{fig:mediaSubcard}. Multiple CSS classes were composed in
+order to inherit the visual descriptions of other UI elements. The four CSS
+classes on this bar are \texttt{button}, \texttt{greenbutton},
+\texttt{outlinebutton}, and \texttt{revealer}. The class \texttt{button} styles
+elements as the slightly raised, rounded rectangle that can be seen throughout
+the UI. Additionally, all elements with the \texttt{button} class will have a
+subtle ``press'' animation when being clicked on, since key frame animations can
+also be defined in CSS. The default color of the button is red; the bottom of
+the button is a slightly darker shade to give a 3D effect. Both of these colors
+are conveniently stored as custom CSS variables, \texttt{--bg-color} and
+\texttt{--bottom-color}. This allows another class to easily override these
+colors. This is what the class \texttt{greenbutton} does; an HTML element with
+the \texttt{button} class and either \texttt{greenbutton}, \texttt{orangebutton}
+or \texttt{bluebutton} will be styled like a button and have a new color palette
+applied. In order to differentiate the buttons that reveal subcards, the
+\texttt{outlinebutton} class is used. This class takes the custom
+\texttt{--bg-color} property and applies it to the border, drop shadow and text
+color instead of the background. This class was also applied to the buttons that
+can be seen in Figures~\ref{fig:jumpCard}~and~\ref{fig:downloadCard}. Finally,
+the \texttt{revealer} class changes the text from centered to left-justified
+among other minor formatting adjustments. CSS allowed us to define the look and
+feel programmatically with the need to create graphical assets using image
+editing software. This means that anyone using the codebase of Editour for
+different purposes can easily change the look and feel of the frontend by
+changing the CSS.\footnote{This is allowed since Editour is free software, which
+is discussed briefly in Section~\ref{sec:futureOfEditour}.}
 
 \subsubsection{Editour Backend}
 \label{sec:editourBackend}
@@ -1104,6 +1152,13 @@ would like the app to be able to contact a server running a version of the
 Editour backend and update the tour info by itself. This would allow Kyoto~VR to
 update the tours without updating the entire app.
 
+Currently, there is no way to download a previous version of a tour directly
+from the UI, despite the fact that the backend automatically saves timestamped
+backups of tours as they are uploaded. Our team is able to recover backups by
+copying files directly from the server. However, we would like to design an
+intuitive version browser in the frontend so that any user can recover previous
+versions of their tour.
+
 Furthermore, we foresee Editour being a useful tool outside of the app we
 designed for Kyoto~VR. The design of Editour is agnostic about how the media
 will be used. For an app like izi.TRAVEL, the images are displayed when the
@@ -1168,17 +1223,51 @@ translation technology is certainly impressive. At the same time, the
 translation service works better in ``scan'' mode instead of ``instant'' mode.
 In ``instant'' mode, the app attempts to translate text as quickly as possible,
 superimposing the translated text onto the real world using the camera. In
-``scan'' mode, the user first takes a photo. Then, the user is prompted to
-highlight where text appears in the photo. After the translation is complete,
-the translated text appears in a separate UI element. In most cases, it is more
-convenient and readable to have the translation appear in a separate scrollable
-text box. This motivated the current design of the ``info buttons'' in ARuko.
-Instead of placing text directly onto signage, we place a blue button with a
-stylized ``\textit{i}'' in the center. By tapping on this button, a separate UI
-element will appear containing the translated text. Since this button is cast
-into the world using the AR camera, the button appears to be placed directly
-on top of the content.
-% TODO images for this section
+``scan'' mode, the user first takes a photo. This will sometimes produce
+useless results, as seen in Figure~\ref{fig:translateInstant}. Then, the user
+is prompted to highlight where text appears in the photo by dragging lines onto
+the screen where text appears, as seen in Figure~\ref{fig:translateScan}. After
+the translation is complete, the translated text appears in a separate UI
+element, which can be seen in Figure~\ref{fig:translateFinalCard}. In most
+cases, it is more convenient and readable to have the translation appear in a
+separate scrollable text box. This motivated the current design of the ``info
+buttons'' in ARuko. Instead of placing text directly onto signage, we place a
+blue button with a stylized ``\textit{i}'' in the center. By tapping on this
+button, a separate UI element will appear containing the translated text. Since
+this button is cast into the world using the AR camera, the button appears to
+be placed directly on top of the content.
+
+% TODO make it so these images don't appear so far away (thank you LaTeX)
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.8\textwidth]{translate-instant.jpg}
+	\caption{Google Translate camera feature in ``instant'' mode.}
+	\label{fig:translateInstant}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.8\textwidth]{translate-scan.jpg}
+	\caption{Google Translate camera feature in ``scan'' mode}
+	\label{fig:translateScan}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.8\textwidth]{translate-final-card.png}
+	\caption{The final page seen after using ``scan'' mode in Google Translate}
+	\label{fig:translateFinalCard}
+\end{figure}
+
+Additionally, we would not try to use any text recognition or translation APIs
+to automate the translation. Figure~\ref{fig:translateInstant} demonstrates
+that this kind of technology needs to mature before it is completely usable,
+especially for Japanese. Instead, we had Atticus share a Google Sheets
+spreadsheet. Hikaru Inoue manually translated each sign and provided notes about
+his decision making process about each translation. Once this time-intensive
+labor was completed, we took each field of translated text from the spreadsheet
+and implemented it directly into the app, associating each translation with the
+correct image target.
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -1238,13 +1327,21 @@ Figure~\ref{fig:souvenir}).
 \end{figure}
 
 Originally, the AR model of the Golden Pavilion was flush against the plane of
-the ticket, sitting on the paper as if it were ground. Atticus suggested that we
-re-orient the model such that the ticket served as a back plane. This would
-allow users to hold the ticket vertically, and view the Golden Pavilion floating
-in front of the ticket. This allows users to place their hands under the base of
-the Golden Pavilion model as if they were holding it; Vuforia's image tracking
-is flexible enough such that the image target can be partially obscured by the
-hand.
+the ticket, sitting on the paper as if it were ground, as depicted in
+Figure~\ref{fig:kinkakujiHorizontal}. Atticus suggested that we re-orient the
+model such that the ticket served as a back plane, as pictured in
+Figure~\ref{fig:souvenir}. This would allow users to hold the ticket vertically,
+and view the Golden Pavilion floating in front of the ticket. This allows users
+to place their hands under the base of the Golden Pavilion model as if they were
+holding it; Vuforia's image tracking is flexible enough such that the image
+target can be partially obscured by the hand.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.5\textwidth]{kinkakuji-horizontal.png}
+	\caption{Untextured Golden Pavilion model sitting horizontally on ticket}
+	\label{fig:kinkakujiHorizontal}
+\end{figure}
 
 \subsubsection{Early User Interface}
 \label{sec:earlyUserInterface}
@@ -2510,7 +2607,6 @@ work, but the model of the noh performer was lacking a lot of the details that
 the original model had. This was attributed to errors while importing the
 original assets, so we decided to try making changes to the original NOxAR
 project instead. 
-% TODO could probably put an example pic here
 
 Per Atticus's advice, we deleted any and all unnecessary elements from the scene
 before proceeding. We also updated the Unity version of the project to the 2019
@@ -2523,7 +2619,15 @@ Vuforia settings were in place for ground plane detection to work well. From
 there, we just had to test the app a few times so we could properly scale the
 model to life size. On Tuesday, September 17\textsuperscript{th}, we completed
 the NOxAR ground plane adaptation to Atticus's satisfaction and sent him the
-final APK file for the app. 
+final APK file for the app. Figure~\ref{fig:noArWorking} shows how the final
+working version of the NOxAR app.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{no-ar-working.jpg}
+	\caption{Noh artist dancing on the ground plane of the scene}
+	\label{fig:noArWorking}
+\end{figure}
 
 \end{document}
 
