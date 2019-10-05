@@ -1014,14 +1014,19 @@ Figure~\ref{fig:kanbanBoard} in the Appendix).
 \end{figure}
 
 Since the frontend of Editour was implemented using basic web technologies, we
-had access to the full power of CSS to style each element of the GUI. The
-classes within CSS were designed so they could be reused easily and composed
-with one another. If, for example, we needed to change the font of every element
-that was styled like a button, we could do so by simply changing the
-\texttt{font-family} attribute in a single CSS class. Consider the green bar
-pictured in Figure~\ref{fig:mediaSubcard}. Multiple CSS classes were composed in
-order to inherit the visual descriptions of other UI elements. The four CSS
-classes on this bar are \texttt{button}, \texttt{greenbutton},
+had access to the full power of cascading style sheets (CSS) to style each
+element of the GUI. CSS is a style sheet language, meaning that it works in
+tandem with markup languages like HTML, which define the structure of content on
+the page~\autocite{mozillahtml2019}. CSS allows developers to define a set of
+rules that describes how the content will look~\autocite{mozillacss2019}.
+
+The classes within CSS were designed so they could be reused
+easily and composed with one another. If, for example, we needed to change the
+font of every element that was styled like a button, we could do so by simply
+changing the \texttt{font-family} attribute in a single CSS class. Consider the
+green bar pictured in Figure~\ref{fig:mediaSubcard}. Multiple CSS classes were
+composed in order to inherit the visual descriptions of other UI elements. The
+four CSS classes on this bar are \texttt{button}, \texttt{greenbutton},
 \texttt{outlinebutton}, and \texttt{revealer}. The class \texttt{button} styles
 elements as the slightly raised, rounded rectangle that can be seen throughout
 the UI. Additionally, all elements with the \texttt{button} class will have a
@@ -1058,7 +1063,7 @@ architecture~\autocite{orsini2013}, and its ease of development.
 
 When a user submits new tour from the web application, the files and metadata
 are sent to the server running the Node.js scripts. The server zips up the files
-and saves them to the disk with a timestamp. Then any application can request a
+and saves them to the disk with a time stamp. Then any application can request a
 particular tour and the backend will serve the most recent version.
 
 As previously mentioned in Section~\ref{sec:editingATour}, our web application
@@ -1473,10 +1478,10 @@ by GPS location. Because of this long-standing assumption, we were uncertain
 about what bugs implementing a chapter selection feature would introduce.
 
 Another notable change can be seen in the first screen on
-Figure~\ref{fig:adobeXdDesign}. Atticus was not enthusiastic about being able
-to place images onto the ground-plane using the AR camera. Instead, he
-suggested that we have the images be viewable in a more traditional
-fashion---in 2D as part of the UI.
+Figure~\ref{fig:adobeXdDesign} and Figure~\ref{fig:galleryZoomed}. Atticus was
+not enthusiastic about being able to place images onto the ground-plane using
+the AR camera. Instead, he suggested that we have the images be viewable in a
+more traditional fashion---in 2D as part of the UI.
 
 At this point in the project, the codebase for Editour was already around three
 thousand lines of vanilla JavaScript. With the changing requirements, Editour
@@ -1489,6 +1494,7 @@ to theme the 2D images in the 3D world, such as by framing the images in a
 traditional Japanese pagoda. We had already spent two weeks on this feature, so
 dropping it was a setback we had to plan around.
 
+% "scrollable" is for sure a neologism but let's normalize it through usage
 On the same screen, there is a scrollable window of text for a transcript of
 the audio. Because of this, the Editour UI and tour metadata JSON file needed
 to be updated to accommodate one transcript per region. On top of this, the C\#
@@ -1503,39 +1509,66 @@ changed in order to add these new features.
 	\label{fig:editourAdditions}
 \end{figure}
 
-With the ground-plane detection features stripped away from the main app, the
-AR focus shifted to translating the maps and signs using the camera. The fourth
-screen on Figure~\ref{fig:adobeXdDesign} shows a mock-up of this feature.
-Atticus took photographs of various signs throughout Kinkaku-ji for us to use
-as image targets. Hikaru Inoue helped us by translating all of the text in
-these photos from Japanese to English. In this design, the AR camera
-superimposes an ``info'' button on top of the sign. Tapping on this button
-brings up a separate UI element containing the translation, which can be seen
-in Figure~\ref{fig:signTranslation}. The details of this feature is discussed
-more thoroughly in Section~\ref{sec:translationFeature}.
-
-\begin{figure}[h] \centering
-    \includegraphics[width=0.3\textwidth]{sign-translation.png}
-    \caption{Translated sign using AR camera}
-    \label{fig:signTranslation}
-\end{figure}
+With the ground-plane detection features stripped away from the main app, the AR
+focus shifted to translating the maps and signs using the camera. The fourth
+screen on Figure~\ref{fig:adobeXdDesign} and Figure~\ref{fig:infoZoomed} shows a
+mock-up of this feature. Atticus took photographs of various signs throughout
+Kinkaku-ji for us to use as image targets. Hikaru Inoue helped us by translating
+all of the text in these photos from Japanese to English. In this design, the AR
+camera superimposes an ``info'' button on top of the sign. Tapping on this
+button brings up a separate UI element containing the translation, which can be
+seen in Figure~\ref{fig:translationZoomed}. The details of this feature is
+discussed more thoroughly in Section~\ref{sec:translationFeature}.
 
 Since Adobe XD is largely a prototyping and design tool, a considerable amount
 of legwork would still need to be done to rebuild the proposed design using
-Unity's UI components. Adobe XD allowed us to export a few important UI
-elements as PNGs, such as the buttons to enter AR mode and view the map. We
-briefly explored a few solutions to automating the task of getting the Adobe XD
-project into Unity. We found one paid extension (for \$18) on the Unity Asset
-store called ``Experience Importer - Adobe Xd files importer.'' The download
-page for this extension claims ``Transfer AdobeXd project directly to Unity.
-Forget about hours of positioning objects. They're already there! Just drag .xd
-file to project and...  voila!''~\autocite{glasseye2019}.  We suspect this
-sounds too good to be true because it is. As of September
-20\textsuperscript{th}, 2019, there are 6 user reviews. All of the five-star
-reviews were have the caveat ``Reviewer was gifted package by publisher'' which
-which we interpreted as a warning sign. Because of this, we decided to rebuild
-the UI largely from the ground up, using the Adobe XD file to guide us.
+Unity's UI components. Adobe XD allowed us to export a few important UI elements
+as PNGs, such as the buttons to enter AR mode and view the map. We briefly
+explored a few solutions to automating the task of getting the Adobe XD project
+into Unity. We found one paid extension (for \$18) on the Unity Asset store
+called ``Experience Importer - Adobe Xd files importer.'' The download page for
+this extension claims ``Transfer AdobeXd project directly to Unity. Forget about
+hours of positioning objects. They're already there! Just drag .xd file to
+project and... voila!''~\autocite{glasseye2019}.\footnote{``Adobe XD'' is
+stylized incorrectly with ``AdobeXd'' in the description of the Unity
+package. This is also different from ``Adobe Xd'', the way in which it is
+stylized in the title.} We suspect this sounds too good to be true because it
+is. As of September 20\textsuperscript{th}, 2019, there are 6 user reviews. All
+of the five-star reviews were have the caveat ``Reviewer was gifted package by
+publisher'' which which we interpreted as a warning sign. Because of this, we
+decided to rebuild the UI largely from the ground up, using the Adobe XD file to
+guide us.
 %TODO refer to the section that discusses building the ui
+
+\begin{figure}[p] \centering
+    \includegraphics[width=0.6\textwidth]{chapters-zoomed.png}
+    \caption{Larger screenshot of the chapter selection screen mock-up}
+    \label{fig:chaptersZoomed}
+\end{figure}
+
+\begin{figure}[p] \centering
+    \includegraphics[width=0.6\textwidth]{gallery-zoomed.png}
+    \caption{Larger screenshot of the transcript and image gallery mock-up}
+    \label{fig:galleryZoomed}
+\end{figure}
+
+\begin{figure}[p] \centering
+    \includegraphics[width=0.6\textwidth]{info-zoomed.png}
+    \caption{Larger screenshot of the info button mock-up}
+    \label{fig:infoZoomed}
+\end{figure}
+
+\begin{figure}[p] \centering
+    \includegraphics[width=0.6\textwidth]{map-zoomed.png}
+    \caption{Larger screenshot of the route screen mock-up}
+    \label{fig:mapZoomed}
+\end{figure}
+
+\begin{figure}[p] \centering
+    \includegraphics[width=0.6\textwidth]{translation-zoomed.png}
+    \caption{Larger screenshot of the translation window mock-up}
+    \label{fig:translationZoomed}
+\end{figure}
 
 \subsubsection{Final UI Implementation}
 \label{sec:finalUI}
@@ -1594,6 +1627,7 @@ this, we needed to do extensive testing to ensure not only that the products
 work as intended without bugs, but also that they are pleasant and easy to use
 for their intended users.
 
+% TODO remove this
 \nocite{harvey2002} % don't remove this
 
 \subsection{Testing Editour}
@@ -2424,7 +2458,7 @@ also be described by the same equations. The circuit and the equations can be
 seen in Figure~\ref{fig:referenceModel}. We were also provided with source code
 for an implementation of this model in C. We would still need to modify this
 code to calculate the output variables we would need to properly operate the
-physical model, and integrate the model into the main loop of the Arduino source
+physical model and integrate the model into the main loop of the Arduino source
 code with the appropriate timing.
 
 \begin{figure}[h] \centering
