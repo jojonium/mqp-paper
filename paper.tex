@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt, american, titlepage]{article}
+\documentclass[8pt, american, titlepage]{article}
 
 % useful packages
 \usepackage[utf8]{inputenc} % UTF-8 support
@@ -18,12 +18,17 @@
 \usepackage{setspace} % setting custom spacing
 \usepackage{tabulary} % nicer tables
 \usepackage{CJKutf8} % for Japanese UTF-8 characters
+\usepackage{morefloats}
 
 % more breathing room
 \setminted{fontsize=\small,baselinestretch=1}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
+
+\geometry{paperwidth=340mm, paperheight=16383pt, marginparsep=20pt, marginparwidth=100pt, textheight=16263pt, footskip=40pt}
+
+\setcounter{totalnumber}{100}
 
 % stuff for LaTeX to know
 \bibliography{references}
@@ -57,7 +62,7 @@
 		\Large A Platform for Augmented Reality Tour Guide Apps
 	}
 
-	\vfill
+	%\vfill
 
 	A Major Qualifying Project \\
 	Submitted to the faculty of \\
@@ -65,19 +70,19 @@
 	In partial fulfillment of the requirements for the \\
 	Degree of Bachelor of Science \par
 
-	\vfill
+	%\vfill
 
 	By \\
 	William Campbell \\
 	Cole Granof \\
 	Joseph Petitti \par
 
-	\vfill
+	%\vfill
 
 	Date: \\
 	October 11, 2019 \par
 
-	\vfill
+	%\vfill
 
 	Report submitted to: \par
 
@@ -95,14 +100,13 @@
 	Worcester Polytechnic Institute \par
 \end{flushright}
 
-\vfill
+%\vfill
 
-\clearpage
+%\clearpage
 
-% more breathing room
-\setstretch{1.5}
+%\begin{abstract}
+\section*{Abstract}
 
-\begin{abstract}
 Kinkaku-ji, the Temple of the Golden Pavilion, is one of Kyoto's most visited
 tourist attractions. Most people who visit the site do not have the opportunity
 to experience the rich art and culture that are part of its history. We worked
@@ -113,7 +117,7 @@ displays galleries of art throughout the visit, and offers accessibility
 features through AR. We also developed a tool to aid in the design and creation
 of audio tours. We hope our app will enhance the experience of visiting
 Kinkaku-ji.  
-\end{abstract}
+%\end{abstract}
 
 \section*{Acknowledgments}
 \label{sec:acknowledgements}
@@ -134,7 +138,7 @@ University and Professor Noma Haruo. Finally, a thank you to our advisers,
 Professors Joshua Cuneo and Ralph Sutter. Without their expert advice and
 feedback this project probably could not have been completed.
 
-\clearpage
+%\clearpage
 
 \section*{Executive Summary}
 \label{sec:executiveSummary}
@@ -187,25 +191,22 @@ In Section~\ref{sec:alternativeArAppConcepts}, we also discuss the alternative
 AR app concepts that were explored before development became completely focused
 on ARuko.
 
-\clearpage
+%\clearpage
 
 % now comes the table of contents, list of figures, and list of tables
-% these should be single spaced
-\begin{singlespace}
-	\tableofcontents
-	% uncomment this if you want the Table of Contents to have an entry in the
-	% table of contents
-	% \addcontentsline{toc}{section}{Table of Contents}
-	\clearpage
+\tableofcontents
+% uncomment this if you want the Table of Contents to have an entry in the
+% table of contents
+% \addcontentsline{toc}{section}{Table of Contents}
+%\clearpage
 
-	\listoffigures
-	% \addcontentsline{toc}{section}{List of Figures}
-	\clearpage
+\listoffigures
+% \addcontentsline{toc}{section}{List of Figures}
+%\clearpage
 
-	\listoftables
-	% \addcontentsline{toc}{section}{List of Tables}
-	\clearpage
-\end{singlespace}
+\listoftables
+% \addcontentsline{toc}{section}{List of Tables}
+%\clearpage
 
 % go back to 1.5 spacing and Arabic numbering for the rest of the paper
 \pagenumbering{arabic}
@@ -223,9 +224,9 @@ profitable~\autocite{webster2018}. With smartphone manufacturers investing
 billions into AR technology~\autocite{mason2016}, it seems poised to be the next
 big digital interface.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{ar-example.jpg}
+	\includegraphics[width=0.2\textwidth]{ar-example.jpg}
 	% Note: you don't actually need the part in square brackets for the
 	% caption, but if you omit it the regular caption text will be used for
 	% the List of Figures entry.
@@ -242,9 +243,9 @@ to get any other way. Kinkaku-ji, the ``Golden Pavilion'' of Kyoto (see
 Figure~\ref{fig:kinkakuji1}, is the perfect example of a site that would benefit
 from AR~\autocite{bornoff2000}.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{kinkakuji-1.jpg}
+	\includegraphics[width=0.2\textwidth]{kinkakuji-1.jpg}
 	\caption[The Golden Pavilion]{The Golden Pavilion~\autocite{fan2018}}
 	\label{fig:kinkakuji1}
 \end{figure}
@@ -274,15 +275,15 @@ at the site, and uses them to display informative AR pop-ups. See
 Sections~\ref{sec:translationFeature} and \ref{sec:mapOverlayFeature} for more
 details.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{ar-marker.jpg}
+	\includegraphics[width=0.2\textwidth]{ar-marker.jpg}
 	\caption[Augmented reality markers]{Augmented reality
 		markers~\autocite{jeriaska2010}}
 	\label{fig:arMarker}
 \end{figure}
 
-\clearpage
+%\clearpage
 
 \section{Background}
 \label{sec:background}
@@ -338,9 +339,9 @@ GPS and camera data to overlay game objects (in this case fictional monsters) on
 top of images of the real world~\autocite{concepcion2016} (see
 Figure~\ref{fig:pokemonGo}).
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{pokemon-go.jpg}
+	\includegraphics[width=0.2\textwidth]{pokemon-go.jpg}
 	\caption[A screenshot from the AR game \textit{Pokémon Go}]{A screenshot
 		from the AR game \textit{Pokémon Go}~\autocite{vastateparks2016}.}
 	\label{fig:pokemonGo}
@@ -412,16 +413,16 @@ aimed at museums and city tours~\autocite{izitravel} but can be used for tours
 of historic sites too. Kyoto~VR used the platform to make a simple audio tour
 of Kinkaku-ji.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{izi-travel.png}
+	\includegraphics[width=0.2\textwidth]{izi-travel.png}
 	\caption{A screenshot of the izi.TRAVEL app interface}
 	\label{fig:iziTravel}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{kinkakuji.jpg}
+	\includegraphics[width=0.2\textwidth]{kinkakuji.jpg}
 	\caption[The Golden Pavilion of Kinkaku-ji, Kyoto, Japan]{The Golden
 		Pavilion of Kinkaku-ji, Kyoto, Japan~\autocite{davidson2005}}
 	\label{fig:kinkakuji}
@@ -664,9 +665,9 @@ literature~\autocite{young2007}. All of these landscape features have been
 immaculately maintained and preserved through the Golden Pavilion's six hundred
 year history.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{kinkakuji-grounds.jpg}
+	\includegraphics[width=0.2\textwidth]{kinkakuji-grounds.jpg}
     \caption[Expertly landscaped islands in the Kinkaku-ji mirror pond]{Expertly
 		landscaped islands in the Kinkaku-ji mirror pond~\autocite{desousa2014}}
 	\label{fig:kinkakujiGrounds}
@@ -684,7 +685,7 @@ they are only available in Japanese and contain very little information about
 the history and design of the site. Because of this, an intuitive audio tour app
 with AR features would be very helpful to tourists at Kinkaku-ji.
 
-\clearpage
+%\clearpage
 
 \section{Implementation and Technology}
 \label{sec:implementationAndTechnology}
@@ -704,9 +705,9 @@ geographic regions onto a map, edit those regions and assign media to each of
 the drawn regions. Figure~\ref{fig:editour} shows a screenshot of the web
 interface used to design tours.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{updated-editour.png}
+	\includegraphics[width=0.2\textwidth]{updated-editour.png}
 	\caption{A screenshot of the Editour web app frontend}
 	\label{fig:editour}
 \end{figure}
@@ -806,17 +807,17 @@ from drawing a region with an area of zero. Once a region is created, a region
 card appears in the side bar. From here, the user can edit anything about the
 region.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.4\textwidth]{welcome-card-editour.png}
+	\includegraphics[width=0.2\textwidth]{welcome-card-editour.png}
     \caption{The ``Welcome to Editour'' card providing basic instructions to
     get started}
 	\label{fig:welcomeCard}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.5\textwidth]{drawing-region-editour.png}
+	\includegraphics[width=0.2\textwidth]{drawing-region-editour.png}
 	\caption{Editour when a region is being drawn, including the two dotted
 		preview lines}
 	\label{fig:drawingRegion}
@@ -844,9 +845,9 @@ multiple places in the UI where a textbox is immediately adjacent to a
 ``Confirm'' button.  We made sure all of these can be triggered by simply
 hitting enter, since this is common behavior when filling out forms on the web.}
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.4\textwidth]{rename-subcard-editour.png}
+	\includegraphics[width=0.2\textwidth]{rename-subcard-editour.png}
 	\caption{The ``Rename'' subcard}
 	\label{fig:renameSubcard}
 \end{figure}
@@ -861,9 +862,9 @@ the files already present on the server will appear as cards with `X' buttons.
 This allows the user to remove images or audio from that region even after the
 tour has been uploaded.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.4\textwidth]{media-subcard-editour.png}
+	\includegraphics[width=0.2\textwidth]{media-subcard-editour.png}
 	\caption{The ``Media'' subcard}
 	\label{fig:mediaSubcard}
 \end{figure}
@@ -887,9 +888,9 @@ same way that files can be deleted from the ``Media'' subcard by clicking on the
 in a region, the `X' buttons will be ``grayed-out,'' preventing the user from
 deleting any more points, since a polygon must consist of at least three points.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-    \includegraphics[width=\textwidth]{edit-subcard-with-map-editour.png}
+    \includegraphics[width=0.2\textwidth]{edit-subcard-with-map-editour.png}
     \caption{The ``Points'' subcard with the map showing vertices and edges that
     can be edited}
 	\label{fig:editSubcardWithMap}
@@ -901,9 +902,9 @@ The action can be canceled by collapsing the subcard by hitting the bar now
 labeled ``Don't Delete!'' This prevents the user from accidentally deleting a
 region unintentionally.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-    \includegraphics[width=0.4\textwidth]{delete-subcard-editour.png}
+    \includegraphics[width=0.2\textwidth]{delete-subcard-editour.png}
     \caption{The ``Delete'' subcard}
 	\label{fig:deleteSubcard}
 \end{figure}
@@ -920,9 +921,9 @@ displayed in this box instead. Since uploading, downloading, and deleting are
 all network-related operations, it makes sense to include this message box for
 each card.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-    \includegraphics[width=0.4\textwidth]{uploading-message-editour.png}
+    \includegraphics[width=0.2\textwidth]{uploading-message-editour.png}
     \caption{The upload subcard with an upload status}
 	\label{fig:uploadingMessage}
 \end{figure}
@@ -939,9 +940,9 @@ not download the tour to the user's computer. Instead, it requests only the
 tour metadata from the server so the tour's data can be displayed in the web
 app. The user can then edit the tour and upload a new version.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-    \includegraphics[width=0.4\textwidth]{download-card-editour.png}
+    \includegraphics[width=0.2\textwidth]{download-card-editour.png}
     \caption{The download card}
 	\label{fig:downloadCard}
 \end{figure}
@@ -954,9 +955,9 @@ constraints.  You can type in a latitude and longitude directly and hit the
 shortcuts for places that Atticus might want to design a tour for in the future,
 which can be accessed by clicking on the yellow buttons with place names.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-    \includegraphics[width=0.4\textwidth]{jump-card-editour.png}
+    \includegraphics[width=0.2\textwidth]{jump-card-editour.png}
     \caption{The jump card}
 	\label{fig:jumpCard}
 \end{figure}
@@ -1005,9 +1006,9 @@ can be seen in Figure~\ref{fig:superFamicomController}. The shape of the
 ``Projects'' tab of a GitHub repo (which can be seen in
 Figure~\ref{fig:kanbanBoard} in the Appendix).
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.5\textwidth]{super-famicom-controller.jpg}
+	\includegraphics[width=0.2\textwidth]{super-famicom-controller.jpg}
     \caption[A Japanese Super Famicom controller.]{The inspiration for the
     colorscheme: a Japanese Super Famicom controller~\autocite{amos2017}.}
     \label{fig:superFamicomController}
@@ -1245,21 +1246,21 @@ be placed directly on top of the content.
 % TODO make it so these images don't appear so far away (thank you LaTeX)
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=0.8\textwidth]{translate-instant.jpg}
+	\includegraphics[width=0.2\textwidth]{translate-instant.jpg}
 	\caption{Google Translate camera feature in ``instant'' mode.}
 	\label{fig:translateInstant}
 \end{figure}
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=0.8\textwidth]{translate-scan.jpg}
+	\includegraphics[width=0.2\textwidth]{translate-scan.jpg}
 	\caption{Google Translate camera feature in ``scan'' mode}
 	\label{fig:translateScan}
 \end{figure}
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=0.8\textwidth]{translate-final-card.png}
+	\includegraphics[width=0.2\textwidth]{translate-final-card.png}
 	\caption{The final page seen after using ``scan'' mode in Google Translate}
 	\label{fig:translateFinalCard}
 \end{figure}
@@ -1287,7 +1288,7 @@ ARuko.
 
 \begin{figure}[p]
 	\centering
-    \includegraphics[width=0.8\textwidth]{ar-map-feature.png}
+    \includegraphics[width=0.2\textwidth]{ar-map-feature.png}
     \caption{Map overlay displaying the path and translated labels}
     \label{fig:arMapFeature}
 \end{figure}
@@ -1303,8 +1304,8 @@ tickets. Seemingly, the design on the tickets do not change on a regular basis,
 if at all. Figure~\ref{fig:kinkakujiTicket} shows a ticket we kept from one of
 our visits to Kinkaku-ji.
 
-\begin{figure}[h] \centering
-    \includegraphics[width=0.4\textwidth]{kinkakuji-ticket.jpeg}
+\begin{figure}[p] \centering
+    \includegraphics[width=0.2\textwidth]{kinkakuji-ticket.jpeg}
     \caption{Kinkaku-ji ticket}
     \label{fig:kinkakujiTicket}
 \end{figure}
@@ -1324,9 +1325,9 @@ models~\autocite{baichtal2008}. Using Unity's built-in capability to design
 materials, we created a shiny golden material and applied it to the model (see
 Figure~\ref{fig:souvenir}).
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{souvenir.png}
+	\includegraphics[width=0.2\textwidth]{souvenir.png}
 	\caption{ARuko's virtual souvenir feature}
 	\label{fig:souvenir}
 \end{figure}
@@ -1341,9 +1342,9 @@ to place their hands under the base of the Golden Pavilion model as if they were
 holding it; Vuforia's image tracking is flexible enough such that the image
 target can be partially obscured by the hand.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{kinkakuji-horizontal.png}
+	\includegraphics[width=0.2\textwidth]{kinkakuji-horizontal.png}
 	\caption{Untextured Golden Pavilion model sitting horizontally on ticket}
 	\label{fig:kinkakujiHorizontal}
 \end{figure}
@@ -1361,9 +1362,9 @@ elements were created on the fly as new features were added. As the app grew,
 it became clear that the UI could not consist simply of buttons and other basic
 features provided by Unity.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.4\textwidth]{old-ui.png}
+	\includegraphics[width=0.2\textwidth]{old-ui.png}
 	\caption{A screenshot of our early UI}
 	\label{fig:oldUI}
 \end{figure}
@@ -1379,9 +1380,9 @@ create a cube, with the given image on each face, and place it on the ground
 where the user was pointing. Figure~\ref{fig:floatingCube} shows this feature in
 action.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.4\textwidth]{floating-cube.png}
+	\includegraphics[width=0.2\textwidth]{floating-cube.png}
 	\caption{An ``art cube'' floating over the water containing a placeholder
     programming meme}
 	\label{fig:floatingCube}
@@ -1437,9 +1438,9 @@ experience design document created in Adobe XD.
 
 % TODO split up this figure into four separate figures, change references to
 % refer to the correct ones
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=1\textwidth]{adobe-xd-design.png}
+	\includegraphics[width=0.2\textwidth]{adobe-xd-design.png}
 	\caption[A screenshot of the Adobe XD project designed by Atticus Sims]
     {A screenshot of the Adobe XD project designed by Atticus Sims}
 	\label{fig:adobeXdDesign}
@@ -1502,9 +1503,9 @@ code that interprets the tour file needed to be updated to expect an audio
 transcript field.  Figure~\ref{fig:editourAdditions} shows the UI elements that
 changed in order to add these new features.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.5\textwidth]{editour-additions.png}
+	\includegraphics[width=0.2\textwidth]{editour-additions.png}
 	\caption{Additions to Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
@@ -1541,31 +1542,31 @@ guide us.
 %TODO refer to the section that discusses building the ui
 
 \begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{chapters-zoomed.png}
+    \includegraphics[width=0.2\textwidth]{chapters-zoomed.png}
     \caption{Larger screenshot of the chapter selection screen mock-up}
     \label{fig:chaptersZoomed}
 \end{figure}
 
 \begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{gallery-zoomed.png}
+    \includegraphics[width=0.2\textwidth]{gallery-zoomed.png}
     \caption{Larger screenshot of the transcript and image gallery mock-up}
     \label{fig:galleryZoomed}
 \end{figure}
 
 \begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{info-zoomed.png}
+    \includegraphics[width=0.2\textwidth]{info-zoomed.png}
     \caption{Larger screenshot of the info button mock-up}
     \label{fig:infoZoomed}
 \end{figure}
 
 \begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{map-zoomed.png}
+    \includegraphics[width=0.2\textwidth]{map-zoomed.png}
     \caption{Larger screenshot of the route screen mock-up}
     \label{fig:mapZoomed}
 \end{figure}
 
 \begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{translation-zoomed.png}
+    \includegraphics[width=0.2\textwidth]{translation-zoomed.png}
     \caption{Larger screenshot of the translation window mock-up}
     \label{fig:translationZoomed}
 \end{figure}
@@ -1615,7 +1616,7 @@ to the right. If the slider is released partway through the action, the slider
 springs back to the its original position.
 % TODO maybe include an image of pocket mode here
 
-\clearpage
+%\clearpage
 
 \section{Testing}
 \label{sec:testing}
@@ -1691,9 +1692,9 @@ resolved over thirty issues and feature requests using this workflow. The GitHub
 issues tab (which can be see in Figure~\ref{fig:issuesPageExample}) was very
 useful for ensuring we made use of our user testing and bug testing.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{issues-page-example.png}
+	\includegraphics[width=0.2\textwidth]{issues-page-example.png}
 	\caption{The GitHub issues tab for Editour}
 	\label{fig:issuesPageExample}
 \end{figure}
@@ -1724,9 +1725,9 @@ proof, but should at least make it clear why this works. This algorithm's time
 complexity is $O(n)$, where $n$ is the sum total of the number of vertices of
 all of the polygons being tested~\autocite{geeksforgeekspolygon}.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.7\textwidth]{intersections-diagram.png}
+	\includegraphics[width=0.2\textwidth]{intersections-diagram.png}
 	\caption{A visualization of the algorithm}
 	\label{fig:intersectionsDiagram}
 \end{figure}
@@ -1772,9 +1773,9 @@ simulated the GPS coordinates in software. This allowed us to simulate walking
 in a single direction without actually having to build to a mobile device or
 move.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{ritsu-tour.png}
+	\includegraphics[width=0.2\textwidth]{ritsu-tour.png}
 	\caption{The Ritsumeikan example tour used for testing}
 	\label{fig:ritsuTour}
 \end{figure}
@@ -1790,9 +1791,9 @@ This version of the tour can be seen in Figure~\ref{fig:kinkakujiTour}. On this
 day of testing, we still had the limited UI described in
 Section~\ref{sec:earlyUserInterface}.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{kinkakuji-tour.png}
+	\includegraphics[width=0.2\textwidth]{kinkakuji-tour.png}
 	\caption[The original version of the Kinkaku-ji tour]{The original version
 		of the Kinkaku-ji tour with small regions}
 	\label{fig:kinkakujiTour}
@@ -1805,9 +1806,9 @@ potential GPS inaccuracies that could place the user outside the range of the
 region.  Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour that we used
 for field testing at Kinkaku-ji.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{kinkakuji-chunkier-tour.png}
+	\includegraphics[width=0.2\textwidth]{kinkakuji-chunkier-tour.png}
 	\caption[The ``chunkier'' version of the Kinkaku-ji tour]{The ``chunkier''
 		version of the Kinkaku-ji tour with larger regions}
 	\label{fig:kinkakujiChunkierTour}
@@ -1899,9 +1900,9 @@ Vuforia limits the amount of image targets that the engine should accept
 simultaneously. In the Vuforia engine settings, we changed this limit to
 accommodate for four simultaneous images.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{four-i-buttons.png}
+	\includegraphics[width=0.2\textwidth]{four-i-buttons.png}
 	\caption{Tracking four image targets at once with improved info buttons.}
 	\label{fig:fourIButtons}
 \end{figure}
@@ -1931,18 +1932,18 @@ punch'' covered some UI elements in the top right corner. To account for this
 issue we used Unity's built-in function to return a safe screen space to render
 the rectangular canvas in.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{galaxy-s10+.jpg}
+	\includegraphics[width=0.2\textwidth]{galaxy-s10+.jpg}
 	\caption[A Samsung Galaxy S10+ phone with distinctive ``hole punch''
 	cameras]{A Samsung Galaxy S10+ phone with distinctive ``hole punch''
 		cameras~\autocite{yoo2019}}
 	\label{fig:galaxyS10Plus}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{iphone-x.jpg}
+	\includegraphics[width=0.2\textwidth]{iphone-x.jpg}
 	\caption[An iPhone X with a large notch]{An iPhone X with a large
 		notch~\autocite{yoo2017}}
 	\label{fig:iPhoneX}
@@ -1952,7 +1953,7 @@ After going through Kinkaku-ji with the app twice we had each test participant
 fill out a simple survey giving their thoughts on the app. The full results of
 these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 
-\clearpage
+%\clearpage
 
 \section{Alternative AR App Concepts}
 \label{sec:alternativeArAppConcepts}
@@ -2022,9 +2023,9 @@ to know how well certain pieces of art would work as AR image targets. All of
 images that were provided to us were ranked as ``five stars'' by Vuforia,
 indicating that those images would serve well as AR image targets.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.7\textwidth]{exhibition-scan.png}
+	\includegraphics[width=0.2\textwidth]{exhibition-scan.png}
     \caption{A screenshot of the 3D scan of ``Portraits of Thought,'' accessible
     from the web}
 	\label{fig:exhibitionScan}
@@ -2117,7 +2118,7 @@ product. We made it clear to Atticus that deploying our app on Google Play
 or the App Store would not be within the scope of our academic project as per
 our advisers' guidance.
 
-\clearpage
+%\clearpage
 
 \section{Conclusion and Future Work}
 \label{sec:conclusionAndFutureWork}
@@ -2217,15 +2218,12 @@ for other tours. With the work our team has done, Kyoto~VR now has a complete
 platform for creating and delivering unique tours, which can easily be expanded
 upon in the future.
 
-\clearpage
+%\clearpage
 
-% references should be single spaced
-\begin{singlespace}
-	\printbibliography
-	\addcontentsline{toc}{section}{References}
-\end{singlespace}
+\printbibliography
+\addcontentsline{toc}{section}{References}
 
-\clearpage
+%\clearpage
 
 \appendices
 
@@ -2263,9 +2261,9 @@ Initially, we experimented with using a four-column Kanban board to keep track
 of our progress. Figure~\ref{fig:kanbanBoard} shows a screenshot of this page on
 GitHub.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{kanban-board.png}
+	\includegraphics[width=0.2\textwidth]{kanban-board.png}
 	\caption{A screenshot of the Kanban board we used for developing our
     biweekly blog}
 	\label{fig:kanbanBoard}
@@ -2349,7 +2347,7 @@ version. The night before field testing at Kinkaku-ji, we would cease work on
 the most recent branch, and build the app to our phones. This way, we would
 always have an exact snapshot of the code we used for that day of testing.
 
-\clearpage
+%\clearpage
 
 \section{Editour API Documentation}
 \label{sec:editourAPIDocumentation}
@@ -2418,7 +2416,7 @@ that contains the data of the response.
 	server error was encountered.
 \end{indented}
 
-\clearpage
+%\clearpage
 
 \section{Ritsumeikan Heart Project}
 \label{sec:ritsumeikanHeartProject}
@@ -2461,8 +2459,8 @@ code to calculate the output variables we would need to properly operate the
 physical model and integrate the model into the main loop of the Arduino source
 code with the appropriate timing.
 
-\begin{figure}[h] \centering
-    \includegraphics[width=0.8\textwidth]{reference-model.png}
+\begin{figure}[p] \centering
+    \includegraphics[width=0.2\textwidth]{reference-model.png}
     \caption{The reference model we used to implement the simulation}
     \label{fig:referenceModel}
 \end{figure}
@@ -2505,8 +2503,8 @@ pressure; the balloon would shrink as a result. To accomplish redirecting the
 flow of air, we designed a setup involving two valves.
 % TODO do we need to cite something to explain the super simple physics of this?
 
-\begin{figure}[h] \centering
-    \includegraphics[width=\textwidth]{interactive-model.png}
+\begin{figure}[p] \centering
+    \includegraphics[width=0.2\textwidth]{interactive-model.png}
     \caption{A diagram representing the physical model of the heart}
     \label{fig:interactiveModel}
 \end{figure}
@@ -2552,8 +2550,8 @@ The red buttons along the top of the screen allow the user to toggle between
 different scenarios. Each scenario also includes a helpful graphic below each
 button.
 
-\begin{figure}[h] \centering
-    \includegraphics[width=\textwidth]{heart-gui.png}
+\begin{figure}[p] \centering
+    \includegraphics[width=0.2\textwidth]{heart-gui.png}
     \caption{The GUI to enable five preprogrammed scenarios}
     \label{fig:heartGui}
 \end{figure}
@@ -2571,7 +2569,7 @@ set to be exactly proportional to the value of $V_{LV}$.
 
 % TODO write about the final result of the heart model and include pictures
 
-\clearpage
+%\clearpage
 
 \section{Testing Survey Results}
 \label{sec:testingSurveyResults}
@@ -2581,7 +2579,6 @@ After testing a near-complete prototype of ARuko at Kinkaku-ji on September
 their thoughts on the app. The full results are listed below.
 
 \begin{table}[h]
-\begin{singlespace}
 \renewcommand{\arraystretch}{2.0} % add space between rows
 \footnotesize % make font smaller
 \begin{tabulary}{\textwidth}{ L | L | L | L | L | L }
@@ -2606,12 +2603,11 @@ their thoughts on the app. The full results are listed below.
 
 	Agree & Agree & Strongly agree & Disagree & Neutral & Zoom in ar mode \\
 \end{tabulary}
-\end{singlespace}
 \caption{Results of final field test survey}
 \label{tab:testingSurveyResults}
 \end{table}
 
-\clearpage
+%\clearpage
 
 \section{NOxAR Assignment}
 \label{sec:NOxAR}
@@ -2656,9 +2652,9 @@ the NOxAR ground plane adaptation to Atticus's satisfaction and sent him the
 final APK file for the app. Figure~\ref{fig:noArWorking} shows how the final
 working version of the NOxAR app.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.7\textwidth]{no-ar-working.jpg}
+	\includegraphics[width=0.2\textwidth]{no-ar-working.jpg}
 	\caption{Noh artist dancing on the ground plane of the scene}
 	\label{fig:noArWorking}
 \end{figure}
