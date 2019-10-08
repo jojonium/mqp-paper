@@ -213,15 +213,15 @@ on ARuko.
 \section{Introduction}
 \label{sec:introduction}
 
-The field of consumer-oriented augmented reality (AR) technology is just coming
-into full swing, and it presents many unique opportunities for a myriad of
-fields. This budding technological platform uses digital displays to augment
-real-world information with computer-generated data (see
-Figure~\ref{fig:arExample}. As the technology progresses, several disparate
-industries have found novel uses for it, some becoming extremely
-profitable~\autocite{webster2018}. With smartphone manufacturers investing
-billions into AR technology~\autocite{mason2016}, it seems poised to be the next
-big digital interface.
+Consumer-oriented augmented reality (AR) technology is just coming into full
+swing, and it presents many unique opportunities for a myriad of fields. This
+budding technological platform uses digital displays to augment real-world
+information with computer-generated data (see Figure~\ref{fig:arExample}). As
+the technology progresses, several disparate industries have found novel uses
+for it, some becoming extremely profitable~\autocite{webster2018}. With
+smartphone manufacturers investing billions into AR
+technology~\autocite{mason2016}, it seems poised to be the next big digital
+interface.
 
 \begin{figure}[h]
 	\centering
@@ -239,7 +239,7 @@ Tourism and art are among the fields that could gain the most from AR
 technology~\autocite{saenz2009, katz2018}. This technology can provide
 accessible information to tourists and art viewers that they would not be able
 to get any other way. Kinkaku-ji, the ``Golden Pavilion'' of Kyoto (see
-Figure~\ref{fig:kinkakuji1}, is the perfect example of a site that would benefit
+Figure~\ref{fig:kinkakuji1}), is the perfect example of a site that would benefit
 from AR~\autocite{bornoff2000}.
 
 \begin{figure}[h]
@@ -264,13 +264,13 @@ history and context necessary to fully understand Kinkaku-ji.
 To solve this problem and open up the peerless beauty of the Golden Pavilion to
 more people, our team created ARuko and Editour. These two tools comprise a
 complete platform for designing and experiencing AR-enhanced tours. Editour
-makes it easy to design custom audio tours including audio, text, and images,
+makes it easy to design custom audio tours including sound, text, and images,
 while ARuko allows users to seamlessly experience historic sites in an intuitive
 and novel way. Many AR apps require specific markers, like the those shown in
 Figure~\ref{fig:arMarker}. To avoid the need to place any physical object that
 would disturb the buildings or grounds of a historic site, our app does not rely
 on these markers. Instead, ARuko recognizes images of objects that are already
-at the site, and uses them to display informative AR pop-ups. See
+at the site and uses them to display informative AR pop-ups. See
 Sections~\ref{sec:translationFeature} and \ref{sec:mapOverlayFeature} for more
 details.
 
@@ -289,7 +289,7 @@ details.
 
 As smartphones and mobile technology become more prevalent, new forms of
 human-computer interaction are becoming mainstream. Smartphones allow for an
-unprecedented degree of connectivity with the digital world, but can also serve
+unprecedented degree of connectivity with the digital world but can also serve
 as a tool for digitally enhancing the physical world. In this section we explain
 the origins and uses of this technology.
 
@@ -307,7 +307,7 @@ display through traditional means.
 
 For example, AR can be used to display information about historical events,
 places, and objects overlaid onto images of the real
-world~\autocite{saenz2009}, in a way that is more intuitive or visually
+world~\autocite{saenz2009} in a way that is more intuitive or visually
 appealing than a purely virtual environment. This provides the user with useful
 information without needing to alter the physical historic site.
 
@@ -374,7 +374,7 @@ the app suffers drastically, especially on older devices. All of these problems
 detract from the ability to play and enjoy the game.
 
 One of the major problems facing AR development as a whole---including our
-project---is limited hardware. For starters, smartphone cameras present a
+project---is hardware. For starters, smartphone cameras present a
 major limitation. Many smartphone cameras only capture images in 2D, which can
 make generating AR content in a 3D world difficult without the use of QR or
 barcode markers~\autocite{geospatialworld2018}. Additionally, GPS sensors on
@@ -384,12 +384,12 @@ tracking~\autocite{geospatialworld2018}.
 AR apps are most commonly designed for smartphones due to their relatively low
 cost and how accessible they are. However, smartphones come with a host of
 hardware limitations that make achieving satisfying AR capabilities difficult.
-Additionally, AR apps for smartphones tend not to be very user-friendly, and
+Additionally, AR apps for smartphones tend not to be very user-friendly and
 oftentimes even complicate the task or activity they were meant to
 enhance~\autocite{theappsolutions2018}.  The alternative then is to turn to
 dedicated hardware, like Microsoft's HoloLens. The issue is that dedicated
 hardware like the HoloLens is very inaccessible and expensive; Microsoft only
-offers developer editions of the HoloLens, and for the steep price of
+offers developer editions of the HoloLens and for the steep price of
 \$3,500~\autocite{microsoft2019}.
 
 The challenges we faced during development mirrored those that plague the
@@ -467,7 +467,7 @@ brings~\autocite{stinson2019}.
 \label{sec:wikitude}
 
 Wikitude is another major AR development kit that is very prevalent in the world
-of AR development. It has over 130,000 registered AR developers, and is powering
+of AR development. It has over 130,000 registered AR developers and is powering
 over 30,000 AR apps across smartphones, tablets, and smart
 glasses~\autocite{wikitude2018}. It is easy to understand why Wikitude has so
 many registered developers considering the list of features the platform offers.
@@ -489,7 +489,7 @@ cost was a major issue. Wikitude is free for eligible startups, but given the
 criteria they list on their site, we were not confident that we would qualify.
 Aside from this option, Wikitude offers a 30-day demo license for \euro{499},
 which was far beyond the resources available to us. They also charge
-\euro{1990} for their SDK Pro, and \euro{2490} for their SDK Pro 3D. Given
+\euro{1990} for their SDK Pro and \euro{2490} for their SDK Pro 3D. Given
 these prices, and our very limited budget, we decided to consider other
 options.
 
@@ -504,9 +504,9 @@ promotional video shows the creation of a location-based AR game where the user
 pretends to hack into ATMs using the real-world locations of ATMs in a city.
 
 Unfortunately, it appears that the company has completely pivoted off of this
-idea, and has since moved to developing AR training
-software~\autocite{motiveio}. We reached out to motive.io via email for any
-advice they might be willing to give us, but we received no response.
+idea and has since moved to developing AR training software~\autocite{motiveio}.
+We reached out to motive.io via email for any advice they might be willing to
+give us, but we received no response.
 
 \subsubsection{ViroAR}
 \label{sec:viroAR}
@@ -521,7 +521,7 @@ cross-platform capabilities of React, which is Facebook's JavaScript Library for
 developing user interfaces~\autocite{facebook2019}.
 
 Since our project is not a game, we initially wanted to avoid using a
-fully-featured game engine such as Unity (see Section~\ref{sec:unity}.
+fully-featured game engine such as Unity (see Section~\ref{sec:unity}).
 Therefore, we decided to take the time to explore this framework since it
 appeared to be more tailored to our specific use case. Viro Media also
 recognizes that all developers who wish to create an app with 3D capabilities
@@ -558,18 +558,18 @@ Conversely, errors that exist in the hardware version may not appear in the
 emulation. Secondly, and most importantly for AR, it is common for emulation to
 be much slower compared to real hardware.\footnote{In a question submitted to
 \textit{Compute!} magazine asking whether it is possible for a Commodore 64 to
-emulate MS-DOS, the editor responded ``Yes, it's possible for a 64 to emulate an
-IBM PC, in the same sense that it's possible to bail out Lake Michigan with a
-teaspoon.'' The editor goes on to explain ``Emulation is a complex business, but
-here's one rule of thumb: The only way to successfully emulate a machine is with
-a much more powerful machine''~\autocite{warick1988}. In our case, emulating
-Android on a desktop operating system is closer to emulating a C64 on an IBM PC
-running MS-DOS (rather than the other way around, thankfully). The takeaway is
-that the speed problem facing emulators is just as real as it was in 1988.}
-Considering that AR already pushes modern phone hardware to the limit, emulation
-is not something we wanted to struggle with. On top of this, our testing
-required us to move the camera through the world at various speeds and angles,
-which is simply cumbersome with a laptop webcam.
+emulate MS-DOS, the editor responded, ``Yes, it's possible for a 64 to emulate
+an IBM PC, in the same sense that it's possible to bail out Lake Michigan with a
+teaspoon.'' The editor goes on to explain, ``Emulation is a complex business,
+but here's one rule of thumb: The only way to successfully emulate a machine is
+with a much more powerful machine''~\autocite{warick1988}. In our case,
+emulating Android on a desktop operating system is closer to emulating a C64 on
+an IBM PC running MS-DOS (rather than the other way around, thankfully). The
+takeaway is that the speed problem facing emulators is just as real as it was in
+1988.} Considering that AR already pushes modern phone hardware to the limit,
+emulation is not something we wanted to struggle with. On top of this, our
+testing required us to move the camera through the world at various speeds and
+angles, which is simply cumbersome with a laptop webcam.
 
 As an alternative to emulation or compiling a native binary, ViroReact offers a
 convenient ``test bed'' for rapidly testing ViroReact apps on native
@@ -613,7 +613,7 @@ great concern since C\# is similar to other object-oriented languages such as
 Java and C++. The design goals of the language were also appealing to us; C\#
 includes features important for programmer productivity such as strong type
 checking (unlike JavaScript), detection of using uninitialized variables (also
-unlike normal JavaScript,) range checking for array bounds (unlike C) and
+unlike normal JavaScript) range checking for array bounds (unlike C), and
 garbage collection. At the same time, our lack of familiarity with the language
 and Unity as a whole is another reason we first looked into cross-platform AR
 solutions that did not use Unity.
@@ -626,7 +626,7 @@ development on the mobile app.
 
 Unity is distinct from the technologies previously discussed in this section
 because it is not an AR platform unto itself. Instead, Unity can take advantage
-of AR platforms such as ARKit, ARCore, Vuforia and Wikitude through the use of
+of AR platforms such as ARKit, ARCore, Vuforia, and Wikitude through the use of
 plugins.
 %TODO provide citations that note that all of these platforms support Unity.
 
@@ -712,10 +712,9 @@ interface used to design tours.
 \end{figure}
 
 An audio file and multiple image files can be uploaded for each region the user
-defines. The user can also provide a text transcript of the audio file as well.
-After naming and uploading the tour with the ``Upload'' button, our backend
-builds a zip containing files that can be placed directly into the Unity
-project.
+defines. The user can also provide a text transcript of the audio file. After
+naming and uploading the tour with the ``Upload'' button, our backend builds a
+zip containing files that can be placed directly into the Unity project.
 
 Our backend allows users to save their tours to a server and load those same
 tours back into the editor to resume work. The geographic area of each region
@@ -745,7 +744,7 @@ Regions.add(new GPSPolygon(new List<GPSPoint>{
 \end{minted}
 
 Even with knowledge of C\# and Unity, inputting tour data this way is obviously
-cumbersome. Atticus is not a software developer, and does not want to work with
+cumbersome. Atticus is not a software developer and does not want to work with
 C\# scripts. In order to make our app prototype at all useful for the future,
 we needed to provide an easy way to ``design'' a tour using a simple graphical
 interface.
@@ -754,11 +753,9 @@ interface.
 \label{sec:tourDefinition}
 
 In order to create a fully-functional editor for designing and exporting
-``tours,'' we had to consider how to fully define a tour purely in terms
-of text and a directory of associated media.
-
-Here is an example of a tour metadata file in JavaScript Object Notation (JSON)
-format:
+``tours,'' we had to consider how to fully define a tour purely in terms of text
+and a directory of associated media. Here is an example of a tour metadata file
+in JavaScript Object Notation (JSON) format:
 
 \begin{minted}{json}
 {
@@ -796,15 +793,15 @@ duplicate filenames, prompting the user to use unique names for all files.
 \subsubsection{Editing a Tour}
 \label{sec:editingATour}
 
-The user can easily create a new region by shift-clicking the map, and then
+The user can easily create a new region by shift-clicking the map and then
 continuing to click to define more points. Figure~\ref{fig:drawingRegion} shows
 this in action. To terminate the polygon, the user must shift-click again. The
 ``Welcome to Editour'' card (seen in Figure~\ref{fig:welcomeCard}) provides
 these instructions, which should be enough to get started. A user can only
-terminate the polygon after two points have been placed to prevent the user
-from drawing a region with an area of zero. Once a region is created, a region
-card appears in the side bar. From here, the user can edit anything about the
-region.
+terminate the polygon with a third point after two points have already been
+placed to prevent the user from drawing a region with an area of zero. Once a
+region is created, a region card appears in the side bar. From here, the user
+can edit anything about the region.
 
 \begin{figure}[h]
 	\centering
@@ -962,7 +959,7 @@ which can be accessed by clicking on the yellow buttons with place names.
 \end{figure}
 
 Once a tour is either uploaded or downloaded, a link to download the zip file of
-that tour will appear. The zip file contains all of the uploaded media, and a
+that tour will appear. The zip file contains all of the uploaded media and a
 metadata file. The metadata is in the form of a JSON file; it contains all of
 the latitudes, longitudes, and enough information to associate all of the media
 with the correct regions. The downloaded zip file is what we decompress and
@@ -973,7 +970,7 @@ if the user wants to check the audio and image files that were uploaded.
 \label{sec:editourFrontendImplementation}
 
 The frontend was implemented as a web application, using web technologies such
-as HTML, CSS and JavaScript, with JavaScript being the vast majority of the
+as HTML, CSS, and JavaScript, with JavaScript being the vast majority of the
 code. Type-checking provided by Visual Studio Code and JSDoc made the growing
 code complexity more manageable.\footnote{One helpful specification of the
 ECMAScript standard in the way of programmer sanity is ``strict mode.'' By
@@ -991,12 +988,12 @@ according to the official Leaflet website~\autocite{leafletjs}. We did not use
 any framework for developing frontends like Facebook's React or Google's
 Angular. Instead, all of the complex UI interactions were handled by modifying
 the DOM directly with JavaScript's built-in functionality. Furthermore, we did
-not use any advanced frontend build tools such as Rollup, webpack or Parcel. For
-a JavaScript project of this scope, this was the correct decision. Considering
-we had limited knowledge of React or Angular, it was also faster to develop the
-UI in the way we were used to from previous experience, but if we were to
-continue to develop Editour, UI libraries and frontend build tools would be
-something to consider.
+not use any advanced frontend build tools such as Rollup, webpack, or Parcel.
+For a JavaScript project of this scope, this was the correct decision.
+Considering we had limited knowledge of React or Angular, it was also faster to
+develop the UI in the way we were used to from previous experience, but if we
+were to continue to develop Editour, UI libraries and frontend build tools would
+be something to consider.
 
 The look and feel of the Editour frontend was inspired from multiple sources.
 The color scheme of the UI was inspired by the Super Famicom controller, which
@@ -1020,13 +1017,13 @@ tandem with markup languages like HTML, which define the structure of content on
 the page~\autocite{mozillahtml2019}. CSS allows developers to define a set of
 rules that describes how the content will look~\autocite{mozillacss2019}.
 
-The classes within CSS were designed so they could be reused
-easily and composed with one another. If, for example, we needed to change the
-font of every element that was styled like a button, we could do so by simply
-changing the \texttt{font-family} attribute in a single CSS class. Consider the
-green bar pictured in Figure~\ref{fig:mediaSubcard}. Multiple CSS classes were
-composed in order to inherit the visual descriptions of other UI elements. The
-four CSS classes on this bar are \texttt{button}, \texttt{greenbutton},
+The classes within CSS were designed so they could be reused easily and composed
+with one another. If, for example, we needed to change the font of every element
+that was styled like a button, we could do so by simply changing the
+\texttt{font-family} attribute in a single CSS class. Consider the green bar
+pictured in Figure~\ref{fig:mediaSubcard}. Multiple CSS classes were composed in
+order to inherit the visual descriptions of other UI elements. The four CSS
+classes on this bar are \texttt{button}, \texttt{greenbutton},
 \texttt{outlinebutton}, and \texttt{revealer}. The class \texttt{button} styles
 elements as the slightly raised, rounded rectangle that can be seen throughout
 the UI. Additionally, all elements with the \texttt{button} class will have a
@@ -1036,20 +1033,21 @@ the button is a slightly darker shade to give a 3D effect. Both of these colors
 are conveniently stored as custom CSS variables, \texttt{--bg-color} and
 \texttt{--bottom-color}. This allows another class to easily override these
 colors. This is what the class \texttt{greenbutton} does; an HTML element with
-the \texttt{button} class and either \texttt{greenbutton}, \texttt{orangebutton}
-or \texttt{bluebutton} will be styled like a button and have a new color palette
-applied. In order to differentiate the buttons that reveal subcards, the
-\texttt{outlinebutton} class is used. This class takes the custom
-\texttt{--bg-color} property and applies it to the border, drop shadow and text
-color instead of the background. This class was also applied to the buttons that
-can be seen in Figures~\ref{fig:jumpCard}~and~\ref{fig:downloadCard}. Finally,
-the \texttt{revealer} class changes the text from centered to left-justified
-among other minor formatting adjustments. CSS allowed us to define the look and
-feel programmatically with the need to create graphical assets using image
-editing software. This means that anyone using the codebase of Editour for
-different purposes can easily change the look and feel of the frontend by
-changing the CSS.\footnote{This is allowed since Editour is free software, which
-is discussed briefly in Section~\ref{sec:futureOfEditour}.}
+the \texttt{button} class and either \texttt{greenbutton},
+\texttt{orangebutton}, or \texttt{bluebutton} will be styled like a button and
+have a new color palette applied. In order to differentiate the buttons that
+reveal subcards, the \texttt{outlinebutton} class is used. This class takes the
+custom \texttt{--bg-color} property and applies it to the border, drop shadow,
+and text color instead of the background. This class was also applied to the
+buttons that can be seen in
+Figures~\ref{fig:jumpCard}~and~\ref{fig:downloadCard}. Finally, the
+\texttt{revealer} class changes the text from centered to left-justified among
+other minor formatting adjustments. CSS allowed us to define the look and feel
+programmatically with the need to create graphical assets using image editing
+software. This means that anyone using the codebase of Editour for different
+purposes can easily change the look and feel of the frontend by changing the
+CSS.\footnote{This is allowed since Editour is free software, which is discussed
+briefly in Section~\ref{sec:futureOfEditour}.}
 
 \subsubsection{Editour Backend}
 \label{sec:editourBackend}
@@ -1064,11 +1062,11 @@ architecture~\autocite{orsini2013}, and its ease of development.
 When a user submits new tour from the web application, the files and metadata
 are sent to the server running the Node.js scripts. The server zips up the files
 and saves them to the disk with a time stamp. Then any application can request a
-particular tour and the backend will serve the most recent version.
+particular tour, and the backend will serve the most recent version.
 
 As previously mentioned in Section~\ref{sec:editingATour}, our web application
 allows users to edit existing tours. When the user requests to edit a tour on
-the frontend it sends a request to the backend server for that tour's metadata
+the frontend, it sends a request to the backend server for that tour's metadata
 file. This file contains information about all regions and files in the tour.
 The user can then edit the regions, change names, upload new files, or delete
 existing ones without ever having to download the other tour files from the
@@ -1088,11 +1086,11 @@ the backend's API, see Appendix~\ref{sec:editourAPIDocumentation}.
 \subsubsection{Deploying the Editour Backend}
 \label{sec:deployingTheEditourBackend}
 
-For testing and development purposes the Editour backend was originally hosted
-on Joseph Petitti's personal server. This was a CentOS virtual machine running
-on an old Dell rack server in Worcester, Massachusetts. We wrote a custom
-systemd service to run Editour as a daemon and keep its log files organized. The
-Node.js backend was served by an Nginx reverse proxy running on the same virtual
+For testing and development purposes, Editour backend was originally hosted on
+Joseph Petitti's personal server. This was a CentOS virtual machine running on
+an old Dell rack server in Worcester, Massachusetts. We wrote a custom systemd
+service to run Editour as a daemon and keep its log files organized. The Node.js
+backend was served by an Nginx reverse proxy running on the same virtual
 machine.
 
 While this worked well enough for testing, it was not a permanent solution. We
@@ -1142,7 +1140,7 @@ disk write speeds. Because the backend has to write potentially large amounts of
 data to the disk every time a tour is uploaded or edited this becomes a major
 bottleneck for the web app's performance. For large tours (bigger than 50 MiB)
 this can cause an issue where the Node server takes so long to respond that
-Apache thinks it has timed out, and sends an erroneous 504 Gateway Timeout
+Apache thinks it has timed out and sends an erroneous 504 Gateway Timeout
 message~\autocite{rfc7231}. Without access to superuser permissions or a faster
 hosting provider there is nothing we can do about this bug. The Node server does
 eventually complete the request and respond correctly, so until Kyoto~VR can get
@@ -1171,7 +1169,7 @@ associated audio tour is playing.
 
 The files produced by Editour could be used to power an app that does not
 incorporate AR, such as an audio guide mobile web app that runs entirely in the
-browser, using the geolocation API to access the user's location (if the user
+browser, and uses the geolocation API to access the user's location (if the user
 grants permission). This kind of infrastructure would allow users to access an
 audio tour---supplemented by images and audio transcripts---without the need to
 download an app at all. By simply visiting a link, a user could experience a
@@ -1180,12 +1178,12 @@ colleges could distribute tour links via QR codes, which would instantly launch
 an interactive guided tour of the campus through the browser.
 
 Currently, anyone can clone the GitHub repository of Editour and deploy a
-working version on a personal server. The source code for Editour is under a
-free license, namely the GNU General Public License. This allows anyone to
-expand the frontend and backend to suit their needs. With additional hardware
-and by extending the current implementation of both the frontend and backend,
-Editour could be used as the groundwork to create an entire crowd-sourced
-walking tour platform, allowing users to design tours for others to take.
+working version on a personal server. The source code for Editour is under the
+GNU General Public License. This is a free license that allows anyone to expand
+the frontend and backend to suit their needs. With additional hardware and by
+extending the current implementation of both the frontend and backend, Editour
+could be used as the groundwork to create an entire crowd-sourced walking tour
+platform, allowing users to design tours for others to take.
 
 In summary, we want to explore the idea of creating a community-driven audio
 tour database that allows mobile users to take tours without the need to install
@@ -1205,16 +1203,16 @@ to use a single codebase for the iOS and Android versions of the app.
 \label{sec:gpsFunctionality}
 
 The core user experience of ARuko is the walking tour. By walking the given
-route, the user enters and exits specific geographic regions that invoke
-changes in the app, such as playing audio and displaying different images.
-Originally, we planned to mark regions by singular points, and trigger that
-region if the user was within a certain radius of that point.
-Implementation-wise, this would have been much simpler, but obviously limits
-possible tour designs. Consequently, we decided at an early stage to
-accommodate regions with arbitrary shape and size.  In the implementation, we
-provided support for both ``GPS Bubbles'' and ``GPS Polygons.'' In the end
-however, Editour made it trivial to use the more versatile ``GPS Polygons,'' so
-we eventually dropped support for regions triggered by distance.
+route, the user enters and exits specific geographic regions that invoke changes
+in the app, such as playing audio and displaying different images. Originally,
+we planned to mark regions by singular points and trigger that region if the
+user was within a certain radius of that point. Implementation-wise, this would
+have been much simpler but obviously limits possible tour designs.
+Consequently, we decided at an early stage to accommodate regions with arbitrary
+shape and size.  In the implementation, we provided support for both ``GPS
+Bubbles'' and ``GPS Polygons.'' In the end however, Editour made it trivial to
+use the more versatile ``GPS Polygons,'' so we eventually dropped support for
+regions triggered by distance.
 % TODO add a picture that shows how having only circular regions limits possible
 % tour designs
 
@@ -1222,25 +1220,25 @@ we eventually dropped support for regions triggered by distance.
 \label{sec:translationFeature}
 
 ARuko uses augmented reality to translate text at the site of the tour as well.
-While AR translation apps exist, the experience can be frustrating, and produce
-poor results. Google~Translate's text recognition and machine-learning powered
-translation technology is certainly impressive. At the same time, the
+While AR translation apps exist, the experience can be frustrating and can
+produce poor results. Google~Translate's text recognition and machine-learning
+powered translation technology is certainly impressive. At the same time, the
 translation service works better in ``scan'' mode instead of ``instant'' mode.
 In ``instant'' mode, the app attempts to translate text as quickly as possible,
 superimposing the translated text onto the real world using the camera. In
-``scan'' mode, the user first takes a photo. This will sometimes produce
-useless results, as seen in Figure~\ref{fig:translateInstant}. Then, the user
-is prompted to highlight where text appears in the photo by dragging lines onto
-the screen where text appears, as seen in Figure~\ref{fig:translateScan}. After
-the translation is complete, the translated text appears in a separate UI
-element, which can be seen in Figure~\ref{fig:translateFinalCard}. In most
-cases, it is more convenient and readable to have the translation appear in a
-separate scrollable text box. This motivated the current design of the ``info
-buttons'' in ARuko. Instead of placing text directly onto signage, we place a
-blue button with a stylized ``\textit{i}'' in the center. By tapping on this
-button, a separate UI element will appear containing the translated text. Since
-this button is cast into the world using the AR camera, the button appears to
-be placed directly on top of the content.
+``scan'' mode, the user first takes a photo. This will sometimes produce useless
+results, as seen in Figure~\ref{fig:translateInstant}. Then, the user is
+prompted to highlight where text appears in the photo by dragging lines onto the
+screen where text appears, as seen in Figure~\ref{fig:translateScan}. After the
+translation is complete, the translated text appears in a separate UI element,
+which can be seen in Figure~\ref{fig:translateFinalCard}. In most cases, it is
+more convenient and readable to have the translation appear in a separate
+scrollable text box. This motivated the current design of the ``info buttons''
+in ARuko. Instead of placing text directly onto signage, we place a blue button
+with a stylized ``\textit{i}'' in the center. By tapping on this button, a
+separate UI element will appear containing the translated text. Since this
+button is cast into the world using the AR camera, the button appears to be
+placed directly on top of the content.
 
 % TODO make it so these images don't appear so far away (thank you LaTeX)
 \begin{figure}[p]
@@ -1269,7 +1267,7 @@ to automate the translation. Figure~\ref{fig:translateInstant} demonstrates
 that this kind of technology needs to mature before it is completely usable,
 especially for Japanese. Instead, we had Atticus share a Google Sheets
 spreadsheet. Hikaru Inoue manually translated each sign and provided notes about
-his decision making process about each translation. Once this time-intensive
+his decision-making process about each translation. Once this time-intensive
 labor was completed, we took each field of translated text from the spreadsheet
 and implemented it directly into the app, associating each translation with the
 correct image target.
@@ -1335,7 +1333,7 @@ Originally, the AR model of the Golden Pavilion was flush against the plane of
 the ticket, sitting on the paper as if it were ground, as depicted in
 Figure~\ref{fig:kinkakujiHorizontal}. Atticus suggested that we re-orient the
 model such that the ticket served as a back plane, as pictured in
-Figure~\ref{fig:souvenir}. This would allow users to hold the ticket vertically,
+Figure~\ref{fig:souvenir}. This would allow users to hold the ticket vertically
 and view the Golden Pavilion floating in front of the ticket. This allows users
 to place their hands under the base of the Golden Pavilion model as if they were
 holding it; Vuforia's image tracking is flexible enough such that the image
@@ -1368,14 +1366,14 @@ features provided by Unity.
 	\label{fig:oldUI}
 \end{figure}
 
-Pictured in Figure~\ref{fig:oldUI} is our early UI. It was very minimal, but
+Pictured in Figure~\ref{fig:oldUI} is our early UI. It was very minimal but
 still covered all of the uses for our app at the time. The top of the screen had
 two drop-down menus. The one on the left (which is shown open in
 Figure~\ref{fig:oldUI}) shows AR image targets users could look for and scan.
 The right drop-down would be dynamically populated in each region with buttons
 bearing different images. These images were ones that Atticus wanted to be
 viewable in AR using ground plane detection. When tapped, each button would
-create a cube, with the given image on each face, and place it on the ground
+create a cube with the given image on each face and place it on the ground
 where the user was pointing. Figure~\ref{fig:floatingCube} shows this feature in
 action.
 
@@ -1389,26 +1387,26 @@ action.
 
 Atticus initially wanted us to explore the efficacy of using Vuforia's 2D image
 target capabilities for scanning objects outside of the supported use case, such
-as 3D landscapes or the side of a building. We had serious doubts about how
-well this would work, and our suspicions were confirmed after some field
-testing. This was the reasoning behind focusing on ground-plane detection
-instead of image targets; ground-plane detection can be used anywhere, and is
-much more reliable than treating 3D objects as 2D image targets.
+as 3D landscapes or the side of a building. We had serious doubts about how well
+this would work, and our suspicions were confirmed after some field testing.
+This was the reasoning behind focusing on ground-plane detection instead of
+image targets; ground-plane detection can be used anywhere and is much more
+reliable than treating 3D objects as 2D image targets.
 
 Learning to create these drop-down menus proved to be a very important lesson
 later on, since we would put that exact knowledge to use multiple times in the
 final UI. We were able to create the dynamically populated drop-down menus by
 creating an empty vertical layout group. Then, a script would create buttons for
-each image to display, and assign those images as children of the layout group.
-To get the smooth open/close animation, we ``lerp'' (linearly interpolate)
-the menu to the corresponding position each frame until it is fully opened or
+each image to display and assign those images as children of the layout group.
+To get the smooth open/close animation, we ``lerp'' (linearly interpolate) the
+menu to the corresponding position in each frame until it is fully opened or
 closed. In between these two drop-down menus is a panel that would display the
 name for the region the user is in at the time. The empty space in the middle of
 the screen is where the AR camera display would be shown. In this
 implementation, the AR functionality was the focus of the app, so it made sense
 to display the AR camera feed at all times. Lastly, on the bottom is a slider
 that controls the playback position of the audio file played in each region. We
-learned about how audio sliders work in Unity with this feature, and would
+learned about how audio sliders work in Unity with this feature, and would we
 expand on that knowledge for the final version of the app in order to optimize
 the slider's functionality.
 
@@ -1466,7 +1464,7 @@ region once the audio of the selected region finishes? This might be intuitive
 and preferred for most users, but what if the user is more interested in the
 image gallery than the audio? Then, the persistence of the image gallery is
 strangely tied to the duration of the audio track playing underneath. What if a
-user selects a chapter, and then physically enters that region moments later?
+user selects a chapter and then physically enters that region moments later?
 Should the audio restart to indicate that the user has arrived at the location,
 or will this appear as though the audio track skipped to the beginning again for
 no reason? This seemingly minor inclusion created a significant amount of
@@ -1530,12 +1528,11 @@ called ``Experience Importer - Adobe Xd files importer.'' The download page for
 this extension claims ``Transfer AdobeXd project directly to Unity. Forget about
 hours of positioning objects. They're already there! Just drag .xd file to
 project and... voila!''~\autocite{glasseye2019}.\footnote{``Adobe XD'' is
-stylized incorrectly with ``AdobeXd'' in the description of the Unity
-package. This is also different from ``Adobe Xd'', the way in which it is
-stylized in the title.} We suspect this sounds too good to be true because it
-is. As of September 20\textsuperscript{th}, 2019, there are 6 user reviews. All
-of the five-star reviews were have the caveat ``Reviewer was gifted package by
-publisher'' which which we interpreted as a warning sign. Because of this, we
+stylized incorrectly with ``AdobeXd'' in the description of the Unity package.
+This is also different from ``Adobe Xd'', the way in which it is stylized in the
+title.} As of September 20\textsuperscript{th}, 2019, there are 6 user reviews.
+All of the five-star reviews were have the caveat ``Reviewer was gifted package
+by publisher'' which which we interpreted as a warning sign. Because of this, we
 decided to rebuild the UI largely from the ground up, using the Adobe XD file to
 guide us.
 %TODO refer to the section that discusses building the ui
@@ -1595,7 +1592,7 @@ display the images, we wanted the user to be able to click through them like
 an image gallery.
 
 We created the gallery out of a horizontal layout group, populated it with
-images dynamically in each region, and then had the buttons ``lerp'' the gallery
+images dynamically in each region, and had the buttons ``lerp'' the gallery
 to different positions in order to switch between each image in a smooth and
 pleasing way. As for the audio transcript, we knew we needed a scrollable text
 field that could accommodate varying amounts of text, since the audio files
@@ -1643,7 +1640,7 @@ our control.
 
 To test the API and backend of the Editour web app we used the Mocha testing
 framework. Mocha is the most depended-upon package in the Node Package
-Manager~\autocite{tidelift2019}, and is widely used by professional software
+Manager~\autocite{tidelift2019} and is widely used by professional software
 development teams. It has a myriad of useful features that allow developers to
 quickly write unit tests for complex Node.js projects~\autocite{mochajs2019}.
 Most importantly for us, it has good support for testing asynchronous JavaScript
@@ -1659,7 +1656,7 @@ requests, for example, by responding with an HTTP 400 error
 message~\autocite{rfc7231}.
 
 These tests were very useful in tracking down bugs and unexpected behavior in
-the backend, and also allowed us to make sure no functionality changed when
+the backend, and they also allowed us to make sure no functionality changed when
 adding new features or making changes to underlying logic later on.
 
 \subsubsection{Editour Frontend Testing}
@@ -1669,7 +1666,7 @@ We suspect that Editour might have a life outside of this particular use case
 depending on how it is developed later on. This is why Editour is perhaps more
 polished than typical internal tools.
 
-For the duration of the project however, Editour only had to be used our team
+For the duration of the project, however, Editour only had to be used our team
 and Atticus. Therefore, the testing for the frontend of Editour was less
 systematic than other parts of the software stack. This decision also helped us
 focus our efforts on testing the reliability and user experience of ARuko.
@@ -1707,7 +1704,7 @@ significant amount of ``business logic'' that interprets the tour from the
 Editour file. On top of this, the geometric tests to check whether the user is
 inside a particular arbitrarily-defined geographic region are very important to
 get right.  Using Unity's built-in NUnit unit testing framework, we wrote tests
-to verify whether the tour data was being parsed correctly, and whether the tour
+to verify whether the tour data was being parsed correctly and whether the tour
 would be run correctly.
 
 Regions are a set of three or more points that define a closed polygon. Using
@@ -1719,8 +1716,8 @@ One decent algorithm for accomplishing this is by drawing a ray from a given
 point to infinity. Barring edge cases (which will be discussed shortly) the
 point is inside the polygon if the ray passes through an even number of line
 segments.  The point is outside of the polygon if the ray intersects an odd
-number of times. Figure~\ref{fig:intersectionsDiagram} does not serve as a
-proof, but should at least make it clear why this works. This algorithm's time
+number of times. Figure~\ref{fig:intersectionsDiagram} does not serve as a proof
+but should at least make it clear why this works. This algorithm's time
 complexity is $O(n)$, where $n$ is the sum total of the number of vertices of
 all of the polygons being tested~\autocite{geeksforgeekspolygon}.
 
@@ -1755,17 +1752,17 @@ catch various bugs before we created a finalized prototype for field-testing at
 Kinkaku-ji. The tour represented in Figure~\ref{fig:ritsuTour} is what we used
 for testing the app. The ``C-Shaped Region'' helped us test concave regions.
 This uniquely shaped region also prompted us to think about what UI behavior
-made the most sense if a user were to walk into a region, walk out and then in
-again. We decided that it was awkward if the audio restarted upon re-entering a
-region, since the audio would still be playing once a user left the region. As
-we began to implement more complex UI that changed based on GPS position in
-various ways, directly taking the tour by walking around was an invaluable way
-to test. Section~\ref{sec:adobeXdDesign} details how the UI grew in complexity
-in the late stages of the project. Having a way to regularly run field tests was
-integral to polishing the app in time before we revisited Kinkaku-ji. Because
-Editour was flexible enough to easily swap out media and add regions to the
-tour, Editour proved itself to be as helpful for testing as it was for
-crafting the final tour that could be taken at Kinkaku-ji.
+made the most sense if a user were to walk into a region, walk out, and then
+walk in again. We decided that it was awkward if the audio restarted upon
+re-entering a region, since the audio would still be playing once a user left
+the region. As we began to implement more complex UI that changed based on GPS
+position in various ways, directly taking the tour by walking around was an
+invaluable way to test. Section~\ref{sec:adobeXdDesign} details how the UI grew
+in complexity in the late stages of the project. Having a way to regularly run
+field tests was integral to polishing the app in time before we revisited
+Kinkaku-ji. Because Editour was flexible enough to easily swap out media and add
+regions to the tour, Editour proved itself to be as helpful for testing as it
+was for crafting the final tour that could be taken at Kinkaku-ji.
 
 To maximize testing efforts and negate having to physically walk around we also
 simulated the GPS coordinates in software. This allowed us to simulate walking
@@ -1814,11 +1811,11 @@ for field testing at Kinkaku-ji.
 \end{figure}
 
 We tested using two phones at the same time: an iPhone 8 and a Samsung Galaxy
-S7. The iPhone 8 is newer, more powerful and therefore more suited for use with
-AR. We primarily used this phone to test the AR features of the app. Even
-though the Galaxy S7 had difficulty with basic AR features such as
-ground-plane detection, it was still capable of triggering the audio track
-based on GPS position.
+S7. The iPhone 8 is newer and more powerful. Therefore it is more suited for use
+with AR. We primarily used this phone to test the AR features of the app. Even
+though the Galaxy S7 had difficulty with basic AR features such as ground-plane
+detection, it was still capable of triggering the audio track based on GPS
+position.
 
 As discussed in Section~\ref{sec:testingARuko}, our previous testing involved
 creating a ``mock tour'' on the Ritsumeikan campus. While this let us know
@@ -1865,16 +1862,17 @@ this was trivial to fix.
 On September 26\textsuperscript{th} we returned to Kinkaku-ji with a nearly
 complete version of ARuko in order to conduct some final testing. We met up with
 Atticus, the IQP group, and our friend Hikaru and installed the beta version of
-ARuko on each of their phones. With little instruction about how the app works
-we had each of them try going through Kinkaku-ji while listening to the tour and
-using the app's features. Each member of our team also installed the beta
-version so we could test it. % TODO add photos of us testing it
+ARuko on each of their phones. Providing them with little instruction about how
+the app works, we had each of them try going through Kinkaku-ji while listening
+to the tour and using the app's features. Each member of our team also installed
+the beta version so we could test it.
+% TODO add photos of us testing it
 
 This was our first time trying the AR image recognition on the actual signs at
 Kinkaku-ji, rather than photographs of the signs, and it worked surprisingly
 well. Vuforia was able to recognize almost all of the signs, even in different
 lighting than when the reference images were taken. For image targets that were
-small, far away, or obscured by shadows the image recognition was slower. We
+small, far away, or obscured by shadows, the image recognition was slower. We
 discovered that the targets that worked best were large, had a lot of
 high-contrast text, and were uniformly lit.
 
@@ -1886,8 +1884,8 @@ discussing. Using the Editour web app, we were able to quickly correct these
 issues with the tour design once we returned to Atticus's office.
 
 Additionally, one of the image targets had the wrong text in its information
-pop-up. These were all easy bugs to fix, but if we might not have noticed
-them if we had not tested the app on-site.
+pop-up. These were all easy bugs to fix, but we might not have noticed them if
+we had not tested the app on-site.
 
 We also noticed that we were only able to augment a maximum of two image targets
 at a time. In almost all cases, only two translatable signs were in view at
@@ -1907,7 +1905,7 @@ accommodate for four simultaneous images.
 \end{figure}
 
 Another major bug we discovered was that the GPS stopped updating when the main
-screen is not open. This means that in AR camera mode the app would not trigger
+screen was not open. This meant that in AR camera mode the app would not trigger
 new audio when you walked into a new region. This was caused by the GPS script
 being attached to a UI element on the main screen, which gets deactivated when
 switching to AR camera mode. This was easily resolved simply by moving this
@@ -1919,7 +1917,7 @@ on image targets were made larger so they are easier to see and tap. The UI
 buttons in the bottom menu bar were also made larger and easier to press. The
 text ``MAIN'' was added under the central button that opens the screen with the
 images and transcript, so it was more clear what that button does. The header
-text at the top was too big, and sometimes overflowed onto other UI elements, so
+text at the top was too big and sometimes overflowed onto other UI elements, so
 its size was reduced and split into two lines when the text was too long.
 
 Testing with Atticus revealed another user interface issue we had not
@@ -2013,7 +2011,7 @@ own line of coffee. His latest album, Omoiyari, was released on May
 Atticus Sims proposed the idea of working with Michael Whittle, a British artist
 received his PhD at the Kyoto City University of Arts in 2014. His art has
 appeared in dozens of solo and group exhibitions across the world,
-including Kyoto, Beijing, London and New York~\autocite{michaelwhittle2019}.
+including Kyoto, Beijing, London, and New York~\autocite{michaelwhittle2019}.
 Kyoto~VR has worked with Michael Whittle in the past to create a 3D scan of a
 solo exhibition, ``Portraits of Thought.'' This exhibition displayed diagrams
 inspired by real science and mathematics. Atticus provided us with some
@@ -2036,14 +2034,14 @@ indicating that those images would serve well as AR image targets.
 Even after the core functionality of ARuko was finalized as an audio tour with
 additional AR components, the exact nature of those AR components was still
 undecided until more details about the project crystallized. Atticus knew he
-wanted to use AR on the tour, but was not sure what to do with it. At first, we
+wanted to use AR on the tour but was not sure what to do with it. At first, we
 made recommendations to him based on the capabilities of Vuforia. We knew that
 image recognition and ground plane recognition were two of its strengths, so we
 suggested that displaying 3D models in certain locations using either of these
 features would be an interesting way to expand on the tour. With these
 recommendations in mind, Atticus expressed interest in using building facades as
 image targets. The intention then would be to tie content to a physical location
-in Kinkaku-ji, and use images of the location as targets. As explained in
+in Kinkaku-ji and use images of the location as targets. As explained in
 Section~\ref{sec:earlyUserInterface}, this ultimately did not work out due to
 the limitations of Vuforia's image recognition.
 
@@ -2061,10 +2059,10 @@ buttons that, when tapped, would create a Plane primitive in Unity with the
 given image displayed on it and place it on the ground plane. 
 
 We encountered a few notable problems with this. Using a Plane primitive had
-deleterious effects on the way the object was lit in the Unity scene, as well as
+deleterious effects on the way the object was lit in the Unity scene as well as
 how it appeared when not viewed head-on. If viewed from an angle, the picture
 could become very dark and difficult to see. If viewed from behind, back-face
-culling would take effect and the plane would become completely invisible.
+culling would take effect, and the plane would become completely invisible.
 Because of these issues, we decided to place the images on a Cube primitive
 instead. After showing this feature to Atticus during early testing at
 Kinkaku-ji, he decided that he wanted to move away from displaying images in AR.
@@ -2073,11 +2071,10 @@ so that the user could place the image directly in front of them.
 
 In addition to the previously mentioned use cases for AR in ARuko, Atticus also
 expressed interest in using AR to trigger video content. He was particularly
-interested in triggering 3D videos through AR. As the scope of the project 
-grew, and time ran short, the task of including 3D videos triggered by AR 
-seemed more and more complicated, causing that idea to be phased out of the
-final project. Additionally, we never received any assets from Atticus to use
-for this feature, preventing us from spending time developing it. 
+interested in triggering 3D videos through AR. As the scope of the project grew,
+and time ran short, the task of including 3D videos triggered by AR was phased
+out of the final project. Additionally, we never received any assets to use for
+this feature, preventing us from developing it.
 
 \subsection{Monetization for ARuko}
 \label{sec:monetizationForAruko}
@@ -2139,7 +2136,7 @@ focused only on the features that made it into the final app from the start we
 could have had more time to polish and refine those features.
 
 On a similar note, the requirements and scope of the project changed greatly
-from week to week, and sometimes even within one day. We spent a significant
+from week to week and sometimes even within one day. We spent a significant
 amount of time exploring concepts and features that were completely unrelated to
 the final product. We also did not receive official specifications, such as the
 design of the graphical user interface (GUI) Atticus wanted for the app, until
@@ -2179,27 +2176,27 @@ of this, he primarily worked on ARuko in Unity.
 Editour was not initially a requirement that Atticus had in mind, but it turned
 out to be a very useful tool for designing tours, allowing the app to be
 extensible. Two members of our team, Cole Granof and Joseph Petitti, had
-experience building web applications with HTML, CSS, and JavaScript, and Editour
+experience building web applications with HTML, CSS, and JavaScript, so Editour
 allowed them to use these skills to help the project.
 
 The research time we put in at the beginning of the project also proved to be
 very useful. Our decision to use Unity and Vuforia based on this research made
 implementing many of the complex AR features easier later on. If we had chosen a
-less-ideal platform, we might have had to switch to a different one after
-wasting time on that poor decision.
+less-ideal platform, we might have had to switch to a different one, costing us
+valuable development time.
 
 \subsection{Future Work}
 \label{sec:futureWork}
 
 Although selling ARuko on app stores was not within the scope of our academic
-project, we were able polish the app enough that it would be feasible for
-Atticus to eventually sell it. The UI could use more testing with real
-users to make sure it is intuitive and easy to use. We also intended to add a
-feature where the app could automatically download tour files from the Editour
-server and import them without having to rebuild. We were not able to complete
-this feature due to time constraints, but it could easily be added because all
-of ARuko's business logic is abstracted and generalized to support multiple
-tours. Editour also already supports requesting and downloading the most recent
+project, we were able to polish the app enough that it would be feasible for
+Atticus to eventually sell it. The UI could use more testing with real users to
+make sure it is intuitive and easy to use. We also intended to add a feature
+where the app could automatically download tour files from the Editour server
+and import them without having to rebuild. We were not able to complete this
+feature due to time constraints, but it could easily be added because all of
+ARuko's business logic is abstracted and generalized to support multiple tours.
+Editour also already supports requesting and downloading the most recent
 versions of tours.
 
 Editour is essentially feature complete. The most recent version, 1.3.0, can be
@@ -2211,7 +2208,7 @@ Section~\ref{sec:deployingTheEditourBackend}), but the current solution works
 for now.
 
 Given more time and resources, the app could be augmented to include a tour
-browser that automatically downloads an unpacks tours from the Editour server.
+browser that automatically downloads and unpacks tours from the Editour server.
 More historic locations around Kyoto and Japan in general should be considered
 for other tours. With the work our team has done, Kyoto~VR now has a complete
 platform for creating and delivering unique tours, which can easily be expanded
@@ -2236,12 +2233,12 @@ upon in the future.
 Over the course of the project, we had to develop multiple applications in
 different languages. In total, we created five different repositories: the blog,
 the \LaTeX~source code for our paper, the Arduino code for the heart project
-(see Appendix~\ref{sec:ritsumeikanHeartProject}) and of course one for Editour
+(see Appendix~\ref{sec:ritsumeikanHeartProject}), and of course one for Editour
 and another for ARuko. These five repositories span across multiple different
 markup and programming languages, including C\#, C++, JavaScript, HTML, CSS, and
-the \LaTeX~used to typeset this paper. This gave us a welcome amount of
-practice using Git for version control, as well as GitHub's other features
-oriented around coordinating a team.
+the \LaTeX~used to typeset this paper. This gave us a welcome amount of practice
+using Git for version control as well as GitHub's features oriented around
+coordinating a team.
 
 All three members of the team were contributing code and updating assets such as
 graphics and sound. Code complexity grew quickly as more features were added
@@ -2277,7 +2274,7 @@ Japanese, which describes the core component of the
 technique~\autocite{terry2019}. At Toyota, line-workers would move colored cards
 to notify other teams that parts needed for assembly work were in short supply.
 Now, Kanban boards are integral to Agile software development. Some teams still
-use physical Kanban boards, often using sticky notes and whiteboards.
+use physical Kanban boards, often consisting of sticky notes and whiteboards.
 
 The advantage of using a Kanban board is that each feature or bug that
 is being worked on can be assigned directly to a collaborator on the project. It
@@ -2294,8 +2291,8 @@ over directly merging code using Git. First, the pull request feature integrates
 with the ``Issues'' page very well. By typing ``resolves'' along with the number
 associated with an issue into the description of a pull request, GitHub will
 automatically close the issue when the pull request is approved. This is not
-only remarkably convenient, but also self-documenting since the descriptions of
-pull requests would contain the issues they were resolving. Secondly, creating a
+only remarkably convenient but also self-documenting, since the descriptions of
+pull requests would contain the issues they were resolving. Second, creating a
 pull request allows code to be reviewed by other members of the team very
 easily. Reviewers can view the entire diff file\footnote{A ``diff'' is a file
 generated by Git that shows the differences between two files.} and add comments
@@ -2346,7 +2343,7 @@ to iterate on the software's features post-release.
 
 In a similar vein, with ARuko we used branches to ensure we had a stable working
 version. The night before field testing at Kinkaku-ji, we would cease work on
-the most recent branch, and build the app to our phones. This way, we would
+the most recent branch and build the app to our phones. This way, we would
 always have an exact snapshot of the code we used for that day of testing.
 
 \clearpage
@@ -2429,9 +2426,9 @@ integration of hardware and software. With the help of students and professors
 alike, we were able to produce an educational physical model of a heart
 controlled by an Arduino microcomputer. Professor Noma Haruo gave us tremendous
 assistance with hardware. He taught us how to properly use the tools around the
-lab, and purchased mechanical and electrical components we would need to
+lab, and he purchased mechanical and electrical components we would need to
 complete our task. Professor Amano was always available to answer questions
-related to biology, and helped us understand the mathematical model we would
+related to biology, and he helped us understand the mathematical model we would
 need to implement to drive the physical model with software. We worked on this
 project every Wednesday, completing the final model during the last week of our
 stay.
@@ -2644,7 +2641,7 @@ project instead.
 
 Per Atticus's advice, we deleted any and all unnecessary elements from the scene
 before proceeding. We also updated the Unity version of the project to the 2019
-version we were using, and updated the version of Vuforia to the most recent
+version we were using, and we updated the version of Vuforia to the most recent
 version, neither of which created any problems. The process of getting the model
 to appear on ground plane detection instead of image target recognition was
 relatively easy. We simply moved the model from an image target to a simulated
