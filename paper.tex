@@ -419,14 +419,6 @@ of Kinkaku-ji.
 	\label{fig:iziTravel}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kinkakuji.jpg}
-	\caption[The Golden Pavilion of Kinkaku-ji, Kyoto, Japan]{The Golden
-		Pavilion of Kinkaku-ji, Kyoto, Japan~\autocite{davidson2005}}
-	\label{fig:kinkakuji}
-\end{figure}
-
 Our group aimed to implement all the functionality of izi.TRAVEL and more in
 our own app. See Section \ref{sec:aruko} for more details.
 
@@ -1123,7 +1115,7 @@ where Node.js was listening~\autocite{apache2019}.
 
 With no access to \texttt{systemctl} we could not use the custom systemd service
 we wrote to manage the server daemon. Instead, we used a custom shell script and
-an npm package called ``forever'' to handle starting and stopping it. The
+an npm package called \texttt{forever} to handle starting and stopping it. The
 forever package runs Node.js scripts continuously, automatically restarting them
 if they crash~\autocite{robbins2019}.
 
@@ -1131,9 +1123,10 @@ Tours are stored on the server as compressed zip files, but when uploading or
 editing a tour these zips are decompressed to a temporary directory. To prevent
 the server's limited disk space from filling up with old temporary files we
 wrote a simple bash script that removes directories that have not been modified
-in the past five days. We set up a cron job\footnote{The program cron allows for
-periodic scheduling of repeated commands} to run this script automatically once
-per day to clean out old temporary files that are not being used any more.
+in the past five days. We set up a \texttt{cron} job\footnote{The program
+\texttt{cron} allows for periodic scheduling of repeated commands} to run this
+script automatically once per day to clean out old temporary files that are not
+being used any more.
 
 Unfortunately, the hosting solution Kyoto~VR provided us with severely throttles
 disk write speeds. Because the backend has to write potentially large amounts of
@@ -1263,14 +1256,15 @@ placed directly on top of the content.
 \end{figure}
 
 Additionally, we would not try to use any text recognition or translation APIs
-to automate the translation. Figure~\ref{fig:translateInstant} demonstrates
-that this kind of technology needs to mature before it is completely usable,
+to automate the translation. Figure~\ref{fig:translateInstant} demonstrates that
+this kind of technology needs to mature before it is completely usable,
 especially for Japanese. Instead, we had Atticus share a Google Sheets
-spreadsheet. Hikaru Inoue manually translated each sign and provided notes about
-his decision-making process about each translation. Once this time-intensive
-labor was completed, we took each field of translated text from the spreadsheet
-and implemented it directly into the app, associating each translation with the
-correct image target.
+spreadsheet. A Japanese student and acquaintance of Atticus Sims, Hikaru Inoue,
+manually translated each sign and provided notes about his decision-making
+process about each translation. Once this time-intensive labor was completed, we
+took each field of translated text from the spreadsheet and implemented it
+directly into the app, associating each translation with the correct image
+target.
 
 \subsubsection{Map Overlay Feature}
 \label{sec:mapOverlayFeature}
@@ -1482,9 +1476,9 @@ the AR camera. Instead, he suggested that we have the images be viewable in a
 more traditional fashion---in 2D as part of the UI.
 
 At this point in the project, the codebase for Editour was already around three
-thousand lines of vanilla JavaScript. With the changing requirements, Editour
-was becoming onerous to maintain at this stage of the project. Luckily, these
-changes were still manageable to implement.
+thousand lines of vanilla JavaScript. The growing code complexity meant that
+adding features required nontrivial amounts of retesting and refactoring.
+Luckily, these changes were still manageable to implement.
 
 With more time, we might have been able to get the ground-plane image placement
 feature to a state where Atticus might have liked it. We wanted to explore ways
@@ -1624,9 +1618,6 @@ this, we needed to do extensive testing to ensure not only that the products
 work as intended without bugs, but also that they are pleasant and easy to use
 for their intended users.
 
-% TODO remove this
-\nocite{harvey2002} % don't remove this
-
 \subsection{Testing Editour}
 \label{sec:testingEditour}
 
@@ -1714,8 +1705,8 @@ user is located within one of those polygons.
 % TODO move the stuff about the algorithm into the implementation section
 One decent algorithm for accomplishing this is by drawing a ray from a given
 point to infinity. Barring edge cases (which will be discussed shortly) the
-point is inside the polygon if the ray passes through an even number of line
-segments.  The point is outside of the polygon if the ray intersects an odd
+point is inside the polygon if the ray passes through an odd number of line
+segments.  The point is outside of the polygon if the ray intersects an even
 number of times. Figure~\ref{fig:intersectionsDiagram} does not serve as a proof
 but should at least make it clear why this works. This algorithm's time
 complexity is $O(n)$, where $n$ is the sum total of the number of vertices of
@@ -1956,8 +1947,9 @@ these surveys can be found in Appendix~\ref{sec:testingSurveyResults}.
 \label{sec:alternativeArAppConcepts}
 
 Throughout the duration of the project, the goalposts shifted multiple times.
-This section details some of the initial plans that we explored before Atticus
-shifted our focus to a walking tour app with AR features.
+This section details some of the initial plans that we explored before the
+specifications provided to us by Kyoto~VR helped focus the design on a walking
+tour app with AR features.
 
 \subsection{3D Spatialized Audio Tour}
 \label{sec:3dSpatializedAudioTour}
@@ -2003,7 +1995,9 @@ in Japan, such as Tears of Sakura
 Bashi was born in Seattle and grew up in Virginia. Kishi Bashi has appeared at
 many major music festivals, toured the US extensively, and has even released his
 own line of coffee. His latest album, Omoiyari, was released on May
-31\textsuperscript{st}, 2019~\autocite{kishibashi2019}.
+31\textsuperscript{st}, 2019~\autocite{kishibashi2019}. While the prospect of
+working with either of these artists had us excited, Kyoto~VR was not able to
+find an arrangement.
 
 \subsection{AR Art Gallery}
 \label{sec:arArtGallery}
@@ -2013,7 +2007,7 @@ received his PhD at the Kyoto City University of Arts in 2014. His art has
 appeared in dozens of solo and group exhibitions across the world,
 including Kyoto, Beijing, London, and New York~\autocite{michaelwhittle2019}.
 Kyoto~VR has worked with Michael Whittle in the past to create a 3D scan of a
-solo exhibition, ``Portraits of Thought.'' This exhibition displayed diagrams
+solo exhibition, \textit{Portraits of Thought}. This exhibition displayed diagrams
 inspired by real science and mathematics. Atticus provided us with some
 diagrams to test in the Vuforia developer portal, since Michael Whittle wanted
 to know how well certain pieces of art would work as AR image targets. All of
@@ -2023,8 +2017,8 @@ indicating that those images would serve well as AR image targets.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.7\textwidth]{exhibition-scan.png}
-    \caption{A screenshot of the 3D scan of ``Portraits of Thought,'' accessible
-    from the web}
+    \caption{A screenshot of the 3D scan of \textit{Portraits of Thought},
+    accessible from the web}
 	\label{fig:exhibitionScan}
 \end{figure}
 
