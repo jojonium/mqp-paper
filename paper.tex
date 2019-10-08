@@ -88,10 +88,10 @@
 	Atticus Sims, Sponsor \\
 	Kyoto VR \par
 	\vspace{\baselineskip}
-	Professor Joshua Cuneo, Adviser \\
+	Professor Ralph Sutter, Adviser \\
 	Worcester Polytechnic Institute \par
 	\vspace{\baselineskip}
-	Professor Ralph Sutter, Adviser \\
+	Professor Joshua Cuneo, Adviser \\
 	Worcester Polytechnic Institute \par
 \end{flushright}
 
@@ -797,18 +797,18 @@ can edit anything about the region.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{welcome-card-editour.png}
-    \caption{The ``Welcome to Editour'' card providing basic instructions to
-    get started}
-	\label{fig:welcomeCard}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
 	\includegraphics[width=0.5\textwidth]{drawing-region-editour.png}
 	\caption{Editour when a region is being drawn, including the two dotted
 		preview lines}
 	\label{fig:drawingRegion}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{welcome-card-editour.png}
+    \caption{The ``Welcome to Editour'' card providing basic instructions to
+    get started}
+	\label{fig:welcomeCard}
 \end{figure}
 
 The top of the region card displays the region name in bold text. By clicking
@@ -833,11 +833,18 @@ multiple places in the UI where a textbox is immediately adjacent to a
 ``Confirm'' button.  We made sure all of these can be triggered by simply
 hitting enter, since this is common behavior when filling out forms on the web.}
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
 	\includegraphics[width=0.4\textwidth]{rename-subcard-editour.png}
 	\caption{The ``Rename'' subcard}
 	\label{fig:renameSubcard}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.4\textwidth]{media-subcard-editour.png}
+	\caption{The ``Media'' subcard}
+	\label{fig:mediaSubcard}
 \end{figure}
 
 The second subcard seen in Figure~\ref{fig:mediaSubcard} is more involved.
@@ -850,13 +857,6 @@ the files already present on the server will appear as cards with `X' buttons.
 This allows the user to remove images or audio from that region even after the
 tour has been uploaded.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.4\textwidth]{media-subcard-editour.png}
-	\caption{The ``Media'' subcard}
-	\label{fig:mediaSubcard}
-\end{figure}
-
 The third subcard is the ``Points'' subcard. This subcard can be revealed in one
 of two ways. The first way is by clicking on the yellow bar labeled ``Points'',
 which is the same for all subcards. Alternatively, the user can click directly
@@ -868,13 +868,14 @@ appear at the midpoint of each edge. Clicking on a red midpoint will add an
 additional vertex at that midpoint. Dragging one of the blue vertices will move
 the vertex around. The latitude and longitude are updated in the ``Points''
 subcard as the user moves the vertex. Clicking on the vertex directly will
-create a blue pin-shaped marker that the user can also drag. Clicking on the
-coordinate box in the subcard will also create this blue pin-shaped marker; the
-map will also pan to this coordinate. The user can also delete vertices in the
-same way that files can be deleted from the ``Media'' subcard by clicking on the
-`X' button on that vertex's coordinate card. If there are exactly three points
-in a region, the `X' buttons will be ``grayed-out,'' preventing the user from
-deleting any more points, since a polygon must consist of at least three points.
+create a blue pin-shaped marker that the user can also drag (see
+Figure~\ref{fig:editSubcardWithMap}). Clicking on the coordinate box in the
+subcard will also create this blue pin-shaped marker; the map will also pan to
+this coordinate. The user can also delete vertices in the same way that files
+can be deleted from the ``Media'' subcard by clicking on the `X' button on that
+vertex's coordinate card. If there are exactly three points in a region, the `X'
+buttons will be ``grayed-out,'' preventing the user from deleting any more
+points, since a polygon must consist of at least three points.
 
 \begin{figure}[h]
 	\centering
@@ -923,7 +924,7 @@ on one of these blue buttons will fill the textbox in with the correct name.
 Before this feature was implemented, the user had to correctly type the name of
 the saved tour into the textbox in order to retrieve it. The user is still free
 to do this, but the buttons make this easier and less error-prone. This feature
-can be seen in figure Figure~\ref{fig:downloadCard}. Clicking ``Download'' does
+can be seen in Figure~\ref{fig:downloadCard}. Clicking ``Download'' does
 not download the tour to the user's computer. Instead, it requests only the
 tour metadata from the server so the tour's data can be displayed in the web
 app. The user can then edit the tour and upload a new version.
@@ -936,19 +937,12 @@ app. The user can then edit the tour and upload a new version.
 \end{figure}
 
 We did not include a way to resolve addresses or place names, like the service
-provided by Google Maps. Instead of exploring plugins/libraries that might
+provided by Google Maps. Instead of exploring plugins or libraries that might
 provide this functionality, we offered a simpler solution due to time
 constraints.  You can type in a latitude and longitude directly and hit the
 ``Jump'' button to pan to the specified location. We also hard-coded a few
 shortcuts for places that Atticus might want to design a tour for in the future,
 which can be accessed by clicking on the yellow buttons with place names.
-
-\begin{figure}[h]
-	\centering
-    \includegraphics[width=0.4\textwidth]{jump-card-editour.png}
-    \caption{The jump card}
-	\label{fig:jumpCard}
-\end{figure}
 
 Once a tour is either uploaded or downloaded, a link to download the zip file of
 that tour will appear. The zip file contains all of the uploaded media and a
@@ -992,7 +986,7 @@ The color scheme of the UI was inspired by the Super Famicom controller, which
 can be seen in Figure~\ref{fig:superFamicomController}. The shape of the
 ``cards'' within the sidebar were inspired by the GitHub Kanban board on the
 ``Projects'' tab of a GitHub repo (which can be seen in
-Figure~\ref{fig:kanbanBoard} in the Appendix).
+Figure~\ref{fig:kanbanBoard} in Appendix~\ref{sec:versionControl}).
 
 \begin{figure}[h]
 	\centering
@@ -1040,6 +1034,13 @@ software. This means that anyone using the codebase of Editour for different
 purposes can easily change the look and feel of the frontend by changing the
 CSS.\footnote{This is allowed since Editour is free software, which is discussed
 briefly in Section~\ref{sec:futureOfEditour}.}
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=0.4\textwidth]{jump-card-editour.png}
+    \caption{The jump card}
+	\label{fig:jumpCard}
+\end{figure}
 
 \subsubsection{Editour Backend}
 \label{sec:editourBackend}
@@ -1223,37 +1224,29 @@ superimposing the translated text onto the real world using the camera. In
 results, as seen in Figure~\ref{fig:translateInstant}. Then, the user is
 prompted to highlight where text appears in the photo by dragging lines onto the
 screen where text appears, as seen in Figure~\ref{fig:translateScan}. After the
-translation is complete, the translated text appears in a separate UI element,
-which can be seen in Figure~\ref{fig:translateFinalCard}. In most cases, it is
-more convenient and readable to have the translation appear in a separate
-scrollable text box. This motivated the current design of the ``info buttons''
-in ARuko. Instead of placing text directly onto signage, we place a blue button
-with a stylized ``\textit{i}'' in the center. By tapping on this button, a
-separate UI element will appear containing the translated text. Since this
-button is cast into the world using the AR camera, the button appears to be
-placed directly on top of the content.
+translation is complete, the translated text appears in a separate UI element.
 
-% TODO make it so these images don't appear so far away (thank you LaTeX)
-\begin{figure}[p]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{translate-instant.jpg}
+	\includegraphics[width=0.4\textwidth]{translate-instant.jpg}
 	\caption{Google Translate camera feature in ``instant'' mode.}
 	\label{fig:translateInstant}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{translate-scan.jpg}
+	\includegraphics[width=0.4\textwidth]{translate-scan.jpg}
 	\caption{Google Translate camera feature in ``scan'' mode}
 	\label{fig:translateScan}
 \end{figure}
 
-\begin{figure}[p]
-	\centering
-	\includegraphics[width=0.8\textwidth]{translate-final-card.png}
-	\caption{The final page seen after using ``scan'' mode in Google Translate}
-	\label{fig:translateFinalCard}
-\end{figure}
+In most cases, it is more convenient and readable to have the translation appear
+in a separate scrollable text box. This motivated the current design of the
+``info buttons'' in ARuko. Instead of placing text directly onto signage, we
+place a blue button with a stylized ``\textit{i}'' in the center. By tapping on
+this button, a separate UI element will appear containing the translated text.
+Since this button is cast into the world using the AR camera, the button appears
+to be placed directly on top of the content.
 
 Additionally, we would not try to use any text recognition or translation APIs
 to automate the translation. Figure~\ref{fig:translateInstant} demonstrates that
@@ -1316,9 +1309,9 @@ models~\autocite{baichtal2008}. Using Unity's built-in capability to design
 materials, we created a shiny golden material and applied it to the model (see
 Figure~\ref{fig:souvenir}).
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{souvenir.png}
+	\includegraphics[width=.8\textwidth]{souvenir.png}
 	\caption{ARuko's virtual souvenir feature}
 	\label{fig:souvenir}
 \end{figure}
@@ -1333,9 +1326,9 @@ to place their hands under the base of the Golden Pavilion model as if they were
 holding it; Vuforia's image tracking is flexible enough such that the image
 target can be partially obscured by the hand.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=.5\textwidth]{kinkakuji-horizontal.png}
+	\includegraphics[width=.8\textwidth]{kinkakuji-horizontal.png}
 	\caption{Untextured Golden Pavilion model sitting horizontally on ticket}
 	\label{fig:kinkakujiHorizontal}
 \end{figure}
@@ -1353,13 +1346,6 @@ elements were created on the fly as new features were added. As the app grew,
 it became clear that the UI could not consist simply of buttons and other basic
 features provided by Unity.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.4\textwidth]{old-ui.png}
-	\caption{A screenshot of our early UI}
-	\label{fig:oldUI}
-\end{figure}
-
 Pictured in Figure~\ref{fig:oldUI} is our early UI. It was very minimal but
 still covered all of the uses for our app at the time. The top of the screen had
 two drop-down menus. The one on the left (which is shown open in
@@ -1370,6 +1356,13 @@ viewable in AR using ground plane detection. When tapped, each button would
 create a cube with the given image on each face and place it on the ground
 where the user was pointing. Figure~\ref{fig:floatingCube} shows this feature in
 action.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{old-ui.png}
+	\caption{A screenshot of our early UI}
+	\label{fig:oldUI}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -1438,12 +1431,18 @@ experience design document created in Adobe XD.
 \end{figure}
 
 One of the notable changes is the chapter select screen, which is the third
-screen in Figure~\ref{fig:adobeXdDesign}. Before, we worked under the assumption
-that each geolocation-triggered region would not have to be ordered in any way.
-This assumption made its way into Editour, which at the time did not have a way
-to reorder regions once they were placed. Because of this chapter selection
-screen, we needed some way to specify and rearrange the order of regions within
-Editour.
+screen in Figure~\ref{fig:adobeXdDesign} and in Figure~\ref{fig:chaptersZoomed}.
+Before, we worked under the assumption that each geolocation-triggered region
+would not have to be ordered in any way. This assumption made its way into
+Editour, which at the time did not have a way to reorder regions once they were
+placed. Because of this chapter selection screen, we needed some way to specify
+and rearrange the order of regions within Editour.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.4\textwidth]{chapters-zoomed.png}
+    \caption{Larger screenshot of the chapter selection screen mock-up}
+    \label{fig:chaptersZoomed}
+\end{figure}
 
 The inclusion of a ``chapter selection'' screen had other notable design
 implications as well. Initially different regions were triggered solely by the
@@ -1475,6 +1474,12 @@ not enthusiastic about being able to place images onto the ground-plane using
 the AR camera. Instead, he suggested that we have the images be viewable in a
 more traditional fashion---in 2D as part of the UI.
 
+\begin{figure}[h] \centering
+    \includegraphics[width=0.4\textwidth]{gallery-zoomed.png}
+    \caption{Larger screenshot of the transcript and image gallery mock-up}
+    \label{fig:galleryZoomed}
+\end{figure}
+
 At this point in the project, the codebase for Editour was already around three
 thousand lines of vanilla JavaScript. The growing code complexity meant that
 adding features required nontrivial amounts of retesting and refactoring.
@@ -1494,23 +1499,41 @@ code that interprets the tour file needed to be updated to expect an audio
 transcript field.  Figure~\ref{fig:editourAdditions} shows the UI elements that
 changed in order to add these new features.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=0.5\textwidth]{editour-additions.png}
+	\includegraphics[width=0.3\textwidth]{editour-additions.png}
 	\caption{Additions to Editour to accommodate the new design}
 	\label{fig:editourAdditions}
 \end{figure}
 
 With the ground-plane detection features stripped away from the main app, the AR
 focus shifted to translating the maps and signs using the camera. The fourth
-screen on Figure~\ref{fig:adobeXdDesign} and Figure~\ref{fig:infoZoomed} shows a
-mock-up of this feature. Atticus took photographs of various signs throughout
+screen on Figure~\ref{fig:adobeXdDesign} and
+Figure~\ref{fig:infoTranslationZoomed} shows a mock-up of this feature.
+
+\begin{figure}[p] \centering
+    \includegraphics[width=0.8\textwidth]{info-translation-zoomed.png}
+    \caption{Larger screenshot of the info button and translation mock-up}
+    \label{fig:infoTranslationZoomed}
+\end{figure}
+
+Atticus took photographs of various signs throughout
 Kinkaku-ji for us to use as image targets. Hikaru Inoue helped us by translating
 all of the text in these photos from Japanese to English. In this design, the AR
 camera superimposes an ``info'' button on top of the sign. Tapping on this
 button brings up a separate UI element containing the translation, which can be
-seen in Figure~\ref{fig:translationZoomed}. The details of this feature is
+seen in Figure~\ref{fig:infoTranslationZoomed}. The details of this feature is
 discussed more thoroughly in Section~\ref{sec:translationFeature}.
+
+Another feature that was added was the ability for the user to preview the
+route. Figure~\ref{fig:mapZoomed} shows the map screen of the app. The map
+screen is simply a static image that can be pinched and zoomed.
+
+\begin{figure}[h] \centering
+    \includegraphics[width=0.4\textwidth]{map-zoomed.png}
+    \caption{Larger screenshot of the route screen mock-up}
+    \label{fig:mapZoomed}
+\end{figure}
 
 Since Adobe XD is largely a prototyping and design tool, a considerable amount
 of legwork would still need to be done to rebuild the proposed design using
@@ -1530,36 +1553,6 @@ by publisher'' which which we interpreted as a warning sign. Because of this, we
 decided to rebuild the UI largely from the ground up, using the Adobe XD file to
 guide us.
 %TODO refer to the section that discusses building the ui
-
-\begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{chapters-zoomed.png}
-    \caption{Larger screenshot of the chapter selection screen mock-up}
-    \label{fig:chaptersZoomed}
-\end{figure}
-
-\begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{gallery-zoomed.png}
-    \caption{Larger screenshot of the transcript and image gallery mock-up}
-    \label{fig:galleryZoomed}
-\end{figure}
-
-\begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{info-zoomed.png}
-    \caption{Larger screenshot of the info button mock-up}
-    \label{fig:infoZoomed}
-\end{figure}
-
-\begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{map-zoomed.png}
-    \caption{Larger screenshot of the route screen mock-up}
-    \label{fig:mapZoomed}
-\end{figure}
-
-\begin{figure}[p] \centering
-    \includegraphics[width=0.6\textwidth]{translation-zoomed.png}
-    \caption{Larger screenshot of the translation window mock-up}
-    \label{fig:translationZoomed}
-\end{figure}
 
 \subsubsection{Final UI Implementation}
 \label{sec:finalUI}
@@ -1778,7 +1771,7 @@ This version of the tour can be seen in Figure~\ref{fig:kinkakujiTour}. On this
 day of testing, we still had the limited UI described in
 Section~\ref{sec:earlyUserInterface}.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
 	\includegraphics[width=\textwidth]{kinkakuji-tour.png}
 	\caption[The original version of the Kinkaku-ji tour]{The original version
@@ -1793,7 +1786,7 @@ potential GPS inaccuracies that could place the user outside the range of the
 region.  Figure~\ref{fig:kinkakujiChunkierTour} depicts the tour that we used
 for field testing at Kinkaku-ji.
 
-\begin{figure}[h]
+\begin{figure}[p]
 	\centering
 	\includegraphics[width=\textwidth]{kinkakuji-chunkier-tour.png}
 	\caption[The ``chunkier'' version of the Kinkaku-ji tour]{The ``chunkier''
@@ -1886,7 +1879,7 @@ arranged in a two by two grid. When standing at a distance from the grid, only
 two images would be augmented with the blue information button. By default,
 Vuforia limits the amount of image targets that the engine should accept
 simultaneously. In the Vuforia engine settings, we changed this limit to
-accommodate for four simultaneous images.
+accommodate for four simultaneous images (see Figure~\ref{fig:fourIButtons}).
 
 \begin{figure}[h]
 	\centering
@@ -2004,15 +1997,16 @@ find an arrangement.
 
 Atticus Sims proposed the idea of working with Michael Whittle, a British artist
 received his PhD at the Kyoto City University of Arts in 2014. His art has
-appeared in dozens of solo and group exhibitions across the world,
-including Kyoto, Beijing, London, and New York~\autocite{michaelwhittle2019}.
-Kyoto~VR has worked with Michael Whittle in the past to create a 3D scan of a
-solo exhibition, \textit{Portraits of Thought}. This exhibition displayed diagrams
-inspired by real science and mathematics. Atticus provided us with some
-diagrams to test in the Vuforia developer portal, since Michael Whittle wanted
-to know how well certain pieces of art would work as AR image targets. All of
-images that were provided to us were ranked as ``five stars'' by Vuforia,
-indicating that those images would serve well as AR image targets.
+appeared in dozens of solo and group exhibitions across the world, including
+Kyoto, Beijing, London, and New York~\autocite{michaelwhittle2019}. Kyoto~VR has
+worked with Michael Whittle in the past to create a 3D scan of a solo
+exhibition, \textit{Portraits of Thought} (Figure~\ref{fig:exhibitionScan}).
+This exhibition displayed diagrams inspired by real science and mathematics.
+Atticus provided us with some diagrams to test in the Vuforia developer portal,
+since Michael Whittle wanted to know how well certain pieces of art would work
+as AR image targets. All of images that were provided to us were ranked as
+``five stars'' by Vuforia, indicating that those images would serve well as AR
+image targets.
 
 \begin{figure}[h]
 	\centering
